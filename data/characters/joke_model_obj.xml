@@ -1,0 +1,12 @@
+<!DOCTYPE codename-engine-character>
+<character x="0" icon="null" camx="-205" y="0" isGF="false" scale="1.5" camy="40" color="#000000" isPlayer="false" gameOverChar="death-bamber" sprite="joke_model_obj">
+	<anim x="0" loop="false" y="0" fps="30" anim="idle" name="idle"/>
+	<anim x="-15" loop="false" y="40" fps="30" anim="up" name="singUP"/>
+	<anim x="-22" loop="false" y="-18" fps="30" anim="down" name="singDOWN"/>
+	<anim x="73" loop="false" y="18" fps="30" anim="left" name="singLEFT"/>
+	<anim x="-34" loop="false" y="18" fps="30" anim="right" name="singRIGHT"/>
+	<anim x="53" loop="false" y="1" fps="30" anim="Lalt" name="singLEFT-ALT"/>
+	<anim x="-20" loop="false" y="-29" fps="30" anim="Dalt" name="singDOWN-ALT"/>
+	<anim x="-25" loop="false" y="17" fps="30" anim="Ualt" name="singUP-ALT"/>
+	<anim x="-26" loop="false" y="1" fps="30" anim="Ralt" name="singRIGHT-ALT"/>
+</character>

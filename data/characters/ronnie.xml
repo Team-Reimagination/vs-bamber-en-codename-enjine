@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="0" icon="Ronnie" camx="-70" y="0" isGF="false" camy="40" isPlayer="false" sprite="Ronnie">
+	<anim x="0" loop="false" y="0" fps="24" anim="ronnie_idle instance " name="idle"/>
+	<anim x="-118" loop="false" y="28" fps="24" anim="ronnie_rright instance " name="singRIGHT"/>
+	<anim x="68" loop="false" y="-132" fps="24" anim="ronnie_ddown instance " name="singDOWN"/>
+	<anim x="0" loop="false" y="970" fps="24" anim="ronnie_helicopter instance " name="singUP"/>
+	<anim x="218" loop="false" y="-10" fps="24" anim="ronnie_leftbruh instance " name="singLEFT"/>
+</character>

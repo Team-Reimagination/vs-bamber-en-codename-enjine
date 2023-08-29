@@ -15,19 +15,40 @@ var songFonts = [
 	"facsimile" => "vcr_osd.ttf"
 	"placeholder" => "vcr_osd.ttf"
 ];
+var barColors = [
+    "bf" => 0xFF00CCFF
+    "bamber" => 0xFF71C419
+    "davey" => 0xFF4087CE
+    "davey-shred" => 0xFF4087CE
+    "ronnie" => 0xFFFFF600
+    "swindled" => 0xFFEE0000
+    "trade-bamber" => 0xFF71C419
+    "trade-davey" => 0xFF4087CE
+    "null" => 0xFFB9CEB9
+];
 function postCreate() {
     if(["astray", "facsimile", "placeholder", "test footage"].contains(curSong)){
-        for(a in [boyfriend, gf]){
+        for(a in [boyfriend, gf, iconP2, healthBar, healthBarBG]){
             a.alpha = 0;
         }
+        FlxG.state.forEachOfType(FlxText, text -> text.visible = false);
         dad.screenCenter();
     }
     if(songFonts[curSong] != null){
         FlxG.state.forEachOfType(FlxText, text -> text.font = Paths.font(songFonts[curSong]));
     }
+    FlxG.state.forEachOfType(FlxText, text -> text.antialiasing = true);
+    if(barColors[dad.getIcon().toLowerCase()] != null){p1color = barColors[dad.getIcon().toLowerCase()];}
+    if(barColors[boyfriend.getIcon().toLowerCase()] != null){p2color = barColors[boyfriend.getIcon().toLowerCase()];}
+    healthBar.createFilledBar(p1color, p2color);
+    FlxG.state.forEachOfType(FlxText, text -> text.color = p1color);
 }
 function onPostGenerateStrums() {
-    trace(curSong);
+    for(a in [cpuStrums, playerStrums]){
+        for(b in a.notes){
+            b.color = 0x00CCFF;
+        }
+    }
     if(songNoteSkins[curSong] != null){
         for(a in [cpuStrums, playerStrums]){
             skin = songNoteSkins[curSong];
@@ -49,8 +70,6 @@ function onPostGenerateStrums() {
                     strum.updateHitbox();
                     strum.playAnim("static");
                 }
-
-
                 for (note in a.notes) {
                     note.frames = frames;
 
@@ -72,11 +91,9 @@ function onPostGenerateStrums() {
                             note.animation.addByPrefix("hold", "red hold piece");
                             note.animation.addByPrefix("holdend", "red hold end");
                     }
-
                     note.scale.set(0.7, 0.7);
                     note.antialiasing = true;
                     note.updateHitbox();
-
                     if (note.isSustainNote) {
                         note.animation.play("holdend");
                         note.updateHitbox();
