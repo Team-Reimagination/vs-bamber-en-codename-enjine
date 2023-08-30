@@ -22,6 +22,7 @@ var barColors = [
     "davey-shred" => 0xFF4087CE
     "ronnie" => 0xFFFFF600
     "swindled" => 0xFFEE0000
+    "bambi" => 0xFF25BF37
     "trade-bamber" => 0xFF71C419
     "trade-davey" => 0xFF4087CE
     "null" => 0xFFB9CEB9
