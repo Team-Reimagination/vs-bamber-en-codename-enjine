@@ -28,28 +28,15 @@ var barColors = [
     "null" => 0xFFB9CEB9
 ];
 function postCreate() {
-    if(["astray", "facsimile", "placeholder", "test footage"].contains(curSong)){
-        for(a in [boyfriend, gf, iconP2, healthBar, healthBarBG]){
-            a.alpha = 0;
-        }
-        FlxG.state.forEachOfType(FlxText, text -> text.visible = false);
-        dad.screenCenter();
-    }
     if(songFonts[curSong] != null){
         FlxG.state.forEachOfType(FlxText, text -> text.font = Paths.font(songFonts[curSong]));
     }
-    FlxG.state.forEachOfType(FlxText, text -> text.antialiasing = true);
     if(barColors[dad.getIcon().toLowerCase()] != null){p1color = barColors[dad.getIcon().toLowerCase()];}
     if(barColors[boyfriend.getIcon().toLowerCase()] != null){p2color = barColors[boyfriend.getIcon().toLowerCase()];}
     healthBar.createFilledBar(p1color, p2color);
     FlxG.state.forEachOfType(FlxText, text -> text.color = p1color);
 }
 function onPostGenerateStrums() {
-    for(a in [cpuStrums, playerStrums]){
-        for(b in a.notes){
-            b.color = 0x00CCFF;
-        }
-    }
     if(songNoteSkins[curSong] != null){
         for(a in [cpuStrums, playerStrums]){
             skin = songNoteSkins[curSong];
@@ -107,13 +94,13 @@ function onPostGenerateStrums() {
         }
     }
 }
-function postUpdate() {
-	camFollow.screenCenter();
-    camFollow.y - dad.y;
-    switch(strumLines.members[curCameraTarget].characters[0].getAnimName()) {
-        case "singLEFT": camFollow.x -= 20;
-        case "singDOWN": camFollow.y += 20;
-        case "singUP": camFollow.y -= 20;
-        case "singRIGHT": camFollow.x += 20;
+if(!["astray", "facsimile", "placeholder", "test footage"].contains(curSong)){
+    function postUpdate() {
+        switch(strumLines.members[curCameraTarget].characters[0].getAnimName()) {
+            case "singLEFT": camFollow.x -= 20;
+            case "singDOWN": camFollow.y += 20;
+            case "singUP": camFollow.y -= 20;
+            case "singRIGHT": camFollow.x += 20;
+        }
     }
 }
