@@ -22,7 +22,7 @@ if(["astray", "facsimile", "placeholder", "test footage"].contains(curSong)){
         bloom.data.hDRthingy.value = [1.5];
         shader.data.strength.value = [35];
         vignette.data.size.value = [1.2];
-        scanline.data.opacity.value = [misses/6];
+        scanline.data.opacity.value = [0.3];
         for(a in [boyfriend, iconP2, healthBar, healthBarBG]){
            a.alpha = 0;
         }
@@ -33,16 +33,16 @@ if(["astray", "facsimile", "placeholder", "test footage"].contains(curSong)){
         camFollow.y = dad.getMidpoint().y + 50;
         camFollow.x = dad.getMidpoint().x + 20;
 
-        oppositeHealth = (2.2 - health);
+        oppositeHealth = (2.2 - PlayState.health);
 
         chromaticaAbber = FlxMath.lerp(chromaticaAbber, 0.1, 0.02);
         bloom.data.chromatic.value = [chromaticaAbber];
         if (curBeat != tempBeat)
             {
                 chromaticaAbber = 1;
-                tempBeat = PcurBeat;
+                tempBeat = curBeat;
             }
-        hdr = 1.5 - (misses / 20);
+        hdr = 1.5 - (PlayState.misses / 20);
         bloom.data.hDRthingy.value = [hdr];
         elapsedShader += Std.parseFloat(elapsed);
         shader.data.iTime.value = [elapsedShader];
