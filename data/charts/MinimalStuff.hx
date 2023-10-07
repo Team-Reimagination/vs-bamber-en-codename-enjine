@@ -25,6 +25,8 @@ var barColors = [
 	"bambi" => 0xFF25BF37 "trade-bamber" => 0xFF71C419 "trade-davey" => 0xFF4087CE "null" => 0xFFB9CEB9
 ];
 
+var array = [];
+
 function postCreate() {
 	player.cpu = true;
 	if (songFonts[curSong] != null) {
@@ -38,65 +40,18 @@ function postCreate() {
 	}
 	healthBar.createFilledBar(p1color, p2color);
 	FlxG.state.forEachOfType(FlxText, text -> text.color = p1color);
+	if (curSong == "coop") {
+		newIcon1 = new HealthIcon("bf-coop", true);
+		newIcon2 = new HealthIcon("davey-coop", false);
+	}
+	for (a in [newIcon1, newIcon2]) {
+		add(a);
+	}
 }
 
-function onPostGenerateStrums() {
-	if (songNoteSkins[curSong] != null) {
-		for (a in [cpuStrums, playerStrums]) {
-			skin = songNoteSkins[curSong];
-			frames = Paths.getSparrowAtlas(skin);
-			for (strum in a) {
-				strum.frames = frames;
-				strum.animation.addByPrefix("static", "arrowUP");
-				strum.animation.addByPrefix("blue", "arrowDOWN");
-				strum.animation.addByPrefix("purple", "arrowLEFT");
-				strum.animation.addByPrefix("red", "arrowRIGHT");
-
-				strum.antialiasing = true;
-				strum.setGraphicSize(Std.int(frames.width * 0.7));
-				var animPrefix = a.strumAnimPrefix[strum.ID % a.strumAnimPrefix.length];
-				strum.animation.addByPrefix("static", "arrow" + animPrefix.toUpperCase());
-				strum.animation.addByPrefix("pressed", animPrefix + " press", 24, false);
-				strum.animation.addByPrefix("confirm", animPrefix + " confirm", 24, false);
-
-				strum.updateHitbox();
-				strum.playAnim("static");
-			}
-			for (note in a.notes) {
-				note.frames = frames;
-
-				switch (note.noteData % 4) {
-					case 0:
-						note.animation.addByPrefix("scroll", "purple0");
-						note.animation.addByPrefix("hold", "purple hold piece");
-						note.animation.addByPrefix("holdend", "pruple end hold");
-					case 1:
-						note.animation.addByPrefix("scroll", "blue0");
-						note.animation.addByPrefix("hold", "blue hold piece");
-						note.animation.addByPrefix("holdend", "blue hold end");
-					case 2:
-						note.animation.addByPrefix("scroll", "green0");
-						note.animation.addByPrefix("hold", "green hold piece");
-						note.animation.addByPrefix("holdend", "green hold end");
-					case 3:
-						note.animation.addByPrefix("scroll", "red0");
-						note.animation.addByPrefix("hold", "red hold piece");
-						note.animation.addByPrefix("holdend", "red hold end");
-				}
-				note.scale.set(0.7, 0.7);
-				note.antialiasing = true;
-				note.updateHitbox();
-				if (note.isSustainNote) {
-					note.animation.play("holdend");
-					note.updateHitbox();
-
-					if (note.nextSustain != null)
-						note.animation.play('hold');
-				} else
-					note.animation.play("scroll");
-			}
-		}
-	}
+function postUpdate() {
+	newIcon1.x = iconP1.x;
+	newIcon1.y = iconP1.y;
 }
 
 if (!["astray", "facsimile", "placeholder", "test footage"].contains(curSong)) {
