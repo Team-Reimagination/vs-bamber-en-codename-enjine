@@ -1,0 +1,10 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.45" name="stage" folder="stages/romania outskirts night/">
+	<sprite name="ronnerNightSky" x="-654" y="-227" sprite="ronnerNightSky" scroll="0.2" scale="1.8" />
+	<sprite name="ronnerNightBg" x="-695" y="-443" sprite="ronnerNightBg" scrollx="0.4" scrolly="0.9" scale="1.7"/>
+	<sprite name="ronnerNightTrees" x="-1050" y="-360" sprite="ronnerNightTrees" scroll="0.9" scale="2"/>
+	<sprite name="ronnerNightGround" x="-585" y="-655" sprite="ronnerNightGround" scale="1.8"/>
+	<girlfriend />
+	<dad />
+	<boyfriend />
+</stage>
