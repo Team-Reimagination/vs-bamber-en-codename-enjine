@@ -1,0 +1,21 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.4" name="stage" folder="stages/bfdi/">
+   <sprite name="Sky"               x="-600" y="-200"   sprite="Sky"       scroll="0.9" />
+   <sprite name="Cloud"       x="-600" y="600"    sprite="Cloud"      scroll="0.9" />
+   <sprite name="Yoyle Mountain"       x="-600" y="600"    sprite="Yoyle Mountain"      scroll="0.9" />
+   <sprite name="Trees"       x="-600" y="600"    sprite="Trees"      scroll="0.9" />
+   <sprite name="Grass"       x="-600" y="600"    sprite="Grass"      scroll="0.9" />
+   <sprite name="cast_BlackHole"       x="135" y="-450"    sprite="cast_BlackHole"      scroll="0.9" />
+   <sprite name="cast_Pillow"       x="970" y="80"    sprite="cast_Pillow"      scroll="0.9" />
+   <sprite name="cast_Chatters"       x="1175" y="5"    sprite="cast_Chatters"      scroll="0.9" />
+   <sprite name="cast_Marker"       x="300" y="-74"    sprite="cast_Marker"      scroll="0.9" />
+   <sprite name="cast_Cloudy"       x="-132" y="-148"    sprite="cast_Cloudy"      scroll="0.9" />
+   <sprite name="cast_Relaxing"       x="426" y="-62"    sprite="cast_Relaxing"      scroll="0.9" />
+   <sprite name="cast_Gelatin"       x="802" y="288"    sprite="cast_Gelatin"      scroll="0.9" />
+   <sprite name="cast_Rhythmic"       x="-273" y="31"    sprite="cast_Rhythmic"      scroll="0.9" />
+   <sprite name="cast_TVGang"       x="-827" y="56"    sprite="cast_TVGang"      scroll="0.9" />
+   <sprite name="cast_Pie"       x="-1055" y="160"    sprite="cast_Pie"      scroll="0.9" />
+   <girlfriend />
+   <dad />
+   <boyfriend />
+</stage>

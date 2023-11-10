@@ -1,0 +1,7 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.75" name="stage" folder="stages/judgement farm/">
+	<sprite name="bambersansbg" x="0" y="0" sprite="Hall" scroll="0.9" />
+	<girlfriend />
+	<dad />
+	<boyfriend />
+</stage>
