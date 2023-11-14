@@ -1,8 +1,0 @@
-<!DOCTYPE codename-engine-character>
-<character x="0" icon="Bamber-Sans-Old" camx="-70" y="0" isGF="false" camy="40" isPlayer="false" sprite="Bamber-Sans-Old">
-	<anim x="0" loop="false" y="0" fps="24" anim="bambi idle" name="idle"/>
-	<anim x="148" loop="false" y="-25" fps="24" anim="bambi left" name="singLEFT"/>
-	<anim x="6" loop="false" y="-87" fps="24" anim="bambi down" name="singDOWN"/>
-	<anim x="52" loop="false" y="71" fps="24" anim="bambi up" name="singUP"/>
-	<anim x="-23" loop="false" y="-20" fps="24" anim="bambi right" name="singRIGHT"/>
-</character>

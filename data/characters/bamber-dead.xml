@@ -1,0 +1,6 @@
+<!DOCTYPE codename-engine-character>
+<character x="0" icon="Bamber" camx="-40" y="0" isGF="false" camy="-110" isPlayer="false" gameOverChar="bamber-dead" sprite="bamber dead">
+	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Bamber FirstDeath" name="firstDeath"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Bamber DeathLoop" name="deathLoop"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Bamber DeathConfirm" name="deathConfirm"/>
+</character>

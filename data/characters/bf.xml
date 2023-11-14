@@ -1,15 +1,15 @@
 <!DOCTYPE codename-engine-character>
-<character x="0" icon="bf" camx="-50" y="0" isGF="false" camy="30" flipX="true" isPlayer="true" sprite="bf">
-	<anim x="0" loop="false" y="0" fps="24" anim="Idle" name="idle"/>
-	<anim x="57" loop="false" y="111" fps="24" anim="Beatbox_Up" name="beatboxUP"/>
-	<anim x="-52" loop="false" y="39" fps="24" anim="Sing_Down" name="singDOWN"/>
-	<anim x="5" loop="false" y="44" fps="24" anim="Miss_Down" name="singDOWNmiss"/>
-	<anim x="-43" loop="false" y="109" fps="24" anim="Miss_Right" name="singRIGHTmiss"/>
-	<anim x="-38" loop="false" y="41" fps="24" anim="Miss_Left" name="singLEFTmiss"/>
-	<anim x="-108" loop="false" y="-4" fps="24" anim="Sing_Left" name="singLEFT"/>
-	<anim x="-68" loop="false" y="60" fps="24" anim="Sing_Up" name="singUP"/>
-	<anim x="-54" loop="false" y="40" fps="24" anim="Beatbox_Left" name="beatboxLEFT"/>
-	<anim x="-91" loop="false" y="68" fps="24" anim="Sing_Right" name="singRIGHT"/>
-	<anim x="18" loop="false" y="181" fps="24" anim="Miss_Up" name="singUPmiss"/>
-	<anim x="-116" loop="false" y="26" fps="24" anim="Beatbox_Right" name="beatboxRIGHT"/>
+<character x="0" icon="bf" camx="0" y="0" isGF="false" camy="-110" flipX="true" isPlayer="true" sprite="bf" color="#00CCFF" gameOverChar="bf-dead">
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Beatbox_Up" name="beatboxUP"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Sing_Down" name="singDOWN"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Miss_Down" name="singDOWNmiss"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Miss_Right" name="singRIGHTmiss"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Miss_Left" name="singLEFTmiss"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Sing_Left" name="singLEFT"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Sing_Up" name="singUP"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Beatbox_Left" name="beatboxLEFT"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Sing_Right" name="singRIGHT"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Miss_Up" name="singUPmiss"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Beatbox_Right" name="beatboxRIGHT"/>
 </character>
