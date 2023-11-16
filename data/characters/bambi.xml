@@ -1,17 +1,18 @@
 <!DOCTYPE codename-engine-character>
-<character x="0" icon="Bambi" camx="-70" y="0" isGF="false" camy="40" isPlayer="false" sprite="Bambi">
-	<anim x="0" loop="false" y="0" fps="24" anim="bambi idle" name="idle"/>
-	<anim x="53" loop="false" y="38" fps="24" anim="bambi up" name="singUP"/>
-	<anim x="75" loop="false" y="3" fps="24" anim="bambi left" name="singLEFT"/>
-	<anim x="40" loop="false" y="24" fps="24" anim="bambi throw" name="singUP-ALT"/>
-	<anim x="65" loop="false" y="40" fps="24" anim="miss up" name="singUPmiss"/>
-	<anim x="106" loop="false" y="85" fps="24" anim="bambi phone" name="singDOWN-ALT"/>
-	<anim x="-9" loop="false" y="8" fps="24" anim="bambi right" name="singRIGHT"/>
-	<anim x="40" loop="false" y="2" fps="24" anim="miss dow" name="singDOWNmiss"/>
-	<anim x="2" loop="false" y="9" fps="24" anim="bambi look" name="ALT"/>
-	<anim x="26" loop="false" y="3" fps="24" anim="bambi alt left" name="singLEFT-ALT"/>
-	<anim x="79" loop="false" y="14" fps="24" anim="miss left" name="singLEFTmiss"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="bambi alt right" name="singRIGHT-ALT"/>
-	<anim x="24" loop="false" y="-34" fps="24" anim="bambi down" name="singDOWN"/>
-	<anim x="14" loop="false" y="17" fps="24" anim="miss right" name="singRIGHTmiss"/>
+<character x="0" icon="Bambi" camx="-70" y="0" isGF="false" camy="40" isPlayer="false" sprite="Bambi" color="#25bf37" gameOverChar="bambi-dead">
+	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi up" name="singUP"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi left" name="singLEFT"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi throw" name="fuckYou"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/miss up" name="singUPmiss"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi phone" name="ziiuvanPaun?"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi right" name="singRIGHT"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/miss dow" name="singDOWNmiss"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi alt left" name="singLEFT-ALT"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/miss left" name="singLEFTmiss"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi alt right" name="singRIGHT-ALT"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi alt up" name="singUP-ALT"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi alt down" name="singDOWN-ALT"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi down" name="singDOWN"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/miss right" name="singRIGHTmiss"/>
 </character>
