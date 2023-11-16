@@ -1,6 +1,7 @@
 <!DOCTYPE codename-engine-character>
 <character x="0" icon="bf" camx="0" y="0" isGF="false" camy="-110" flipX="true" isPlayer="true" sprite="bf" color="#00CCFF" gameOverChar="bf-dead">
 	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Beatbox_Down" name="beatboxDOWN"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Beatbox_Up" name="beatboxUP"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Sing_Down" name="singDOWN"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Miss_Down" name="singDOWNmiss"/>
