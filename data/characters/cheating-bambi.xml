@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="0" icon="cheating-bambi" camx="320" y="0" isGF="false" scale="13" camy="170" color="#0E9817" isPlayer="false" antialiasing="false" gameOverChar="cheating-bambi" sprite="cheating-bambi">
+	<anim x="0" loop="false" y="0" fps="24" anim="Idle" name="idle"/>
+	<anim x="-10" loop="false" y="-60" fps="24" anim="Down" name="singDOWN"/>
+	<anim x="96" loop="false" y="-38" fps="24" anim="Left" name="singLEFT"/>
+	<anim x="-4" loop="false" y="10" fps="24" anim="Up" name="singUP"/>
+	<anim x="-63" loop="false" y="-24" fps="24" anim="Right" name="singRIGHT"/>
+</character>

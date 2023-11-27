@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="-270" icon="gen-joker" camx="320" y="140" isGF="false" camy="170" color="#0CB500" isPlayer="false" gameOverChar="gen-joker-dead" sprite="joker">
+	<anim x="0" loop="false" y="0" fps="30" anim="Idle" name="idle"/>
+	<anim x="-28" loop="false" y="-26" fps="30" anim="Down" name="singDOWN"/>
+	<anim x="188" loop="false" y="9" fps="30" anim="Left" name="singLEFT"/>
+	<anim x="47" loop="false" y="145" fps="30" anim="Up" name="singUP"/>
+	<anim x="-98" loop="false" y="-22" fps="30" anim="Right" name="singRIGHT"/>
+</character>

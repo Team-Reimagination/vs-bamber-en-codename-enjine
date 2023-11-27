@@ -1,0 +1,4 @@
+<!DOCTYPE codename-engine-character>
+<character x="0" camx="320" y="0" isGF="false" camy="170" color="#000000" isPlayer="false" gameOverChar="gen-joker-dead" sprite="daunting">
+	<anim x="0" loop="false" y="0" fps="30" anim="Joker/Phase 2/Anims/Why...? What cult is this...?" name="idle"/>
+</character>

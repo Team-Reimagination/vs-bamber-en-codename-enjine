@@ -1,0 +1,9 @@
+<!DOCTYPE codename-engine-character>
+<character x="-270" icon="gen-bamber" camx="320" y="140" isGF="false" camy="170" color="#0CB500" isPlayer="false" gameOverChar="gen-bamber-dead" sprite="gen-bamber">
+	<anim x="-37" loop="false" y="-32" fps="30" anim="genbamberoneIdleDance" name="idle"/>
+	<anim x="-80" loop="false" y="-105" fps="30" anim="genbamberoneDownSing" name="singDOWN"/>
+	<anim x="80" loop="false" y="-18" fps="30" anim="genbamberoneLeftSing" name="singLEFT"/>
+	<anim x="-64" loop="false" y="0" fps="30" anim="genbamberoneUpSing" name="singUP"/>
+	<anim x="-73" loop="false" y="-14" fps="30" anim="genbamberoneRightSing" name="singRIGHT"/>
+	<anim x="48" loop="false" y="31" fps="30" anim="genbamberTalk" name="talk"/>
+</character>

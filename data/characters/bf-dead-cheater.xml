@@ -1,0 +1,6 @@
+<!DOCTYPE codename-engine-character>
+<character x="0" icon="bf" y="0" isGF="false" camy="-110" color="#00CCFF" isPlayer="true" sprite="bf-dead-cheater">
+	<anim x="0" loop="false" y="0" fps="24" anim="Memeing_Start" name="firstDeath"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Memeing_Loop" name="deathLoop"/>
+	<anim x="2243" loop="false" y="-37" fps="24" anim="Memeing_End" name="deathConfirm"/>
+</character>
