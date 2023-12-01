@@ -1,9 +1,13 @@
 <!DOCTYPE codename-engine-character>
-<character x="0" icon="Bamber" camx="-70" y="0" isGF="false" camy="40" isPlayer="false" sprite="Bamber">
-	<anim x="0" loop="false" y="0" fps="24" anim="Bamber Idle" name="idle"/>
-	<anim x="135" loop="false" y="-14" fps="24" anim="Bamber Sing Left" name="singLEFT"/>
-	<anim x="-25" loop="false" y="-57" fps="24" anim="Bamber Sing Down" name="singDOWN"/>
-	<anim x="81" loop="false" y="73" fps="24" anim="Bamber Sing Up" name="singUP"/>
-	<anim x="16" loop="false" y="9" fps="24" anim="Bamber Sing Right" name="singRIGHT"/>
-	<anim x="96" loop="false" y="42" fps="24" anim="Bamber Phone Break" name="ALT"/>
+<character x="0" icon="Bamber" camx="-40" y="0" isGF="false" camy="-110" isPlayer="false" gameOverChar="bamber-dead" sprite="Bamber" color="#71C419">
+	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Bamber Idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Bamber Sing Left" name="singLEFT"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Bamber Sing Down" name="singDOWN"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Bamber Sing Up" name="singUP"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Bamber Sing Right" name="singRIGHT"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Bamber Miss Left" name="singLEFTmiss"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Bamber Miss Down" name="singDOWNmiss"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Bamber Miss Up" name="singUPmiss"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Bamber Miss Right" name="singRIGHTmiss"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Bamber Phone Break" name="ziiuvanPaun?"/>
 </character>

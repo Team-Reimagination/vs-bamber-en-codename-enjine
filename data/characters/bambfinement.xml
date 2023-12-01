@@ -1,0 +1,14 @@
+<!DOCTYPE codename-engine-character>
+<character x="0" icon="Bambi" camx="-70" y="0" isGF="false" camy="40" isPlayer="false" sprite="bambfinement" color="#25bf37" gameOverChar="bambfinement-dead">
+	<anim x="0" loop="false" y="0" fps="24" anim="(VERWEX) BAMBERED BAMBI/Anims/bambi idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(VERWEX) BAMBERED BAMBI/Anims/bambi up" name="singUP"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(VERWEX) BAMBERED BAMBI/Anims/bambi left" name="singLEFT"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(VERWEX) BAMBERED BAMBI/Anims/bambi throw" name="fuckYou"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(VERWEX) BAMBERED BAMBI/Anims/bambi phone" name="ziiuvanPaun?"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(VERWEX) BAMBERED BAMBI/Anims/bambi right" name="singRIGHT"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(VERWEX) BAMBERED BAMBI/Anims/bambi alt left" name="singLEFT-ALT"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(VERWEX) BAMBERED BAMBI/Anims/bambi alt right" name="singRIGHT-ALT"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(VERWEX) BAMBERED BAMBI/Anims/bambi alt up" name="singUP-ALT"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(VERWEX) BAMBERED BAMBI/Anims/bambi alt down" name="singDOWN-ALT"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(VERWEX) BAMBERED BAMBI/Anims/bambi down" name="singDOWN"/>
+</character>
