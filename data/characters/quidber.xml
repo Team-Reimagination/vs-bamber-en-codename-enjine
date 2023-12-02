@@ -1,0 +1,15 @@
+<!DOCTYPE codename-engine-character>
+<character x="0" icon="quidber" camx="-40" y="0" isGF="false" camy="-110" isPlayer="true" gameOverChar="quidber" sprite="quidber" color="#71C419" flipX="true">
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Left" name="singLEFT"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Down" name="singDOWN"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Up" name="singUP"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Right" name="singRIGHT"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/MLeft" name="singLEFTmiss"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/MDown" name="singDOWNmiss"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/MUp" name="singUPmiss"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/MRight" name="singRIGHTmiss"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Bamber Death Start" name="firstDeath"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Bamber Death Loop" name="deathLoop"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Bamber Death End" name="deathConfirm"/>
+</character>

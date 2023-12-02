@@ -1,0 +1,12 @@
+<!DOCTYPE codename-engine-character>
+<character x="0" icon="yr" camx="320" y="0" isGF="false" camy="170" color="#1EEBCA" isPlayer="false" gameOverChar="yr-bamber" sprite="yr-bamber">
+	<anim x="0" loop="false" y="0" fps="24" anim="BIdle" name="idle"/>
+	<anim x="-193" loop="false" y="-94" fps="24" anim="BDown" name="singDOWN"/>
+	<anim x="107" loop="false" y="-61" fps="24" anim="BLeft" name="singLEFT"/>
+	<anim x="-207" loop="false" y="114" fps="24" anim="BUp" name="singUP"/>
+	<anim x="-253" loop="false" y="-8" fps="24" anim="BRight" name="singRIGHT"/>
+	<anim x="94" loop="false" y="-97" fps="24" anim="BMDown" name="singDOWNmiss"/>
+	<anim x="107" loop="false" y="-65" fps="24" anim="BMLeft" name="singLEFTmiss"/>
+	<anim x="-221" loop="false" y="114" fps="24" anim="BMUp" name="singUPmiss"/>
+	<anim x="-210" loop="false" y="33" fps="24" anim="BMRight" name="singRIGHTmiss"/>
+</character>

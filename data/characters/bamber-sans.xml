@@ -1,0 +1,9 @@
+<!DOCTYPE codename-engine-character>
+<character x="0" icon="bamber-sans" camx="-40" y="0" isGF="false" camy="-110" isPlayer="false" gameOverChar="bamber-sans-dead" sprite="bamber sans" color="#00A1FF">
+	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Idle" name="danceLeft"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Idle Shine" name="danceRight"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Left" name="singLEFT"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Down" name="singDOWN"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Up" name="singUP"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Right" name="singRIGHT"/>
+</character>

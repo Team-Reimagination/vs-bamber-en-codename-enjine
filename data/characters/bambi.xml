@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character x="0" icon="Bambi" camx="-70" y="0" isGF="false" camy="40" isPlayer="false" sprite="Bambi" color="#25bf37" gameOverChar="bambi-dead">
+<character x="0" icon="bambi" camx="-70" y="0" isGF="false" camy="40" isPlayer="false" sprite="Bambi" color="#25bf37" gameOverChar="bambi-dead">
 	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi idle" name="idle"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi up" name="singUP"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi left" name="singLEFT"/>
