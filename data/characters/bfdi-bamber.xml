@@ -1,0 +1,13 @@
+<!DOCTYPE codename-engine-character>
+<character x="0" icon="cnr-dad" camx="40" y="0" isGF="false" color="#24A26A" isPlayer="false" sprite="bfdi bamber" gameOverChar="bfdi-bamber" >
+	<anim x="0" loop="false" y="0" fps="24" anim="Characters/Bamber/Corny-Idle" name="idle"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Characters/Bamber/Corny-Left" name="singLEFT" indices="0,1,2"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Characters/Bamber/Corny-Up" name="singUP" indices="0,1,2"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Characters/Bamber/Corny-Down" name="singDOWN" indices="0,1,2"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Characters/Bamber/Corny-Right" name="singRIGHT" indices="0,1,2"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Characters/Bamber/Corny-Left" name="singLEFT-end" indices="3,4,5,6,7,8"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Characters/Bamber/Corny-Up" name="singUP-end" indices="3,4,5,6,7,8"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Characters/Bamber/Corny-Down" name="singDOWN-end" indices="3,4,5,6,7,8"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Characters/Bamber/Corny-Right" name="singRIGHT-end" indices="3,4,5,6,7,8"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Characters/Bamber/Corny-Gasp" name="gasp"/>
+</character>
