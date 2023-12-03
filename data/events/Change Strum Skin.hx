@@ -11,7 +11,7 @@ function create()
 var strumAnimPrefix = ["left", "down", "up", "right"];
 function onEvent(eventEvent)
     if (eventEvent.event.name == "Change Strum Skin") {
-        var skin:String = eventEvent.event.params[0] == "gorefield" ? "default" : eventEvent.event.params[0];
+        var skin:String = eventEvent.event.params[0];
         for (strumLine in strumLines)
             for (i => strum in strumLine.members) {
                 var oldAnimName:String = strum.animation.name;
