@@ -1,0 +1,25 @@
+import funkin.game.cutscenes.VideoCutscene;
+import funkin.backend.system.framerate.Framerate;
+import funkin.backend.utils.WindowUtils;
+
+WindowUtils.set_prefix('Bamber & Davey Vol. 2.5 | ');
+FlxG.save.bind('Bamber & Davey', 'Team Reimagination');
+
+function create() {
+    Framerate.offset.y = -999; //we do not need to see fps for this state
+
+    if (FlxG.save.data.musicVolume == null) { //some save shenanigans
+        FlxG.save.data.musicVolume = 1;
+        FlxG.save.data.sfxVolume = 1;
+        FlxG.save.data.voiceVolume = 1;
+
+        FlxG.save.flush();
+    }
+
+    persistentDraw = false;
+    openSubState(new VideoCutscene(Paths.file('videos/TR_SplashScreen.mp4'), function() { //First Time Setup Function
+        skipTransIn = skipTransOut = true;
+
+        FlxG.switchState(FlxG.save.data.notFirstLaunch != true ? new ModState("FirstTimeState") : new ModState('BNDMenu'));
+    }));
+}

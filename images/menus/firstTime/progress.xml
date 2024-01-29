@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="progress.png" width="157" height="154">
+	<SubTexture name="Circle_Empty" x="131" y="33" width="20" height="20" frameX="-11" frameY="-10" frameWidth="45" frameHeight="45"/>
+	<SubTexture name="Circle_Full0001" x="101" y="33" width="28" height="29" frameX="-6" frameY="-6" frameWidth="45" frameHeight="45"/>
+	<SubTexture name="Circle_Full0002" x="98" y="68" width="29" height="29" frameX="-6" frameY="-6" frameWidth="45" frameHeight="45"/>
+	<SubTexture name="Circle_Full0003" x="67" y="68" width="29" height="30" frameX="-6" frameY="-5" frameWidth="45" frameHeight="45"/>
+	<SubTexture name="Circle_Full0004" x="35" y="68" width="30" height="31" frameX="-5" frameY="-5" frameWidth="45" frameHeight="45"/>
+	<SubTexture name="Circle_Full0005" x="2" y="2" width="31" height="32" frameX="-5" frameY="-4" frameWidth="45" frameHeight="45"/>
+	<SubTexture name="Circle_Full0006" x="35" y="2" width="31" height="31" frameX="-5" frameY="-5" frameWidth="45" frameHeight="45"/>
+	<SubTexture name="Circle_Full0007" x="35" y="35" width="31" height="31" frameX="-5" frameY="-5" frameWidth="45" frameHeight="45"/>
+	<SubTexture name="Circle_Full0008" x="2" y="36" width="31" height="31" frameX="-5" frameY="-5" frameWidth="45" frameHeight="45"/>
+	<SubTexture name="Circle_Full0009" x="68" y="2" width="31" height="31" frameX="-5" frameY="-5" frameWidth="45" frameHeight="45"/>
+	<SubTexture name="Circle_Full0010" x="68" y="35" width="31" height="31" frameX="-5" frameY="-5" frameWidth="45" frameHeight="45"/>
+	<SubTexture name="Circle_Full0011" x="2" y="69" width="31" height="30" rotated="true" frameX="-5" frameY="-5" frameWidth="45" frameHeight="45"/>
+	<SubTexture name="Circle_Full0012" x="101" y="2" width="29" height="29" frameX="-6" frameY="-6" frameWidth="45" frameHeight="45"/>
+	<SubTexture name="Circle_Full0013" x="98" y="99" width="28" height="28" frameX="-6" frameY="-6" frameWidth="45" frameHeight="45"/>
+	<SubTexture name="Circle_Full0014" x="128" y="99" width="26" height="26" frameX="-7" frameY="-7" frameWidth="45" frameHeight="45"/>
+	<SubTexture name="Circle_Full0015" x="131" y="127" width="24" height="24" frameX="-8" frameY="-8" frameWidth="45" frameHeight="45"/>
+	<SubTexture name="Circle_Full0016" x="132" y="2" width="20" height="20" frameX="-10" frameY="-10" frameWidth="45" frameHeight="45"/>
+	<SubTexture name="Circle_Full0017" x="32" y="130" width="20" height="19" frameX="-10" frameY="-11" frameWidth="45" frameHeight="45"/>
+	<SubTexture name="Circle_Full0018" x="2" y="131" width="20" height="19" frameX="-10" frameY="-11" frameWidth="45" frameHeight="45"/>
+	<SubTexture name="Circle_Full0019" x="54" y="130" width="20" height="19" frameX="-10" frameY="-11" frameWidth="45" frameHeight="45"/>
+	<SubTexture name="Circle_Full0020" x="76" y="130" width="19" height="20" rotated="true" frameX="-10" frameY="-11" frameWidth="45" frameHeight="45"/>
+	<SubTexture name="Circle_Full0021" x="76" y="130" width="19" height="20" rotated="true" frameX="-10" frameY="-11" frameWidth="45" frameHeight="45"/>
+	<SubTexture name="Circle_Full0022" x="76" y="130" width="19" height="20" rotated="true" frameX="-10" frameY="-11" frameWidth="45" frameHeight="45"/>
+	<SubTexture name="Circle_Full0023" x="76" y="130" width="19" height="20" rotated="true" frameX="-10" frameY="-11" frameWidth="45" frameHeight="45"/>
+	<SubTexture name="Circle_Full0024" x="76" y="130" width="19" height="20" rotated="true" frameX="-10" frameY="-11" frameWidth="45" frameHeight="45"/>
+	<SubTexture name="Dot" x="132" y="24" width="7" height="7" frameX="-0" frameY="-0" frameWidth="7" frameHeight="7"/>
+	<SubTexture name="Progress_Walk0001" x="67" y="100" width="28" height="28" frameX="-0" frameY="-0" frameWidth="28" frameHeight="33"/>
+	<SubTexture name="Progress_Walk0002" x="67" y="100" width="28" height="28" frameX="-0" frameY="-0" frameWidth="28" frameHeight="33"/>
+	<SubTexture name="Progress_Walk0003" x="67" y="100" width="28" height="28" frameX="-0" frameY="-0" frameWidth="28" frameHeight="33"/>
+	<SubTexture name="Progress_Walk0004" x="97" y="129" width="32" height="23" rotated="true" frameX="-1" frameY="-1" frameWidth="28" frameHeight="33"/>
+	<SubTexture name="Progress_Walk0005" x="97" y="129" width="32" height="23" rotated="true" frameX="-1" frameY="-1" frameWidth="28" frameHeight="33"/>
+	<SubTexture name="Progress_Walk0006" x="129" y="64" width="23" height="28" frameX="-2" frameY="-4" frameWidth="28" frameHeight="33"/>
+	<SubTexture name="Progress_Walk0007" x="129" y="64" width="23" height="28" frameX="-2" frameY="-4" frameWidth="28" frameHeight="33"/>
+	<SubTexture name="Progress_Walk0008" x="2" y="101" width="28" height="28" frameX="-0" frameY="-1" frameWidth="28" frameHeight="33"/>
+	<SubTexture name="Progress_Walk0009" x="2" y="101" width="28" height="28" frameX="-0" frameY="-1" frameWidth="28" frameHeight="33"/>
+	<SubTexture name="Progress_Walk0010" x="2" y="101" width="28" height="28" frameX="-0" frameY="-1" frameWidth="28" frameHeight="33"/>
+	<SubTexture name="Progress_Walk0011" x="32" y="101" width="28" height="27" frameX="-0" frameY="-0" frameWidth="28" frameHeight="33"/>
+	<SubTexture name="Progress_Walk0012" x="32" y="101" width="28" height="27" frameX="-0" frameY="-0" frameWidth="28" frameHeight="33"/>
+	<SubTexture name="Progress_Walk0013" x="32" y="101" width="28" height="27" frameX="-0" frameY="-0" frameWidth="28" frameHeight="33"/>
+</TextureAtlas>
