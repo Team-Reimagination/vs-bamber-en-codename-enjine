@@ -1,16 +1,16 @@
 <!DOCTYPE codename-engine-stage>
 <stage zoom="0.6" name="stage" folder="stages/yard/">
-	<sprite name="sky" x="-600" y="-250" sprite="Sky" scroll="0" scale="1.5" />
-	<sprite name="ballon" x="-600" y="-250" sprite="ScrollingBG" scroll="0.2" />
-	<sprite name="hill" x="-690" y="-50" sprite="Hills" scroll="0.55" />
-	<sprite name="leaves" x="-975" y="-500" sprite="Spruce" scroll="0.91" />
-	<sprite name="grass" x="-1048" y="255" sprite="Grass_WithoutBamber" />
-	<sprite name="foreground" x="-1280" y="-630" sprite="Foreground" />
-	<sprite name="bopper" x="1703" y="268" sprite="Boppers"> 
+	<sprite name="sky" x="-600" y="-50" sprite="Sky" scroll="0" scale="1.5" />
+	<sprite name="ballon" x="-600" y="-50" sprite="ScrollingBG" scroll="0.2" />
+	<sprite name="hill" x="-690" y="350" sprite="Hills" scroll="0.55" />
+	<sprite name="leaves" x="-975" y="-100" sprite="Spruce" scroll="0.91" />
+	<sprite name="grass" x="-1048" y="525" sprite="Grass_WithoutBamber" />
+	<sprite name="foreground" x="-1280" y="-330" sprite="Foreground" />
+	<sprite name="bopper" x="1703" y="568" sprite="Boppers"> 
 		<anim name="danceLeft" anim="Boppers" indices="0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13"/>
 		<anim name="danceRight" anim="Boppers" indices="14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27"/>
 	</sprite>
 	<girlfriend />
 	<dad />
-	<boyfriend />
+	<boyfriend x="850" y="100"/>
 </stage>

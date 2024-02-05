@@ -7,8 +7,13 @@
         },
         {
             "name": "New Size (0 for not visible, 1 for fully take up screen)",
-            "type": "Float(0, 1, 0.01, 2)",
+            "type": "Float(-1, 1, 0.01, 2)",
             "defaultValue": "0.2"
+        },
+        {
+            "name": "New Angle (0 to 360)",
+            "type": "Float(-999999, 999999, 0.01, 2)",
+            "defaultValue": "0"
         },
         {
             "name": "Tween Time (Steps)",
