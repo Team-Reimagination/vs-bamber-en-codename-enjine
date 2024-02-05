@@ -19,7 +19,7 @@ public static var preIntro = true;
 
 var skippableTweens = [];
 
-var earth, cloudEmitter, windEmitter, fallingBF, fallingGF, birdFlock, constellation, constellationSound, textBox, preTitleTextGroup; //they all don't get assigned anything if the state was initialized beforehand
+var earth, cloudEmitter, windEmitter, fallingBF, fallingGF, birdFlock, constellation, constellationSound, preTitleTextGroup, parachute, windAmbience; //they all don't get assigned anything if the state was initialized beforehand
 
 var skybox = new FlxGradient().createGradientFlxSprite(FlxG.width, FlxG.height, [0xFF272BC2, 0xFF007DE7, 0xFF74E9FF, 0xFFDBF9FF]);
 var curWacky = [];
@@ -73,14 +73,6 @@ function setupPreTitleStuff() {
     windEmitter.makeParticles(2, 230, 0xFFFFFFFF, 100);
     add(windEmitter);
 
-    textBox = new UISliceSprite(0, 0, 70, 70, 'menus/titleScreen/textBox');
-    textBox.incorporeal = true; centerBackground(); add(textBox); textBox.antialiasing = Options.antialiasing;
-    textBox.bWidth = 700;
-    textBox.bHeight = 300;
-    textBox.alpha = 0.6;
-    textBox.blend = 9; //multiply
-    centerBackground();
-
     constellation = new FunkinSprite();
     constellation.loadSprite(Paths.image('menus/titleScreen/constellation'));
 
@@ -93,11 +85,9 @@ function setupPreTitleStuff() {
 
     constellationSound = new FlxSound(); constellationSound = FlxG.sound.play(Paths.sound('titleScreen/MonolithTeaser'), getVolume(1, 'sfx'));
 
-    preTitleTextGroup = new FlxTypedSpriteGroup(240); add(preTitleTextGroup);
-}
+    parachute = new FlxSprite(); parachute.antialiasing = Options.antialiasing; add(parachute); parachute.alpha = 0;
 
-function centerBackground() {
-    textBox.screenCenter(); textBox.x = 900 - Math.round(textBox.bWidth/2) - 16; textBox.y -= Math.round(textBox.bHeight/2) - 16;
+    preTitleTextGroup = new FlxTypedSpriteGroup(240); add(preTitleTextGroup);
 }
 
 function getIntroTextShit() {
@@ -116,39 +106,60 @@ function getIntroTextShit() {
 
 var allTexts = getIntroTextShit();
 
-function addMoreText(text:String, startNew = false){
-	var coolText:Alphabet = new Alphabet(0, (preTitleTextGroup.length * 60), text, true, false);
-    coolText.scale.set(0.6, 0.6);
+function addMoreText(text:String, offset = 0, offLoad = 0){
+	var coolText:Alphabet = new Alphabet(0, ((preTitleTextGroup.length - offLoad) * 60), text, true, false);
+    coolText.scale.set(0.65, 0.65);
+
+    coolText.y = -300 + (preTitleTextGroup.length * 60);
+    skippableTweens.push(FlxTween.tween(coolText, {y: FlxG.height/3 + ((preTitleTextGroup.length - offLoad) * 60) + offset}, 0.4, {ease: FlxEase.quartOut}));
 
     for (i in 0...coolText.members.length) {
-        coolText.members[i].x -= 18 * i;
+        coolText.members[i].x -= 15 * i;
     }
 
-    if (coolText.width >= 650) {
+    if (coolText.width >= 680) {
         var textWidth = coolText.width;
-        trace(650 / textWidth);
         for (i in 0...coolText.members.length) {
-            coolText.members[i].scale.x *= 650 / textWidth;
-            coolText.members[i].x += -coolText.members[i].x + 650 / coolText.members.length * i;
+            coolText.members[i].scale.x *= 680 / textWidth;
+            coolText.members[i].x += -coolText.members[i].x + 680 / coolText.members.length * i;
         }
     }
 
 	coolText.screenCenter(FlxAxes.X);
 
-    coolText.alpha = 0; skippableTweens.push(FlxTween.tween(coolText, {alpha: 1}, 0.3, {ease: FlxEase.quartOut}));
-
 	preTitleTextGroup.add(coolText);
-    (!startNew ? skippableTweens.push(FlxTween.tween(preTitleTextGroup, {y: FlxG.height / 2 - preTitleTextGroup.height / 2}, 0.3, {ease: FlxEase.quartInOut})) : preTitleTextGroup.y = FlxG.height / 2 - preTitleTextGroup.height / 2);
 }
 
 function removeText() {
     for (i in preTitleTextGroup.members) {
         if (i != null) {
             for (letter in i.members) {
-                skippableTweens.push(FlxTween.tween(letter, {alpha: 0}, 0.3, {ease: FlxEase.quartIn, onComplete: function (tween) {letter.destroy();}}));
+                skippableTweens.push(FlxTween.tween(letter, {y: letter.y - 1200}, 1, {ease: FlxEase.quartIn, onComplete: function (tween) {letter.destroy();}}));
+                skippableTweens.push(FlxTween.tween(letter, {x: letter.x + 500}, 0.8, {ease: FlxEase.sineIn, onComplete: function (tween) {letter.destroy();}}));
             }
         }
     }
+
+    skippableTweens.push(FlxTween.tween(parachute, {y: parachute.y - 1200}, 1, {ease: FlxEase.quartIn}));
+    skippableTweens.push(FlxTween.tween(parachute, {x: parachute.x + 500}, 0.8, {ease: FlxEase.sineIn}));
+}
+
+function spawnParachute(whichLine) {
+    parachute.loadGraphic(Paths.image('menus/titleScreen/Parachute'+FlxG.random.int(1,13))); parachute.alpha = 1;
+
+    FlxG.sound.play(Paths.sound('titleScreen/ParachuteOpen'), getVolume(0.5, 'sfx'));
+
+    parachute.x = preTitleTextGroup.members[whichLine].x;
+    parachute.y = preTitleTextGroup.members[whichLine].y - parachute.height/2 + 30;
+
+    parachute.setGraphicSize(preTitleTextGroup.members[whichLine].width, parachute.height);
+    parachute.updateHitbox();
+
+    var pHeight = parachute.height;
+
+    parachute.scale.y = 0;
+    skippableTweens.push(FlxTween.tween(parachute.scale, {y: 1}, 0.3, {ease: FlxEase.backOut}));
+    skippableTweens.push(FlxTween.tween(parachute, {y: parachute.y - pHeight/2}, 0.3, {ease: FlxEase.backOut}));
 }
 
 var initYMatrixes = [];
@@ -245,6 +256,8 @@ function skipTeaser() {
             birdElements = keyframe.getList();
         }
 
+        windAmbience = FlxG.sound.play(Paths.sound('titleScreen/WindAmbience'), getVolume(0.5, 'sfx'));
+
         beatHit(0);
     }
 }
@@ -253,7 +266,7 @@ function beatHit(curBeat) {
     if (!initialized) {
         switch curBeat {
             case 0:
-                addMoreText("Team Reimagination", true);
+                addMoreText("Team Reimagination");
             case 2:
                 addMoreText("and the rest of");
             case 3:
@@ -261,21 +274,24 @@ function beatHit(curBeat) {
             case 4:
                 addMoreText("present");
 
+            case 6:
+                spawnParachute(0);
             case 7:
                 removeText();
 
             case 8:
-                preTitleTextGroup.clear();
-                addMoreText("An interpretation", true);
+                addMoreText("An interpretation", 30, 4);
             case 10:
-                addMoreText("of");
+                addMoreText("of", 30, 4);
             case 12:
-                addMoreText("Vs. Dave & Bambi");
+                addMoreText("Vs. Dave & Bambi", 30, 4);
 
+            case 14:
+                spawnParachute(4);
             case 15:
                 removeText();
 
-            case 24:
+            case 28:
                 preTitleTextGroup.destroy();
                 
             case 32:
@@ -287,13 +303,13 @@ function beatHit(curBeat) {
                 var picked = FlxG.random.int(0, allTexts.length-1, usedTexts);
                 usedTexts.push(picked);
                 curWacky = allTexts[picked];
-                preTitleTextGroup.clear();
-                addMoreText(curWacky[0], true);
+                addMoreText(curWacky[0], 60, 7 + (curBeat == 20 ? 2 : 0));
             } else if (curBeat % 4 == 1) {
-                addMoreText(curWacky[1]);
+                addMoreText(curWacky[1], 60, 7 + (curBeat == 21 ? 2 : 0));
+            } else if (curBeat % 4 == 2) {
+                spawnParachute(7 + (curBeat == 22 ? 2 : 0));
             } else if (curBeat % 4 == 3) {
                 removeText();
-                if (curBeat == 23) skippableTweens.push(FlxTween.tween(textBox, {alpha: 0}, 0.5, {ease: FlxEase.quartIn, onComplete: function (tween) {textBox.destroy();}}));
             }
         }
     }
@@ -312,9 +328,9 @@ function skipIntro() {
 
         FlxG.camera.flash();
 
-        windEmitter.destroy(); earth.destroy(); cloudEmitter.destroy(); fallingBF.destroy(); fallingGF.destroy(); birdFlock.destroy(); 
-        if (textBox != null) textBox.destroy();
+        windEmitter.destroy(); earth.destroy(); cloudEmitter.destroy(); fallingBF.destroy(); fallingGF.destroy(); birdFlock.destroy();
         if (preTitleTextGroup != null) preTitleTextGroup.destroy();
+        if (windAmbience != null) windAmbience.stop();
     }
 }
 
