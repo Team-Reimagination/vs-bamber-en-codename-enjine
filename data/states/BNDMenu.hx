@@ -110,7 +110,7 @@ function addMoreText(text:String, offset = 0, offLoad = 0){
 	var coolText:Alphabet = new Alphabet(0, ((preTitleTextGroup.length - offLoad) * 60), text, true, false);
     coolText.scale.set(0.65, 0.65);
 
-    coolText.y = -300 + (preTitleTextGroup.length * 60);
+    coolText.y = -300 + ((preTitleTextGroup.length - offLoad) * 60);
     skippableTweens.push(FlxTween.tween(coolText, {y: FlxG.height/3 + ((preTitleTextGroup.length - offLoad) * 60) + offset}, 0.4, {ease: FlxEase.quartOut}));
 
     for (i in 0...coolText.members.length) {
