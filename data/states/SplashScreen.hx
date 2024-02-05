@@ -18,7 +18,7 @@ function create() {
 
     persistentDraw = false;
     //@Frakits this only plays once,,, I want it to again if you switch mods and then back into this one,,,
-    openSubState(new VideoCutscene(Paths.file('videos/TR_SplashScreen.mp4'), function() { //First Time Setup Function
+    openSubState(new VideoCutscene(Paths.file('videos/TR_SplashScreen.webm'), function() { //First Time Setup Function
         skipTransIn = skipTransOut = true;
 
         FlxG.switchState(FlxG.save.data.notFirstLaunch != true ? new ModState("FirstTimeState") : new ModState('BNDMenu'));
