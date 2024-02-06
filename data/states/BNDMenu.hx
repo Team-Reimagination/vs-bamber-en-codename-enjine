@@ -13,6 +13,9 @@ import flixel.group.FlxGroup;
 import openfl.Assets;
 import flixel.util.FlxAxes;
 import flixel.group.FlxTypedSpriteGroup;
+import flixel.FlxCamera;
+import openfl.filters.BitmapFilter;
+import openfl.filters.BlurFilter;
 
 public static var initialized = false;
 public static var preIntro = true;
@@ -21,14 +24,30 @@ var skippableTweens = [];
 
 var earth, cloudEmitter, windEmitter, fallingBF, fallingGF, birdFlock, constellation, constellationSound, preTitleTextGroup, parachute, windAmbience; //they all don't get assigned anything if the state was initialized beforehand
 
+var circlingClouds; //THESE on the other hand...
+
 var skybox = new FlxGradient().createGradientFlxSprite(FlxG.width, FlxG.height, [0xFF272BC2, 0xFF007DE7, 0xFF74E9FF, 0xFFDBF9FF]);
 var curWacky = [];
 var usedTexts = [];
 
+var blurFilter:BitmapFilter;
+var menuCamera;
+
 function create() {
+    FlxG.cameras.add(menuCamera = new FlxCamera(), false);
+    menuCamera.bgColor = 0;
+
+    if (FlxG.save.data.shaders == 'all') {
+        blurFilter = new BlurFilter(0.0001, 0.0001, 3);
+        if (FlxG.camera._filters == null) FlxG.camera._filters = [];
+        FlxG.camera._filters.push(blurFilter);
+    }
+
     skybox.antialiasing = Options.antialiasing; add(skybox);
 
     if (preIntro) setupPreTitleStuff();
+
+    setupTitleStuff();
 
     if (initialized) skipIntro();
 }
@@ -85,9 +104,17 @@ function setupPreTitleStuff() {
 
     constellationSound = new FlxSound(); constellationSound = FlxG.sound.play(Paths.sound('titleScreen/MonolithTeaser'), getVolume(1, 'sfx'));
 
-    parachute = new FlxSprite(); parachute.antialiasing = Options.antialiasing; add(parachute); parachute.alpha = 0;
+    parachute = new FlxSprite(); parachute.antialiasing = Options.antialiasing; add(parachute); parachute.alpha = 0.001;
 
     preTitleTextGroup = new FlxTypedSpriteGroup(240); add(preTitleTextGroup);
+}
+
+function setupTitleStuff() {
+    circlingClouds = new FunkinSprite(0,-300);
+    circlingClouds.loadSprite(Paths.image('menus/titleScreen/spinningClouds'));
+    circlingClouds.animateAtlas.anim.addBySymbol("Spin", "SpinningClouds", 10, true); circlingClouds.animateAtlas.anim.play("Spin");
+    circlingClouds.antialiasing = Options.antialiasing; add(circlingClouds); circlingClouds.alpha = 0.001;
+    circlingClouds.scale.y = 0.6;
 }
 
 function getIntroTextShit() {
@@ -185,6 +212,8 @@ function update(elapsed) {
         earth.scale.x = earth.scale.y += 0.04 * elapsed;
         birdFlock.scale.x = birdFlock.scale.y += 0.06 * elapsed;
     }
+
+    //
 }
 
 function draw(event) {
@@ -292,6 +321,8 @@ function beatHit(curBeat) {
                 removeText();
 
             case 28:
+                if (FlxG.save.data.shaders == 'all') skippableTweens.push(FlxTween.tween(blurFilter, {blurX: 16, blurY: 16}, 1, {ease: FlxEase.quartInOut}));
+            case 29:
                 preTitleTextGroup.destroy();
                 
             case 32:
@@ -317,8 +348,6 @@ function beatHit(curBeat) {
 
 function skipIntro() {
     if (!initialized) {
-        initialized = true;
-
         FlxG.sound.music.time = 12800;
         Conductor.__updateSongPos(FlxG.elapsed);
 
@@ -328,10 +357,22 @@ function skipIntro() {
 
         FlxG.camera.flash();
 
-        windEmitter.destroy(); earth.destroy(); cloudEmitter.destroy(); fallingBF.destroy(); fallingGF.destroy(); birdFlock.destroy();
+        windEmitter.destroy(); earth.destroy(); cloudEmitter.destroy(); fallingBF.destroy(); fallingGF.destroy(); birdFlock.destroy(); parachute.destroy();
         if (preTitleTextGroup != null) preTitleTextGroup.destroy();
         if (windAmbience != null) windAmbience.stop();
+        if (FlxG.save.data.shaders == 'all') blurFilter.blurX = blurFilter.blurY = 0.0001;
     }
+
+    circlingClouds.alpha = 1;
+    
+    skippableTweens.push(FlxTween.tween(circlingClouds, {y: -530}, 1.5, {ease: FlxEase.quartInOut, startDelay: 1.5}));
+    skippableTweens.push(FlxTween.tween(circlingClouds.scale, {x: 0.8, y: 0.6 * 0.8}, 1.5, {ease: FlxEase.quartInOut, startDelay: 1.5}));
+    
+    if (initialized) {
+        for (tween in skippableTweens) {
+            tween.percent = 1;
+        }
+    } else initialized = true;
 }
 
 function processSelection() {
