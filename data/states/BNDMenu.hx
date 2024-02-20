@@ -1,12 +1,9 @@
 import funkin.backend.FunkinSprite;
-import funkin.options.Options;
 import funkin.backend.system.Conductor;
 import flixel.sound.FlxSound;
 import flixel.util.FlxGradient;
 import flixel.effects.particles.FlxTypedEmitter;
 import flixel.effects.particles.FlxEmitterMode;
-import flixel.util.helpers.FlxBounds;
-import flixel.util.helpers.FlxRangeBounds;
 import flixel.effects.particles.FlxParticle;
 import funkin.editors.ui.UISliceSprite;
 import flixel.group.FlxGroup;
@@ -30,7 +27,7 @@ var logo, foreground, background, clouds; //THESE on the other hand...
 
 public static var logoLerping = [FlxG.width/2, FlxG.height/2, 1];
 
-var skybox = new FlxGradient().createGradientFlxSprite(FlxG.width, FlxG.height, [0xFF272BC2, 0xFF007DE7, 0xFF74E9FF, 0xFFDBF9FF]);
+var skybox = new FlxGradient().createGradientFlxSprite(1, 64, [0xFF272BC2, 0xFF007DE7, 0xFF74E9FF, 0xFFDBF9FF]); skybox.scale.set(FlxG.width,FlxG.height/64); skybox.screenCenter();
 var curWacky = [];
 var usedTexts = [];
 
@@ -47,7 +44,7 @@ function create() {
         FlxG.camera._filters.push(blurFilter);
     }
 
-    skybox.antialiasing = Options.antialiasing; add(skybox);
+    skybox.antialiasing = true; add(skybox);
 
     if (preIntro) setupPreTitleStuff();
 
@@ -59,39 +56,40 @@ function create() {
 function setupPreTitleStuff() {
     skybox.alpha = 0.0001;
 
-    earth = new FlxSprite(0, FlxG.height - 250).loadGraphic(Paths.image('menus/titleScreen/Earth')); earth.antialiasing = Options.antialiasing; add(earth); earth.alpha = 0.0001;
+    earth = new FlxSprite(0, FlxG.height - 250).loadGraphic(Paths.image('menus/titleScreen/Earth')); earth.antialiasing = true; add(earth); earth.alpha = 0.0001;
 
     birdFlock = new FunkinSprite();
     birdFlock.loadSprite(Paths.image('menus/titleScreen/BirdFlock'));
     birdFlock.animateAtlas.anim.addBySymbol("Flock", "BirdFlock", 24, true); birdFlock.animateAtlas.anim.play("Flock");
-    birdFlock.antialiasing = Options.antialiasing;
+    birdFlock.antialiasing = true;
     birdFlock.screenCenter(); birdFlock.y = 800;
     add(birdFlock);
 
     windEmitter = new FlxTypedEmitter(0, FlxG.height + 1000, 30);
     windEmitter.setSize(FlxG.width, 10); 
-    windEmitter.launchAngle = new FlxBounds(-90, -90);
-    windEmitter.speed = new FlxRangeBounds(2500, 4000);
-    windEmitter.lifespan = new FlxBounds(1);
+    windEmitter.launchAngle.set(-90, -90);
+    windEmitter.speed.set(2500, 4000);
+    windEmitter.lifespan.set(1);
 
     cloudEmitter = new FlxTypedEmitter(0, FlxG.height + 1000);
     cloudEmitter.setSize(FlxG.width, 10);
-    cloudEmitter.launchAngle = new FlxBounds(-88, -88);
-    cloudEmitter.speed = new FlxRangeBounds(900, 2500);
-    cloudEmitter.lifespan = new FlxBounds(3);
+    cloudEmitter.launchAngle.set(-88, -88);
+    cloudEmitter.speed.set(900, 2500);
+    cloudEmitter.lifespan.set(3);
     
     for (i in 0 ... 35) {
         var p = new FlxParticle();
-        p.loadGraphic(Paths.image('menus/titleScreen/Cloud'+(FlxG.random.int(1,9))));
+        p.frames = Paths.getSparrowAtlas('menus/titleScreen/clouds');
+        p.animation.addByPrefix('cloud', FlxG.random.int(1,9)+'_Cloud', 0, false); p.animation.play("cloud"); 
         p.scale.x = p.scale.y = FlxG.random.float(0.8, 1.6);
-        p.antialiasing = Options.antialiasing;
+        p.antialiasing = true;
         p.alpha = 0.7;
         cloudEmitter.add(p);
     }
     add(cloudEmitter);
 
-    fallingBF = new FlxSprite(100, 100); fallingBF.frames = Paths.getSparrowAtlas('menus/titleScreen/Falling_BF'); fallingBF.animation.addByPrefix('falling', 'Falling_BF', 24, true); fallingBF.animation.play('falling'); fallingBF.antialiasing = Options.antialiasing; add(fallingBF);
-    fallingGF = new FlxSprite(230, -350); fallingGF.frames = Paths.getSparrowAtlas('menus/titleScreen/Falling_GF'); fallingGF.animation.addByPrefix('falling', 'Falling_GF', 24, true); fallingGF.animation.play('falling'); fallingGF.antialiasing = Options.antialiasing; add(fallingGF);
+    fallingBF = new FlxSprite(100, 100); fallingBF.frames = Paths.getSparrowAtlas('menus/titleScreen/Falling_BF'); fallingBF.animation.addByPrefix('falling', 'Falling_BF', 24, true); fallingBF.animation.play('falling'); fallingBF.antialiasing = true; add(fallingBF);
+    fallingGF = new FlxSprite(230, -350); fallingGF.frames = Paths.getSparrowAtlas('menus/titleScreen/Falling_GF'); fallingGF.animation.addByPrefix('falling', 'Falling_GF', 24, true); fallingGF.animation.play('falling'); fallingGF.antialiasing = true; add(fallingGF);
 
     windEmitter.makeParticles(2, 230, 0xFFFFFFFF, 100);
     add(windEmitter);
@@ -102,26 +100,26 @@ function setupPreTitleStuff() {
     constellation.animateAtlas.anim.addBySymbol("Constellation", "Monolith", 24, false);
     constellation.animateAtlas.anim.play("Constellation");
 
-    constellation.antialiasing = Options.antialiasing;
+    constellation.antialiasing = true;
     constellation.scale.set(0.9, 0.9); constellation.updateHitbox(); constellation.screenCenter();
     add(constellation);
 
     constellationSound = new FlxSound(); constellationSound = FlxG.sound.play(Paths.sound('titleScreen/MonolithTeaser'), getVolume(1, 'sfx'));
 
-    parachute = new FlxSprite(); parachute.antialiasing = Options.antialiasing; add(parachute); parachute.alpha = 0.001;
+    parachute = new FlxSprite(); parachute.antialiasing = true; add(parachute); parachute.alpha = 0.001;
 
     preTitleTextGroup = new FlxTypedSpriteGroup(240); add(preTitleTextGroup);
 }
 
 function setupTitleStuff() {
-    clouds = new FlxSkewedSprite().loadGraphic(Paths.image('menus/TitleScreen/SpinningClouds'));
-    clouds.antialiasing = Options.antialiasing; clouds.screenCenter(); add(clouds);
+    clouds = new FlxSprite().loadGraphic(Paths.image('menus/TitleScreen/SpinningClouds'));
+    clouds.antialiasing = true; clouds.screenCenter(); add(clouds);
     clouds.alpha = 0.001; clouds.scale.x = clouds.scale.y = 3*5.6;
-    clouds.matrixExposed = true;
+    clouds.shader = new CustomShader('smoothRotate');
 
     background = new FlxSprite(0, 0).loadGraphic(Paths.image('menus/titleScreen/Background')); background.screenCenter(); background.y = FlxG.height + 20;
-    background.antialiasing = Options.antialiasing; add(background); background.scale.x = background.scale.y = 1.1;
-    foreground = new FlxSprite(-60, FlxG.height + 80).loadGraphic(Paths.image('menus/titleScreen/Foreground')); foreground.antialiasing = Options.antialiasing; add(foreground); foreground.scale.x = foreground.scale.y = 1.5;
+    background.antialiasing = true; add(background); background.scale.x = background.scale.y = 1.1;
+    foreground = new FlxSprite(-60, FlxG.height + 80).loadGraphic(Paths.image('menus/titleScreen/Foreground')); foreground.antialiasing = true; add(foreground); foreground.scale.x = foreground.scale.y = 1.5;
 
     logo = new FunkinSprite(logoLerping[0],logoLerping[1]);
     logo.loadSprite(Paths.image('menus/titleScreen/logo'));
@@ -129,7 +127,7 @@ function setupTitleStuff() {
     for (i in 0...4) {
         logo.animateAtlas.anim.addBySymbolIndices("Idle"+i, "_PARTS/Scenes/TitleScreen/Logo_Idle", [i], 24, false);
     }
-    logo.antialiasing = Options.antialiasing; logo.cameras = [menuCamera]; add(logo); logo.alpha = 0.0001; logo.scale.x = logo.scale.y = logoLerping[2];
+    logo.antialiasing = true; logo.cameras = [menuCamera]; add(logo); logo.alpha = 0.0001; logo.scale.x = logo.scale.y = logoLerping[2];
 }
 
 function getIntroTextShit() {
@@ -207,6 +205,8 @@ function spawnParachute(whichLine) {
 var initYMatrixes = [];
 var curYMatrixes = [];
 
+var cloudTimer = 0;
+
 function update(elapsed) {
     if (preIntro && constellation.animateAtlas.anim.finished) {
         skipTeaser();
@@ -234,22 +234,10 @@ function update(elapsed) {
         logo.y = CoolUtil.fpsLerp(logo.y, logoLerping[1], 0.1);
         logo.scale.x = logo.scale.y = CoolUtil.fpsLerp(logo.scale.y, logoLerping[2], 0.1);
 
-        clouds.transformMatrix.translate();
-        clouds.transformMatrix.rotate(0.001 * 60 * elapsed);
-        clouds.transformMatrix.translate();
-
-        /*if (cloudBitmap != null) {
-            cloudMatrix.translate(-cloudBitmap.width/2, -cloudBitmap.height/2);
-            cloudMatrix.rotate(0.001);
-            cloudMatrix.translate(cloudBitmap.width/2, cloudBitmap.height/2);
-            clouds.pixels.fillRect(new Rectangle(0,0,clouds.pixels.width,clouds.pixels.height), 0x00000000);
-            clouds.pixels.draw(cloudBitmap, cloudMatrix, null, null, null, Options.antialiasing);
-        }*/
+        cloudTimer += 60 * elapsed;
+        clouds.shader.data.uTime.value = [-cloudTimer / 5000];
     }
 }
-
-//var cloudBitmap;
-//var cloudMatrix = new Matrix();
 
 function draw(event) {
     if (!preIntro && !initialized) {
@@ -264,11 +252,8 @@ function draw(event) {
                 curYMatrixes = initYMatrixes.copy();
             }
 
-            var matIndex = 0;
-
-            for (e in birdElements) {
-                e.matrix.ty = curYMatrixes[matIndex] += -0.12 + -initYMatrixes[matIndex] * 0.22 * FlxG.elapsed; //ty is responsible for where it's placed on the Y axis
-                matIndex++;
+            for (e in 0...birdElements.length) {
+                birdElements[e].matrix.ty = curYMatrixes[e] += (-0.12 + -initYMatrixes[e]) * 0.22 * FlxG.elapsed; //ty is responsible for where it's placed on the Y axis
             }
         }
     }
@@ -313,7 +298,7 @@ function skipTeaser() {
         fallingGF.velocity.y = 27;
 
         birdFlock.moves = true;
-        birdFlock.velocity.set(0, -45);
+        birdFlock.velocity.set(0, -60);
 
         for (layer in birdFlock.animateAtlas.anim.curSymbol.timeline.getList()) {
             var keyframe = layer.get(0);
@@ -360,7 +345,7 @@ function beatHit(curBeat) {
                 logo.animateAtlas.anim.play('Appearing', true);
 
             case 28:
-                if (FlxG.save.data.shaders == 'all') skippableTweens.push(FlxTween.tween(blurFilter, {blurX: 16, blurY: 16}, 1, {ease: FlxEase.quartInOut}));
+                if (FlxG.save.data.shaders == 'all') skippableTweens.push(FlxTween.tween(blurFilter, {blurX: 8, blurY: 8}, 1, {ease: FlxEase.quartInOut}));
             case 29:
                 preTitleTextGroup.destroy();
                 
