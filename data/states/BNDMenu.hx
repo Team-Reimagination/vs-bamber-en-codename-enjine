@@ -18,6 +18,7 @@ import openfl.filters.BitmapFilter;
 import openfl.filters.BlurFilter;
 import openfl.geom.Matrix;
 import openfl.geom.Rectangle;
+import flixel.addons.effects.FlxSkewedSprite;
 
 public static var initialized = false;
 public static var preIntro = true;
@@ -113,9 +114,10 @@ function setupPreTitleStuff() {
 }
 
 function setupTitleStuff() {
-    clouds = new FlxSprite().loadGraphic(Paths.image('menus/TitleScreen/SpinningClouds'));
+    clouds = new FlxSkewedSprite().loadGraphic(Paths.image('menus/TitleScreen/SpinningClouds'));
     clouds.antialiasing = Options.antialiasing; clouds.screenCenter(); add(clouds);
     clouds.alpha = 0.001; clouds.scale.x = clouds.scale.y = 3*5.6;
+    clouds.matrixExposed = true;
 
     background = new FlxSprite(0, 0).loadGraphic(Paths.image('menus/titleScreen/Background')); background.screenCenter(); background.y = FlxG.height + 20;
     background.antialiasing = Options.antialiasing; add(background); background.scale.x = background.scale.y = 1.1;
@@ -232,18 +234,22 @@ function update(elapsed) {
         logo.y = CoolUtil.fpsLerp(logo.y, logoLerping[1], 0.1);
         logo.scale.x = logo.scale.y = CoolUtil.fpsLerp(logo.scale.y, logoLerping[2], 0.1);
 
-        if (cloudBitmap != null) {
+        clouds.transformMatrix.translate();
+        clouds.transformMatrix.rotate(0.001 * 60 * elapsed);
+        clouds.transformMatrix.translate();
+
+        /*if (cloudBitmap != null) {
             cloudMatrix.translate(-cloudBitmap.width/2, -cloudBitmap.height/2);
             cloudMatrix.rotate(0.001);
             cloudMatrix.translate(cloudBitmap.width/2, cloudBitmap.height/2);
             clouds.pixels.fillRect(new Rectangle(0,0,clouds.pixels.width,clouds.pixels.height), 0x00000000);
             clouds.pixels.draw(cloudBitmap, cloudMatrix, null, null, null, Options.antialiasing);
-        }
+        }*/
     }
 }
 
-var cloudBitmap;
-var cloudMatrix = new Matrix();
+//var cloudBitmap;
+//var cloudMatrix = new Matrix();
 
 function draw(event) {
     if (!preIntro && !initialized) {
@@ -404,7 +410,7 @@ function skipIntro() {
     logo.alpha = 1;
 
     clouds.alpha = 1;
-    cloudBitmap = clouds.pixels.clone();
+    //cloudBitmap = clouds.pixels.clone();
 
     skippableTweens.push(FlxTween.tween(foreground.scale, {x: 1, y: 1}, 1., {ease: FlxEase.quartOut, startDelay: 0.85}));
     skippableTweens.push(FlxTween.tween(foreground, {y: foreground.y - 610}, 1., {ease: FlxEase.quartOut, startDelay: 0.85}));
