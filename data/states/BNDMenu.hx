@@ -16,6 +16,8 @@ import flixel.group.FlxTypedSpriteGroup;
 import flixel.FlxCamera;
 import openfl.filters.BitmapFilter;
 import openfl.filters.BlurFilter;
+import openfl.geom.Matrix;
+import openfl.geom.Rectangle;
 
 public static var initialized = false;
 public static var preIntro = true;
@@ -23,8 +25,9 @@ public static var preIntro = true;
 var skippableTweens = [];
 
 var earth, cloudEmitter, windEmitter, fallingBF, fallingGF, birdFlock, constellation, constellationSound, preTitleTextGroup, parachute, windAmbience; //they all don't get assigned anything if the state was initialized beforehand
+var logo, foreground, background, clouds; //THESE on the other hand...
 
-var circlingClouds; //THESE on the other hand...
+public static var logoLerping = [FlxG.width/2, FlxG.height/2, 1];
 
 var skybox = new FlxGradient().createGradientFlxSprite(FlxG.width, FlxG.height, [0xFF272BC2, 0xFF007DE7, 0xFF74E9FF, 0xFFDBF9FF]);
 var curWacky = [];
@@ -110,11 +113,21 @@ function setupPreTitleStuff() {
 }
 
 function setupTitleStuff() {
-    circlingClouds = new FunkinSprite(0,-300);
-    circlingClouds.loadSprite(Paths.image('menus/titleScreen/spinningClouds'));
-    circlingClouds.animateAtlas.anim.addBySymbol("Spin", "SpinningClouds", 10, true); circlingClouds.animateAtlas.anim.play("Spin");
-    circlingClouds.antialiasing = Options.antialiasing; add(circlingClouds); circlingClouds.alpha = 0.001;
-    circlingClouds.scale.y = 0.6;
+    clouds = new FlxSprite().loadGraphic(Paths.image('menus/TitleScreen/SpinningClouds'));
+    clouds.antialiasing = Options.antialiasing; clouds.screenCenter(); add(clouds);
+    clouds.alpha = 0.001; clouds.scale.x = clouds.scale.y = 3*5.6;
+
+    background = new FlxSprite(0, 0).loadGraphic(Paths.image('menus/titleScreen/Background')); background.screenCenter(); background.y = FlxG.height + 20;
+    background.antialiasing = Options.antialiasing; add(background); background.scale.x = background.scale.y = 1.1;
+    foreground = new FlxSprite(-60, FlxG.height + 80).loadGraphic(Paths.image('menus/titleScreen/Foreground')); foreground.antialiasing = Options.antialiasing; add(foreground); foreground.scale.x = foreground.scale.y = 1.5;
+
+    logo = new FunkinSprite(logoLerping[0],logoLerping[1]);
+    logo.loadSprite(Paths.image('menus/titleScreen/logo'));
+    logo.animateAtlas.anim.addBySymbol("Appearing", "_PARTS/Scenes/TitleScreen/Logo_Appearing", 24, false);
+    for (i in 0...4) {
+        logo.animateAtlas.anim.addBySymbolIndices("Idle"+i, "_PARTS/Scenes/TitleScreen/Logo_Idle", [i], 24, false);
+    }
+    logo.antialiasing = Options.antialiasing; logo.cameras = [menuCamera]; add(logo); logo.alpha = 0.0001; logo.scale.x = logo.scale.y = logoLerping[2];
 }
 
 function getIntroTextShit() {
@@ -205,6 +218,7 @@ function update(elapsed) {
         preIntro = true;
         initialized = false;
         FlxG.sound.music.stop();
+        logoLerping = [FlxG.width/2, FlxG.height/2, 1];
         FlxG.resetState();
     }
 
@@ -213,8 +227,23 @@ function update(elapsed) {
         birdFlock.scale.x = birdFlock.scale.y += 0.06 * elapsed;
     }
 
-    //
+    if (initialized) {
+        logo.x = CoolUtil.fpsLerp(logo.x, logoLerping[0], 0.1);
+        logo.y = CoolUtil.fpsLerp(logo.y, logoLerping[1], 0.1);
+        logo.scale.x = logo.scale.y = CoolUtil.fpsLerp(logo.scale.y, logoLerping[2], 0.1);
+
+        if (cloudBitmap != null) {
+            cloudMatrix.translate(-cloudBitmap.width/2, -cloudBitmap.height/2);
+            cloudMatrix.rotate(0.001);
+            cloudMatrix.translate(cloudBitmap.width/2, cloudBitmap.height/2);
+            clouds.pixels.fillRect(new Rectangle(0,0,clouds.pixels.width,clouds.pixels.height), 0x00000000);
+            clouds.pixels.draw(cloudBitmap, cloudMatrix, null, null, null, Options.antialiasing);
+        }
+    }
 }
+
+var cloudBitmap;
+var cloudMatrix = new Matrix();
 
 function draw(event) {
     if (!preIntro && !initialized) {
@@ -320,6 +349,10 @@ function beatHit(curBeat) {
             case 15:
                 removeText();
 
+            case 24:
+                logo.alpha = 1;
+                logo.animateAtlas.anim.play('Appearing', true);
+
             case 28:
                 if (FlxG.save.data.shaders == 'all') skippableTweens.push(FlxTween.tween(blurFilter, {blurX: 16, blurY: 16}, 1, {ease: FlxEase.quartInOut}));
             case 29:
@@ -343,30 +376,44 @@ function beatHit(curBeat) {
                 removeText();
             }
         }
+    } else {
+        logo.animateAtlas.anim.play('Idle'+curBeat % 4, true);
     }
 }
 
 function skipIntro() {
     if (!initialized) {
-        FlxG.sound.music.time = 12800;
+        if (FlxG.sound.music.time <= 12700) FlxG.sound.music.time = 12800; //this check is so that no stuttering happens
         Conductor.__updateSongPos(FlxG.elapsed);
 
         for (tween in skippableTweens) {
             tween.percent = 1;
         }
 
-        FlxG.camera.flash();
+        menuCamera.flash();
 
         windEmitter.destroy(); earth.destroy(); cloudEmitter.destroy(); fallingBF.destroy(); fallingGF.destroy(); birdFlock.destroy(); parachute.destroy();
         if (preTitleTextGroup != null) preTitleTextGroup.destroy();
         if (windAmbience != null) windAmbience.stop();
         if (FlxG.save.data.shaders == 'all') blurFilter.blurX = blurFilter.blurY = 0.0001;
+
+        logoLerping = [FlxG.width/2, FlxG.height/3.9, 0.95];
     }
 
-    circlingClouds.alpha = 1;
-    
-    skippableTweens.push(FlxTween.tween(circlingClouds, {y: -530}, 1.5, {ease: FlxEase.quartInOut, startDelay: 1.5}));
-    skippableTweens.push(FlxTween.tween(circlingClouds.scale, {x: 0.8, y: 0.6 * 0.8}, 1.5, {ease: FlxEase.quartInOut, startDelay: 1.5}));
+    logo.animateAtlas.anim.play('Idle0', true);
+    logo.alpha = 1;
+
+    clouds.alpha = 1;
+    cloudBitmap = clouds.pixels.clone();
+
+    skippableTweens.push(FlxTween.tween(foreground.scale, {x: 1, y: 1}, 1., {ease: FlxEase.quartOut, startDelay: 0.85}));
+    skippableTweens.push(FlxTween.tween(foreground, {y: foreground.y - 610}, 1., {ease: FlxEase.quartOut, startDelay: 0.85}));
+
+    skippableTweens.push(FlxTween.tween(background.scale, {x: 1, y: 1}, 1, {ease: FlxEase.quartOut, startDelay: 0.75}));
+    skippableTweens.push(FlxTween.tween(background, {y: background.y - background.height + 20}, 1, {ease: FlxEase.quartOut, startDelay: 0.75}));
+
+    skippableTweens.push(FlxTween.tween(clouds.scale, {x: 0.9*5.6, y: 0.6*5.6}, 2, {ease: FlxEase.quartOut}));
+    skippableTweens.push(FlxTween.tween(clouds, {y: clouds.y - 210}, 1.5, {ease: FlxEase.quartOut}));
     
     if (initialized) {
         for (tween in skippableTweens) {

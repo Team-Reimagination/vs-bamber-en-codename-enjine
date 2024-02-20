@@ -3,7 +3,7 @@ import funkin.backend.system.framerate.Framerate;
 import funkin.backend.utils.WindowUtils;
 
 WindowUtils.set_prefix('Bamber & Davey Vol. 2.5 | ');
-FlxG.save.bind('Bamber & Davey', 'Team Reimagination'); //I found out that mod options use regular saves instead of a save in the Options class for example
+FlxG.save.bind('BamberAndDavey', 'TeamReimagination'); //I found out that mod options use regular saves instead of a save in the Options class for example
 
 function create() {
     Framerate.offset.y = -999; //we do not need to see fps for this state
