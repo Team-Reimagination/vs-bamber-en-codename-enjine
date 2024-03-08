@@ -45,7 +45,6 @@ Hide UI on Botplay (On/Off)
 Background Blur (0-100%)
 Background Dim (0-100%)
 Rapid Camera Movement (On/Off)
-Colorblind Filters (Protanopia/???/Tritanopia/None)
 Brightness (10-100%)
 Gamma (10-100%)
 Break Time Bar (On/Off)
@@ -55,12 +54,13 @@ Cinematic Bars (On/Off)
 Resolution (Resolutions)
 Fullscreen (On/Off)
 Borderless Windowed (On/Off) 
-Note Skin Type (Arrows/Circles/Bars/Diamonds/Dots/Squares/Keyboard/Mix)
+Note Skin Type (Arrows/Circles/Bars/Diamonds/Dots/Mix)
 Health Icons (On/Off)
 Song Credits (On/Off)
 Text Scale (50-200%)
 Note Scale (50-200%)
 Distractions (On/Off)
+Stamp Text On Strums (On/Off)
 
 Sound:
 Master Volume (0-100%)
@@ -74,7 +74,7 @@ Copyright Bypass (On/Off)
 Subtitles (On/Off)
 
 Miscellaneous:
-Reset Score Data
+Reset Scores & Achievements
 Reset Options
 
 

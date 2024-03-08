@@ -152,6 +152,16 @@ function create() {
     }, 1);
 }
 
+function processSelection() {
+    FlxG.sound.play(Paths.sound('firstTime/'+(curPageNum+1 != pages.length ? 'firstTimeAccept' : 'firstTimeFinalPage')), getVolume(1, 'sfx'));
+
+    if (curPage[4] != null) Reflect.setField(FlxG.save.data.options, curPage[4], curPage[3][curSelected]);
+
+    clearClickables();
+
+    transitionPage();
+}
+
 function update(elapsed) {
     if (canMove) {
         if ((controls.LEFT_P || controls.RIGHT_P) && curPage[2].length != 1) {
@@ -160,11 +170,7 @@ function update(elapsed) {
         }
 
         if (controls.ACCEPT) {
-            FlxG.sound.play(Paths.sound('firstTime/'+(curPageNum+1 != pages.length ? 'firstTimeAccept' : 'firstTimeFinalPage')), getVolume(1, 'sfx'));
-
-            if (curPage[4] != null) Reflect.setField(FlxG.save.data, curPage[4], curPage[3][curSelected]);
-
-            transitionPage();
+            processSelection();
         }
     }
 }
@@ -172,6 +178,15 @@ function update(elapsed) {
 function postUpdate(elapsed) {
     buttonGroup.forEach(function (button) {
         button.scale.x = button.scale.y = CoolUtil.fpsLerp(button.scale.x, !scaleButtons ? (button.ID == curSelected ? 1 : 0.7) : 0, 0.3);
+
+        if (canMove && FlxG.mouse.visible && FlxG.mouse.overlaps(button.animateAtlas)) {
+            if (curSelected != button.ID) {
+                FlxG.sound.play(Paths.sound('firstTime/firstButtonScroll'), getVolume(0.8, 'sfx'));
+                changeSelection(button.ID - curSelected);
+            }
+
+            if (FlxG.mouse.justReleased && curSelected == button.ID) processSelection();
+        }
     });
 }
 
@@ -210,6 +225,7 @@ function generatePage() {
             buttonSpr.antialiasing = true;
             buttonSpr.scale.x = buttonSpr.scale.y = 0;
             buttonGroup.add(buttonSpr);
+            pushToClickables(buttonSpr);
         }
 
         buttonGroup.screenCenter(); buttonGroup.x -= 113; buttonGroup.y += 100;

@@ -3,10 +3,7 @@ import funkin.backend.system.Conductor;
 import flixel.sound.FlxSound;
 import flixel.util.FlxGradient;
 import flixel.effects.particles.FlxTypedEmitter;
-import flixel.effects.particles.FlxEmitterMode;
 import flixel.effects.particles.FlxParticle;
-import funkin.editors.ui.UISliceSprite;
-import flixel.group.FlxGroup;
 import openfl.Assets;
 import flixel.util.FlxAxes;
 import flixel.group.FlxTypedSpriteGroup;
@@ -14,8 +11,8 @@ import flixel.FlxCamera;
 import openfl.filters.BitmapFilter;
 import openfl.filters.BlurFilter;
 import openfl.geom.Matrix;
-import openfl.geom.Rectangle;
-import flixel.addons.effects.FlxSkewedSprite;
+import funkin.savedata.FunkinSave;
+import flixel.FlxObject;
 
 public static var initialized = false;
 public static var preIntro = true;
@@ -23,22 +20,133 @@ public static var preIntro = true;
 var skippableTweens = [];
 
 var earth, cloudEmitter, windEmitter, fallingBF, fallingGF, birdFlock, constellation, constellationSound, preTitleTextGroup, parachute, windAmbience; //they all don't get assigned anything if the state was initialized beforehand
-var logo, foreground, background, clouds; //THESE on the other hand...
+var logo, foreground, background, clouds, mainCharacterDiffs, mainCharacters, characterGroup, characterBoundsGroup, logoHitbox; //THESE on the other hand...
 
 public static var logoLerping = [FlxG.width/2, FlxG.height/2, 1];
 
-var skybox = new FlxGradient().createGradientFlxSprite(1, 64, [0xFF272BC2, 0xFF007DE7, 0xFF74E9FF, 0xFFDBF9FF]); skybox.scale.set(FlxG.width,FlxG.height/64); skybox.screenCenter();
+var skybox = new FlxGradient().createGradientFlxSprite(1, 64, [0xFF272BC2, 0xFF007DE7, 0xFF74E9FF, 0xFFDBF9FF]); skybox.scale.set(FlxG.width,FlxG.height/64); skybox.screenCenter(); //Skybox
+
+//TEXT GROUPS
 var curWacky = [];
 var usedTexts = [];
 
+//POST-PROCESSING
 var blurFilter:BitmapFilter;
 var menuCamera;
+
+var conditionProcess = false; //When you can progress
+
+//Week Score Checker Per Character
+function checkDifficultyDiscover(weekName, ?doCheckDifficulty = true) {
+    /*var found = null;
+
+    if (FlxG.save.data.gameStats.discoveries[weekName]) {
+        found = doCheckDifficulty ? 'Easy' : true;
+
+        if (doCheckDifficulty) {
+            for (diff in ['Hard', 'Normal']) {if (FunkinSave.getWeekHighscore(weekName, diff).score != 0) {found = diff; break;}}
+        }
+    } else {
+        found = doCheckDifficulty ? 'Locked' : false;
+    }
+
+    return found;*/
+
+    return "Locked";
+}
+
+function getName(char, index) {
+    return char + '_' + mainCharacterDiffs[index];
+}
+
+var easterEggs = [FlxG.random.int(1,100) == 50, FlxG.random.int(1,50) == 25, FlxG.random.int(1,50) == 25]; //Replace Screen With Hole, Fire In The Hole, Isaac Alt Animations
+
+if (!easterEggs[0]) {
+    characterGroup = new FlxTypedSpriteGroup(FlxG.width/2 + 180, FlxG.height*2);
+    characterBoundsGroup = new FlxTypedGroup(FlxG.width/2, FlxG.height); //Atlases are fucky with hitboxes,,, So I'll be spoofing them. I don't even wanna bother with FlxG.pixelPerfectOverlap, as it's slow, and doesn't work with FlxG.mouse.
+    //FlxG.overlap just returns true for the entire screen when I export atlases from the main timeline instead of the symbol's timeline.
+    //That's why I have to resort to custom objects
+
+    mainCharacterDiffs = [checkDifficultyDiscover("Bamber's Farm"), checkDifficultyDiscover("Davey's Yard"), checkDifficultyDiscover("Romania Outskirts")];
+    mainCharacters = [
+        {
+            "sheet": getName("Davey", 1),
+            "isLocked": mainCharacterDiffs[1] == "Locked",
+            "isClicked": false,
+            "loopCount": 0,
+            "left": 0,
+            "bounds": switch (mainCharacterDiffs[1]) {case "Locked": [67,416,322,304]; case "Easy": [67,416,322,304]; case "Normal": [61,371,357,349]; case "Hard": [55,330,240,390];},
+            "anims": {
+                "idleIndexes": switch (mainCharacterDiffs[1]) {case "Locked": [[for (i in 1...13) i]]; default: [[for (i in 1...14) i],[for (i in 14...28) i]];},
+                "clickIndexes": switch (mainCharacterDiffs[1]) {case "Locked": [for (i in 13...21) i]; case "Easy": [for (i in 29...41) i]; case "Normal": [for (i in 29...37) i]; case "Hard": [for (i in 29...55) i];},
+                "extraIndexes": switch (mainCharacterDiffs[1]) {case "Locked": [for (i in 21...33) i]; case "Easy": [for (i in 41...53) i]; case "Normal": [36,36,36,36,36,36,36,36,36,36,36,36,36,36,36]; case "Hard": [for (i in 70...91) i];},
+                "returnIndexes": switch (mainCharacterDiffs[1]) {case "Locked": [20,19,18,17,16,15,14,13]; case "Easy": [for (i in 53...65) i]; case "Normal": [36,35,34,33,32,31,30,29]; case "Hard": [for (i in 91...98) i];},
+            }
+        },
+        {
+            "sheet": getName("RnB", 2),
+            "isLocked": mainCharacterDiffs[2] == "Locked",
+            "isClicked": false,
+            "loopCount": 0,
+            "left": 0,
+            "bounds": switch (mainCharacterDiffs[2]) {case "Locked": [990,356,214,364]; case "Easy": [990,356,214,364]; case "Normal": [973,338,261,382]; case "Hard": [891,217,343,503];},
+            "anims": {
+                "idleIndexes": [switch (mainCharacterDiffs[2]) {case "Locked": [for (i in 1...13) i]; default: [for (i in 1...15) i];}],
+                "clickIndexes": switch (mainCharacterDiffs[2]) {case "Locked": [for (i in 13...21) i]; case "Easy": [for (i in 15...23) i]; case "Normal": [for (i in 15...26) i]; case "Hard": [for (i in 15...24) i];},
+                "extraIndexes": switch (mainCharacterDiffs[2]) {case "Locked": [for (i in 21...33) i]; case "Easy": [for (i in 23...31) i]; case "Normal": [25,25,25,25,25,25,25,25,25,25]; case "Hard": [22,22,22,22,22,22,22,22,22,22];},
+                "returnIndexes": switch (mainCharacterDiffs[2]) {case "Locked": [20,19,18,17,16,15,14,13]; case "Easy": [22,21,20,19,18,17,16,15]; case "Normal": [25,24,23,22,21,20,19,18,17,16,15]; case "Hard": [22,21,20,19,18,17,16,15];},
+            }
+        },
+        {
+            "sheet": easterEggs[2] ? 'Isaac_Alt' : 'Isaac',
+            "isLocked": false,
+            "isClicked": false,
+            "loopCount": 0,
+            "left": 0,
+            "bounds": [642,332,302,388],
+            "anims": {
+                "idleIndexes": [[for(i in 1...15) i]],
+                "clickIndexes": [for(i in 15...24) i],
+                "extraIndexes": [for(i in 24...32) i],
+                "returnIndexes": [for(i in 32...41) i],
+            }
+        },
+        {
+            "sheet": "Gwen",
+            "isLocked": false,
+            "isClicked": false,
+            "loopCount": 0,
+            "left": 0,
+            "bounds": [426,352,200,368],
+            "anims": {
+                "idleIndexes": [[for(i in 1...14) i], [for(i in 15...28) i]],
+                "clickIndexes": [for(i in 29...38) i],
+                "extraIndexes": [for(i in 38...45) i],
+                "returnIndexes": [37,36,35,34,33,32,31,30,29],
+            }
+        },
+        {
+            "sheet": getName("Bamber", 0),
+            "isLocked": mainCharacterDiffs[0] == "Locked",
+            "isClicked": false,
+            "loopCount": 0,
+            "left": 0,
+            "bounds": switch (mainCharacterDiffs[0]) {case "Locked": [168,545,136,175]; case "Easy": [168,545,136,175]; case "Normal": [233,500,170,220]; case "Hard": [258,451,205,269];},
+            "anims": {
+                "idleIndexes": [switch (mainCharacterDiffs[0]) {case "Locked": [for (i in 1...13) i]; default: [for (i in 1...15) i];}],
+                "clickIndexes": switch (mainCharacterDiffs[0]) {case "Locked": [for (i in 13...21) i]; case "Easy": [for (i in 15...24) i]; case "Normal": [for (i in 15...24) i]; case "Hard": [for (i in 15...22) i];},
+                "extraIndexes": switch (mainCharacterDiffs[0]) {case "Locked": [for (i in 21...33) i]; case "Easy": [23,23,23,23,23,23,23,23,23,23]; case "Normal": [23,23,23,23,23,23,23,23]; case "Hard": [for (i in 22...40) i];},
+                "returnIndexes": switch (mainCharacterDiffs[0]) {case "Locked": [20,19,18,17,16,15,14,13]; case "Easy": [23,22,21,20,19,18,17,16,15]; case "Normal": [23,22,21,20,19,18,17,16,15]; case "Hard": [for (i in 40...50) i];},
+            }
+        }
+    ];
+}
 
 function create() {
     FlxG.cameras.add(menuCamera = new FlxCamera(), false);
     menuCamera.bgColor = 0;
 
-    if (FlxG.save.data.shaders == 'all') {
+    if (FlxG.save.data.options.shaders == 'all') {
         blurFilter = new BlurFilter(0.0001, 0.0001, 3);
         if (FlxG.camera._filters == null) FlxG.camera._filters = [];
         FlxG.camera._filters.push(blurFilter);
@@ -50,6 +158,21 @@ function create() {
 
     setupTitleStuff();
 
+    //Preloaded last because of how atlases load in coordination with sounds
+    if (preIntro) {
+        constellation = new FunkinSprite();
+        constellation.loadSprite(Paths.image('menus/titleScreen/constellation'));
+
+        constellation.animateAtlas.anim.addBySymbol("Constellation", "Monolith", 24, false);
+        constellation.playAnim("Constellation");
+
+        constellation.antialiasing = true;
+        constellation.scale.set(0.9, 0.9); constellation.updateHitbox(); constellation.screenCenter();
+        add(constellation);
+
+        constellationSound = new FlxSound(); constellationSound = FlxG.sound.play(Paths.sound('titleScreen/MonolithTeaser'), getVolume(1, 'sfx'));
+    }
+
     if (initialized) skipIntro();
 }
 
@@ -58,13 +181,15 @@ function setupPreTitleStuff() {
 
     earth = new FlxSprite(0, FlxG.height - 250).loadGraphic(Paths.image('menus/titleScreen/Earth')); earth.antialiasing = true; add(earth); earth.alpha = 0.0001;
 
+    //Background Birds
     birdFlock = new FunkinSprite();
     birdFlock.loadSprite(Paths.image('menus/titleScreen/BirdFlock'));
-    birdFlock.animateAtlas.anim.addBySymbol("Flock", "BirdFlock", 24, true); birdFlock.animateAtlas.anim.play("Flock");
+    birdFlock.animateAtlas.anim.addBySymbol("Flock", "BirdFlock", 24, true); birdFlock.playAnim("Flock");
     birdFlock.antialiasing = true;
     birdFlock.screenCenter(); birdFlock.y = 800;
     add(birdFlock);
 
+    //Partivle Emiters
     windEmitter = new FlxTypedEmitter(0, FlxG.height + 1000, 30);
     windEmitter.setSize(FlxG.width, 10); 
     windEmitter.launchAngle.set(-90, -90);
@@ -88,23 +213,12 @@ function setupPreTitleStuff() {
     }
     add(cloudEmitter);
 
+    //Falling Chaaracters
     fallingBF = new FlxSprite(100, 100); fallingBF.frames = Paths.getSparrowAtlas('menus/titleScreen/Falling_BF'); fallingBF.animation.addByPrefix('falling', 'Falling_BF', 24, true); fallingBF.animation.play('falling'); fallingBF.antialiasing = true; add(fallingBF);
     fallingGF = new FlxSprite(230, -350); fallingGF.frames = Paths.getSparrowAtlas('menus/titleScreen/Falling_GF'); fallingGF.animation.addByPrefix('falling', 'Falling_GF', 24, true); fallingGF.animation.play('falling'); fallingGF.antialiasing = true; add(fallingGF);
 
     windEmitter.makeParticles(2, 230, 0xFFFFFFFF, 100);
     add(windEmitter);
-
-    constellation = new FunkinSprite();
-    constellation.loadSprite(Paths.image('menus/titleScreen/constellation'));
-
-    constellation.animateAtlas.anim.addBySymbol("Constellation", "Monolith", 24, false);
-    constellation.animateAtlas.anim.play("Constellation");
-
-    constellation.antialiasing = true;
-    constellation.scale.set(0.9, 0.9); constellation.updateHitbox(); constellation.screenCenter();
-    add(constellation);
-
-    constellationSound = new FlxSound(); constellationSound = FlxG.sound.play(Paths.sound('titleScreen/MonolithTeaser'), getVolume(1, 'sfx'));
 
     parachute = new FlxSprite(); parachute.antialiasing = true; add(parachute); parachute.alpha = 0.001;
 
@@ -112,14 +226,46 @@ function setupPreTitleStuff() {
 }
 
 function setupTitleStuff() {
-    clouds = new FlxSprite().loadGraphic(Paths.image('menus/TitleScreen/SpinningClouds'));
-    clouds.antialiasing = true; clouds.screenCenter(); add(clouds);
-    clouds.alpha = 0.001; clouds.scale.x = clouds.scale.y = 3*5.6;
-    clouds.shader = new CustomShader('smoothRotate');
+    //BACKGROUND
+    if (!easterEggs[0]) {
+        clouds = new FlxSprite().loadGraphic(Paths.image('menus/TitleScreen/SpinningClouds'));
+        clouds.antialiasing = true;
+        clouds.alpha = 0.001; clouds.scale.x = clouds.scale.y = 3*5.6;
+        clouds.screenCenter(); add(clouds);
+        clouds.shader = new CustomShader('smoothRotate');
+        
 
-    background = new FlxSprite(0, 0).loadGraphic(Paths.image('menus/titleScreen/Background')); background.screenCenter(); background.y = FlxG.height + 20;
-    background.antialiasing = true; add(background); background.scale.x = background.scale.y = 1.1;
-    foreground = new FlxSprite(-60, FlxG.height + 80).loadGraphic(Paths.image('menus/titleScreen/Foreground')); foreground.antialiasing = true; add(foreground); foreground.scale.x = foreground.scale.y = 1.5;
+        background = new FlxSprite(0, 0).loadGraphic(Paths.image('menus/titleScreen/Background')); background.screenCenter(); background.y = FlxG.height + 20;
+        background.antialiasing = true; add(background); background.scale.x = background.scale.y = 1.1;
+        foreground = new FlxSprite(-60, FlxG.height + 80).loadGraphic(Paths.image('menus/titleScreen/Foreground')); foreground.antialiasing = true; add(foreground); foreground.scale.x = foreground.scale.y = 1.5;
+
+        add(characterGroup);
+        characterGroup.alpha = 0;
+        characterGroup.scale.x = characterGroup.scale.y = 2.5;
+
+        characterBoundsGroup.exists = false;
+
+        for (char in 0...mainCharacters.length) {
+            var charSprite = new FunkinSprite();
+            charSprite.loadSprite(Paths.image('menus/titleScreen/characters/'+mainCharacters[char].sheet));
+
+            var charAnims = mainCharacters[char].anims;
+            for (anim in 0...charAnims.idleIndexes.length) {
+                charSprite.animateAtlas.anim.addBySymbolIndices("Idle"+anim, "CharsExport", charAnims.idleIndexes[anim], 24, mainCharacters[char].isLocked);
+            }
+            charSprite.animateAtlas.anim.addBySymbolIndices("Click", "CharsExport", charAnims.clickIndexes, 24, false);
+            charSprite.animateAtlas.anim.addBySymbolIndices("Extra", "CharsExport", charAnims.extraIndexes, 24, false);
+            charSprite.animateAtlas.anim.addBySymbolIndices("Return", "CharsExport", charAnims.returnIndexes, 24, false);
+
+            charSprite.ID = char;
+            charSprite.antialiasing = true;
+            characterGroup.add(charSprite);
+
+            var charBound = new FlxObject(mainCharacters[char].bounds[0], mainCharacters[char].bounds[1], mainCharacters[char].bounds[2], mainCharacters[char].bounds[3]);
+            charBound.ID = char;
+            characterBoundsGroup.add(charBound);
+        }
+    }
 
     logo = new FunkinSprite(logoLerping[0],logoLerping[1]);
     logo.loadSprite(Paths.image('menus/titleScreen/logo'));
@@ -128,6 +274,8 @@ function setupTitleStuff() {
         logo.animateAtlas.anim.addBySymbolIndices("Idle"+i, "_PARTS/Scenes/TitleScreen/Logo_Idle", [i], 24, false);
     }
     logo.antialiasing = true; logo.cameras = [menuCamera]; add(logo); logo.alpha = 0.0001; logo.scale.x = logo.scale.y = logoLerping[2];
+
+    logoHitbox = new FlxObject(logoLerping[0],logoLerping[1],564,335); logoHitbox.width = 564 * logoLerping[2]; logoHitbox.height = 335 * logoLerping[2]; logoHitbox.x -= logoHitbox.width/2; logoHitbox.y -= logoHitbox.height/2;
 }
 
 function getIntroTextShit() {
@@ -212,7 +360,11 @@ function update(elapsed) {
         skipTeaser();
     }
 
-    if (controls.ACCEPT) {
+    //PROGRESSION
+    if (!initialized) conditionProcess = controls.ACCEPT || FlxG.mouse.justReleased;
+    else conditionProcess = controls.ACCEPT;
+
+    if (conditionProcess) {
         (preIntro == true) ? skipTeaser() : ((initialized == false) ? skipIntro() : FlxG.switchState(new MainMenuState())); //the switchstate is a placeholder thing
     }
 
@@ -234,11 +386,86 @@ function update(elapsed) {
         logo.y = CoolUtil.fpsLerp(logo.y, logoLerping[1], 0.1);
         logo.scale.x = logo.scale.y = CoolUtil.fpsLerp(logo.scale.y, logoLerping[2], 0.1);
 
-        cloudTimer += 60 * elapsed;
-        clouds.shader.data.uTime.value = [-cloudTimer / 5000];
+        logoHitbox.width = 564 * logo.scale.x; logoHitbox.height = 335 * logo.scale.y;
+        logoHitbox.x = logo.x - logoHitbox.width/2;
+        logoHitbox.y = logo.y - logoHitbox.height/2;
+
+        if (!easterEggs[0]) {
+            if (occupiedObject != clouds) cloudTimer += 60 * elapsed;
+            clouds.shader.data.uTime.value = [-cloudTimer / 5000];
+        }
     }
 }
 
+var highestIndex = -1;
+var occupiedObject;
+var stoppedCloudTimer = 0;
+
+function postUpdate(elapsed) {
+    if (initialized) {
+        //CHARACTER ANIMATION HANDLER since animation.finishCallback doesn't work on atlases, and animateAtlas.anim.onComplete prevents isPlaying from being true for some reason 
+        characterBoundsGroup.forEach(function (char) {
+            var selChar = characterGroup.members[char.ID];
+
+            if (selChar.isAnimFinished()) {
+                if (selChar.getAnimName() == 'Return') {mainCharacters[char.ID].isClicked = false; mainCharacters[char.ID].loopCount = 0; mainCharacters[char.ID].left = 0;}
+                if (selChar.getAnimName() == 'Extra') {if (mainCharacters[char.ID].loopCount == 12) selChar.playAnim('Return', true); else {selChar.playAnim('Extra', true); mainCharacters[char.ID].loopCount++;}}
+                if (selChar.getAnimName() == 'Click') selChar.playAnim('Extra', true);
+            }
+        });
+
+        /*
+        CLICK HANDLER
+        */
+        //for characters, and the logo, hitboxes were fucked up so I had to spoof them with FlxObjects. Too much work to readjust.
+        if (FlxG.mouse.justPressed || occupiedObject != null) {
+            for (clickObject in [logoHitbox, characterBoundsGroup, clouds]) {
+                if ((FlxG.mouse.overlaps(clickObject) && occupiedObject == null) || occupiedObject == clickObject) {
+                    if (!occupiedObject) {
+                        switch (clickObject) {
+                            case clouds:
+                                stoppedCloudTimer = cloudTimer;
+                        };
+
+                        occupiedObject = clickObject;
+                    }
+
+                    switch (clickObject) {
+                        case logoHitbox:
+                            logo.scale.x = logo.scale.y = CoolUtil.fpsLerp(logo.scale.y, logoLerping[2] * 1.2, 0.2);
+                            logo.x = CoolUtil.fpsLerp(logo.x, logoLerping[0] + 9, 0.2); //Offset's fucked up which is why
+                            logo.y = CoolUtil.fpsLerp(logo.y, logoLerping[1] + 9, 0.2);
+                        case characterBoundsGroup:
+                            if (!FlxG.mouse.pressed) {
+                                characterBoundsGroup.forEach(function (char) {
+                                    if (FlxG.mouse.overlaps(char) && !mainCharacters[char.ID].isClicked) highestIndex = char.ID;
+                    
+                                    if (char.ID == characterGroup?.members?.length - 1 && highestIndex > -1) {
+                                        characterGroup.members[highestIndex].playAnim('Click', true);
+                                        mainCharacters[highestIndex].isClicked = true;
+                                        highestIndex = -1;
+                                    }
+                                });
+                            }
+                        case clouds:
+                            var cdx:Float = (clouds.x + clouds.width/2) - FlxG.mouse.screenX;
+                            var cdy:Float = (clouds.y + clouds.height/2) - FlxG.mouse.screenY;
+                            var centerDistance = Std.int(FlxMath.vectorLength(cdx, cdy));
+                            //var mouseDistance = Math.sqrt(FlxG.mouse.deltaScreenX * FlxG.mouse.deltaScreenX + FlxG.mouse.deltaScreenY * FlxG.mouse.deltaScreenY);
+                            
+                            cloudTimer = stoppedCloudTimer + (FlxG.mouse.deltaScreenX / (centerDistance + 1) * 600) * (FlxG.mouse.screenY < clouds.y + clouds.height/2 ? 1 : -1);
+                    };
+
+                    break;
+                }
+            }
+        }
+
+        if (occupiedObject != null && !FlxG.mouse.pressed) occupiedObject = null;
+    }
+}
+
+//MATRIX MANIPULATION ON BACKGROUND BIRDS FOR PERSPECTIVE SHIFTING
 function draw(event) {
     if (!preIntro && !initialized) {
         for (layer in birdFlock.animateAtlas.anim.curSymbol.timeline.getList()) { //there may be only one layer but iterating is okay enough
@@ -342,10 +569,10 @@ function beatHit(curBeat) {
 
             case 24:
                 logo.alpha = 1;
-                logo.animateAtlas.anim.play('Appearing', true);
+                logo.playAnim('Appearing', true);
 
             case 28:
-                if (FlxG.save.data.shaders == 'all') skippableTweens.push(FlxTween.tween(blurFilter, {blurX: 8, blurY: 8}, 1, {ease: FlxEase.quartInOut}));
+                if (FlxG.save.data.options.shaders == 'all') skippableTweens.push(FlxTween.tween(blurFilter, {blurX: 8, blurY: 8}, 1, {ease: FlxEase.quartInOut}));
             case 29:
                 preTitleTextGroup.destroy();
                 
@@ -368,8 +595,25 @@ function beatHit(curBeat) {
             }
         }
     } else {
-        logo.animateAtlas.anim.play('Idle'+curBeat % 4, true);
+        logo.playAnim('Idle'+curBeat % 4, true);
+
+        if (!easterEggs[0]) {
+            charDance();
+        }
     }
+}
+
+//CHARACTER ANIMATION PLAY HANDLER
+function charDance() {
+    characterGroup.forEach(function (char) {
+        var danceBreak = 2 / mainCharacters[char.ID].anims.idleIndexes.length;
+        if (!mainCharacters[char.ID].isClicked && !mainCharacters[char.ID].isLocked && curBeat % danceBreak == 0) {
+            char.playAnim('Idle'+mainCharacters[char.ID].left, true);
+            mainCharacters[char.ID].left = FlxMath.wrap(mainCharacters[char.ID].left+1, 0, mainCharacters[char.ID].anims.idleIndexes.length - 1);
+        }
+
+        if (mainCharacters[char.ID].isLocked && !char.animateAtlas.anim.isPlaying) char.playAnim('Idle0', true);
+    });
 }
 
 function skipIntro() {
@@ -386,33 +630,44 @@ function skipIntro() {
         windEmitter.destroy(); earth.destroy(); cloudEmitter.destroy(); fallingBF.destroy(); fallingGF.destroy(); birdFlock.destroy(); parachute.destroy();
         if (preTitleTextGroup != null) preTitleTextGroup.destroy();
         if (windAmbience != null) windAmbience.stop();
-        if (FlxG.save.data.shaders == 'all') blurFilter.blurX = blurFilter.blurY = 0.0001;
+        if (FlxG.save.data.options.shaders == 'all') blurFilter.blurX = blurFilter.blurY = 0.0001;
 
         logoLerping = [FlxG.width/2, FlxG.height/3.9, 0.95];
     }
 
-    logo.animateAtlas.anim.play('Idle0', true);
+    logo.playAnim('Idle0', true);
     logo.alpha = 1;
+    add(logoHitbox); pushToClickables(logoHitbox);
 
-    clouds.alpha = 1;
-    //cloudBitmap = clouds.pixels.clone();
+    if (!easterEggs[0]) {
+        clouds.alpha = 1;
 
-    skippableTweens.push(FlxTween.tween(foreground.scale, {x: 1, y: 1}, 1., {ease: FlxEase.quartOut, startDelay: 0.85}));
-    skippableTweens.push(FlxTween.tween(foreground, {y: foreground.y - 610}, 1., {ease: FlxEase.quartOut, startDelay: 0.85}));
+        skippableTweens.push(FlxTween.tween(characterGroup, {alpha: 1, y: FlxG.height, x: FlxG.width/2}, 1, {ease: FlxEase.quartOut, startDelay: 1, onComplete: function(tween) {
+            add(characterBoundsGroup);
+            characterBoundsGroup.exists = true;
+            pushToClickables(characterBoundsGroup);
+        }}));
+        skippableTweens.push(FlxTween.tween(characterGroup.scale, {x: 1, y: 1}, 1, {ease: FlxEase.quartOut, startDelay: 1}));
 
-    skippableTweens.push(FlxTween.tween(background.scale, {x: 1, y: 1}, 1, {ease: FlxEase.quartOut, startDelay: 0.75}));
-    skippableTweens.push(FlxTween.tween(background, {y: background.y - background.height + 20}, 1, {ease: FlxEase.quartOut, startDelay: 0.75}));
+        skippableTweens.push(FlxTween.tween(foreground.scale, {x: 1, y: 1}, 1, {ease: FlxEase.quartOut, startDelay: 0.85}));
+        skippableTweens.push(FlxTween.tween(foreground, {y: foreground.y - 610}, 1, {ease: FlxEase.quartOut, startDelay: 0.85}));
 
-    skippableTweens.push(FlxTween.tween(clouds.scale, {x: 0.9*5.6, y: 0.6*5.6}, 2, {ease: FlxEase.quartOut}));
-    skippableTweens.push(FlxTween.tween(clouds, {y: clouds.y - 210}, 1.5, {ease: FlxEase.quartOut}));
+        skippableTweens.push(FlxTween.tween(background.scale, {x: 1, y: 1}, 1, {ease: FlxEase.quartOut, startDelay: 0.75}));
+        skippableTweens.push(FlxTween.tween(background, {y: background.y - background.height + 20}, 1, {ease: FlxEase.quartOut, startDelay: 0.75}));
+
+        skippableTweens.push(FlxTween.tween(clouds.scale, {x: 0.9*5.6, y: 0.6*5.6}, 2, {ease: FlxEase.quartOut, onComplete: function(tween) {
+            clouds.updateHitbox();
+            clouds.screenCenter(); clouds.y = clouds.y - 210;
+            pushToClickables(clouds);
+        }}));
+        skippableTweens.push(FlxTween.tween(clouds, {y: clouds.y - 210}, 1.5, {ease: FlxEase.quartOut}));
+
+        charDance();
+    }
     
     if (initialized) {
         for (tween in skippableTweens) {
             tween.percent = 1;
         }
     } else initialized = true;
-}
-
-function processSelection() {
-
 }

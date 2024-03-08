@@ -2,12 +2,21 @@ import funkin.backend.utils.WindowUtils;
 import funkin.backend.utils.DiscordUtil;
 import funkin.backend.scripting.ModState;
 import Type;
+import openfl.display.BitmapData;
+import openfl.utils.Assets;
 
 var stateQuotes:Map<String, String> = [
     "SplashScreen" => "Team Reimagination Splash Screen",
     "FirstTimeState" => "First Time Setup",
     "BNDMenu" => "In The Menus"
 ];
+
+var idleCursorGraphic;
+var clickCursorGraphic;
+var cursorName = 'default';
+public var clickableObjects = [];
+var isHovering = false;
+var switched = false;
 
 function postStateSwitch() {
     if (stateQuotes[ModState.lastName] != null && Type.getClassName(Type.getClass(FlxG.state)) == 'funkin.backend.scripting.ModState') {
@@ -16,15 +25,59 @@ function postStateSwitch() {
     }
 }
 
+function postStateSwitch() {
+    idleCursorGraphic = Assets.getBitmapData(Paths.image('cursors/'+cursorName));
+    clickCursorGraphic = Assets.getBitmapData(Paths.image('cursors/'+cursorName+'_waiting'));
+    FlxG.mouse.load(idleCursorGraphic);
+}
+
+function postUpdate(elapsed) {
+    if (FlxG.mouse.visible) {
+        isHovering = false;
+
+        for (i in clickableObjects) {
+            if (FlxG.mouse.overlaps(i)) {
+                isHovering = true;
+                break;
+            }
+        }
+
+        if (isHovering && !switched) {
+            FlxG.mouse.load(clickCursorGraphic);
+            switched = true;
+        } else if (!isHovering && switched) {
+            FlxG.mouse.load(idleCursorGraphic);
+            switched = false;
+        }
+    }
+}
+
+function preStateCreate() {
+    clickableObjects = [];
+}
+
 function preStateSwitch() { //Switch to where it was meant to be
     if (Type.getClassName(Type.getClass(FlxG.game._requestedState)) == "funkin.menus.TitleState") FlxG.game._requestedState = new ModState("SplashScreen");
+
+    FlxG.mouse.useSystemCursor = false;
 }
 
 function update(elapsed) {
     if (FlxG.keys.justPressed.F5) //DEV: Restarting states
         FlxG.resetState();
+
+    if (FlxG.keys.justPressed.ANY) {FlxG.mouse.visible = false;} //i wish there was a Controls version so that the gamepad is supported
+    if (FlxG.mouse.justMoved || FlxG.mouse.justPressed || FlxG.mouse.justPressedMiddle ||FlxG.mouse.justPressedright) {FlxG.mouse.visible = true;}
 }
 
 public static function getVolume(initValue = 1, type = 'sfx') {
-    return initValue * switch (type) { case 'music': FlxG.save.data.musicVolume; case 'sfx': FlxG.save.data.sfxVolume; default: FlxG.save.data.voiceVolume;};
+    return initValue * switch (type) { case 'music': FlxG.save.data.options.musicVolume; case 'sfx': FlxG.save.data.options.sfxVolume; default: FlxG.save.data.options.voiceVolume;};
+}
+
+public static function pushToClickables(obj) {
+    clickableObjects.push(obj);
+}
+
+public static function clearClickables() {
+    clickableObjects = [];
 }
