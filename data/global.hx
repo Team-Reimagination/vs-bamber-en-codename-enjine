@@ -28,7 +28,7 @@ function postStateSwitch() {
 function postStateSwitch() {
     idleCursorGraphic = Assets.getBitmapData(Paths.image('cursors/'+cursorName));
     clickCursorGraphic = Assets.getBitmapData(Paths.image('cursors/'+cursorName+'_waiting'));
-    FlxG.mouse.load(idleCursorGraphic);
+    FlxG.mouse.load(idleCursorGraphic,1,1,1);
 }
 
 function postUpdate(elapsed) {
@@ -43,10 +43,10 @@ function postUpdate(elapsed) {
         }
 
         if (isHovering && !switched) {
-            FlxG.mouse.load(clickCursorGraphic);
+            FlxG.mouse.load(clickCursorGraphic,1,1,1);
             switched = true;
         } else if (!isHovering && switched) {
-            FlxG.mouse.load(idleCursorGraphic);
+            FlxG.mouse.load(idleCursorGraphic,1,1,1);
             switched = false;
         }
     }
@@ -54,6 +54,8 @@ function postUpdate(elapsed) {
 
 function preStateCreate() {
     clickableObjects = [];
+    isHovering = false;
+    switched = false;
 }
 
 function preStateSwitch() { //Switch to where it was meant to be
@@ -78,6 +80,14 @@ public static function pushToClickables(obj) {
     clickableObjects.push(obj);
 }
 
+public static function removeFromClickables(obj) {
+    clickableObjects.remove(obj);
+}
+
 public static function clearClickables() {
     clickableObjects = [];
+}
+
+public static function getClickables() {
+    return clickableObjects;
 }

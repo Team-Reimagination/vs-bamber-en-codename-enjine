@@ -14,17 +14,17 @@ import openfl.geom.Matrix;
 import funkin.savedata.FunkinSave;
 import flixel.FlxObject;
 
-public static var initialized = false;
-public static var preIntro = true;
+public static var initialized = false; //post-intro sequence check
+public static var preIntro = true; //pre-intro sequence check
 
-var skippableTweens = [];
+var skippableTweens = []; //Tweens that will be stored here will be skipped when you restart the state, or if you go into it from somewhere else
 
 var earth, cloudEmitter, windEmitter, fallingBF, fallingGF, birdFlock, constellation, constellationSound, preTitleTextGroup, parachute, windAmbience; //they all don't get assigned anything if the state was initialized beforehand
-var logo, foreground, background, clouds, mainCharacterDiffs, mainCharacters, characterGroup, characterBoundsGroup, logoHitbox; //THESE on the other hand...
+var logo, foreground, background, clouds, mainCharacterDiffs, mainCharacters, characterGroup, characterBoundsGroup, logoHitbox, holeEasterEgg; //THESE on the other hand...
 
-public static var logoLerping = [FlxG.width/2, FlxG.height/2, 1];
+public static var logoLerping = [FlxG.width/2, FlxG.height/2, 1]; //This will adjust the position of the logo
 
-var skybox = new FlxGradient().createGradientFlxSprite(1, 64, [0xFF272BC2, 0xFF007DE7, 0xFF74E9FF, 0xFFDBF9FF]); skybox.scale.set(FlxG.width,FlxG.height/64); skybox.screenCenter(); //Skybox
+var skybox = new FlxGradient().createGradientFlxSprite(1, 66, [0xFF272BC2, 0xFF007DE7, 0xFF74E9FF, 0xFFDBF9FF]); skybox.scale.set(FlxG.width,FlxG.height/64); skybox.screenCenter(); //Skybox
 
 //TEXT GROUPS
 var curWacky = [];
@@ -36,38 +36,39 @@ var menuCamera;
 
 var conditionProcess = false; //When you can progress
 
+var currentlyUsedObjects = []; //For clickable objects, where they are going through a something
+
 //Week Score Checker Per Character
 function checkDifficultyDiscover(weekName, ?doCheckDifficulty = true) {
-    /*var found = null;
+    var found = null;
 
     if (FlxG.save.data.gameStats.discoveries[weekName]) {
-        found = doCheckDifficulty ? 'Easy' : true;
+        found = (doCheckDifficulty == true ? 'Easy' : true);
 
         if (doCheckDifficulty) {
             for (diff in ['Hard', 'Normal']) {if (FunkinSave.getWeekHighscore(weekName, diff).score != 0) {found = diff; break;}}
         }
     } else {
-        found = doCheckDifficulty ? 'Locked' : false;
+        found = (doCheckDifficulty == true ? 'Locked' : false);
     }
 
-    return found;*/
-
-    return "Locked";
+    return found;
 }
 
 function getName(char, index) {
     return char + '_' + mainCharacterDiffs[index];
 }
 
-var easterEggs = [FlxG.random.int(1,100) == 50, FlxG.random.int(1,50) == 25, FlxG.random.int(1,50) == 25]; //Replace Screen With Hole, Fire In The Hole, Isaac Alt Animations
+var easterEggs = [FlxG.random.int(1,100) == 50, FlxG.random.int(1,10) == 5, FlxG.random.int(1,50) == 25]; //Replace Screen With Hole, Fire In The Hole, Isaac Alt Animations
 
 if (!easterEggs[0]) {
-    characterGroup = new FlxTypedSpriteGroup(FlxG.width/2 + 180, FlxG.height*2);
-    characterBoundsGroup = new FlxTypedGroup(FlxG.width/2, FlxG.height); //Atlases are fucky with hitboxes,,, So I'll be spoofing them. I don't even wanna bother with FlxG.pixelPerfectOverlap, as it's slow, and doesn't work with FlxG.mouse.
+    characterGroup = new FlxTypedSpriteGroup(FlxG.width/2 + 220, FlxG.height*2.5);
+    characterBoundsGroup = new FlxTypedGroup(FlxG.width/2, FlxG.height); //FUUUUUUUUCK MYYYYYYY LIIIIIIFE! Atlases are fucky with hitboxes,,, So I'll be spoofing them. I don't even wanna bother with FlxG.pixelPerfectOverlap, as it's slow, and doesn't work with FlxG.mouse.
     //FlxG.overlap just returns true for the entire screen when I export atlases from the main timeline instead of the symbol's timeline.
     //That's why I have to resort to custom objects
 
-    mainCharacterDiffs = [checkDifficultyDiscover("Bamber's Farm"), checkDifficultyDiscover("Davey's Yard"), checkDifficultyDiscover("Romania Outskirts")];
+    //TITLE SCREEN CHARACTER DEFINITIONS
+    mainCharacterDiffs = [checkDifficultyDiscover("Bamber's Farm", true), checkDifficultyDiscover("Davey's Yard", true), checkDifficultyDiscover("Romania Outskirts", true)];
     mainCharacters = [
         {
             "sheet": getName("Davey", 1),
@@ -234,14 +235,13 @@ function setupTitleStuff() {
         clouds.screenCenter(); add(clouds);
         clouds.shader = new CustomShader('smoothRotate');
         
-
         background = new FlxSprite(0, 0).loadGraphic(Paths.image('menus/titleScreen/Background')); background.screenCenter(); background.y = FlxG.height + 20;
         background.antialiasing = true; add(background); background.scale.x = background.scale.y = 1.1;
         foreground = new FlxSprite(-60, FlxG.height + 80).loadGraphic(Paths.image('menus/titleScreen/Foreground')); foreground.antialiasing = true; add(foreground); foreground.scale.x = foreground.scale.y = 1.5;
 
         add(characterGroup);
         characterGroup.alpha = 0;
-        characterGroup.scale.x = characterGroup.scale.y = 2.5;
+        characterGroup.scale.x = characterGroup.scale.y = 5;
 
         characterBoundsGroup.exists = false;
 
@@ -265,6 +265,17 @@ function setupTitleStuff() {
             charBound.ID = char;
             characterBoundsGroup.add(charBound);
         }
+    } else {
+        background = new FlxSprite(0,0).loadGraphic(Paths.image('menus/titleScreen/'+ (easterEggs[1] ? 'FIREINTHEHOLE' : 'ImpactSilhouette')));
+        background.antialiasing = true;
+
+        clouds = 0; //I'll reuse this as a loop counter
+
+        holeEasterEgg = new FunkinSprite(87,289);
+        holeEasterEgg.loadSprite(Paths.image('menus/titleScreen/Bubble_'+ (easterEggs[1] ? 'FireInTheHole' : 'Regular'))); holeEasterEgg.antialiasing = true;
+        holeEasterEgg.animation.addByIndices("Click", 'Bubble_'+ (easterEggs[1] ? 'FireInTheHole' : 'Regular'), [0,1,2,3], '', 24, false);
+        holeEasterEgg.animation.addByIndices("Extra", 'Bubble_'+ (easterEggs[1] ? 'FireInTheHole' : 'Regular'), [4,5,6,7,8,9,10,11], '', 24, false);
+        holeEasterEgg.animation.addByIndices("Return", 'Bubble_'+ (easterEggs[1] ? 'FireInTheHole' : 'Regular'), [3,2,1,0], '', 24, false);
     }
 
     logo = new FunkinSprite(logoLerping[0],logoLerping[1]);
@@ -382,59 +393,33 @@ function update(elapsed) {
     }
 
     if (initialized) {
-        logo.x = CoolUtil.fpsLerp(logo.x, logoLerping[0], 0.1);
-        logo.y = CoolUtil.fpsLerp(logo.y, logoLerping[1], 0.1);
-        logo.scale.x = logo.scale.y = CoolUtil.fpsLerp(logo.scale.y, logoLerping[2], 0.1);
-
-        logoHitbox.width = 564 * logo.scale.x; logoHitbox.height = 335 * logo.scale.y;
-        logoHitbox.x = logo.x - logoHitbox.width/2;
-        logoHitbox.y = logo.y - logoHitbox.height/2;
-
         if (!easterEggs[0]) {
             if (occupiedObject != clouds) cloudTimer += 60 * elapsed;
             clouds.shader.data.uTime.value = [-cloudTimer / 5000];
         }
-    }
-}
-
-var highestIndex = -1;
-var occupiedObject;
-var stoppedCloudTimer = 0;
-
-function postUpdate(elapsed) {
-    if (initialized) {
-        //CHARACTER ANIMATION HANDLER since animation.finishCallback doesn't work on atlases, and animateAtlas.anim.onComplete prevents isPlaying from being true for some reason 
-        characterBoundsGroup.forEach(function (char) {
-            var selChar = characterGroup.members[char.ID];
-
-            if (selChar.isAnimFinished()) {
-                if (selChar.getAnimName() == 'Return') {mainCharacters[char.ID].isClicked = false; mainCharacters[char.ID].loopCount = 0; mainCharacters[char.ID].left = 0;}
-                if (selChar.getAnimName() == 'Extra') {if (mainCharacters[char.ID].loopCount == 12) selChar.playAnim('Return', true); else {selChar.playAnim('Extra', true); mainCharacters[char.ID].loopCount++;}}
-                if (selChar.getAnimName() == 'Click') selChar.playAnim('Extra', true);
-            }
-        });
 
         /*
         CLICK HANDLER
         */
         //for characters, and the logo, hitboxes were fucked up so I had to spoof them with FlxObjects. Too much work to readjust.
+        //Activates whether the mouse is pressed or if there's an occupied object that has been clicked already. Occupied objects will make sure it still does stuff even when mouse is not hovering over it, as long as the mosue is pressec
         if (FlxG.mouse.justPressed || occupiedObject != null) {
-            for (clickObject in [logoHitbox, characterBoundsGroup, clouds]) {
+            for (clickObject in getClickables()) {
+                if (clickObject == null || !clickObject.exists) continue;
+
                 if ((FlxG.mouse.overlaps(clickObject) && occupiedObject == null) || occupiedObject == clickObject) {
                     if (!occupiedObject) {
                         switch (clickObject) {
                             case clouds:
                                 stoppedCloudTimer = cloudTimer;
                         };
-
-                        occupiedObject = clickObject;
                     }
 
                     switch (clickObject) {
                         case logoHitbox:
-                            logo.scale.x = logo.scale.y = CoolUtil.fpsLerp(logo.scale.y, logoLerping[2] * 1.2, 0.2);
-                            logo.x = CoolUtil.fpsLerp(logo.x, logoLerping[0] + 9, 0.2); //Offset's fucked up which is why
-                            logo.y = CoolUtil.fpsLerp(logo.y, logoLerping[1] + 9, 0.2);
+                            logo.scale.x = logo.scale.y = CoolUtil.fpsLerp(logo.scale.y, logoLerping[2] * 1.1, 0.2);
+                            logo.x = CoolUtil.fpsLerp(logo.x, logoLerping[0] + 6, 0.2); //Offset's fucked up which is why
+                            logo.y = CoolUtil.fpsLerp(logo.y, logoLerping[1] + 6, 0.2);
                         case characterBoundsGroup:
                             if (!FlxG.mouse.pressed) {
                                 characterBoundsGroup.forEach(function (char) {
@@ -454,10 +439,63 @@ function postUpdate(elapsed) {
                             //var mouseDistance = Math.sqrt(FlxG.mouse.deltaScreenX * FlxG.mouse.deltaScreenX + FlxG.mouse.deltaScreenY * FlxG.mouse.deltaScreenY);
                             
                             cloudTimer = stoppedCloudTimer + (FlxG.mouse.deltaScreenX / (centerDistance + 1) * 600) * (FlxG.mouse.screenY < clouds.y + clouds.height/2 ? 1 : -1);
+                        case background:
+                            if (!FlxG.mouse.justPressed && !holeEasterEgg.visible) {
+                                holeEasterEgg.visible = true;
+                                holeEasterEgg.playAnim('Click');
+                            }
+                        case foreground:
+                            if (!FlxG.mouse.justPressed && !currentlyUsedObjects.contains(foreground)) {
+                                currentlyUsedObjects.push(foreground);
+                                foreground.y = 250+150; foreground.scale.set(1.03, 0.75);
+
+                                FlxTween.tween(foreground.scale, {x: 1, y: 1}, 1, {ease: FlxEase.elasticOut, onComplete: function() {
+                                    currentlyUsedObjects.remove(foreground);
+                                }});
+                                FlxTween.tween(foreground, {y: 190+150}, 1, {ease: FlxEase.elasticOut});
+                            }
                     };
+
+                    occupiedObject = clickObject;
 
                     break;
                 }
+            }
+        }
+
+        if (occupiedObject != logoHitbox) {
+            logo.x = CoolUtil.fpsLerp(logo.x, logoLerping[0], 0.1);
+            logo.y = CoolUtil.fpsLerp(logo.y, logoLerping[1], 0.1);
+            logo.scale.x = logo.scale.y = CoolUtil.fpsLerp(logo.scale.y, logoLerping[2], 0.1);
+        }
+
+        logoHitbox.width = 564 * logo.scale.x; logoHitbox.height = 335 * logo.scale.y;
+        logoHitbox.x = logo.x - logoHitbox.width/2;
+        logoHitbox.y = logo.y - logoHitbox.height/2;
+    }
+}
+
+var highestIndex = -1;
+var occupiedObject;
+var stoppedCloudTimer = 0;
+
+function postUpdate(elapsed) {
+    if (initialized) {
+        //CHARACTER ANIMATION HANDLER since animation.finishCallback doesn't work on atlases, and animateAtlas.anim.onComplete prevents isPlaying from being true for some reason, causing anims to be static
+        //IF ONLY ISPLAYING WASN'T READ-ONLY FUCK ME SIDEWAYS
+        if (!easterEggs[0]) { characterBoundsGroup.forEach(function (char) {
+            var selChar = characterGroup.members[char.ID];
+
+            if (selChar.isAnimFinished()) {
+                if (selChar.getAnimName() == 'Return') {mainCharacters[char.ID].isClicked = false; mainCharacters[char.ID].loopCount = 0; mainCharacters[char.ID].left = 0;}
+                if (selChar.getAnimName() == 'Extra') {if (mainCharacters[char.ID].loopCount == 12) selChar.playAnim('Return', true); else {selChar.playAnim('Extra', true); mainCharacters[char.ID].loopCount++;}}
+                if (selChar.getAnimName() == 'Click') selChar.playAnim('Extra', true);
+            }
+        });} else {
+            if (holeEasterEgg.visible && holeEasterEgg.isAnimFinished()) {
+                if (holeEasterEgg.getAnimName() == 'Return') {clouds = 0; holeEasterEgg.visible = false;}
+                if (holeEasterEgg.getAnimName() == 'Extra') {if (clouds == 12) holeEasterEgg.playAnim('Return', true); else {holeEasterEgg.playAnim('Extra', true); clouds++;}}
+                if (holeEasterEgg.getAnimName() == 'Click') holeEasterEgg.playAnim('Extra', true);
             }
         }
 
@@ -646,11 +684,21 @@ function skipIntro() {
             add(characterBoundsGroup);
             characterBoundsGroup.exists = true;
             pushToClickables(characterBoundsGroup);
+            pushToClickables(foreground);
         }}));
-        skippableTweens.push(FlxTween.tween(characterGroup.scale, {x: 1, y: 1}, 1, {ease: FlxEase.quartOut, startDelay: 1}));
+        skippableTweens.push(FlxTween.tween(characterGroup.scale, {x: 1, y: 1}, 1, {ease: FlxEase.quartOut, startDelay: 0.9}));
+        for (i in characterGroup.members) {
+            skippableTweens.push(FlxTween.color(i.animateAtlas, 1.5, 0xFF000000, 0xFFFFFFFF, {ease: FlxEase.quartOut, startDelay: 0.9}));
+        }
 
-        skippableTweens.push(FlxTween.tween(foreground.scale, {x: 1, y: 1}, 1, {ease: FlxEase.quartOut, startDelay: 0.85}));
-        skippableTweens.push(FlxTween.tween(foreground, {y: foreground.y - 610}, 1, {ease: FlxEase.quartOut, startDelay: 0.85}));
+        skippableTweens.push(FlxTween.tween(foreground.scale, {x: 1, y: 1}, 1, {ease: FlxEase.quartOut, startDelay: 0.85, onComplete: function(tween){
+        }}));
+        skippableTweens.push(FlxTween.tween(foreground, {y: foreground.y - 610}, 1, {ease: FlxEase.quartOut, startDelay: 0.85, onComplete: function(tween) {
+            foreground.updateHitbox();
+            foreground.height -= 300;
+            foreground.offset.y = 150;
+            foreground.y += 150;
+        }}));
 
         skippableTweens.push(FlxTween.tween(background.scale, {x: 1, y: 1}, 1, {ease: FlxEase.quartOut, startDelay: 0.75}));
         skippableTweens.push(FlxTween.tween(background, {y: background.y - background.height + 20}, 1, {ease: FlxEase.quartOut, startDelay: 0.75}));
@@ -661,8 +709,9 @@ function skipIntro() {
             pushToClickables(clouds);
         }}));
         skippableTweens.push(FlxTween.tween(clouds, {y: clouds.y - 210}, 1.5, {ease: FlxEase.quartOut}));
-
-        charDance();
+    } else {
+        add(background); pushToClickables(background);
+        add(holeEasterEgg); holeEasterEgg.visible = false;
     }
     
     if (initialized) {
@@ -670,4 +719,8 @@ function skipIntro() {
             tween.percent = 1;
         }
     } else initialized = true;
+
+    if (!easterEggs[0]) {
+        charDance();
+    }
 }
