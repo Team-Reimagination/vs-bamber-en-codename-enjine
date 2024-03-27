@@ -13,6 +13,10 @@ import openfl.filters.BlurFilter;
 import openfl.geom.Matrix;
 import funkin.savedata.FunkinSave;
 import flixel.FlxObject;
+import Date;
+import flixel.text.FlxText;
+import flixel.text.FlxTextBorderStyle;
+import flixel.addons.display.FlxBackdrop;
 
 public static var initialized = false; //post-intro sequence check
 public static var preIntro = true; //pre-intro sequence check
@@ -20,9 +24,10 @@ public static var preIntro = true; //pre-intro sequence check
 var skippableTweens = []; //Tweens that will be stored here will be skipped when you restart the state, or if you go into it from somewhere else
 
 var earth, cloudEmitter, windEmitter, fallingBF, fallingGF, birdFlock, constellation, constellationSound, preTitleTextGroup, parachute, windAmbience; //they all don't get assigned anything if the state was initialized beforehand
-var logo, foreground, background, clouds, mainCharacterDiffs, mainCharacters, characterGroup, characterBoundsGroup, logoHitbox, holeEasterEgg; //THESE on the other hand...
+var logo, foreground, background, clouds, mainCharacterDiffs, mainCharacters, characterGroup, characterBoundsGroup, logoHitbox, holeEasterEgg, teamText, startBar; //THESE on the other hand...
 
 public static var logoLerping = [FlxG.width/2, FlxG.height/2, 1]; //This will adjust the position of the logo
+public static var barLerping = 0; //Bar Scale
 
 var skybox = new FlxGradient().createGradientFlxSprite(1, 66, [0xFF272BC2, 0xFF007DE7, 0xFF74E9FF, 0xFFDBF9FF]); skybox.scale.set(FlxG.width,FlxG.height/64); skybox.screenCenter(); //Skybox
 
@@ -267,7 +272,7 @@ function setupTitleStuff() {
         }
     } else {
         background = new FlxSprite(0,0).loadGraphic(Paths.image('menus/titleScreen/'+ (easterEggs[1] ? 'FIREINTHEHOLE' : 'ImpactSilhouette')));
-        background.antialiasing = true;
+        background.antialiasing = true; add(background); background.visible = false;
 
         clouds = 0; //I'll reuse this as a loop counter
 
@@ -277,6 +282,13 @@ function setupTitleStuff() {
         holeEasterEgg.animation.addByIndices("Extra", 'Bubble_'+ (easterEggs[1] ? 'FireInTheHole' : 'Regular'), [4,5,6,7,8,9,10,11], '', 24, false);
         holeEasterEgg.animation.addByIndices("Return", 'Bubble_'+ (easterEggs[1] ? 'FireInTheHole' : 'Regular'), [3,2,1,0], '', 24, false);
     }
+
+    teamText = new FlxText(FlxG.width/5*3,FlxG.height,FlxG.width/5*2-12, "Team Reimagination 2022 - "+Date.now().getFullYear()).setFormat(Paths.font('TW Cen MT B.ttf'), 24, 0xFFFFB6B6, 'right', FlxTextBorderStyle.OUTLINE, 0xff210038);
+    teamText.updateHitbox(); teamText.borderSize = 2;
+    teamText.cameras = [menuCamera];
+
+    startBar = new FlxBackdrop(Paths.image('menus/titleScreen/StartBar'), FlxAxes.X); startBar.velocity.x = -40; startBar.y = 620; startBar.antialiasing = true; add(startBar); startBar.alpha = 0.6; startBar.scale.y = barLerping;
+    startBar.width = Math.pow(2,24); //it's rather extreme but I had to manipulate the hitbox since it doesn't repeat for every tile in FlxBackdrop.
 
     logo = new FunkinSprite(logoLerping[0],logoLerping[1]);
     logo.loadSprite(Paths.image('menus/titleScreen/logo'));
@@ -346,7 +358,7 @@ function removeText() {
 function spawnParachute(whichLine) {
     parachute.loadGraphic(Paths.image('menus/titleScreen/Parachute'+FlxG.random.int(1,13))); parachute.alpha = 1;
 
-    FlxG.sound.play(Paths.sound('titleScreen/ParachuteOpen'), getVolume(0.5, 'sfx'));
+    FlxG.sound.play(Paths.sound('titleScreen/ParachuteOpen'), getVolume(0.25, 'sfx'));
 
     parachute.x = preTitleTextGroup.members[whichLine].x;
     parachute.y = preTitleTextGroup.members[whichLine].y - parachute.height/2 + 30;
@@ -371,19 +383,12 @@ function update(elapsed) {
         skipTeaser();
     }
 
-    //PROGRESSION
-    if (!initialized) conditionProcess = controls.ACCEPT || FlxG.mouse.justReleased;
-    else conditionProcess = controls.ACCEPT;
-
-    if (conditionProcess) {
-        (preIntro == true) ? skipTeaser() : ((initialized == false) ? skipIntro() : FlxG.switchState(new MainMenuState())); //the switchstate is a placeholder thing
-    }
-
     if (FlxG.keys.justPressed.F9) { //DEV, REMOVE ONCE DONE!
         preIntro = true;
         initialized = false;
         FlxG.sound.music.stop();
         logoLerping = [FlxG.width/2, FlxG.height/2, 1];
+        barLerping = 0;
         FlxG.resetState();
     }
 
@@ -453,6 +458,23 @@ function update(elapsed) {
                                     currentlyUsedObjects.remove(foreground);
                                 }});
                                 FlxTween.tween(foreground, {y: 190+150}, 1, {ease: FlxEase.elasticOut});
+
+                                FlxG.sound.play(Paths.sound('titleScreen/RustlingLeaves'), getVolume(1, 'sfx'));
+                            }
+                        case startBar | teamText:
+                            if (!FlxG.mouse.justPressed && !currentlyUsedObjects.contains(clickObject)) {
+                                currentlyUsedObjects.push(clickObject);
+
+                                var startedFlipY = clickObject.flipY;
+                                
+                                FlxTween.num(clickObject.scale.y, clickObject.scale.y * -1, 0.6, {ease: FlxEase.elasticOut, onComplete: function() {
+                                    currentlyUsedObjects.remove(clickObject);
+                                }}, function(value) {
+                                    if (value < 0) clickObject.flipY = !startedFlipY;
+                                    clickObject.scale.y = Math.abs(value);
+                                });
+
+                                FlxG.sound.play(Paths.sound('titleScreen/WhipWoosh'), getVolume(1, 'sfx'));
                             }
                     };
 
@@ -468,10 +490,20 @@ function update(elapsed) {
             logo.y = CoolUtil.fpsLerp(logo.y, logoLerping[1], 0.1);
             logo.scale.x = logo.scale.y = CoolUtil.fpsLerp(logo.scale.y, logoLerping[2], 0.1);
         }
+        
+        startBar.scale.y = CoolUtil.fpsLerp(startBar.scale.y, barLerping, 0.1);
 
         logoHitbox.width = 564 * logo.scale.x; logoHitbox.height = 335 * logo.scale.y;
         logoHitbox.x = logo.x - logoHitbox.width/2;
         logoHitbox.y = logo.y - logoHitbox.height/2;
+    }
+
+    //PROGRESSION
+    if (!initialized) conditionProcess = controls.ACCEPT || FlxG.mouse.justPressed;
+    else conditionProcess = controls.ACCEPT;
+
+    if (conditionProcess) {
+        (preIntro == true) ? skipTeaser() : ((initialized == false) ? skipIntro() : FlxG.switchState(new MainMenuState())); //the switchstate is a placeholder thing
     }
 }
 
@@ -533,7 +565,7 @@ function skipTeaser() {
 
         CoolUtil.playMenuSong(false);
         Conductor.changeBPM(150);
-        FlxG.sound.music.volume = getVolume(1, 'music');
+        FlxG.sound.music.volume = getVolume(0.3, 'music');
 
         skybox.alpha = earth.alpha = 1;
         earth.velocity.y = -21;
@@ -570,7 +602,7 @@ function skipTeaser() {
             birdElements = keyframe.getList();
         }
 
-        windAmbience = FlxG.sound.play(Paths.sound('titleScreen/WindAmbience'), getVolume(0.5, 'sfx'));
+        windAmbience = FlxG.sound.play(Paths.sound('titleScreen/WindAmbience'), getVolume(0.25, 'sfx'));
 
         beatHit(0);
     }
@@ -673,6 +705,11 @@ function skipIntro() {
         logoLerping = [FlxG.width/2, FlxG.height/3.9, 0.95];
     }
 
+    add(teamText); pushToClickables(teamText);
+    skippableTweens.push(FlxTween.tween(teamText, {y: FlxG.height - 5 - teamText.height}, 1, {ease: FlxEase.quartOut}));
+
+    barLerping = 1; pushToClickables(startBar);
+
     logo.playAnim('Idle0', true);
     logo.alpha = 1;
     add(logoHitbox); pushToClickables(logoHitbox);
@@ -710,7 +747,7 @@ function skipIntro() {
         }}));
         skippableTweens.push(FlxTween.tween(clouds, {y: clouds.y - 210}, 1.5, {ease: FlxEase.quartOut}));
     } else {
-        add(background); pushToClickables(background);
+        background.visible = true; pushToClickables(background);
         add(holeEasterEgg); holeEasterEgg.visible = false;
     }
     
