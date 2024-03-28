@@ -23,8 +23,11 @@ public static var preIntro = true; //pre-intro sequence check
 
 var skippableTweens = []; //Tweens that will be stored here will be skipped when you restart the state, or if you go into it from somewhere else
 
-var earth, cloudEmitter, windEmitter, fallingBF, fallingGF, birdFlock, constellation, constellationSound, preTitleTextGroup, parachute, windAmbience; //they all don't get assigned anything if the state was initialized beforehand
-var logo, foreground, background, clouds, mainCharacterDiffs, mainCharacters, characterGroup, characterBoundsGroup, logoHitbox, holeEasterEgg, teamText, startBar; //THESE on the other hand...
+var earth, cloudEmitter, windEmitter, fallingBF, fallingGF, birdFlock, constellation, preTitleTextGroup, parachute; //they all don't get assigned anything if the state was initialized beforehand
+var logo, foreground, background, clouds, mainCharacterDiffs, mainCharacters, characterGroup, characterBoundsGroup, logoHitbox, holeEasterEgg, teamText, startBar, startText; //THESE on the other hand...
+
+//SFX
+var constellationSound, windAmbience, vinylSound;
 
 public static var logoLerping = [FlxG.width/2, FlxG.height/2, 1]; //This will adjust the position of the logo
 public static var barLerping = 0; //Bar Scale
@@ -77,30 +80,30 @@ if (!easterEggs[0]) {
     mainCharacters = [
         {
             "sheet": getName("Davey", 1),
-            "isLocked": mainCharacterDiffs[1] == "Locked",
+            "isLocked": (mainCharacterDiffs[1] == "Locked"),
             "isClicked": false,
             "loopCount": 0,
             "left": 0,
-            "bounds": switch (mainCharacterDiffs[1]) {case "Locked": [67,416,322,304]; case "Easy": [67,416,322,304]; case "Normal": [61,371,357,349]; case "Hard": [55,330,240,390];},
+            "bounds": switch (mainCharacterDiffs[1]) {case "Easy": [67,416,322,304]; case "Normal": [61,371,357,349]; case "Hard": [55,330,240,390];},
             "anims": {
-                "idleIndexes": switch (mainCharacterDiffs[1]) {case "Locked": [[for (i in 1...13) i]]; default: [[for (i in 1...14) i],[for (i in 14...28) i]];},
-                "clickIndexes": switch (mainCharacterDiffs[1]) {case "Locked": [for (i in 13...21) i]; case "Easy": [for (i in 29...41) i]; case "Normal": [for (i in 29...37) i]; case "Hard": [for (i in 29...55) i];},
-                "extraIndexes": switch (mainCharacterDiffs[1]) {case "Locked": [for (i in 21...33) i]; case "Easy": [for (i in 41...53) i]; case "Normal": [36,36,36,36,36,36,36,36,36,36,36,36,36,36,36]; case "Hard": [for (i in 70...91) i];},
-                "returnIndexes": switch (mainCharacterDiffs[1]) {case "Locked": [20,19,18,17,16,15,14,13]; case "Easy": [for (i in 53...65) i]; case "Normal": [36,35,34,33,32,31,30,29]; case "Hard": [for (i in 91...98) i];},
+                "idleIndexes": [[for (i in 1...14) i],[for (i in 14...28) i]],
+                "clickIndexes": switch (mainCharacterDiffs[1]) {case "Easy": [for (i in 29...41) i]; case "Normal": [for (i in 29...37) i]; case "Hard": [for (i in 29...55) i];},
+                "extraIndexes": switch (mainCharacterDiffs[1]) {case "Easy": [for (i in 41...53) i]; case "Normal": [36,36,36,36,36,36,36,36,36,36,36,36,36,36,36]; case "Hard": [for (i in 70...91) i];},
+                "returnIndexes": switch (mainCharacterDiffs[1]) {case "Easy": [for (i in 53...65) i]; case "Normal": [36,35,34,33,32,31,30,29]; case "Hard": [for (i in 91...98) i];},
             }
         },
         {
             "sheet": getName("RnB", 2),
-            "isLocked": mainCharacterDiffs[2] == "Locked",
+            "isLocked": (mainCharacterDiffs[2] == "Locked"),
             "isClicked": false,
             "loopCount": 0,
             "left": 0,
-            "bounds": switch (mainCharacterDiffs[2]) {case "Locked": [990,356,214,364]; case "Easy": [990,356,214,364]; case "Normal": [973,338,261,382]; case "Hard": [891,217,343,503];},
+            "bounds": switch (mainCharacterDiffs[2]) {case "Easy": [990,356,214,364]; case "Normal": [973,338,261,382]; case "Hard": [891,217,343,503];},
             "anims": {
-                "idleIndexes": [switch (mainCharacterDiffs[2]) {case "Locked": [for (i in 1...13) i]; default: [for (i in 1...15) i];}],
-                "clickIndexes": switch (mainCharacterDiffs[2]) {case "Locked": [for (i in 13...21) i]; case "Easy": [for (i in 15...23) i]; case "Normal": [for (i in 15...26) i]; case "Hard": [for (i in 15...24) i];},
-                "extraIndexes": switch (mainCharacterDiffs[2]) {case "Locked": [for (i in 21...33) i]; case "Easy": [for (i in 23...31) i]; case "Normal": [25,25,25,25,25,25,25,25,25,25]; case "Hard": [22,22,22,22,22,22,22,22,22,22];},
-                "returnIndexes": switch (mainCharacterDiffs[2]) {case "Locked": [20,19,18,17,16,15,14,13]; case "Easy": [22,21,20,19,18,17,16,15]; case "Normal": [25,24,23,22,21,20,19,18,17,16,15]; case "Hard": [22,21,20,19,18,17,16,15];},
+                "idleIndexes": [[for (i in 1...15) i]],
+                "clickIndexes": switch (mainCharacterDiffs[2]) {case "Easy": [for (i in 15...23) i]; case "Normal": [for (i in 15...26) i]; case "Hard": [for (i in 15...24) i];},
+                "extraIndexes": switch (mainCharacterDiffs[2]) {case "Easy": [for (i in 23...31) i]; case "Normal": [25,25,25,25,25,25,25,25,25,25]; case "Hard": [22,22,22,22,22,22,22,22,22,22];},
+                "returnIndexes": switch (mainCharacterDiffs[2]) {case "Easy": [22,21,20,19,18,17,16,15]; case "Normal": [25,24,23,22,21,20,19,18,17,16,15]; case "Hard": [22,21,20,19,18,17,16,15];},
             }
         },
         {
@@ -133,16 +136,16 @@ if (!easterEggs[0]) {
         },
         {
             "sheet": getName("Bamber", 0),
-            "isLocked": mainCharacterDiffs[0] == "Locked",
+            "isLocked": (mainCharacterDiffs[0] == "Locked"),
             "isClicked": false,
             "loopCount": 0,
             "left": 0,
-            "bounds": switch (mainCharacterDiffs[0]) {case "Locked": [168,545,136,175]; case "Easy": [168,545,136,175]; case "Normal": [233,500,170,220]; case "Hard": [258,451,205,269];},
+            "bounds": switch (mainCharacterDiffs[0]) {case "Easy": [168,545,136,175]; case "Normal": [233,500,170,220]; case "Hard": [258,451,205,269];},
             "anims": {
-                "idleIndexes": [switch (mainCharacterDiffs[0]) {case "Locked": [for (i in 1...13) i]; default: [for (i in 1...15) i];}],
-                "clickIndexes": switch (mainCharacterDiffs[0]) {case "Locked": [for (i in 13...21) i]; case "Easy": [for (i in 15...24) i]; case "Normal": [for (i in 15...24) i]; case "Hard": [for (i in 15...22) i];},
-                "extraIndexes": switch (mainCharacterDiffs[0]) {case "Locked": [for (i in 21...33) i]; case "Easy": [23,23,23,23,23,23,23,23,23,23]; case "Normal": [23,23,23,23,23,23,23,23]; case "Hard": [for (i in 22...40) i];},
-                "returnIndexes": switch (mainCharacterDiffs[0]) {case "Locked": [20,19,18,17,16,15,14,13]; case "Easy": [23,22,21,20,19,18,17,16,15]; case "Normal": [23,22,21,20,19,18,17,16,15]; case "Hard": [for (i in 40...50) i];},
+                "idleIndexes": [[for (i in 1...15) i]],
+                "clickIndexes": switch (mainCharacterDiffs[0]) {case "Easy": [for (i in 15...24) i]; case "Normal": [for (i in 15...24) i]; case "Hard": [for (i in 15...22) i];},
+                "extraIndexes": switch (mainCharacterDiffs[0]) {case "Easy": [23,23,23,23,23,23,23,23,23,23]; case "Normal": [23,23,23,23,23,23,23,23]; case "Hard": [for (i in 22...40) i];},
+                "returnIndexes": switch (mainCharacterDiffs[0]) {case "Easy": [23,22,21,20,19,18,17,16,15]; case "Normal": [23,22,21,20,19,18,17,16,15]; case "Hard": [for (i in 40...50) i];},
             }
         }
     ];
@@ -239,6 +242,10 @@ function setupTitleStuff() {
         clouds.alpha = 0.001; clouds.scale.x = clouds.scale.y = 3*5.6;
         clouds.screenCenter(); add(clouds);
         clouds.shader = new CustomShader('smoothRotate');
+
+        vinylSound = FlxG.sound.load(Paths.sound('titleScreen/vinyl'), getVolume(0.5, 'sfx'), true);
+        vinylSound.play();
+        vinylSound.pitch = 0;
         
         background = new FlxSprite(0, 0).loadGraphic(Paths.image('menus/titleScreen/Background')); background.screenCenter(); background.y = FlxG.height + 20;
         background.antialiasing = true; add(background); background.scale.x = background.scale.y = 1.1;
@@ -249,6 +256,9 @@ function setupTitleStuff() {
         characterGroup.scale.x = characterGroup.scale.y = 5;
 
         characterBoundsGroup.exists = false;
+        add(characterBoundsGroup);
+
+        mainCharacters = mainCharacters.filter(x -> !x.isLocked);
 
         for (char in 0...mainCharacters.length) {
             var charSprite = new FunkinSprite();
@@ -265,7 +275,7 @@ function setupTitleStuff() {
             charSprite.ID = char;
             charSprite.antialiasing = true;
             characterGroup.add(charSprite);
-
+            
             var charBound = new FlxObject(mainCharacters[char].bounds[0], mainCharacters[char].bounds[1], mainCharacters[char].bounds[2], mainCharacters[char].bounds[3]);
             charBound.ID = char;
             characterBoundsGroup.add(charBound);
@@ -289,6 +299,15 @@ function setupTitleStuff() {
 
     startBar = new FlxBackdrop(Paths.image('menus/titleScreen/StartBar'), FlxAxes.X); startBar.velocity.x = -40; startBar.y = 620; startBar.antialiasing = true; add(startBar); startBar.alpha = 0.6; startBar.scale.y = barLerping;
     startBar.width = Math.pow(2,24); //it's rather extreme but I had to manipulate the hitbox since it doesn't repeat for every tile in FlxBackdrop.
+
+    startText = new Alphabet(0, 0, "PRESS "+CoolUtil.keyToString(Reflect.field(Options, 'P1_ACCEPT')[0])+" OR CLICK HERE", true, false); startText.antialiasing = true; add(startText); startText.scale.x = 0.7; startText.scale.y = barLerping;
+    startText.updateHitbox();
+    for (i in 0...startText.members.length) {
+        startText.members[i].x -= 15 * i;
+        startText.members[i].offset.set(0,0);
+    }
+    startText.screenCenter();
+    startText.y = startBar.y - 12;
 
     logo = new FunkinSprite(logoLerping[0],logoLerping[1]);
     logo.loadSprite(Paths.image('menus/titleScreen/logo'));
@@ -317,28 +336,38 @@ function getIntroTextShit() {
 
 var allTexts = getIntroTextShit();
 
-function addMoreText(text:String, offset = 0, offLoad = 0){
+function addText(text:String, offset = 0, offLoad = 0){
 	var coolText:Alphabet = new Alphabet(0, ((preTitleTextGroup.length - offLoad) * 60), text, true, false);
     coolText.scale.set(0.65, 0.65);
+    coolText.targetY = 0;
 
-    coolText.y = -300 + ((preTitleTextGroup.length - offLoad) * 60);
-    skippableTweens.push(FlxTween.tween(coolText, {y: FlxG.height/3 + ((preTitleTextGroup.length - offLoad) * 60) + offset}, 0.4, {ease: FlxEase.quartOut}));
+    coolText.y = -300 + ((preTitleTextGroup.length - offLoad) * (coolText.height/5*3));
+    skippableTweens.push(FlxTween.tween(coolText, {y: FlxG.height/4 + ((preTitleTextGroup.length - offLoad) * (coolText.height/5*3)) + offset}, 0.4, {ease: FlxEase.quartOut}));
 
     for (i in 0...coolText.members.length) {
-        coolText.members[i].x -= 15 * i;
+        coolText.members[i].x -= 14 * i;
+        coolText.members[i].offset.set(0,0);
     }
 
     if (coolText.width >= 680) {
         var textWidth = coolText.width;
+        coolText.scale.x *= 680 / textWidth;
+
         for (i in 0...coolText.members.length) {
-            coolText.members[i].scale.x *= 680 / textWidth;
-            coolText.members[i].x += -coolText.members[i].x + 680 / coolText.members.length * i;
+            coolText.members[i].x -= 10 * 680 / textWidth * i;
         }
     }
 
 	coolText.screenCenter(FlxAxes.X);
 
 	preTitleTextGroup.add(coolText);
+}
+
+function recolorText(row, indexes, newColor) {
+    for (num in indexes[0]...(indexes[1]+1)) {
+        var selectedLetter = preTitleTextGroup.members[row].members[num];
+        if (selectedLetter != null && selectedLetter.color != null) selectedLetter.color = newColor;
+    }
 }
 
 function removeText() {
@@ -361,7 +390,7 @@ function spawnParachute(whichLine) {
     FlxG.sound.play(Paths.sound('titleScreen/ParachuteOpen'), getVolume(0.25, 'sfx'));
 
     parachute.x = preTitleTextGroup.members[whichLine].x;
-    parachute.y = preTitleTextGroup.members[whichLine].y - parachute.height/2 + 30;
+    parachute.y = preTitleTextGroup.members[whichLine].y - parachute.height/2 + 80;
 
     parachute.setGraphicSize(preTitleTextGroup.members[whichLine].width, parachute.height);
     parachute.updateHitbox();
@@ -421,7 +450,12 @@ function update(elapsed) {
                     }
 
                     switch (clickObject) {
+                        case startText:
+                            trace('HI');
+                            processSelection();
                         case logoHitbox:
+                            if (occupiedObject == null) FlxG.sound.play(Paths.sound('titleScreen/zoom'), getVolume(1, 'sfx'));
+
                             logo.scale.x = logo.scale.y = CoolUtil.fpsLerp(logo.scale.y, logoLerping[2] * 1.1, 0.2);
                             logo.x = CoolUtil.fpsLerp(logo.x, logoLerping[0] + 6, 0.2); //Offset's fucked up which is why
                             logo.y = CoolUtil.fpsLerp(logo.y, logoLerping[1] + 6, 0.2);
@@ -444,6 +478,8 @@ function update(elapsed) {
                             //var mouseDistance = Math.sqrt(FlxG.mouse.deltaScreenX * FlxG.mouse.deltaScreenX + FlxG.mouse.deltaScreenY * FlxG.mouse.deltaScreenY);
                             
                             cloudTimer = stoppedCloudTimer + (FlxG.mouse.deltaScreenX / (centerDistance + 1) * 600) * (FlxG.mouse.screenY < clouds.y + clouds.height/2 ? 1 : -1);
+                            vinylSound.pitch = Math.abs(FlxG.mouse.deltaScreenX / (centerDistance + 1) * 6);
+                            if (vinylSound.time > vinylSound.length) vinylSound.time = 0;
                         case background:
                             if (!FlxG.mouse.justPressed && !holeEasterEgg.visible) {
                                 holeEasterEgg.visible = true;
@@ -492,6 +528,7 @@ function update(elapsed) {
         }
         
         startBar.scale.y = CoolUtil.fpsLerp(startBar.scale.y, barLerping, 0.1);
+        startText.scale.y = startBar.scale.y * 0.7;
 
         logoHitbox.width = 564 * logo.scale.x; logoHitbox.height = 335 * logo.scale.y;
         logoHitbox.x = logo.x - logoHitbox.width/2;
@@ -503,8 +540,12 @@ function update(elapsed) {
     else conditionProcess = controls.ACCEPT;
 
     if (conditionProcess) {
-        (preIntro == true) ? skipTeaser() : ((initialized == false) ? skipIntro() : FlxG.switchState(new MainMenuState())); //the switchstate is a placeholder thing
+        (preIntro == true) ? skipTeaser() : ((initialized == false) ? skipIntro() : processSelection()); //the switchstate is a placeholder thing
     }
+}
+
+function processSelection() {
+    //FlxG.switchState(new MainMenuState());
 }
 
 var highestIndex = -1;
@@ -531,7 +572,10 @@ function postUpdate(elapsed) {
             }
         }
 
-        if (occupiedObject != null && !FlxG.mouse.pressed) occupiedObject = null;
+        if (occupiedObject != null && !FlxG.mouse.pressed) {
+            occupiedObject = null;
+            vinylSound.pitch = 0;
+        }
     }
 }
 
@@ -612,13 +656,16 @@ function beatHit(curBeat) {
     if (!initialized) {
         switch curBeat {
             case 0:
-                addMoreText("Team Reimagination");
+                addText("TEAM REIMAGINATION");
+                recolorText(0,[0,99],0xffE394B0);
             case 2:
-                addMoreText("and the rest of");
+                addText("and the rest of");
             case 3:
-                addMoreText("The BND Team");
+                addText("THE BND TEAM");
+                recolorText(2,[4,4],0xff91E11A);
+                recolorText(2,[6,6],0xff4E8DE3);
             case 4:
-                addMoreText("present");
+                addText("present");
 
             case 6:
                 spawnParachute(0);
@@ -626,11 +673,13 @@ function beatHit(curBeat) {
                 removeText();
 
             case 8:
-                addMoreText("An interpretation", 30, 4);
+                addText("An interpretation", 30, 4);
             case 10:
-                addMoreText("of", 30, 4);
+                addText("of", 30, 4);
             case 12:
-                addMoreText("Vs. Dave & Bambi", 30, 4);
+                addText("VS. DAVE & BAMBI", 30, 4);
+                recolorText(6,[4,7],0xff4E8DE3);
+                recolorText(6,[11,99],0xff91E11A);
 
             case 14:
                 spawnParachute(4);
@@ -655,9 +704,9 @@ function beatHit(curBeat) {
                 var picked = FlxG.random.int(0, allTexts.length-1, usedTexts);
                 usedTexts.push(picked);
                 curWacky = allTexts[picked];
-                addMoreText(curWacky[0], 60, 7 + (curBeat == 20 ? 2 : 0));
+                addText(curWacky[0], 60, 7 + (curBeat == 20 ? 2 : 0));
             } else if (curBeat % 4 == 1) {
-                addMoreText(curWacky[1], 60, 7 + (curBeat == 21 ? 2 : 0));
+                addText(curWacky[1], 60, 7 + (curBeat == 21 ? 2 : 0));
             } else if (curBeat % 4 == 2) {
                 spawnParachute(7 + (curBeat == 22 ? 2 : 0));
             } else if (curBeat % 4 == 3) {
@@ -708,7 +757,8 @@ function skipIntro() {
     add(teamText); pushToClickables(teamText);
     skippableTweens.push(FlxTween.tween(teamText, {y: FlxG.height - 5 - teamText.height}, 1, {ease: FlxEase.quartOut}));
 
-    barLerping = 1; pushToClickables(startBar);
+    pushToClickables(startText);
+    barLerping = 1; pushToClickables(startBar); 
 
     logo.playAnim('Idle0', true);
     logo.alpha = 1;
@@ -718,7 +768,6 @@ function skipIntro() {
         clouds.alpha = 1;
 
         skippableTweens.push(FlxTween.tween(characterGroup, {alpha: 1, y: FlxG.height, x: FlxG.width/2}, 1, {ease: FlxEase.quartOut, startDelay: 1, onComplete: function(tween) {
-            add(characterBoundsGroup);
             characterBoundsGroup.exists = true;
             pushToClickables(characterBoundsGroup);
             pushToClickables(foreground);

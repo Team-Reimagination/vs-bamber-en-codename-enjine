@@ -1,0 +1,104 @@
+<!DOCTYPE codename-engine-alphabet>
+<letters fps="24" spritesheet="alphabets/default">
+	<!-- Symbols !-->
+	<letter char="$"        anim="$" />
+	<letter char="#"        anim="#" />
+	<letter char="%"        anim="%" />
+	<letter char="&amp;"    anim="Ampersand" />
+	<letter char="("        anim="(" />
+	<letter char=")"        anim=")" />
+	<letter char="*"        anim="Asterisk"/>
+	<letter char="'"        anim="'" />
+	<letter char="+"        anim="+" />
+	<letter char="-"        anim="-" />
+	<letter char="0"        anim="0" />
+	<letter char="1"        anim="1" />
+	<letter char="2"        anim="2" />
+	<letter char="3"        anim="3" />
+	<letter char="4"        anim="4" />
+	<letter char="5"        anim="5" />
+	<letter char="6"        anim="6" />
+	<letter char="7"        anim="7" />
+	<letter char="8"        anim="8" />
+	<letter char="9"        anim="9" />
+	<letter char=":"        anim="Colon" />
+	<letter char=";"        anim=";" />
+	<letter char="<"        anim="Opening Arrow Bracket" />
+	<letter char=">"        anim="Closing Arrow Bracket" />
+	<letter char="="        anim="=" />
+	<letter char="@"        anim="@" />
+	<letter char="|"        anim="Vertical Line" />
+	<letter char="~"        anim="~" />
+	<letter char="["        anim="[" />
+	<letter char="]"        anim="]" />
+	<letter char="."        anim="Period" />
+	<letter char="?"        anim="Question Mark" />
+	<letter char="!"        anim="Exclamation Mark" />
+	<letter char="/"        anim="Forward Slash" />
+	<letter char="\"        anim="Backward Slash" />
+	<letter char="&#34;"    anim="Quote" />
+	<letter char="^"        anim="^" />
+	<letter char="_"        anim="_" />
+	<letter char="`"        anim="`" />
+	<letter char="{"        anim="{" />
+	<letter char="}"        anim="}" />
+	<letter char="°"        anim="Degree" />
+	<letter char="÷"        anim="Divide" />
+	<letter char="×"        anim="Times" />
+
+	<!-- Capital Letters !-->
+	<letter char="A"        anim="A Capital" />
+	<letter char="B"        anim="B Capital" />
+	<letter char="C"        anim="C Capital" />
+	<letter char="D"        anim="D Capital" />
+	<letter char="E"        anim="E Capital" />
+	<letter char="F"        anim="F Capital" />
+	<letter char="G"        anim="G Capital" />
+	<letter char="H"        anim="H Capital" />
+	<letter char="I"        anim="I Capital" />
+	<letter char="J"        anim="J Capital" />
+	<letter char="K"        anim="K Capital" />
+	<letter char="L"        anim="L Capital" />
+	<letter char="M"        anim="M Capital" />
+	<letter char="N"        anim="N Capital" />
+	<letter char="O"        anim="O Capital" />
+	<letter char="P"        anim="P Capital" />
+	<letter char="Q"        anim="Q Capital" />
+	<letter char="R"        anim="R Capital" />
+	<letter char="S"        anim="S Capital" />
+	<letter char="T"        anim="T Capital" />
+	<letter char="U"        anim="U Capital" />
+	<letter char="V"        anim="V Capital" />
+	<letter char="W"        anim="W Capital" />
+	<letter char="X"        anim="X Capital" />
+	<letter char="Y"        anim="Y Capital" />
+	<letter char="Z"        anim="Z Capital" />
+
+	<!-- Lowercase Letters !-->
+	<letter char="a"        anim="A Lowercase" />
+	<letter char="b"        anim="B Lowercase" />
+	<letter char="c"        anim="C Lowercase" />
+	<letter char="d"        anim="D Lowercase" />
+	<letter char="e"        anim="E Lowercase" />
+	<letter char="f"        anim="F Lowercase" />
+	<letter char="g"        anim="G Lowercase" />
+	<letter char="h"        anim="H Lowercase" />
+	<letter char="i"        anim="I Lowercase" />
+	<letter char="j"        anim="J Lowercase" />
+	<letter char="k"        anim="K Lowercase" />
+	<letter char="l"        anim="L Lowercase" />
+	<letter char="m"        anim="M Lowercase" />
+	<letter char="n"        anim="N Lowercase" />
+	<letter char="o"        anim="O Lowercase" />
+	<letter char="p"        anim="P Lowercase" />
+	<letter char="q"        anim="Q Lowercase" />
+	<letter char="r"        anim="R Lowercase" />
+	<letter char="s"        anim="S Lowercase" />
+	<letter char="t"        anim="T Lowercase" />
+	<letter char="u"        anim="U Lowercase" />
+	<letter char="v"        anim="V Lowercase" />
+	<letter char="w"        anim="W Lowercase" />
+	<letter char="x"        anim="X Lowercase" />
+	<letter char="y"        anim="Y Lowercase" />
+	<letter char="z"        anim="Z Lowercase" />
+</letters>
