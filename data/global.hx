@@ -18,6 +18,22 @@ public var clickableObjects = [];
 var isHovering = false;
 var switched = false;
 
+function new() {
+    if (FlxG.save.data.options == null) FlxG.save.data.options = {}; //will be rewritten ONCE the mod is finished
+    if (FlxG.save.data.options.musicVolume == null) FlxG.save.data.options.musicVolume = 1; 
+    if (FlxG.save.data.options.sfxVolume == null) FlxG.save.data.options.sfxVolume = 1;
+    if (FlxG.save.data.options.voiceVolume == null) FlxG.save.data.options.voiceVolume = 1;
+
+    if (FlxG.save.data.gameStats == null) FlxG.save.data.gameStats = {};
+    if (FlxG.save.data.gameStats.discoveries == null) FlxG.save.data.gameStats.discoveries = {
+        "Bamber's Farm": false,
+        "Davey's Yard": false,
+        "Romania Outskirts": false
+    };
+
+    FlxG.save.flush();
+}
+
 function postStateSwitch() {
     if (stateQuotes[ModState.lastName] != null && Type.getClassName(Type.getClass(FlxG.state)) == 'funkin.backend.scripting.ModState') {
         WindowUtils.set_winTitle(stateQuotes[ModState.lastName]);
@@ -67,6 +83,9 @@ function preStateSwitch() { //Switch to where it was meant to be
 function update(elapsed) {
     if (FlxG.keys.justPressed.F5) //DEV: Restarting states
         FlxG.resetState();
+
+    if (FlxG.keys.pressed.CONTROL && FlxG.keys.pressed.R) //DEV: Restarting game
+        FlxG.resetGame();
 
     if (FlxG.keys.justPressed.ANY) {FlxG.mouse.visible = false;} //i wish there was a Controls version so that the gamepad is supported
     if (FlxG.mouse.justMoved || FlxG.mouse.justPressed || FlxG.mouse.justPressedMiddle ||FlxG.mouse.justPressedright) {FlxG.mouse.visible = true;}

@@ -20,6 +20,7 @@ import flixel.addons.display.FlxBackdrop;
 
 public static var initialized = false; //post-intro sequence check
 public static var preIntro = true; //pre-intro sequence check
+public static var isInMenu = false; //if the player is on the main menu or the title screen
 
 var skippableTweens = []; //Tweens that will be stored here will be skipped when you restart the state, or if you go into it from somewhere else
 
@@ -243,9 +244,7 @@ function setupTitleStuff() {
         clouds.screenCenter(); add(clouds);
         clouds.shader = new CustomShader('smoothRotate');
 
-        vinylSound = FlxG.sound.load(Paths.sound('titleScreen/vinyl'), getVolume(0.5, 'sfx'), true);
-        vinylSound.play();
-        vinylSound.pitch = 0;
+        vinylSound = FlxG.sound.load(Paths.sound('titleScreen/vinyl'), getVolume(0.5, 'sfx'), true); vinylSound.pitch = 0;
         
         background = new FlxSprite(0, 0).loadGraphic(Paths.image('menus/titleScreen/Background')); background.screenCenter(); background.y = FlxG.height + 20;
         background.antialiasing = true; add(background); background.scale.x = background.scale.y = 1.1;
@@ -306,6 +305,19 @@ function setupTitleStuff() {
         startText.members[i].x -= 15 * i;
         startText.members[i].offset.set(0,0);
     }
+
+    if (startText.width >= 1000) {
+        var textWidth = startText.width;
+        startText.scale.x *= 1000 / textWidth;
+
+        for (i in 0...startText.members.length) {
+            startText.members[i].scale.x = startText.members[i].scale.x * (1000 / textWidth);
+
+            startText.members[i].x = (i == 0 ? 0 : (startText.members[i-1].x + (startText.members[i-1].width * startText.members[i-1].scale.x)) + 7 * (1000 / textWidth) + (startText.members[i-1].visible ? 0 : 28 * (1000 / textWidth)));
+        }
+        startText.updateHitbox();
+    }
+
     startText.screenCenter();
     startText.y = startBar.y - 12;
 
@@ -354,7 +366,9 @@ function addText(text:String, offset = 0, offLoad = 0){
         coolText.scale.x *= 680 / textWidth;
 
         for (i in 0...coolText.members.length) {
-            coolText.members[i].x -= 10 * 680 / textWidth * i;
+            coolText.members[i].scale.x = coolText.members[i].scale.x * (680 / textWidth);
+
+            coolText.members[i].x = (i == 0 ? 0 : (coolText.members[i-1].x + (coolText.members[i-1].width * coolText.members[i-1].scale.x)) + 7 * (680 / textWidth) + (coolText.members[i-1].visible ? 0 : 28 * (680 / textWidth)));
         }
     }
 
@@ -753,6 +767,8 @@ function skipIntro() {
 
         logoLerping = [FlxG.width/2, FlxG.height/3.9, 0.95];
     }
+
+    vinylSound.play();
 
     add(teamText); pushToClickables(teamText);
     skippableTweens.push(FlxTween.tween(teamText, {y: FlxG.height - 5 - teamText.height}, 1, {ease: FlxEase.quartOut}));
