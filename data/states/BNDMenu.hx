@@ -24,7 +24,7 @@ public static var isInMenu = false; //if the player is on the main menu or the t
 var skippableTweens = []; //Tweens that will be stored here will be skipped when you restart the state, or if you go into it from somewhere else
 
 var earth, cloudEmitter, windEmitter, fallingBF, fallingGF, birdFlock, preTitleTextGroup, parachute; //they all don't get assigned anything if the state was initialized beforehand
-var logo, foreground, background, clouds, mainCharacterDiffs, mainCharacters, characterGroup, characterBoundsGroup, logoHitbox, holeEasterEgg, teamText, startBar, startText; //THESE on the other hand...
+var logo, foreground, background, clouds, mainCharacterDiffs, mainCharacters, characterGroup, logoHitbox, holeEasterEgg, teamText, startBar, startText; //THESE on the other hand...
 
 //MENU STUFF
 public static var menuGroupDrags = [-250, 250]; //I'm doing it like this cuz I want you to be able to drag them for secret messages out of bounds
@@ -86,9 +86,6 @@ var easterEggs = [FlxG.random.int(1,100) == 50, FlxG.random.int(1,10) == 5, FlxG
 
 if (!easterEggs[0]) {
     characterGroup = new FlxTypedSpriteGroup(FlxG.width/2 + 220, FlxG.height*2.5);
-    characterBoundsGroup = new FlxTypedGroup(FlxG.width/2, FlxG.height); //FUUUUUUUUCK MYYYYYYY LIIIIIIFE! Atlases are fucky with hitboxes,,, So I'll be spoofing them. I don't even wanna bother with FlxG.pixelPerfectOverlap, as it's slow, and doesn't work with FlxG.mouse.
-    //FlxG.overlap just returns true for the entire screen when I export atlases from the main timeline instead of the symbol's timeline.
-    //That's why I have to resort to custom objects
 
     //TITLE SCREEN CHARACTER DEFINITIONS
     mainCharacterDiffs = [checkDifficultyDiscover("Bamber's Farm", true), checkDifficultyDiscover("Davey's Yard", true), checkDifficultyDiscover("Romania Outskirts", true)];
@@ -96,10 +93,11 @@ if (!easterEggs[0]) {
         {
             "sheet": getName("Davey", 1),
             "isLocked": (mainCharacterDiffs[1] == "Locked"),
+            "isLocked": true,
             "isClicked": false,
             "loopCount": 0,
             "left": 0,
-            "bounds": switch (mainCharacterDiffs[1]) {case "Easy": [67,416,322,304]; case "Normal": [61,371,357,349]; case "Hard": [55,330,240,390];},
+            "bounds": switch (mainCharacterDiffs[1]) {case "Easy": [400,322,304]; case "Normal": [360,357,349]; case "Hard": [430,240,390];},
             "anims": {
                 "idleIndexes": [[for (i in 1...14) i],[for (i in 14...28) i]],
                 "clickIndexes": switch (mainCharacterDiffs[1]) {case "Easy": [for (i in 29...41) i]; case "Normal": [for (i in 29...37) i]; case "Hard": [for (i in 29...55) i];},
@@ -110,10 +108,11 @@ if (!easterEggs[0]) {
         {
             "sheet": getName("RnB", 2),
             "isLocked": (mainCharacterDiffs[2] == "Locked"),
+            "isLocked": true,
             "isClicked": false,
             "loopCount": 0,
             "left": 0,
-            "bounds": switch (mainCharacterDiffs[2]) {case "Easy": [990,356,214,364]; case "Normal": [973,338,261,382]; case "Hard": [891,217,343,503];},
+            "bounds": switch (mainCharacterDiffs[2]) {case "Easy": [-470,214,364]; case "Normal": [-460,261,382]; case "Hard": [-420,343,503];},
             "anims": {
                 "idleIndexes": [[for (i in 1...15) i]],
                 "clickIndexes": switch (mainCharacterDiffs[2]) {case "Easy": [for (i in 15...23) i]; case "Normal": [for (i in 15...26) i]; case "Hard": [for (i in 15...24) i];},
@@ -127,7 +126,7 @@ if (!easterEggs[0]) {
             "isClicked": false,
             "loopCount": 0,
             "left": 0,
-            "bounds": [642,332,302,388],
+            "bounds": [-140,302,388],
             "anims": {
                 "idleIndexes": [[for(i in 1...15) i]],
                 "clickIndexes": [for(i in 15...24) i],
@@ -141,7 +140,7 @@ if (!easterEggs[0]) {
             "isClicked": false,
             "loopCount": 0,
             "left": 0,
-            "bounds": [426,352,200,368],
+            "bounds": [120,200,368],
             "anims": {
                 "idleIndexes": [[for(i in 1...14) i], [for(i in 15...28) i]],
                 "clickIndexes": [for(i in 29...38) i],
@@ -155,7 +154,7 @@ if (!easterEggs[0]) {
             "isClicked": false,
             "loopCount": 0,
             "left": 0,
-            "bounds": switch (mainCharacterDiffs[0]) {case "Easy": [168,545,136,175]; case "Normal": [233,500,170,220]; case "Hard": [258,451,205,269];},
+            "bounds": switch (mainCharacterDiffs[0]) {case "Easy": [420,136,175]; case "Normal": [330,170,220]; case "Hard": [270,205,269];},
             "anims": {
                 "idleIndexes": [[for (i in 1...15) i]],
                 "clickIndexes": switch (mainCharacterDiffs[0]) {case "Easy": [for (i in 15...24) i]; case "Normal": [for (i in 15...24) i]; case "Hard": [for (i in 15...22) i];},
@@ -286,9 +285,6 @@ function setupTitleStuff() {
         characterGroup.alpha = 0;
         characterGroup.scale.x = characterGroup.scale.y = 5;
 
-        characterBoundsGroup.exists = false;
-        add(characterBoundsGroup);
-
         mainCharacters = mainCharacters.filter(x -> !x.isLocked);
 
         for (char in 0...mainCharacters.length) {
@@ -306,10 +302,15 @@ function setupTitleStuff() {
             charSprite.ID = char;
             charSprite.antialiasing = true;
             characterGroup.add(charSprite);
-            
-            var charBound = new FlxObject(mainCharacters[char].bounds[0], mainCharacters[char].bounds[1], mainCharacters[char].bounds[2], mainCharacters[char].bounds[3]);
-            charBound.ID = char;
-            characterBoundsGroup.add(charBound);
+
+            charSprite.width = mainCharacters[char].bounds[1];
+            charSprite.height = mainCharacters[char].bounds[2];
+
+            charSprite.offset.x = -charSprite.width/2 - mainCharacters[char].bounds[0];
+            charSprite.offset.y = -charSprite.height;
+
+            charSprite.x -= charSprite.width/2 + mainCharacters[char].bounds[0];
+            charSprite.y -= charSprite.height;
         }
     } else {
         background = new FlxSprite(0,0).loadGraphic(Paths.image('menus/titleScreen/'+ (easterEggs[1] ? 'FIREINTHEHOLE' : 'ImpactSilhouette')));
@@ -565,9 +566,9 @@ function update(elapsed) {
 
                         FlxG.sound.play(Paths.sound('titleScreen/RustlingLeaves'), getVolume(1, 'sfx'));
                     }
-                case characterBoundsGroup:
+                case characterGroup:
                     if (occupiedObject == null) {
-                        characterBoundsGroup.forEach(function (char) {
+                        characterGroup.forEach(function (char) {
                             if (FlxG.mouse.overlaps(char) && !mainCharacters[char.ID].isClicked) highestIndex = char.ID;
                     
                             if (char.ID == characterGroup?.members?.length - 1 && highestIndex > -1) {
@@ -660,9 +661,9 @@ function processClickables() {
     clearClickables();
 
     if (!isInMenu) {
-        pushToClickables(teamText); pushToClickables(startText); pushToClickables(startBar); pushToClickables(logoHitbox); 
+        //pushToClickables(teamText); pushToClickables(startText); pushToClickables(startBar); pushToClickables(logoHitbox); 
 
-        if (!easterEggs[0]) { pushToClickables(characterBoundsGroup); pushToClickables(foreground); pushToClickables(clouds); }
+        if (!easterEggs[0]) { pushToClickables(characterGroup);} //pushToClickables(foreground); pushToClickables(clouds); }
         else pushToClickables(background);
     } else {
         buttonGroup.forEach(function (button) {
@@ -711,13 +712,11 @@ function postUpdate(elapsed) {
     if (initialized) {
         //CHARACTER ANIMATION HANDLER since animation.finishCallback doesn't work on atlases, and animateAtlas.anim.onComplete prevents isPlaying from being true for some reason, causing anims to be static
         //IF ONLY ISPLAYING WASN'T READ-ONLY FUCK ME SIDEWAYS
-        if (!easterEggs[0]) { characterBoundsGroup.forEach(function (char) {
-            var selChar = characterGroup.members[char.ID];
-
-            if (selChar.isAnimFinished()) {
-                if (selChar.getAnimName() == 'Return') {mainCharacters[char.ID].isClicked = false; mainCharacters[char.ID].loopCount = 0; mainCharacters[char.ID].left = 0;}
-                if (selChar.getAnimName() == 'Extra') {if (mainCharacters[char.ID].loopCount == 12) selChar.playAnim('Return', true); else {selChar.playAnim('Extra', true); mainCharacters[char.ID].loopCount++;}}
-                if (selChar.getAnimName() == 'Click') selChar.playAnim('Extra', true);
+        if (!easterEggs[0]) { characterGroup.forEach(function (char) {
+            if (char.isAnimFinished()) {
+                if (char.getAnimName() == 'Return') {mainCharacters[char.ID].isClicked = false; mainCharacters[char.ID].loopCount = 0; mainCharacters[char.ID].left = 0;}
+                if (char.getAnimName() == 'Extra') {if (mainCharacters[char.ID].loopCount == 12) char.playAnim('Return', true); else {char.playAnim('Extra', true); mainCharacters[char.ID].loopCount++;}}
+                if (char.getAnimName() == 'Click') char.playAnim('Extra', true);
             }
         });} else {
             if (holeEasterEgg.visible && holeEasterEgg.isAnimFinished()) {
@@ -894,18 +893,15 @@ function skipIntro() {
 
         clouds.alpha = 1;
 
-        if (!initialized) {pushToClickables(characterBoundsGroup); pushToClickables(foreground); pushToClickables(clouds);}
+        if (!initialized) {pushToClickables(characterGroup); pushToClickables(foreground); pushToClickables(clouds);}
 
-        skippableTweens.push(FlxTween.tween(characterGroup, {alpha: 1, y: FlxG.height, x: FlxG.width/2}, 1, {ease: FlxEase.quartOut, startDelay: 1, onComplete: function(tween) {
-            characterBoundsGroup.exists = true;
-        }}));
+        skippableTweens.push(FlxTween.tween(characterGroup, {alpha: 1, y: FlxG.height, x: FlxG.width/2}, 1, {ease: FlxEase.quartOut, startDelay: 1}));
         skippableTweens.push(FlxTween.tween(characterGroup.scale, {x: 1, y: 1}, 1, {ease: FlxEase.quartOut, startDelay: 0.9}));
         for (i in characterGroup.members) {
             skippableTweens.push(FlxTween.color(i.animateAtlas, 1.5, 0xFF000000, 0xFFFFFFFF, {ease: FlxEase.quartOut, startDelay: 0.9}));
         }
 
-        skippableTweens.push(FlxTween.tween(foreground.scale, {x: 1, y: 1}, 1, {ease: FlxEase.quartOut, startDelay: 0.85, onComplete: function(tween){
-        }}));
+        skippableTweens.push(FlxTween.tween(foreground.scale, {x: 1, y: 1}, 1, {ease: FlxEase.quartOut, startDelay: 0.85}));
         skippableTweens.push(FlxTween.tween(foreground, {y: foreground.y - 610}, 1, {ease: FlxEase.quartOut, startDelay: 0.85, onComplete: function(tween) {
             foreground.updateHitbox();
             foreground.height -= 300;
