@@ -24,7 +24,7 @@ public static var isInMenu = false; //if the player is on the main menu or the t
 var skippableTweens = []; //Tweens that will be stored here will be skipped when you restart the state, or if you go into it from somewhere else
 
 var earth, cloudEmitter, windEmitter, fallingBF, fallingGF, birdFlock, preTitleTextGroup, parachute; //they all don't get assigned anything if the state was initialized beforehand
-var logo, foreground, background, clouds, mainCharacterDiffs, mainCharacters, characterGroup, logoHitbox, holeEasterEgg, teamText, startBar, startText; //THESE on the other hand...
+var logo, foreground, background, clouds, mainCharacterDiffs, mainCharacters, characterGroup, holeEasterEgg, teamText, startBar, startText; //THESE on the other hand...
 
 //MENU STUFF
 public static var menuGroupDrags = [-250, 250]; //I'm doing it like this cuz I want you to be able to drag them for secret messages out of bounds
@@ -44,7 +44,7 @@ public static var submenuOpened = false;
 //SFX
 var windAmbience, vinylSound;
 
-public static var logoLerping = [FlxG.width/2, FlxG.height/2, 1]; //This will adjust the position of the logo
+public static var logoLerping = [FlxG.width/3.4, FlxG.height/4, 1]; //This will adjust the position of the logo
 public static var barLerping = 0; //Bar Scale
 
 var skybox = new FlxGradient().createGradientFlxSprite(1, 66, [0xFF272BC2, 0xFF007DE7, 0xFF74E9FF, 0xFFDBF9FF]); skybox.scale.set(FlxG.width,FlxG.height/64); skybox.screenCenter(); //Skybox
@@ -364,7 +364,9 @@ function setupTitleStuff() {
     logo.antialiasing = true; logo.cameras = [menuCamera]; add(logo); logo.alpha = 0.0001; 
     logo.scale.x = logo.scale.y = logoLerping[2];
 
-    logoHitbox = new FlxObject(logoLerping[0],logoLerping[1],564,335); logoHitbox.width = 564 * logoLerping[2]; logoHitbox.height = 335 * logoLerping[2]; logoHitbox.x -= logoHitbox.width/2; logoHitbox.y -= logoHitbox.height/2;
+    logo.width = 564 * logoLerping[2]; logo.height = 335 * logoLerping[2];
+    logo.offset.x = -logo.width/2;
+    logo.offset.y = -logo.height/2;
 }
 
 function setupMenuStuff() {
@@ -397,10 +399,11 @@ function setupMenuStuff() {
         buttonSpr.antialiasing = true;
 
         buttonSpr.scale.x = buttonSpr.scale.y = (menuSelection == i ? 1 : 0.6); buttonSpr.updateHitbox();
-        buttonSpr.x = (i == 0 ? 100 * buttonSpr.scale.x : (buttonGroup.members[i - 1].x + 50 * buttonGroup.members[i - 1].scale.x) + 100 + (85 * (buttonSpr.scale.x - buttonGroup.members[i - 1].scale.x)));
-        buttonSpr.y = bottomBar.y;
-
         buttonGroup.add(buttonSpr);
+
+        buttonSpr.width = buttonSpr.height = 161 * buttonSpr.scale.x;
+        buttonSpr.x = (i == 0 ? 20 : (buttonGroup.members[i - 1].x + buttonGroup.members[i - 1].width) + 10);
+        buttonSpr.y = bottomBar.y + 20 - buttonSpr.height;
     }
 }
 
@@ -498,7 +501,7 @@ function update(elapsed) {
     if (FlxG.keys.justPressed.F9) { //DEV, REMOVE ONCE DONE!
         initialized = false;
         FlxG.sound.music.stop();
-        logoLerping = [FlxG.width/2, FlxG.height/2, 1];
+        logoLerping = [FlxG.width/3.4, FlxG.height/4, 1];
         barLerping = 0;
         isInMenu = false;
         menuGroupDrags = [-250, 250];
@@ -576,7 +579,7 @@ function update(elapsed) {
                             }
                         });
                     }
-                case logoHitbox:
+                case logo:
                     if (occupiedObject == null) FlxG.sound.play(Paths.sound('titleScreen/zoom'), getVolume(1, 'sfx'));
 
                     logo.scale.x = logo.scale.y = CoolUtil.fpsLerp(logo.scale.y, logoLerping[2] * 1.1, 0.2);
@@ -611,10 +614,10 @@ function update(elapsed) {
         }
 
         if (isInMenu) {
-            logoLerping[1] = topBar.y + topBar.height + 55;
+            logoLerping[1] = topBar.y + topBar.height - 50;
         }
 
-        if (occupiedObject != logoHitbox) {
+        if (occupiedObject != logo) {
             logo.x = CoolUtil.fpsLerp(logo.x, logoLerping[0], 0.1);
             logo.y = CoolUtil.fpsLerp(logo.y, logoLerping[1], 0.1);
             logo.scale.x = logo.scale.y = CoolUtil.fpsLerp(logo.scale.y, logoLerping[2], 0.1);
@@ -623,9 +626,9 @@ function update(elapsed) {
         startBar.scale.y = CoolUtil.fpsLerp(startBar.scale.y, barLerping, 0.3);
         startText.scale.y = startBar.scale.y * 0.7;
 
-        logoHitbox.width = 564 * logo.scale.x; logoHitbox.height = 335 * logo.scale.y;
-        logoHitbox.x = logo.x - logoHitbox.width/2;
-        logoHitbox.y = logo.y - logoHitbox.height/2;
+        logo.width = 564 * logoLerping[2]; logo.height = 335 * logoLerping[2];
+        logo.offset.x = -logo.width/2;
+        logo.offset.y = -logo.height/2;
 
         if (occupiedObject != topBar) topMenuGroup.y = CoolUtil.fpsLerp(topMenuGroup.y, menuGroupDrags[0], 0.2);
         if (occupiedObject != bottomBar) bottomMenuGroup.y = CoolUtil.fpsLerp(bottomMenuGroup.y, menuGroupDrags[1], 0.2);
@@ -657,9 +660,10 @@ function changeSelection(change = 0) {
 
 function processClickables() {
     clearClickables();
+    occupiedObject = null;
 
     if (!isInMenu) {
-        pushToClickables(teamText); pushToClickables(startText); pushToClickables(startBar); pushToClickables(logoHitbox); 
+        pushToClickables(teamText); pushToClickables(startText); pushToClickables(startBar); pushToClickables(logo); 
 
         if (!easterEggs[0]) { pushToClickables(characterGroup); pushToClickables(foreground); pushToClickables(clouds); }
         else pushToClickables(background);
@@ -668,7 +672,7 @@ function processClickables() {
             pushToClickables(button);
         });
 
-        pushToClickables(logoHitbox); pushToClickables(topBar); pushToClickables(bottomBar);
+        pushToClickables(logo); pushToClickables(topBar); pushToClickables(bottomBar);
     }
 }
 
@@ -683,7 +687,7 @@ function progressForwards() {
 
         barLerping = 0;
         menuGroupDrags = [0, 0];
-        logoLerping = [1020, null, 0.6];
+        logoLerping = [870, null, 0.6];
     } else {
         FlxG.switchState(new MainMenuState());
     }
@@ -699,7 +703,7 @@ function progressBackwards() {
 
     barLerping = 1;
     menuGroupDrags = [-250, 250];
-    logoLerping = [FlxG.width/2, FlxG.height/3.9, 0.95];
+    logoLerping = [FlxG.width/3.4, 20, 0.95];
 }
 
 var highestIndex = -1;
@@ -743,7 +747,7 @@ function postUpdate(elapsed) {
                     changeSelection(button.ID - menuSelection);
                 }
     
-                if (FlxG.mouse.justReleased && menuSelection == button.ID) progressForwards();
+                if (FlxG.mouse.justPressed && menuSelection == button.ID) progressForwards();
             }
         });
     }
@@ -868,7 +872,7 @@ function skipIntro() {
         if (windAmbience != null) windAmbience.stop();
         if (FlxG.save.data.options.shaders == 'all') blurFilter.blurX = blurFilter.blurY = 0.0001;
 
-        logoLerping = [FlxG.width/2, FlxG.height/3.9, 0.95];
+        logoLerping = [FlxG.width/3.4, 20, 0.95];
         barLerping = 1;
     }
 
@@ -879,12 +883,11 @@ function skipIntro() {
         pushToClickables(teamText);
         pushToClickables(startText);
         pushToClickables(startBar);
-        pushToClickables(logoHitbox);
+        pushToClickables(logo);
     }
 
     logo.playAnim('Idle0', true);
     logo.alpha = 1;
-    add(logoHitbox);
 
     if (!easterEggs[0]) {
         vinylSound.play();
@@ -927,7 +930,7 @@ function skipIntro() {
         }
 
         if (isInMenu) {
-            logoLerping[1] = topBar.y + topBar.height + 55;
+            logoLerping[1] = topBar.y + topBar.height - 50;
             logo.y = logoLerping[1];
         }
 
