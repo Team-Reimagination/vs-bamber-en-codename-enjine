@@ -206,11 +206,6 @@ function setupPreTitleStuff() {
     birdFlock.moves = true;
     birdFlock.velocity.set(0, -60);
 
-    for (layer in birdFlock.animateAtlas.anim.curSymbol.timeline.getList()) {
-        var keyframe = layer.get(0);
-        birdElements = keyframe.getList();
-    }
-
     //Partivle Emiters
     windEmitter = new FlxTypedEmitter(0, FlxG.height + 1000, 30);
     windEmitter.setSize(FlxG.width, 10); 
@@ -499,6 +494,7 @@ var initYMatrixes = [];
 var curYMatrixes = [];
 
 var cloudTimer = 0;
+var selectedObject;
 
 function update(elapsed) {
     if (FlxG.keys.justPressed.F9) { //DEV, REMOVE ONCE DONE!
@@ -526,92 +522,94 @@ function update(elapsed) {
         //for characters, and the logo, hitboxes were fucked up so I had to spoof them with FlxObjects. Too much work to readjust.
         //Activates whether the mouse is pressed or if there's an occupied object that has been clicked already. Occupied objects will make sure it still does stuff even when mouse is not hovering over it, as long as the mosue is pressec
         if (FlxG.mouse.justPressed || occupiedObject != null) {
-            for (clickObject in getClickables()) {
-                if (clickObject == null || !clickObject.exists) continue;
+            selectedObject = occupiedObject;
 
-                if ((FlxG.mouse.overlaps(clickObject) && occupiedObject == null) || occupiedObject == clickObject) {
-                    if (!occupiedObject) {
-                        switch (clickObject) {
-                            case clouds:
-                                stoppedCloudTimer = cloudTimer;
-                        };
+            if (selectedObject == null) {
+                for (clickObject in getClickables()) {
+                    if (clickObject == null || !clickObject.exists) continue;
+
+                    if (FlxG.mouse.overlaps(clickObject)) {
+                        selectedObject = clickObject;
+                        break;
                     }
-
-                    switch (clickObject) {
-                        case startText:
-                            progressForwards();
-                        case logoHitbox:
-                            if (occupiedObject == null) FlxG.sound.play(Paths.sound('titleScreen/zoom'), getVolume(1, 'sfx'));
-
-                            logo.scale.x = logo.scale.y = CoolUtil.fpsLerp(logo.scale.y, logoLerping[2] * 1.1, 0.2);
-                            logo.x = CoolUtil.fpsLerp(logo.x, logoLerping[0] + 6 * logoLerping[2], 0.2); //Offset's fucked up which is why
-                            logo.y = CoolUtil.fpsLerp(logo.y, logoLerping[1] + 6 * logoLerping[2], 0.2);
-                        case characterBoundsGroup:
-                            if (!FlxG.mouse.pressed) {
-                                characterBoundsGroup.forEach(function (char) {
-                                    if (FlxG.mouse.overlaps(char) && !mainCharacters[char.ID].isClicked) highestIndex = char.ID;
-                    
-                                    if (char.ID == characterGroup?.members?.length - 1 && highestIndex > -1) {
-                                        characterGroup.members[highestIndex].playAnim('Click', true);
-                                        mainCharacters[highestIndex].isClicked = true;
-                                        highestIndex = -1;
-                                    }
-                                });
-                            }
-                        case clouds:
-                            var cdx:Float = (clouds.x + clouds.width/2) - FlxG.mouse.screenX;
-                            var cdy:Float = (clouds.y + clouds.height/2) - FlxG.mouse.screenY;
-                            var centerDistance = Std.int(FlxMath.vectorLength(cdx, cdy));
-                            //var mouseDistance = Math.sqrt(FlxG.mouse.deltaScreenX * FlxG.mouse.deltaScreenX + FlxG.mouse.deltaScreenY * FlxG.mouse.deltaScreenY);
-                            
-                            cloudTimer = stoppedCloudTimer + (FlxG.mouse.deltaScreenX / (centerDistance + 1) * 600) * (FlxG.mouse.screenY < clouds.y + clouds.height/2 ? 1 : -1);
-                            vinylSound.pitch = Math.abs(FlxG.mouse.deltaScreenX / (centerDistance + 1) * 6);
-                            if (vinylSound.time > vinylSound.length) vinylSound.time = 0;
-                        case background:
-                            if (!FlxG.mouse.justPressed && !holeEasterEgg.visible) {
-                                holeEasterEgg.visible = true;
-                                holeEasterEgg.playAnim('Click');
-                            }
-                        case foreground:
-                            if (!FlxG.mouse.justPressed && !currentlyUsedObjects.contains(foreground)) {
-                                currentlyUsedObjects.push(foreground);
-                                foreground.y = 250+150; foreground.scale.set(1.03, 0.75);
-
-                                FlxTween.tween(foreground.scale, {x: 1, y: 1}, 1, {ease: FlxEase.elasticOut, onComplete: function() {
-                                    currentlyUsedObjects.remove(foreground);
-                                }});
-                                FlxTween.tween(foreground, {y: 190+150}, 1, {ease: FlxEase.elasticOut});
-
-                                FlxG.sound.play(Paths.sound('titleScreen/RustlingLeaves'), getVolume(1, 'sfx'));
-                            }
-                        case startBar | teamText:
-                            if (!FlxG.mouse.justPressed && !currentlyUsedObjects.contains(clickObject)) {
-                                currentlyUsedObjects.push(clickObject);
-
-                                var startedFlipY = clickObject.flipY;
-                                
-                                FlxTween.num(clickObject.scale.y, clickObject.scale.y * -1, 0.6, {ease: FlxEase.elasticOut, onComplete: function() {
-                                    currentlyUsedObjects.remove(clickObject);
-                                }}, function(value) {
-                                    if (value < 0) clickObject.flipY = !startedFlipY;
-                                    clickObject.scale.y = Math.abs(value);
-                                });
-
-                                FlxG.sound.play(Paths.sound('titleScreen/WhipWoosh'), getVolume(1, 'sfx'));
-                            }
-                        case topBar:
-                            topMenuGroup.y += FlxG.mouse.deltaScreenY;
-                            topMenuGroup.y = Math.max(menuGroupDrags[0], Math.min(menuGroupDrags[0] + 500, topMenuGroup.y));
-                        case bottomBar:
-                            bottomMenuGroup.y += FlxG.mouse.deltaScreenY;
-                            bottomMenuGroup.y = Math.min(menuGroupDrags[1], Math.max(menuGroupDrags[1] - 500, bottomMenuGroup.y));
-                    };
-
-                    occupiedObject = clickObject;
-
-                    break;
                 }
             }
+
+            if (selectedObject == clouds && !occupiedObject) {
+                stoppedCloudTimer = cloudTimer;
+            }
+
+            switch (selectedObject) {
+                case clouds:
+                    var cdx:Float = (clouds.x + clouds.width/2) - FlxG.mouse.screenX;
+                    var cdy:Float = (clouds.y + clouds.height/2) - FlxG.mouse.screenY;
+                    var centerDistance = Std.int(FlxMath.vectorLength(cdx, cdy));
+                    //var mouseDistance = Math.sqrt(FlxG.mouse.deltaScreenX * FlxG.mouse.deltaScreenX + FlxG.mouse.deltaScreenY * FlxG.mouse.deltaScreenY);
+                    
+                    cloudTimer = stoppedCloudTimer + (FlxG.mouse.deltaScreenX / (centerDistance + 1) * 600) * (FlxG.mouse.screenY < clouds.y + clouds.height/2 ? 1 : -1);
+                    vinylSound.pitch = Math.abs(FlxG.mouse.deltaScreenX / (centerDistance + 1) * 6);
+                    if (vinylSound.time > vinylSound.length) vinylSound.time = 0;
+                case background:
+                    if (!FlxG.mouse.justPressed && !holeEasterEgg.visible) {
+                        holeEasterEgg.visible = true;
+                        holeEasterEgg.playAnim('Click');
+                    }
+                case foreground:
+                    if (!FlxG.mouse.justPressed && !currentlyUsedObjects.contains(foreground)) {
+                        currentlyUsedObjects.push(foreground);
+                        foreground.y = 250+150; foreground.scale.set(1.03, 0.75);
+
+                        FlxTween.tween(foreground.scale, {x: 1, y: 1}, 1, {ease: FlxEase.elasticOut, onComplete: function() {
+                            currentlyUsedObjects.remove(foreground);
+                        }});
+                        FlxTween.tween(foreground, {y: 190+150}, 1, {ease: FlxEase.elasticOut});
+
+                        FlxG.sound.play(Paths.sound('titleScreen/RustlingLeaves'), getVolume(1, 'sfx'));
+                    }
+                case characterBoundsGroup:
+                    if (occupiedObject == null) {
+                        characterBoundsGroup.forEach(function (char) {
+                            if (FlxG.mouse.overlaps(char) && !mainCharacters[char.ID].isClicked) highestIndex = char.ID;
+                    
+                            if (char.ID == characterGroup?.members?.length - 1 && highestIndex > -1) {
+                                characterGroup.members[highestIndex].playAnim('Click', true);
+                                mainCharacters[highestIndex].isClicked = true;
+                                highestIndex = -1;
+                            }
+                        });
+                    }
+                case logoHitbox:
+                    if (occupiedObject == null) FlxG.sound.play(Paths.sound('titleScreen/zoom'), getVolume(1, 'sfx'));
+
+                    logo.scale.x = logo.scale.y = CoolUtil.fpsLerp(logo.scale.y, logoLerping[2] * 1.1, 0.2);
+                    logo.x = CoolUtil.fpsLerp(logo.x, logoLerping[0] + 6 * logoLerping[2], 0.2); //Offset's fucked up which is why
+                    logo.y = CoolUtil.fpsLerp(logo.y, logoLerping[1] + 6 * logoLerping[2], 0.2);
+                case startBar | teamText:
+                    if (!FlxG.mouse.justPressed && !currentlyUsedObjects.contains(clickObject)) {
+                        currentlyUsedObjects.push(clickObject);
+
+                        var startedFlipY = clickObject.flipY;
+
+                        FlxTween.num(clickObject.scale.y, clickObject.scale.y * -1, 0.6, {ease: FlxEase.elasticOut, onComplete: function() {
+                            currentlyUsedObjects.remove(clickObject);
+                        }}, function(value) {
+                            if (value < 0) clickObject.flipY = !startedFlipY;
+                            clickObject.scale.y = Math.abs(value);
+                        });
+
+                        FlxG.sound.play(Paths.sound('titleScreen/WhipWoosh'), getVolume(1, 'sfx'));
+                    }
+                case startText:
+                    progressForwards();
+                case topBar:
+                    topMenuGroup.y += FlxG.mouse.deltaScreenY;
+                    topMenuGroup.y = Math.max(menuGroupDrags[0], Math.min(menuGroupDrags[0] + 500, topMenuGroup.y));
+                case bottomBar:
+                    bottomMenuGroup.y += FlxG.mouse.deltaScreenY;
+                    bottomMenuGroup.y = Math.min(menuGroupDrags[1], Math.max(menuGroupDrags[1] - 500, bottomMenuGroup.y));
+            }
+
+            if (occupiedObject == null) occupiedObject = selectedObject;
         }
 
         if (isInMenu) {
@@ -755,9 +753,8 @@ function postUpdate(elapsed) {
 //MATRIX MANIPULATION ON BACKGROUND BIRDS FOR PERSPECTIVE SHIFTING
 function draw(event) {
     if (!initialized) {
-        for (layer in birdFlock.animateAtlas.anim.curSymbol.timeline.getList()) { //there may be only one layer but iterating is okay enough
-            var keyframe = layer.get(birdFlock.animateAtlas.anim.curSymbol.curFrame); //this goes through the current animation frame
-            var birdElements = keyframe.getList(); //this gets all the objects inside of the frame
+        for (layer in birdFlock.animateAtlas.anim.curSymbol.timeline.getList()) { //this is apparently necessary
+            var birdElements = layer.get(birdFlock.animateAtlas.anim.curSymbol.curFrame).getList(); //this gets all the objects inside of every animation frame
 
             if (initYMatrixes.length == 0) { //every frame changes the ty matrix so it's best to have something to keep track of them
                 for (e in birdElements) {
