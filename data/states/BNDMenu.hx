@@ -659,9 +659,9 @@ function processClickables() {
     clearClickables();
 
     if (!isInMenu) {
-        //pushToClickables(teamText); pushToClickables(startText); pushToClickables(startBar); pushToClickables(logoHitbox); 
+        pushToClickables(teamText); pushToClickables(startText); pushToClickables(startBar); pushToClickables(logoHitbox); 
 
-        if (!easterEggs[0]) { pushToClickables(characterGroup);} //pushToClickables(foreground); pushToClickables(clouds); }
+        if (!easterEggs[0]) { pushToClickables(characterGroup); pushToClickables(foreground); pushToClickables(clouds); }
         else pushToClickables(background);
     } else {
         buttonGroup.forEach(function (button) {
