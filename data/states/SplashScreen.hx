@@ -4,9 +4,6 @@ import funkin.backend.utils.WindowUtils;
 import hxvlc.flixel.FlxVideoSprite;
 import funkin.backend.MusicBeatState;
 
-WindowUtils.set_prefix('Bamber & Davey Vol. 2.5 | ');
-FlxG.save.bind('BamberAndDavey', 'TeamReimagination'); //I found out that mod options use regular saves instead of a save in the Options class for example
-
 var splashVideo;
 
 function create() {

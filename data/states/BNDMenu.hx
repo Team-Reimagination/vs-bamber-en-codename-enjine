@@ -27,6 +27,21 @@ var skippableTweens = []; //Tweens that will be stored here will be skipped when
 var earth, cloudEmitter, windEmitter, fallingBF, fallingGF, birdFlock, constellation, preTitleTextGroup, parachute; //they all don't get assigned anything if the state was initialized beforehand
 var logo, foreground, background, clouds, mainCharacterDiffs, mainCharacters, characterGroup, characterBoundsGroup, logoHitbox, holeEasterEgg, teamText, startBar, startText; //THESE on the other hand...
 
+//MENU STUFF
+public static var menuGroupDrags = [-250, 250]; //I'm doing it like this cuz I want you to be able to drag them for secret messages out of bounds
+var topMenuGroup, bottomMenuGroup;
+var topBar, bottomBar;
+var buttonGroup;
+var buttonSubgroup;
+var buttonText;
+
+var menuOptions = ['Play', 'Gallery', 'Achievements', 'Options', 'Credits'];
+var submenuOptions = ['Story Mode', 'Freeplay'];
+
+public static var menuSelection = 0;
+public static var menuSubmenuSelection = 0;
+public static var submenuOpened = false;
+
 //SFX
 var constellationSound, windAmbience, vinylSound;
 
@@ -292,15 +307,20 @@ function setupTitleStuff() {
         holeEasterEgg.animation.addByIndices("Return", 'Bubble_'+ (easterEggs[1] ? 'FireInTheHole' : 'Regular'), [3,2,1,0], '', 24, false);
     }
 
+    setupMenuStuff();
+
     teamText = new FlxText(FlxG.width/5*3,FlxG.height,FlxG.width/5*2-12, "Team Reimagination 2022 - "+Date.now().getFullYear()).setFormat(Paths.font('TW Cen MT B.ttf'), 24, 0xFFFFB6B6, 'right', FlxTextBorderStyle.OUTLINE, 0xff210038);
     teamText.updateHitbox(); teamText.borderSize = 2;
     teamText.cameras = [menuCamera];
 
     startBar = new FlxBackdrop(Paths.image('menus/titleScreen/StartBar'), FlxAxes.X); startBar.velocity.x = -40; startBar.y = 620; startBar.antialiasing = true; add(startBar); startBar.alpha = 0.6; startBar.scale.y = barLerping;
     startBar.width = Math.pow(2,24); //it's rather extreme but I had to manipulate the hitbox since it doesn't repeat for every tile in FlxBackdrop.
+    startBar.cameras = [menuCamera];
 
     startText = new Alphabet(0, 0, "PRESS "+CoolUtil.keyToString(Reflect.field(Options, 'P1_ACCEPT')[0])+" OR CLICK HERE", true, false); startText.antialiasing = true; add(startText); startText.scale.x = 0.7; startText.scale.y = barLerping;
     startText.updateHitbox();
+    startText.cameras = [menuCamera];
+
     for (i in 0...startText.members.length) {
         startText.members[i].x -= 15 * i;
         startText.members[i].offset.set(0,0);
@@ -330,6 +350,43 @@ function setupTitleStuff() {
     logo.antialiasing = true; logo.cameras = [menuCamera]; add(logo); logo.alpha = 0.0001; logo.scale.x = logo.scale.y = logoLerping[2];
 
     logoHitbox = new FlxObject(logoLerping[0],logoLerping[1],564,335); logoHitbox.width = 564 * logoLerping[2]; logoHitbox.height = 335 * logoLerping[2]; logoHitbox.x -= logoHitbox.width/2; logoHitbox.y -= logoHitbox.height/2;
+}
+
+function setupMenuStuff() {
+    topMenuGroup = new FlxTypedSpriteGroup(0, menuGroupDrags[0]);
+    bottomMenuGroup = new FlxTypedSpriteGroup(0, menuGroupDrags[1]);
+    topMenuGroup.cameras = bottomMenuGroup.cameras = [menuCamera];
+    add(topMenuGroup); add(bottomMenuGroup);
+
+    topBar = new FlxSprite().loadGraphic(Paths.image('menus/mainMenu/topBar')); topBar.antialiasing = true;
+    topBar.angle = 17; topBar.updateHitbox();
+    topBar.x = 47; topBar.y = -topBar.height + 50;
+    topMenuGroup.add(topBar);
+
+    bottomBar = new FlxSprite().loadGraphic(Paths.image('menus/mainMenu/bottomBar')); bottomBar.antialiasing = true;
+    bottomBar.angle = 17; bottomBar.updateHitbox();
+    bottomBar.x -= 130; bottomBar.y = FlxG.height - 50;
+    bottomMenuGroup.add(bottomBar);
+
+    buttonSubgroup = new FlxTypedSpriteGroup(0, menuGroupDrags[1]); buttonSubgroup.cameras = [menuCamera]; add(buttonSubgroup);
+    buttonGroup = new FlxTypedSpriteGroup(0, menuGroupDrags[1]); buttonGroup.cameras = [menuCamera]; add(buttonGroup);
+
+    for (i in 0...menuOptions.length) {
+        var buttonSpr = new FunkinSprite();
+        buttonSpr.loadSprite(Paths.image('menus/mainMenu/buttons'));
+
+        buttonSpr.animateAtlas.anim.addBySymbol("Button", "Scenes/MainMenu/Buttons/Button_"+menuOptions[i]+'\\', 24, false); //the \ makes sure it chooses what we want instead of the closest thing it thinks of (i.g. no instead of none)
+        buttonSpr.animateAtlas.anim.play("Button", true, true);
+
+		buttonSpr.ID = i;
+        buttonSpr.antialiasing = true;
+
+        buttonSpr.scale.x = buttonSpr.scale.y = (menuSelection == i ? 1 : 0.6); buttonSpr.updateHitbox();
+        buttonSpr.x = (i == 0 ? 100 * buttonSpr.scale.x : (buttonGroup.members[i - 1].x + 50 * buttonGroup.members[i - 1].scale.x) + 100 + (85 * (buttonSpr.scale.x - buttonGroup.members[i - 1].scale.x)));
+        buttonSpr.y = bottomBar.y;
+
+        buttonGroup.add(buttonSpr);
+    }
 }
 
 function getIntroTextShit() {
@@ -432,6 +489,8 @@ function update(elapsed) {
         FlxG.sound.music.stop();
         logoLerping = [FlxG.width/2, FlxG.height/2, 1];
         barLerping = 0;
+        isInMenu = false;
+        menuGroupDrags = [-250, 250];
         FlxG.resetState();
     }
 
@@ -465,14 +524,13 @@ function update(elapsed) {
 
                     switch (clickObject) {
                         case startText:
-                            trace('HI');
-                            processSelection();
+                            progressForwards();
                         case logoHitbox:
                             if (occupiedObject == null) FlxG.sound.play(Paths.sound('titleScreen/zoom'), getVolume(1, 'sfx'));
 
                             logo.scale.x = logo.scale.y = CoolUtil.fpsLerp(logo.scale.y, logoLerping[2] * 1.1, 0.2);
-                            logo.x = CoolUtil.fpsLerp(logo.x, logoLerping[0] + 6, 0.2); //Offset's fucked up which is why
-                            logo.y = CoolUtil.fpsLerp(logo.y, logoLerping[1] + 6, 0.2);
+                            logo.x = CoolUtil.fpsLerp(logo.x, logoLerping[0] + 6 * logoLerping[2], 0.2); //Offset's fucked up which is why
+                            logo.y = CoolUtil.fpsLerp(logo.y, logoLerping[1] + 6 * logoLerping[2], 0.2);
                         case characterBoundsGroup:
                             if (!FlxG.mouse.pressed) {
                                 characterBoundsGroup.forEach(function (char) {
@@ -526,6 +584,12 @@ function update(elapsed) {
 
                                 FlxG.sound.play(Paths.sound('titleScreen/WhipWoosh'), getVolume(1, 'sfx'));
                             }
+                        case topBar:
+                            topMenuGroup.y += FlxG.mouse.deltaScreenY;
+                            topMenuGroup.y = Math.max(menuGroupDrags[0], Math.min(menuGroupDrags[0] + 500, topMenuGroup.y));
+                        case bottomBar:
+                            bottomMenuGroup.y += FlxG.mouse.deltaScreenY;
+                            bottomMenuGroup.y = Math.min(menuGroupDrags[1], Math.max(menuGroupDrags[1] - 500, bottomMenuGroup.y));
                     };
 
                     occupiedObject = clickObject;
@@ -535,18 +599,25 @@ function update(elapsed) {
             }
         }
 
+        if (isInMenu) {
+            logoLerping[1] = topBar.y + topBar.height + 55;
+        }
+
         if (occupiedObject != logoHitbox) {
             logo.x = CoolUtil.fpsLerp(logo.x, logoLerping[0], 0.1);
             logo.y = CoolUtil.fpsLerp(logo.y, logoLerping[1], 0.1);
             logo.scale.x = logo.scale.y = CoolUtil.fpsLerp(logo.scale.y, logoLerping[2], 0.1);
         }
         
-        startBar.scale.y = CoolUtil.fpsLerp(startBar.scale.y, barLerping, 0.1);
+        startBar.scale.y = CoolUtil.fpsLerp(startBar.scale.y, barLerping, 0.3);
         startText.scale.y = startBar.scale.y * 0.7;
 
         logoHitbox.width = 564 * logo.scale.x; logoHitbox.height = 335 * logo.scale.y;
         logoHitbox.x = logo.x - logoHitbox.width/2;
         logoHitbox.y = logo.y - logoHitbox.height/2;
+
+        if (occupiedObject != topBar) topMenuGroup.y = CoolUtil.fpsLerp(topMenuGroup.y, menuGroupDrags[0], 0.2);
+        if (occupiedObject != bottomBar) bottomMenuGroup.y = CoolUtil.fpsLerp(bottomMenuGroup.y, menuGroupDrags[1], 0.2);
     }
 
     //PROGRESSION
@@ -554,12 +625,70 @@ function update(elapsed) {
     else conditionProcess = controls.ACCEPT;
 
     if (conditionProcess) {
-        (preIntro == true) ? skipTeaser() : ((initialized == false) ? skipIntro() : processSelection()); //the switchstate is a placeholder thing
+        (preIntro == true) ? skipTeaser() : ((initialized == false) ? skipIntro() : progressForwards()); //the switchstate is a placeholder thing
+    }
+    if ((controls.BACK || FlxG.mouse.justPressedRight) && isInMenu) progressBackwards();
+
+    if (isInMenu) {
+        if ((controls.LEFT_P || controls.RIGHT_P)) {
+            FlxG.sound.play(Paths.sound('firstTime/firstButtonScroll'), getVolume(0.8, 'sfx'));
+            changeSelection(controls.LEFT_P ? -1 : 1);
+        }
     }
 }
 
-function processSelection() {
-    //FlxG.switchState(new MainMenuState());
+function changeSelection(change = 0) {
+    menuSelection = FlxMath.wrap(menuSelection+change, 0, menuOptions.length - 1);
+    for (i in buttonGroup.members) {
+        i.animateAtlas.anim.play("Button", true, menuSelection == i.ID ? false : true, menuSelection == i.ID ? i.animateAtlas.anim.curFrame - i.animateAtlas.anim.length : i.animateAtlas.anim.curFrame + i.animateAtlas.anim.length );
+    }
+}
+
+function processClickables() {
+    clearClickables();
+
+    if (!isInMenu) {
+        pushToClickables(teamText); pushToClickables(startText); pushToClickables(startBar); pushToClickables(logoHitbox); 
+
+        if (!easterEggs[0]) { pushToClickables(characterBoundsGroup); pushToClickables(foreground); pushToClickables(clouds); }
+        else pushToClickables(background);
+    } else {
+        buttonGroup.forEach(function (button) {
+            pushToClickables(button);
+        });
+
+        pushToClickables(logoHitbox); pushToClickables(topBar); pushToClickables(bottomBar);
+    }
+}
+
+function progressForwards() {
+    if (!isInMenu) {
+        isInMenu = true;
+
+        processClickables();
+
+        FlxTween.completeTweensOf(teamText);
+        skippableTweens.push(FlxTween.tween(teamText, {y: FlxG.height}, 1, {ease: FlxEase.quartOut}));
+
+        barLerping = 0;
+        menuGroupDrags = [0, 0];
+        logoLerping = [1020, null, 0.6];
+    } else {
+        FlxG.switchState(new MainMenuState());
+    }
+}
+
+function progressBackwards() {
+    isInMenu = false;
+
+    processClickables();
+
+    FlxTween.completeTweensOf(teamText);
+    skippableTweens.push(FlxTween.tween(teamText, {y: FlxG.height - 5 - teamText.height}, 1, {ease: FlxEase.quartOut}));
+
+    barLerping = 1;
+    menuGroupDrags = [-250, 250];
+    logoLerping = [FlxG.width/2, FlxG.height/3.9, 0.95];
 }
 
 var highestIndex = -1;
@@ -588,8 +717,23 @@ function postUpdate(elapsed) {
 
         if (occupiedObject != null && !FlxG.mouse.pressed) {
             occupiedObject = null;
-            vinylSound.pitch = 0;
+            if (!easterEggs[0]) vinylSound.pitch = 0;
         }
+
+        buttonGroup.forEach(function (button) {
+            button.scale.x = button.scale.y = CoolUtil.fpsLerp(button.scale.y, (menuSelection == button.ID ? 1 : 0.6), 0.2); button.updateHitbox();
+            button.x = CoolUtil.fpsLerp(button.x, (button.ID == 0 ? 100 * button.scale.x : (buttonGroup.members[button.ID - 1].x + 50 * buttonGroup.members[button.ID - 1].scale.x) + 100 + (85 * (button.scale.x - buttonGroup.members[button.ID - 1].scale.x))), 0.2);
+            button.y = bottomBar.y;
+
+            if (isInMenu && FlxG.mouse.visible && FlxG.mouse.overlaps(button.animateAtlas)) {
+                if (menuSelection != button.ID) {
+                    FlxG.sound.play(Paths.sound('firstTime/firstButtonScroll'), getVolume(0.8, 'sfx'));
+                    changeSelection(button.ID - menuSelection);
+                }
+    
+                if (FlxG.mouse.justReleased && menuSelection == button.ID) progressForwards();
+            }
+        });
     }
 }
 
@@ -766,27 +910,32 @@ function skipIntro() {
         if (FlxG.save.data.options.shaders == 'all') blurFilter.blurX = blurFilter.blurY = 0.0001;
 
         logoLerping = [FlxG.width/2, FlxG.height/3.9, 0.95];
+        barLerping = 1;
     }
 
-    vinylSound.play();
+    add(teamText); 
+    if (!isInMenu) skippableTweens.push(FlxTween.tween(teamText, {y: FlxG.height - 5 - teamText.height}, 1, {ease: FlxEase.quartOut}));
 
-    add(teamText); pushToClickables(teamText);
-    skippableTweens.push(FlxTween.tween(teamText, {y: FlxG.height - 5 - teamText.height}, 1, {ease: FlxEase.quartOut}));
-
-    pushToClickables(startText);
-    barLerping = 1; pushToClickables(startBar); 
+    if (!initialized) {
+        pushToClickables(teamText);
+        pushToClickables(startText);
+        pushToClickables(startBar);
+        pushToClickables(logoHitbox);
+    }
 
     logo.playAnim('Idle0', true);
     logo.alpha = 1;
-    add(logoHitbox); pushToClickables(logoHitbox);
+    add(logoHitbox);
 
     if (!easterEggs[0]) {
+        vinylSound.play();
+
         clouds.alpha = 1;
+
+        if (!initialized) {pushToClickables(characterBoundsGroup); pushToClickables(foreground); pushToClickables(clouds);}
 
         skippableTweens.push(FlxTween.tween(characterGroup, {alpha: 1, y: FlxG.height, x: FlxG.width/2}, 1, {ease: FlxEase.quartOut, startDelay: 1, onComplete: function(tween) {
             characterBoundsGroup.exists = true;
-            pushToClickables(characterBoundsGroup);
-            pushToClickables(foreground);
         }}));
         skippableTweens.push(FlxTween.tween(characterGroup.scale, {x: 1, y: 1}, 1, {ease: FlxEase.quartOut, startDelay: 0.9}));
         for (i in characterGroup.members) {
@@ -808,11 +957,11 @@ function skipIntro() {
         skippableTweens.push(FlxTween.tween(clouds.scale, {x: 0.9*5.6, y: 0.6*5.6}, 2, {ease: FlxEase.quartOut, onComplete: function(tween) {
             clouds.updateHitbox();
             clouds.screenCenter(); clouds.y = clouds.y - 210;
-            pushToClickables(clouds);
         }}));
         skippableTweens.push(FlxTween.tween(clouds, {y: clouds.y - 210}, 1.5, {ease: FlxEase.quartOut}));
     } else {
-        background.visible = true; pushToClickables(background);
+        background.visible = true; 
+        if (!initialized) pushToClickables(background);
         add(holeEasterEgg); holeEasterEgg.visible = false;
     }
     
@@ -820,6 +969,15 @@ function skipIntro() {
         for (tween in skippableTweens) {
             tween.percent = 1;
         }
+
+        if (isInMenu) {
+            logoLerping[1] = topBar.y + topBar.height + 55;
+            logo.y = logoLerping[1];
+        }
+
+        changeSelection();
+        clearClickables();
+        processClickables();
     } else initialized = true;
 
     if (!easterEggs[0]) {

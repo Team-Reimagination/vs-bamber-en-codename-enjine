@@ -19,6 +19,9 @@ var isHovering = false;
 var switched = false;
 
 function new() {
+    WindowUtils.set_prefix('Bamber & Davey Vol. 2.5 | ');
+    FlxG.save.bind('BamberAndDavey', 'TeamReimagination'); //I found out that mod options use regular saves instead of a save in the Options class for example
+
     if (FlxG.save.data.options == null) FlxG.save.data.options = {}; //will be rewritten ONCE the mod is finished
     if (FlxG.save.data.options.musicVolume == null) FlxG.save.data.options.musicVolume = 1; 
     if (FlxG.save.data.options.sfxVolume == null) FlxG.save.data.options.sfxVolume = 1;
@@ -88,7 +91,7 @@ function update(elapsed) {
         FlxG.resetGame();
 
     if (FlxG.keys.justPressed.ANY) {FlxG.mouse.visible = false;} //i wish there was a Controls version so that the gamepad is supported
-    if (FlxG.mouse.justMoved || FlxG.mouse.justPressed || FlxG.mouse.justPressedMiddle ||FlxG.mouse.justPressedright) {FlxG.mouse.visible = true;}
+    if (FlxG.mouse.justMoved || FlxG.mouse.justPressed || FlxG.mouse.justPressedMiddle ||FlxG.mouse.justPressedRight) {FlxG.mouse.visible = true;}
 }
 
 public static function getVolume(initValue = 1, type = 'sfx') {
@@ -97,14 +100,17 @@ public static function getVolume(initValue = 1, type = 'sfx') {
 
 public static function pushToClickables(obj) {
     clickableObjects.push(obj);
+    return;
 }
 
 public static function removeFromClickables(obj) {
     clickableObjects.remove(obj);
+    return; //apparently returns are what makes global functions actually global, i think
 }
 
 public static function clearClickables() {
     clickableObjects = [];
+    return;
 }
 
 public static function getClickables() {
