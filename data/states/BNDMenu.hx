@@ -515,6 +515,9 @@ var curYMatrixes = [];
 
 var cloudTimer = 0;
 
+var yLevel = 0;
+var oldYLevel = 0;
+
 function update(elapsed) {
     if (FlxG.keys.justPressed.F9) { //DEV, REMOVE ONCE DONE!
         initialized = false;
@@ -623,9 +626,24 @@ function update(elapsed) {
                 case topBar:
                     topMenuGroup.y += FlxG.mouse.deltaScreenY;
                     topMenuGroup.y = Math.max(menuGroupDrags[0], Math.min(menuGroupDrags[0] + 500, topMenuGroup.y));
+
+                    yLevel = Math.floor((topMenuGroup.y - menuGroupDrags[0]) / 80);
+
+                    if (yLevel != oldYLevel) { 
+                        oldYLevel = yLevel;
+                        FlxG.sound.play(Paths.sound('titleScreen/barProgress'), getVolume(1, 'sfx'));
+                    }
+
                 case bottomBar:
                     bottomMenuGroup.y += FlxG.mouse.deltaScreenY;
                     bottomMenuGroup.y = Math.min(menuGroupDrags[1], Math.max(menuGroupDrags[1] - 500, bottomMenuGroup.y));
+
+                    yLevel = Math.floor((menuGroupDrags[1] - bottomMenuGroup.y) / 80);
+
+                    if (yLevel != oldYLevel) { 
+                        oldYLevel = yLevel;
+                        FlxG.sound.play(Paths.sound('titleScreen/barProgress'), getVolume(1, 'sfx'));
+                    }
                 case buttonTextGroup:
                     if (occupiedObject == null) {
                         var selected = buttonTextGroup.members[menuSelection];
@@ -773,6 +791,7 @@ function postUpdate(elapsed) {
 
         if (occupiedObject != null && !FlxG.mouse.pressed) {
             occupiedObject = null;
+            yLevel = oldYLevel = 0;
             if (!easterEggs[0]) vinylSound.pitch = 0;
         }
 
