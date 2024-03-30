@@ -17,14 +17,15 @@ import Date;
 import flixel.text.FlxText;
 import flixel.text.FlxTextBorderStyle;
 import flixel.addons.display.FlxBackdrop;
+import funkin.menus.ModSwitchMenu;
 
 public static var initialized = false; //post-intro sequence check
 public static var isInMenu = false; //if the player is on the main menu or the title screen
 
 var skippableTweens = []; //Tweens that will be stored here will be skipped when you restart the state, or if you go into it from somewhere else
 
-var earth, cloudEmitter, windEmitter, fallingBF, fallingGF, birdFlock, preTitleTextGroup, parachute; //they all don't get assigned anything if the state was initialized beforehand
-var logo, foreground, background, clouds, mainCharacterDiffs, mainCharacters, characterGroup, holeEasterEgg, teamText, startBar, startText; //THESE on the other hand...
+var earth, cloudEmitter, windEmitter, fallingBF, fallingGF, birdFlock, parachute; //they all don't get assigned anything if the state was initialized beforehand
+var logo, foreground, background, clouds, mainCharacterDiffs, mainCharacters, characterGroup, holeEasterEgg, titleTextGroup, teamText, startBar, startText; //THESE on the other hand...
 
 //MENU STUFF
 public static var menuGroupDrags = [-250, 250]; //I'm doing it like this cuz I want you to be able to drag them for secret messages out of bounds
@@ -32,7 +33,7 @@ var topMenuGroup, bottomMenuGroup;
 var topBar, bottomBar;
 var buttonGroup;
 var buttonSubgroup;
-var buttonText;
+var buttonTextGroup;
 
 var menuOptions = ['Play', 'Gallery', 'Achievements', 'Options', 'Credits'];
 var submenuOptions = ['Story Mode', 'Freeplay'];
@@ -243,7 +244,7 @@ function setupPreTitleStuff() {
 
     parachute = new FlxSprite(); parachute.antialiasing = true; add(parachute); parachute.alpha = 0.001;
 
-    preTitleTextGroup = new FlxTypedSpriteGroup(240); add(preTitleTextGroup);
+    titleTextGroup = new FlxTypedSpriteGroup(240); add(titleTextGroup);
 
     //SOME COLOR TRANSFORM BS
     var colorTransform = FlxG.camera.canvas.transform.colorTransform;
@@ -388,6 +389,8 @@ function setupMenuStuff() {
     buttonSubgroup = new FlxTypedSpriteGroup(0, menuGroupDrags[1]); buttonSubgroup.cameras = [menuCamera]; add(buttonSubgroup);
     buttonGroup = new FlxTypedSpriteGroup(0, menuGroupDrags[1]); buttonGroup.cameras = [menuCamera]; add(buttonGroup);
 
+    buttonTextGroup = new FlxTypedSpriteGroup(FlxG.width - 20, 620); buttonTextGroup.cameras = [menuCamera]; add(buttonTextGroup);
+
     for (i in 0...menuOptions.length) {
         var buttonSpr = new FunkinSprite();
         buttonSpr.loadSprite(Paths.image('menus/mainMenu/buttons'));
@@ -404,7 +407,22 @@ function setupMenuStuff() {
         buttonSpr.width = buttonSpr.height = 161 * buttonSpr.scale.x;
         buttonSpr.x = (i == 0 ? 20 : (buttonGroup.members[i - 1].x + buttonGroup.members[i - 1].width) + 10);
         buttonSpr.y = bottomBar.y + 20 - buttonSpr.height;
+
+        //TITLE TEXT
+        var coolText:Alphabet = new Alphabet(0, 0, menuOptions[i].toUpperCase(), true, false);
+        coolText.scale.set(0.65, 0.65);
+
+        for (t in 0...coolText.members.length) {
+            coolText.members[t].updateHitbox();
+            if (t > 0) coolText.members[t].x = coolText.members[t-1].x + coolText.members[t-1].width + 2 + (coolText.members[t-1].visible ? 0 : 25);
+        }
+
+        coolText.x -= coolText.width;
+        buttonTextGroup.add(coolText);
+        coolText.alpha = 0;
     }
+
+    bottomMenuGroup.add(buttonTextGroup);
 }
 
 function getIntroTextShit() {
@@ -423,14 +441,14 @@ function getIntroTextShit() {
 
 var allTexts = getIntroTextShit();
 
-function addText(text:String, offset = 0, offLoad = 0){
-	var coolText:Alphabet = new Alphabet(0, ((preTitleTextGroup.length - offLoad) * 60), text, true, false);
+function addText(text:String, ?offset = 0, ?offLoad = 0){
+	var coolText:Alphabet = new Alphabet(0, ((titleTextGroup.length - offLoad) * 60), text, true, false);
 
     coolText.scale.set(0.65, 0.65); //so this adjusts the scale of every object inside but doesn't adjust their positions nor hitbox (when i updateHitbox()), so I have to do it manually for every group member
     coolText.targetY = 0;
 
-    coolText.y = -300 + ((preTitleTextGroup.length - offLoad) * (coolText.height/5*3));
-    skippableTweens.push(FlxTween.tween(coolText, {y: FlxG.height/3.5 + ((preTitleTextGroup.length - offLoad) * (coolText.height/5*3)) + offset}, 0.4, {ease: FlxEase.quartOut}));
+    coolText.y = -300 + ((titleTextGroup.length - offLoad) * (coolText.height/5*3));
+    skippableTweens.push(FlxTween.tween(coolText, {y: FlxG.height/3.5 + ((titleTextGroup.length - offLoad) * (coolText.height/5*3)) + offset}, 0.4, {ease: FlxEase.quartOut}));
 
     for (i in 0...coolText.members.length) {
         coolText.members[i].updateHitbox();
@@ -452,18 +470,18 @@ function addText(text:String, offset = 0, offLoad = 0){
 
 	coolText.screenCenter(FlxAxes.X);
 
-	preTitleTextGroup.add(coolText);
+	titleTextGroup.add(coolText);
 }
 
 function recolorText(row, indexes, newColor) {
     for (num in indexes[0]...(indexes[1]+1)) {
-        var selectedLetter = preTitleTextGroup.members[row].members[num];
+        var selectedLetter = titleTextGroup.members[row].members[num];
         if (selectedLetter != null && selectedLetter.color != null) selectedLetter.color = newColor;
     }
 }
 
 function removeText() {
-    for (i in preTitleTextGroup.members) {
+    for (i in titleTextGroup.members) {
         if (i != null) {
             for (letter in i.members) {
                 skippableTweens.push(FlxTween.tween(letter, {y: letter.y - 1200}, 1, {ease: FlxEase.quartIn, onComplete: function (tween) {letter.destroy();}}));
@@ -481,10 +499,10 @@ function spawnParachute(whichLine) {
 
     FlxG.sound.play(Paths.sound('titleScreen/ParachuteOpen'), getVolume(0.25, 'sfx'));
 
-    parachute.x = preTitleTextGroup.members[whichLine].x;
-    parachute.y = preTitleTextGroup.members[whichLine].y - parachute.height/2 + 50;
+    parachute.x = titleTextGroup.members[whichLine].x;
+    parachute.y = titleTextGroup.members[whichLine].y - parachute.height/2 + 50;
 
-    parachute.setGraphicSize(preTitleTextGroup.members[whichLine].width, parachute.height);
+    parachute.setGraphicSize(titleTextGroup.members[whichLine].width, parachute.height);
     parachute.updateHitbox();
 
     skippableTweens.push(FlxTween.tween(parachute, {y: parachute.y - parachute.height/2}, 0.3, {ease: FlxEase.backOut}));
@@ -536,7 +554,7 @@ function update(elapsed) {
                 }
             }
 
-            if (selectedObject == clouds && !occupiedObject) {
+            if (selectedObject == clouds) {
                 stoppedCloudTimer = cloudTimer;
             }
 
@@ -608,6 +626,18 @@ function update(elapsed) {
                 case bottomBar:
                     bottomMenuGroup.y += FlxG.mouse.deltaScreenY;
                     bottomMenuGroup.y = Math.min(menuGroupDrags[1], Math.max(menuGroupDrags[1] - 500, bottomMenuGroup.y));
+                case buttonTextGroup:
+                    if (occupiedObject == null) {
+                        var selected = buttonTextGroup.members[menuSelection];
+
+                        new FlxTimer().start(0.065, function(timer) {
+                            var scroll = FlxG.sound.play(Paths.sound('titleScreen/xylophone'), getVolume(0.5, 'sfx'));
+                            scroll.pitch = 1 + (0.5 * (timer.elapsedLoops / selected.members.length));
+
+                            selected.members[timer.elapsedLoops-1].colorTransform.redMultiplier = selected.members[timer.elapsedLoops-1].colorTransform.greenMultiplier = selected.members[timer.elapsedLoops-1].colorTransform.blueMultiplier = 2;
+                            skippableTweens.push(FlxTween.tween(selected.members[timer.elapsedLoops-1].colorTransform, {greenMultiplier: 1, redMultiplier: 1, blueMultiplier: 1}, 0.2, {ease: FlxEase.quintInOut}));
+                        }, selected.length);
+                    }
             }
 
             if (occupiedObject == null) occupiedObject = selectedObject;
@@ -643,6 +673,14 @@ function update(elapsed) {
     }
     if ((controls.BACK || FlxG.mouse.justPressedRight) && isInMenu) progressBackwards();
 
+    #if MOD_SUPPORT
+		if (controls.SWITCHMOD) { //OUT OF NECESSITY, WILL REFURBISH LATER
+			openSubState(new ModSwitchMenu());
+			persistentUpdate = false;
+			persistentDraw = true;
+		}
+	#end
+
     if (isInMenu) {
         if ((controls.LEFT_P || controls.RIGHT_P)) {
             FlxG.sound.play(Paths.sound('firstTime/firstButtonScroll'), getVolume(0.8, 'sfx'));
@@ -652,10 +690,15 @@ function update(elapsed) {
 }
 
 function changeSelection(change = 0) {
+    var oldMenuSelection = menuSelection;
     menuSelection = FlxMath.wrap(menuSelection+change, 0, menuOptions.length - 1);
+
     for (i in buttonGroup.members) {
         i.animateAtlas.anim.play("Button", true, menuSelection == i.ID ? false : true, menuSelection == i.ID ? i.animateAtlas.anim.curFrame - i.animateAtlas.anim.length : i.animateAtlas.anim.curFrame + i.animateAtlas.anim.length );
     }
+
+    buttonTextGroup.members[oldMenuSelection].alpha = 0;
+    buttonTextGroup.members[menuSelection].alpha = 1;
 }
 
 function processClickables() {
@@ -664,16 +707,16 @@ function processClickables() {
 
     if (!isInMenu) {
         pushToClickables(teamText); pushToClickables(startText); pushToClickables(startBar); pushToClickables(logo); 
-
-        if (!easterEggs[0]) { pushToClickables(characterGroup); pushToClickables(foreground); pushToClickables(clouds); }
-        else pushToClickables(background);
     } else {
         buttonGroup.forEach(function (button) {
             pushToClickables(button);
         });
 
-        pushToClickables(logo); pushToClickables(topBar); pushToClickables(bottomBar);
+        pushToClickables(logo); pushToClickables(buttonTextGroup); pushToClickables(topBar); pushToClickables(bottomBar);
     }
+
+    if (!easterEggs[0]) { pushToClickables(characterGroup); pushToClickables(foreground); pushToClickables(clouds); }
+    else pushToClickables(background);
 }
 
 function progressForwards() {
@@ -741,7 +784,7 @@ function postUpdate(elapsed) {
             button.x = CoolUtil.fpsLerp(button.x, (button.ID == 0 ? 20 : (buttonGroup.members[button.ID - 1].x + buttonGroup.members[button.ID - 1].width) + 10), 0.2);
             button.y = bottomBar.y + 20 - button.height;
 
-            if (isInMenu && FlxG.mouse.visible && FlxG.mouse.overlaps(button)) {
+            if (isInMenu && FlxG.mouse.visible && FlxG.mouse.overlaps(button) && occupiedObject == null) {
                 if (menuSelection != button.ID) {
                     FlxG.sound.play(Paths.sound('firstTime/firstButtonScroll'), getVolume(0.8, 'sfx'));
                     changeSelection(button.ID - menuSelection);
@@ -814,7 +857,7 @@ function beatHit(curBeat) {
             case 28:
                 if (FlxG.save.data.options.shaders == 'all') skippableTweens.push(FlxTween.tween(blurFilter, {blurX: 8, blurY: 8}, 1, {ease: FlxEase.quartInOut}));
             case 29:
-                preTitleTextGroup.destroy();
+                titleTextGroup.clear();
                 
             case 32:
                 skipIntro();
@@ -868,7 +911,7 @@ function skipIntro() {
         menuCamera.flash();
 
         windEmitter.destroy(); earth.destroy(); cloudEmitter.destroy(); fallingBF.destroy(); fallingGF.destroy(); birdFlock.destroy(); parachute.destroy();
-        if (preTitleTextGroup != null) preTitleTextGroup.destroy();
+        if (titleTextGroup != null) titleTextGroup.clear();
         if (windAmbience != null) windAmbience.stop();
         if (FlxG.save.data.options.shaders == 'all') blurFilter.blurX = blurFilter.blurY = 0.0001;
 
@@ -933,11 +976,11 @@ function skipIntro() {
             logoLerping[1] = topBar.y + topBar.height - 50;
             logo.y = logoLerping[1];
         }
-
-        changeSelection();
         clearClickables();
         processClickables();
     } else initialized = true;
+
+    changeSelection();
 
     if (!easterEggs[0]) {
         charDance();
