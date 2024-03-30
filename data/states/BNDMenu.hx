@@ -328,35 +328,33 @@ function setupTitleStuff() {
 
     teamText = new FlxText(FlxG.width/5*3,FlxG.height,FlxG.width/5*2-12, "Team Reimagination 2022 - "+Date.now().getFullYear()).setFormat(Paths.font('TW Cen MT B.ttf'), 24, 0xFFFFB6B6, 'right', FlxTextBorderStyle.OUTLINE, 0xff210038);
     teamText.updateHitbox(); teamText.borderSize = 2;
-    teamText.cameras = [menuCamera];
 
     startBar = new FlxBackdrop(Paths.image('menus/titleScreen/StartBar'), FlxAxes.X); startBar.velocity.x = -40; startBar.y = 620; startBar.antialiasing = true; add(startBar); startBar.alpha = 0.6; startBar.scale.y = barLerping;
     startBar.width = Math.pow(2,24); //it's rather extreme but I had to manipulate the hitbox since it doesn't repeat for every tile in FlxBackdrop.
-    startBar.cameras = [menuCamera];
 
-    startText = new Alphabet(0, 0, "PRESS "+CoolUtil.keyToString(Reflect.field(Options, 'P1_ACCEPT')[0])+" OR CLICK HERE", true, false); startText.antialiasing = true; add(startText); startText.scale.x = 0.7; startText.scale.y = barLerping;
-    startText.updateHitbox();
-    startText.cameras = [menuCamera];
+    startText = new Alphabet(0, 0, "PRESS "+CoolUtil.keyToString(Reflect.field(Options, 'P1_ACCEPT')[0])+" OR CLICK HERE", true, false); startText.antialiasing = true; add(startText); startText.scale.x = startText.scale.y = 0.7;
 
     for (i in 0...startText.members.length) {
-        startText.members[i].x -= 15 * i;
-        startText.members[i].offset.set(0,0);
+        startText.members[i].updateHitbox();
+        if (i > 0) startText.members[i].x = startText.members[i-1].x + startText.members[i-1].width + 2 + (startText.members[i-1].visible ? 0 : 25);
     }
 
     if (startText.width >= 1000) {
         var textWidth = startText.width;
-        startText.scale.x *= 1000 / textWidth;
+
+        startText.scale.x = startText.scale.x * (1000 / textWidth);
 
         for (i in 0...startText.members.length) {
-            startText.members[i].scale.x = startText.members[i].scale.x * (1000 / textWidth);
+            startText.members[i].updateHitbox();
 
-            startText.members[i].x = (i == 0 ? 0 : (startText.members[i-1].x + (startText.members[i-1].width * startText.members[i-1].scale.x)) + 7 * (1000 / textWidth) + (startText.members[i-1].visible ? 0 : 28 * (1000 / textWidth)));
+            if (i == 0) startText.members[i].x = 0;
+            else startText.members[i].x = startText.members[i-1].x + startText.members[i-1].width + 2 + (startText.members[i-1].visible ? 0 : 25 * (1000 / textWidth));
         }
-        startText.updateHitbox();
     }
 
+    startText.scale.y = barLerping;
     startText.screenCenter();
-    startText.y = startBar.y - 12;
+    startText.y = startBar.y - 13;
 
     logo = new FunkinSprite(logoLerping[0],logoLerping[1]);
     logo.loadSprite(Paths.image('menus/titleScreen/logo'));
@@ -424,25 +422,28 @@ var allTexts = getIntroTextShit();
 
 function addText(text:String, offset = 0, offLoad = 0){
 	var coolText:Alphabet = new Alphabet(0, ((preTitleTextGroup.length - offLoad) * 60), text, true, false);
-    coolText.scale.set(0.65, 0.65);
+
+    coolText.scale.set(0.65, 0.65); //so this adjusts
     coolText.targetY = 0;
 
     coolText.y = -300 + ((preTitleTextGroup.length - offLoad) * (coolText.height/5*3));
-    skippableTweens.push(FlxTween.tween(coolText, {y: FlxG.height/4 + ((preTitleTextGroup.length - offLoad) * (coolText.height/5*3)) + offset}, 0.4, {ease: FlxEase.quartOut}));
+    skippableTweens.push(FlxTween.tween(coolText, {y: FlxG.height/3.5 + ((preTitleTextGroup.length - offLoad) * (coolText.height/5*3)) + offset}, 0.4, {ease: FlxEase.quartOut}));
 
     for (i in 0...coolText.members.length) {
-        coolText.members[i].x -= 14 * i;
-        coolText.members[i].offset.set(0,0);
+        coolText.members[i].updateHitbox();
+        if (i > 0) coolText.members[i].x = coolText.members[i-1].x + coolText.members[i-1].width + 2 + (coolText.members[i-1].visible ? 0 : 25);
     }
 
     if (coolText.width >= 680) {
         var textWidth = coolText.width;
-        coolText.scale.x *= 680 / textWidth;
+
+        coolText.scale.x = coolText.scale.x * (680 / textWidth);
 
         for (i in 0...coolText.members.length) {
-            coolText.members[i].scale.x = coolText.members[i].scale.x * (680 / textWidth);
+            coolText.members[i].updateHitbox();
 
-            coolText.members[i].x = (i == 0 ? 0 : (coolText.members[i-1].x + (coolText.members[i-1].width * coolText.members[i-1].scale.x)) + 7 * (680 / textWidth) + (coolText.members[i-1].visible ? 0 : 28 * (680 / textWidth)));
+            if (i == 0) coolText.members[i].x = 0;
+            else coolText.members[i].x = coolText.members[i-1].x + coolText.members[i-1].width + 2 + (coolText.members[i-1].visible ? 0 : 25 * (680 / textWidth));
         }
     }
 
@@ -478,23 +479,20 @@ function spawnParachute(whichLine) {
     FlxG.sound.play(Paths.sound('titleScreen/ParachuteOpen'), getVolume(0.25, 'sfx'));
 
     parachute.x = preTitleTextGroup.members[whichLine].x;
-    parachute.y = preTitleTextGroup.members[whichLine].y - parachute.height/2 + 80;
+    parachute.y = preTitleTextGroup.members[whichLine].y - parachute.height/2 + 50;
 
     parachute.setGraphicSize(preTitleTextGroup.members[whichLine].width, parachute.height);
     parachute.updateHitbox();
 
-    var pHeight = parachute.height;
-
+    skippableTweens.push(FlxTween.tween(parachute, {y: parachute.y - parachute.height/2}, 0.3, {ease: FlxEase.backOut}));
     parachute.scale.y = 0;
     skippableTweens.push(FlxTween.tween(parachute.scale, {y: 1}, 0.3, {ease: FlxEase.backOut}));
-    skippableTweens.push(FlxTween.tween(parachute, {y: parachute.y - pHeight/2}, 0.3, {ease: FlxEase.backOut}));
 }
 
 var initYMatrixes = [];
 var curYMatrixes = [];
 
 var cloudTimer = 0;
-var selectedObject;
 
 function update(elapsed) {
     if (FlxG.keys.justPressed.F9) { //DEV, REMOVE ONCE DONE!
@@ -522,7 +520,7 @@ function update(elapsed) {
         //for characters, and the logo, hitboxes were fucked up so I had to spoof them with FlxObjects. Too much work to readjust.
         //Activates whether the mouse is pressed or if there's an occupied object that has been clicked already. Occupied objects will make sure it still does stuff even when mouse is not hovering over it, as long as the mosue is pressec
         if (FlxG.mouse.justPressed || occupiedObject != null) {
-            selectedObject = occupiedObject;
+            var selectedObject = occupiedObject;
 
             if (selectedObject == null) {
                 for (clickObject in getClickables()) {
@@ -590,7 +588,7 @@ function update(elapsed) {
 
                         var startedFlipY = selectedObject.flipY;
 
-                        FlxTween.num(selectedObject.scale.y, selectedObject.scale.y * -1, 0.6, {ease: FlxEase.elasticOut, onComplete: function() {
+                        FlxTween.num(selectedObject.scale.y, selectedObject.scale.y * -1, 0.6, {ease: FlxEase.elasticOut, onComplete: function(tween) {
                             currentlyUsedObjects.remove(selectedObject);
                         }}, function(value) {
                             if (value < 0) selectedObject.flipY = !startedFlipY;
@@ -600,7 +598,7 @@ function update(elapsed) {
                         FlxG.sound.play(Paths.sound('titleScreen/WhipWoosh'), getVolume(1, 'sfx'));
                     }
                 case startText:
-                    progressForwards();
+                    if (!isInMenu) progressForwards();
                 case topBar:
                     topMenuGroup.y += FlxG.mouse.deltaScreenY;
                     topMenuGroup.y = Math.max(menuGroupDrags[0], Math.min(menuGroupDrags[0] + 500, topMenuGroup.y));
