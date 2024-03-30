@@ -585,16 +585,16 @@ function update(elapsed) {
                     logo.x = CoolUtil.fpsLerp(logo.x, logoLerping[0] + 6 * logoLerping[2], 0.2); //Offset's fucked up which is why
                     logo.y = CoolUtil.fpsLerp(logo.y, logoLerping[1] + 6 * logoLerping[2], 0.2);
                 case startBar | teamText:
-                    if (!FlxG.mouse.justPressed && !currentlyUsedObjects.contains(clickObject)) {
-                        currentlyUsedObjects.push(clickObject);
+                    if (!FlxG.mouse.justPressed && !currentlyUsedObjects.contains(selectedObject)) {
+                        currentlyUsedObjects.push(selectedObject);
 
-                        var startedFlipY = clickObject.flipY;
+                        var startedFlipY = selectedObject.flipY;
 
-                        FlxTween.num(clickObject.scale.y, clickObject.scale.y * -1, 0.6, {ease: FlxEase.elasticOut, onComplete: function() {
-                            currentlyUsedObjects.remove(clickObject);
+                        FlxTween.num(selectedObject.scale.y, selectedObject.scale.y * -1, 0.6, {ease: FlxEase.elasticOut, onComplete: function() {
+                            currentlyUsedObjects.remove(selectedObject);
                         }}, function(value) {
-                            if (value < 0) clickObject.flipY = !startedFlipY;
-                            clickObject.scale.y = Math.abs(value);
+                            if (value < 0) selectedObject.flipY = !startedFlipY;
+                            selectedObject.scale.y = Math.abs(value);
                         });
 
                         FlxG.sound.play(Paths.sound('titleScreen/WhipWoosh'), getVolume(1, 'sfx'));
