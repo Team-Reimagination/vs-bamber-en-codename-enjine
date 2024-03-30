@@ -423,7 +423,7 @@ var allTexts = getIntroTextShit();
 function addText(text:String, offset = 0, offLoad = 0){
 	var coolText:Alphabet = new Alphabet(0, ((preTitleTextGroup.length - offLoad) * 60), text, true, false);
 
-    coolText.scale.set(0.65, 0.65); //so this adjusts
+    coolText.scale.set(0.65, 0.65); //so this adjusts the scale of every object inside but doesn't adjust their positions nor hitbox (when i updateHitbox()), so I have to do it manually for every group member
     coolText.targetY = 0;
 
     coolText.y = -300 + ((preTitleTextGroup.length - offLoad) * (coolText.height/5*3));
