@@ -362,7 +362,8 @@ function setupTitleStuff() {
     for (i in 0...4) {
         logo.animateAtlas.anim.addBySymbolIndices("Idle"+i, "_PARTS/Scenes/TitleScreen/Logo_Idle", [i], 24, false);
     }
-    logo.antialiasing = true; logo.cameras = [menuCamera]; add(logo); logo.alpha = 0.0001; logo.scale.x = logo.scale.y = logoLerping[2];
+    logo.antialiasing = true; logo.cameras = [menuCamera]; add(logo); logo.alpha = 0.0001; 
+    logo.scale.x = logo.scale.y = logoLerping[2];
 
     logoHitbox = new FlxObject(logoLerping[0],logoLerping[1],564,335); logoHitbox.width = 564 * logoLerping[2]; logoHitbox.height = 335 * logoLerping[2]; logoHitbox.x -= logoHitbox.width/2; logoHitbox.y -= logoHitbox.height/2;
 }
@@ -732,11 +733,14 @@ function postUpdate(elapsed) {
         }
 
         buttonGroup.forEach(function (button) {
-            button.scale.x = button.scale.y = CoolUtil.fpsLerp(button.scale.y, (menuSelection == button.ID ? 1 : 0.6), 0.2); button.updateHitbox();
-            button.x = CoolUtil.fpsLerp(button.x, (button.ID == 0 ? 100 * button.scale.x : (buttonGroup.members[button.ID - 1].x + 50 * buttonGroup.members[button.ID - 1].scale.x) + 100 + (85 * (button.scale.x - buttonGroup.members[button.ID - 1].scale.x))), 0.2);
-            button.y = bottomBar.y;
+            button.scale.x = button.scale.y = CoolUtil.fpsLerp(button.scale.y, (menuSelection == button.ID ? 1 : 0.6), 0.2); button.animateAtlas.updateHitbox();
 
-            if (isInMenu && FlxG.mouse.visible && FlxG.mouse.overlaps(button.animateAtlas)) {
+            button.width = button.height = 161 * button.scale.x;
+
+            button.x = CoolUtil.fpsLerp(button.x, (button.ID == 0 ? 20 : (buttonGroup.members[button.ID - 1].x + buttonGroup.members[button.ID - 1].width) + 10), 0.2);
+            button.y = bottomBar.y + 20 - button.height;
+
+            if (isInMenu && FlxG.mouse.visible && FlxG.mouse.overlaps(button)) {
                 if (menuSelection != button.ID) {
                     FlxG.sound.play(Paths.sound('firstTime/firstButtonScroll'), getVolume(0.8, 'sfx'));
                     changeSelection(button.ID - menuSelection);
