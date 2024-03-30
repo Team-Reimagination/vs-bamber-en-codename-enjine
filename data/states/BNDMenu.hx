@@ -19,12 +19,11 @@ import flixel.text.FlxTextBorderStyle;
 import flixel.addons.display.FlxBackdrop;
 
 public static var initialized = false; //post-intro sequence check
-public static var preIntro = true; //pre-intro sequence check
 public static var isInMenu = false; //if the player is on the main menu or the title screen
 
 var skippableTweens = []; //Tweens that will be stored here will be skipped when you restart the state, or if you go into it from somewhere else
 
-var earth, cloudEmitter, windEmitter, fallingBF, fallingGF, birdFlock, constellation, preTitleTextGroup, parachute; //they all don't get assigned anything if the state was initialized beforehand
+var earth, cloudEmitter, windEmitter, fallingBF, fallingGF, birdFlock, preTitleTextGroup, parachute; //they all don't get assigned anything if the state was initialized beforehand
 var logo, foreground, background, clouds, mainCharacterDiffs, mainCharacters, characterGroup, characterBoundsGroup, logoHitbox, holeEasterEgg, teamText, startBar, startText; //THESE on the other hand...
 
 //MENU STUFF
@@ -43,7 +42,7 @@ public static var menuSubmenuSelection = 0;
 public static var submenuOpened = false;
 
 //SFX
-var constellationSound, windAmbience, vinylSound;
+var windAmbience, vinylSound;
 
 public static var logoLerping = [FlxG.width/2, FlxG.height/2, 1]; //This will adjust the position of the logo
 public static var barLerping = 0; //Bar Scale
@@ -179,32 +178,22 @@ function create() {
 
     skybox.antialiasing = true; add(skybox);
 
-    if (preIntro) setupPreTitleStuff();
+    if (!initialized) setupPreTitleStuff();
 
     setupTitleStuff();
 
-    //Preloaded last because of how atlases load in coordination with sounds
-    if (preIntro) {
-        constellation = new FunkinSprite();
-        constellation.loadSprite(Paths.image('menus/titleScreen/constellation'));
+    CoolUtil.playMenuSong(false);
+    Conductor.changeBPM(150);
+    FlxG.sound.music.volume = getVolume(0.3, 'music');
 
-        constellation.animateAtlas.anim.addBySymbol("Constellation", "Monolith", 24, false);
-        constellation.playAnim("Constellation");
-
-        constellation.antialiasing = true;
-        constellation.scale.set(0.9, 0.9); constellation.updateHitbox(); constellation.screenCenter();
-        add(constellation);
-
-        constellationSound = new FlxSound(); constellationSound = FlxG.sound.play(Paths.sound('titleScreen/MonolithTeaser'), getVolume(1, 'sfx'));
-    }
+    beatHit(0);
 
     if (initialized) skipIntro();
 }
 
 function setupPreTitleStuff() {
-    skybox.alpha = 0.0001;
-
-    earth = new FlxSprite(0, FlxG.height - 250).loadGraphic(Paths.image('menus/titleScreen/Earth')); earth.antialiasing = true; add(earth); earth.alpha = 0.0001;
+    earth = new FlxSprite(0, FlxG.height - 250).loadGraphic(Paths.image('menus/titleScreen/Earth')); earth.antialiasing = true; add(earth);
+    earth.velocity.y = -21;
 
     //Background Birds
     birdFlock = new FunkinSprite();
@@ -214,12 +203,21 @@ function setupPreTitleStuff() {
     birdFlock.screenCenter(); birdFlock.y = 800;
     add(birdFlock);
 
+    birdFlock.moves = true;
+    birdFlock.velocity.set(0, -60);
+
+    for (layer in birdFlock.animateAtlas.anim.curSymbol.timeline.getList()) {
+        var keyframe = layer.get(0);
+        birdElements = keyframe.getList();
+    }
+
     //Partivle Emiters
     windEmitter = new FlxTypedEmitter(0, FlxG.height + 1000, 30);
     windEmitter.setSize(FlxG.width, 10); 
     windEmitter.launchAngle.set(-90, -90);
     windEmitter.speed.set(2500, 4000);
     windEmitter.lifespan.set(1);
+    windEmitter.start(false, 0.05);
 
     cloudEmitter = new FlxTypedEmitter(0, FlxG.height + 1000);
     cloudEmitter.setSize(FlxG.width, 10);
@@ -237,17 +235,41 @@ function setupPreTitleStuff() {
         cloudEmitter.add(p);
     }
     add(cloudEmitter);
+    cloudEmitter.start(false, 0.4);
+    skippableTweens.push(FlxTween.tween(cloudEmitter, {frequency: 0.1}, 9));
 
     //Falling Chaaracters
     fallingBF = new FlxSprite(100, 100); fallingBF.frames = Paths.getSparrowAtlas('menus/titleScreen/Falling_BF'); fallingBF.animation.addByPrefix('falling', 'Falling_BF', 24, true); fallingBF.animation.play('falling'); fallingBF.antialiasing = true; add(fallingBF);
     fallingGF = new FlxSprite(230, -350); fallingGF.frames = Paths.getSparrowAtlas('menus/titleScreen/Falling_GF'); fallingGF.animation.addByPrefix('falling', 'Falling_GF', 24, true); fallingGF.animation.play('falling'); fallingGF.antialiasing = true; add(fallingGF);
+    skippableTweens.push(FlxTween.tween(fallingBF, {y: 350}, 12, {ease: FlxEase.elasticOut}));
+    fallingGF.velocity.y = 27;
 
     windEmitter.makeParticles(2, 230, 0xFFFFFFFF, 100);
     add(windEmitter);
 
+    windAmbience = FlxG.sound.play(Paths.sound('titleScreen/WindAmbience'), getVolume(0.25, 'sfx'));
+
     parachute = new FlxSprite(); parachute.antialiasing = true; add(parachute); parachute.alpha = 0.001;
 
     preTitleTextGroup = new FlxTypedSpriteGroup(240); add(preTitleTextGroup);
+
+    //SOME COLOR TRANSFORM BS
+    var colorTransform = FlxG.camera.canvas.transform.colorTransform;
+    colorTransform.redMultiplier = colorTransform.greenMultiplier = colorTransform.blueMultiplier = 0;
+    skybox.colorTransform = earth.colorTransform = colorTransform;
+
+    skippableTweens.push(FlxTween.tween(colorTransform, {greenMultiplier: 1}, 4, {ease: FlxEase.quintInOut}));
+    skippableTweens.push(FlxTween.tween(colorTransform, {redMultiplier: 1}, 2, {ease: FlxEase.quartInout}));
+    skippableTweens.push(FlxTween.tween(colorTransform, {blueMultiplier: 1}, 5, {ease: FlxEase.sineInOut, onUpdate: function(tween) {
+        skybox.colorTransform = earth.colorTransform = colorTransform;
+    }}));
+
+    cloudEmitter.forEach(function (cloud) {
+        cloud.colorTransform.redMultiplier = cloud.colorTransform.greenMultiplier = cloud.colorTransform.blueMultiplier = 0;
+        skippableTweens.push(FlxTween.tween(cloud.colorTransform, {greenMultiplier: 1}, 4, {ease: FlxEase.quintInOut}));
+        skippableTweens.push(FlxTween.tween(cloud.colorTransform, {redMultiplier: 1}, 2, {ease: FlxEase.quartInout}));
+        skippableTweens.push(FlxTween.tween(cloud.colorTransform, {blueMultiplier: 1}, 5, {ease: FlxEase.sineInOut}));
+    });
 }
 
 function setupTitleStuff() {
@@ -479,12 +501,7 @@ var curYMatrixes = [];
 var cloudTimer = 0;
 
 function update(elapsed) {
-    if (preIntro && constellation.animateAtlas.anim.finished) {
-        skipTeaser();
-    }
-
     if (FlxG.keys.justPressed.F9) { //DEV, REMOVE ONCE DONE!
-        preIntro = true;
         initialized = false;
         FlxG.sound.music.stop();
         logoLerping = [FlxG.width/2, FlxG.height/2, 1];
@@ -494,12 +511,10 @@ function update(elapsed) {
         FlxG.resetState();
     }
 
-    if (!preIntro && !initialized) {
+    if (!initialized) {
         earth.scale.x = earth.scale.y += 0.04 * elapsed;
         birdFlock.scale.x = birdFlock.scale.y += 0.06 * elapsed;
-    }
-
-    if (initialized) {
+    } else {
         if (!easterEggs[0]) {
             if (occupiedObject != clouds) cloudTimer += 60 * elapsed;
             clouds.shader.data.uTime.value = [-cloudTimer / 5000];
@@ -625,7 +640,7 @@ function update(elapsed) {
     else conditionProcess = controls.ACCEPT;
 
     if (conditionProcess) {
-        (preIntro == true) ? skipTeaser() : ((initialized == false) ? skipIntro() : progressForwards()); //the switchstate is a placeholder thing
+        (initialized == false) ? skipIntro() : progressForwards(); //the switchstate is a placeholder thing
     }
     if ((controls.BACK || FlxG.mouse.justPressedRight) && isInMenu) progressBackwards();
 
@@ -739,7 +754,7 @@ function postUpdate(elapsed) {
 
 //MATRIX MANIPULATION ON BACKGROUND BIRDS FOR PERSPECTIVE SHIFTING
 function draw(event) {
-    if (!preIntro && !initialized) {
+    if (!initialized) {
         for (layer in birdFlock.animateAtlas.anim.curSymbol.timeline.getList()) { //there may be only one layer but iterating is okay enough
             var keyframe = layer.get(birdFlock.animateAtlas.anim.curSymbol.curFrame); //this goes through the current animation frame
             var birdElements = keyframe.getList(); //this gets all the objects inside of the frame
@@ -755,58 +770,6 @@ function draw(event) {
                 birdElements[e].matrix.ty = curYMatrixes[e] += (-0.12 + -initYMatrixes[e]) * 0.22 * FlxG.elapsed; //ty is responsible for where it's placed on the Y axis
             }
         }
-    }
-}
-
-function skipTeaser() {
-    if (preIntro) {
-        preIntro = false;
-
-        constellation.destroy();
-        constellationSound.stop();
-
-        CoolUtil.playMenuSong(false);
-        Conductor.changeBPM(150);
-        FlxG.sound.music.volume = getVolume(0.3, 'music');
-
-        skybox.alpha = earth.alpha = 1;
-        earth.velocity.y = -21;
-
-        windEmitter.start(false, 0.05);
-        cloudEmitter.start(false, 0.4);
-
-        var colorTransform = FlxG.camera.canvas.transform.colorTransform;
-        colorTransform.redMultiplier = colorTransform.greenMultiplier = colorTransform.blueMultiplier = 0;
-        skybox.colorTransform = earth.colorTransform = colorTransform;
-
-        skippableTweens.push(FlxTween.tween(colorTransform, {greenMultiplier: 1}, 4, {ease: FlxEase.quintInOut}));
-        skippableTweens.push(FlxTween.tween(colorTransform, {redMultiplier: 1}, 2, {ease: FlxEase.quartInout}));
-        skippableTweens.push(FlxTween.tween(colorTransform, {blueMultiplier: 1}, 5, {ease: FlxEase.sineInOut, onUpdate: function(tween) {
-            skybox.colorTransform = earth.colorTransform = colorTransform;
-        }}));
-
-        cloudEmitter.forEach(function (cloud) {
-            cloud.colorTransform.redMultiplier = cloud.colorTransform.greenMultiplier = cloud.colorTransform.blueMultiplier = 0;
-            skippableTweens.push(FlxTween.tween(cloud.colorTransform, {greenMultiplier: 1}, 4, {ease: FlxEase.quintInOut}));
-            skippableTweens.push(FlxTween.tween(cloud.colorTransform, {redMultiplier: 1}, 2, {ease: FlxEase.quartInout}));
-            skippableTweens.push(FlxTween.tween(cloud.colorTransform, {blueMultiplier: 1}, 5, {ease: FlxEase.sineInOut}));
-        });
-        skippableTweens.push(FlxTween.tween(cloudEmitter, {frequency: 0.1}, 9));
-
-        skippableTweens.push(FlxTween.tween(fallingBF, {y: 350}, 12, {ease: FlxEase.elasticOut}));
-        fallingGF.velocity.y = 27;
-
-        birdFlock.moves = true;
-        birdFlock.velocity.set(0, -60);
-
-        for (layer in birdFlock.animateAtlas.anim.curSymbol.timeline.getList()) {
-            var keyframe = layer.get(0);
-            birdElements = keyframe.getList();
-        }
-
-        windAmbience = FlxG.sound.play(Paths.sound('titleScreen/WindAmbience'), getVolume(0.25, 'sfx'));
-
-        beatHit(0);
     }
 }
 

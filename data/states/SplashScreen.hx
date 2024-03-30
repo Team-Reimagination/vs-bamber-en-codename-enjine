@@ -5,6 +5,7 @@ import hxvlc.flixel.FlxVideoSprite;
 import funkin.backend.MusicBeatState;
 
 var splashVideo;
+var constellation, constellationSound;
 
 function create() {
     Framerate.offset.y = -999; //we do not need to see fps for this state
@@ -15,18 +16,44 @@ function create() {
     add(splashVideo);
     splashVideo.bitmap.onEndReached.add(function() {callBack();});
 
+    constellation = new FunkinSprite();
+    constellation.loadSprite(Paths.image('menus/titleScreen/constellation'));
+
+    constellation.animateAtlas.anim.addBySymbol("Constellation", "Monolith", 24, false);
+
+    constellation.antialiasing = true;
+    constellation.scale.set(0.9, 0.9); constellation.updateHitbox(); constellation.screenCenter();
+    constellation.alpha = 0.0001;
+    add(constellation);
+
+    constellationSound = FlxG.sound.load(Paths.sound('titleScreen/MonolithTeaser'), getVolume(1, 'sfx'), false);
+
     MusicBeatState.skipTransIn = true;
 	MusicBeatState.skipTransOut = true;
 }
 
 function callBack() {
-    splashVideo.destroy();
+    if (constellation.alpha == 0.0001) {
+        splashVideo.destroy();
 
-    FlxG.switchState(FlxG.save.data.notFirstLaunch != true ? new ModState("FirstTimeState") : new ModState('BNDMenu'));
+        constellationSound.play();
+        constellation.alpha = 1;
+        constellation.playAnim("Constellation", true);
+    } else {
+        constellationSound.stop();
+        constellation.destroy();
+
+        FlxG.switchState(FlxG.save.data.notFirstLaunch != true ? new ModState("FirstTimeState") : new ModState('BNDMenu'));
+    }
 }
 
 function update(elapsed) {
     FlxG.mouse.visible = false;
 
-    if ((FlxG.mouse.justPressed || controls.ACCEPT) && splashVideo.bitmap.isPlaying) splashVideo.bitmap.onEndReached.dispatch();
+    if (constellation.isAnimFinished()) callBack();
+
+    if ((FlxG.mouse.justPressed || controls.ACCEPT)) {
+        if (constellation.alpha == 0.0001) splashVideo.bitmap.onEndReached.dispatch();
+        else callBack();
+    }
 }
