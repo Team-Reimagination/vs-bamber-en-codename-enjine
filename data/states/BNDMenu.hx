@@ -93,7 +93,6 @@ if (!easterEggs[0]) {
         {
             "sheet": getName("Davey", 1),
             "isLocked": (mainCharacterDiffs[1] == "Locked"),
-            "isLocked": true,
             "isClicked": false,
             "loopCount": 0,
             "left": 0,
@@ -108,7 +107,6 @@ if (!easterEggs[0]) {
         {
             "sheet": getName("RnB", 2),
             "isLocked": (mainCharacterDiffs[2] == "Locked"),
-            "isLocked": true,
             "isClicked": false,
             "loopCount": 0,
             "left": 0,
