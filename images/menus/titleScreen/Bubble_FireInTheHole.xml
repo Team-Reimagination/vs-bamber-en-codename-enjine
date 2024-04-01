@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="Bubble_FireInTheHole.png" width="1245" height="245">
+	<SubTexture name="Bubble_FireInTheHole0000" x="2" y="2" width="106" height="129" frameX="-204" frameY="-98" frameWidth="341" frameHeight="242"/>
+	<SubTexture name="Bubble_FireInTheHole0001" x="110" y="2" width="187" height="169" frameX="-98" frameY="-34" frameWidth="341" frameHeight="242"/>
+	<SubTexture name="Bubble_FireInTheHole0002" x="299" y="2" width="263" height="212" frameX="-49" frameY="-11" frameWidth="341" frameHeight="242"/>
+	<SubTexture name="Bubble_FireInTheHole0003" x="299" y="2" width="263" height="212" frameX="-49" frameY="-11" frameWidth="341" frameHeight="242"/>
+	<SubTexture name="Bubble_FireInTheHole0004" x="906" y="2" width="337" height="241" frameX="-3" frameY="-0" frameWidth="341" frameHeight="242"/>
+	<SubTexture name="Bubble_FireInTheHole0005" x="906" y="2" width="337" height="241" frameX="-3" frameY="-0" frameWidth="341" frameHeight="242"/>
+	<SubTexture name="Bubble_FireInTheHole0006" x="906" y="2" width="337" height="241" frameX="-3" frameY="-0" frameWidth="341" frameHeight="242"/>
+	<SubTexture name="Bubble_FireInTheHole0007" x="906" y="2" width="337" height="241" frameX="-3" frameY="-0" frameWidth="341" frameHeight="242"/>
+	<SubTexture name="Bubble_FireInTheHole0008" x="564" y="2" width="340" height="238" frameX="-0" frameY="-1" frameWidth="341" frameHeight="242"/>
+	<SubTexture name="Bubble_FireInTheHole0009" x="564" y="2" width="340" height="238" frameX="-0" frameY="-1" frameWidth="341" frameHeight="242"/>
+	<SubTexture name="Bubble_FireInTheHole0010" x="564" y="2" width="340" height="238" frameX="-0" frameY="-1" frameWidth="341" frameHeight="242"/>
+	<SubTexture name="Bubble_FireInTheHole0011" x="564" y="2" width="340" height="238" frameX="-0" frameY="-1" frameWidth="341" frameHeight="242"/>
+</TextureAtlas>

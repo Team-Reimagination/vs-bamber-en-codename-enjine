@@ -10,7 +10,6 @@ import funkin.backend.system.framerate.Framerate;
 import flixel.group.FlxTypedSpriteGroup;
 import funkin.backend.FunkinSprite;
 import funkin.backend.utils.CoolUtil;
-import funkin.options.Options;
 import flixel.math.FlxMath;
 
 var gradient = new FlxGradient().createGradientFlxSprite(FlxG.width, 117, [0x0066FFFF, 0xFFFFFFFF]);
@@ -88,18 +87,18 @@ function create() {
     new FlxTimer().start(0.5, function(timer) { //this timer will be used to ease into states in case you skip the splash screen
         Framerate.offset.y = 0;
 
-        gradient.y = 623; add(gradient); gradient.antialiasing = Options.antialiasing;
+        gradient.y = 623; add(gradient); gradient.antialiasing = true;
 
         //updateHitbox is important for some reason because otherwise the FlxBackdrop won't recognize its graphic.
         textObj.setFormat(Paths.font('TW Cen MT B.ttf'), 140, 0xFF555555); textObj.updateHitbox();
     
         //regenGraphic is necessary for readdjusting all the stuff once it's scaled. And X adjusting is so that F in FIRST is seen first.
-        marqueeText = new FlxBackdrop(textObj.graphic, FlxAxes.X); marqueeText.velocity.x = -40; marqueeText.scale.x = 1.5; marqueeText.regenGraphic(FlxG.camera); marqueeText.x += 400; marqueeText.y -= 5; add(marqueeText); marqueeText.antialiasing = Options.antialiasing;
+        marqueeText = new FlxBackdrop(textObj.graphic, FlxAxes.X); marqueeText.velocity.x = -40; marqueeText.scale.x = 1.5; marqueeText.regenGraphic(FlxG.camera); marqueeText.x += 400; marqueeText.y -= 5; add(marqueeText); marqueeText.antialiasing = true;
     
         //Incorporeal makes it uninteractable, which not only is intentional, but also prevents it from crashing on a state that does not extend UIState.
         //Rounding placement changes is important too since it prevents visual artifacts.
         //reducing half of a corner tile's width to the placement change centers it better.
-        background.incorporeal = true; centerBackground(); add(background); background.antialiasing = Options.antialiasing;
+        background.incorporeal = true; centerBackground(); add(background); background.antialiasing = true;
     
         FlxTween.tween(background, {bWidth: 1008}, 0.4, {ease: FlxEase.backOut});
         FlxTween.tween(background, {bHeight: 447}, 0.5, {ease: FlxEase.backOut, onUpdate: function(tween) {
@@ -113,7 +112,7 @@ function create() {
         FlxTween.tween(marqueeText, {alpha: 0.7}, 1, {ease: FlxEase.quartInOut});
 
         //convert text template used for marquee text into something useful.
-        textObj.setFormat(Paths.font('TW Cen MT N.ttf'), 30, 0xFF511863, 'center'); textObj.fieldWidth = 1000; textObj.screenCenter(); textObj.y -= 70; add(textObj); textObj.antialiasing = Options.antialiasing;
+        textObj.setFormat(Paths.font('TW Cen MT N.ttf'), 30, 0xFF511863, 'center'); textObj.fieldWidth = 1000; textObj.screenCenter(); textObj.y -= 70; add(textObj); textObj.antialiasing = true;
 
         add(header);
 
@@ -142,15 +141,25 @@ function create() {
             FlxTween.tween(prog.scale, {x:1, y:1}, 0.4, {ease: FlxEase.quartOut, startDelay: 0.03 * i});
 
             manX += prog.width * (i % 4 == 0 ? 0.85 : 0.4 * (i % 4 == 3 ? 0.15 : 1));
-            prog.antialiasing = Options.antialiasing;
+            prog.antialiasing = true;
         }
 
         add(buttonGroup);
         progressGroup.screenCenter(); progressGroup.y = FlxG.height + 10 - progressGroup.height; add(progressGroup);
 
-        walkProgress.frames = Paths.getFrames('menus/firstTime/progress'); walkProgress.animation.addByPrefix('walk', "Progress_Walk", 24, true); walkProgress.animation.play('walk'); walkProgress.x = progressGroup.x - walkProgress.width - 30; walkProgress.y = progressGroup.y - walkProgress.height / 2 - 7; add(walkProgress); walkProgress.antialiasing = Options.antialiasing;
+        walkProgress.frames = Paths.getFrames('menus/firstTime/progress'); walkProgress.animation.addByPrefix('walk', "Progress_Walk", 24, true); walkProgress.animation.play('walk'); walkProgress.x = progressGroup.x - walkProgress.width - 30; walkProgress.y = progressGroup.y - walkProgress.height / 2 - 7; add(walkProgress); walkProgress.antialiasing = true;
         warningTweens.push(FlxTween.tween(walkProgress, {alpha: 1, x: walkProgress.width/8 + progressGroup.members[curPageNum * 4].x}, 1, {ease: FlxEase.quartOut}));
     }, 1);
+}
+
+function processSelection() {
+    FlxG.sound.play(Paths.sound('firstTime/'+(curPageNum+1 != pages.length ? 'firstTimeAccept' : 'firstTimeFinalPage')), getVolume(1, 'sfx'));
+
+    if (curPage[4] != null) Reflect.setField(FlxG.save.data.options, curPage[4], curPage[3][curSelected]);
+
+    clearClickables();
+
+    transitionPage();
 }
 
 function update(elapsed) {
@@ -161,11 +170,7 @@ function update(elapsed) {
         }
 
         if (controls.ACCEPT) {
-            FlxG.sound.play(Paths.sound('firstTime/'+(curPageNum+1 != pages.length ? 'firstTimeAccept' : 'firstTimeFinalPage')), getVolume(1, 'sfx'));
-
-            if (curPage[4] != null) Reflect.setField(FlxG.save.data, curPage[4], curPage[3][curSelected]);
-
-            transitionPage();
+            processSelection();
         }
     }
 }
@@ -173,6 +178,15 @@ function update(elapsed) {
 function postUpdate(elapsed) {
     buttonGroup.forEach(function (button) {
         button.scale.x = button.scale.y = CoolUtil.fpsLerp(button.scale.x, !scaleButtons ? (button.ID == curSelected ? 1 : 0.7) : 0, 0.3);
+
+        if (canMove && FlxG.mouse.visible && FlxG.mouse.overlaps(button.animateAtlas)) {
+            if (curSelected != button.ID) {
+                FlxG.sound.play(Paths.sound('firstTime/firstButtonScroll'), getVolume(0.8, 'sfx'));
+                changeSelection(button.ID - curSelected);
+            }
+
+            if (FlxG.mouse.justReleased && curSelected == button.ID) processSelection();
+        }
     });
 }
 
@@ -188,7 +202,7 @@ function centerBackground() {
 }
 
 function generatePage() {
-    if (curPage[0] != oldPage[0]) header.loadGraphic(Paths.image('menus/firstTime/header_'+curPage[0])); header.screenCenter(); header.y -= 150; header.antialiasing = Options.antialiasing;
+    if (curPage[0] != oldPage[0]) header.loadGraphic(Paths.image('menus/firstTime/header_'+curPage[0])); header.screenCenter(); header.y -= 150; header.antialiasing = true;
     textObj.text = curPage[1];
 
     warningTweens.push(FlxTween.tween(header, {alpha: 1}, 0.5, {ease: FlxEase.quartInOut, startDelay: 0.2}));
@@ -208,9 +222,10 @@ function generatePage() {
             buttonSpr.animateAtlas.anim.play("Button", true, true);
 
 			buttonSpr.ID = i;
-            buttonSpr.antialiasing = Options.antialiasing;
+            buttonSpr.antialiasing = true;
             buttonSpr.scale.x = buttonSpr.scale.y = 0;
             buttonGroup.add(buttonSpr);
+            pushToClickables(buttonSpr);
         }
 
         buttonGroup.screenCenter(); buttonGroup.x -= 113; buttonGroup.y += 100;
