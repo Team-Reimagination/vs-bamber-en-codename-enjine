@@ -1,99 +1,45 @@
-Codename Default:
-
-Controls: Controls
-
-Gameplay:
-Ghost Tapping (On/Off)
-Song Offset (-200 - 200)
-Camera Zoon On Beat (On/Off)
-Hit Window (50 - 500)
-
-Appearance:
-Framerate (60 - 360)
-Anti-aliasing (On/Off)
-Colored Healthbar (On/Off)
-Pixel Perfect Effect (On/Off)
-Low Memory Mode (On/Off)
-VRAM Only Sprites (On/Off)
-Autopause (On/Off)
-Note Splashes (On/Off)
-Framerate Counter (On/Off)
-
-
-
-Mod Specific:
-
-Controls:
-Skip Dialogue
-Skip Song Intro
-
-Note Colors: R|G|B|Hex Code
-
-Gameplay:
-Modcharts (Always On/Choose/Always Off)
-Dialogue (Story Mode | Playlists | Freeplay)
-Scroll Speed (1.0-5.0)
-Pause Countdown (On/Off)
-Skip Game Over (On/Off)
-Middlescroll (On/Off)
-Skip Song Intro (On/Off)
-
-Appearance:
-Flashing Lights (On/Off)
-Shaders (All/Some/Off)
-Hide UI on Botplay (On/Off)
-Background Blur (0-100%)
-Background Dim (0-100%)
-Rapid Camera Movement (On/Off)
-Brightness (10-100%)
-Gamma (10-100%)
-Break Time Bar (On/Off)
-Time Bar (On/Off)
-Combo Position (Bottom-Top)
-Cinematic Bars (On/Off)
-Resolution (Resolutions)
-Fullscreen (On/Off)
-Borderless Windowed (On/Off) 
-Note Skin Type (Arrows/Circles/Bars/Diamonds/Dots/Mix)
-Health Icons (On/Off)
-Song Credits (On/Off)
-Text Scale (50-200%)
-Note Scale (50-200%)
-Distractions (On/Off)
-Stamp Text On Strums (On/Off)
+Video:
+Default: Framerate (60 - 360), Anti-aliasing (On/Off), Pixel Perfect Effect (On/Off)
+Mod-Specific: Resolution (Resolutions), Fullscreen (On/Off), Borderless Windowed (On/Off), Brightness (10-100%), Gamma (10-100%)
+Planned:
 
 Sound:
-Master Volume (0-100%)
-Music Volume (0-100%)
-Vocal Volume (0-100%)
-Sound Volume (0-100%)
-Hitsounds (Hitsounds)
-Hitsound Volume (0-100%)
-Miss Sounds (On/Off)
-Copyright Bypass (On/Off)
-Subtitles (On/Off)
+Default:
+Mod-Specific: Master Volume (0-100%), Music Volume (0-100%), Vocal Volume (0-100%), Sound Volume (0-100%)
+Miss Sounds (On/Off), Copyright Bypass (On/Off), Subtitles (On/Off)
+Planned: Hitsounds (Hitsounds), Hitsound Volume (0-100%)
+
+Appearance:
+Default:Colored Healthbar (On/Off), Low Memory Mode (On/Off), VRAM Only Sprites (On/Off)
+Autopause (On/Off), Note Splashes (On/Off), Framerate Counter (On/Off)
+Mod-Specific: Flashing Lights (On/Off), Shaders (All/Some/Off), Hide UI on Botplay (On/Off), Background Blur (0-100%),Background Dim (0-100%), Rapid Camera Movement (On/Off)
+Break Time Bar (On/Off), Time Bar (On/Off), Combo Position (Bottom-Top), Cinematic Bars (On/Off), 
+Health Icons (On/Off), Song Credits (On/Off), Stamp Keybinds On Strums (On/Off)
+Planned: Language,
+
+Notes: 
+Note Skin Type (Arrows/Circles/Bars/Diamonds/Dots/Mix),
+Note Scale (50-200%)
+Colors: (R|G|B|Hex Code)x4
+
+Controls:
+Default: Existing Controls
+Mod-Specific: Skip Dialogue, Skip Song Intro, Switch to Mouse Mode
+Planned: RPG Movement, RPG Sprint, RPG Inventory (Maybe)
+
+Gameplay:
+Default: Ghost Tapping (On/Off), Song Offset (-200 - 200), Camera Zoon On Beat (On/Off), Hit Window (50 - 500)
+Mod-Specific: Modcharts (Always On/Choose/Always Off), Dialogue (Story Mode | Playlists | Freeplay), Scroll Speed (1.0-5.0), Pause Countdown (On/Off)
+Skip Game Over (Exit/Retry/Off), Middlescroll (On/Off), Skip Song Intro (On/Off)
+Planned:
 
 Miscellaneous:
-Reset Scores & Achievements
-Reset Options
+Default:
+Mod-Specific: Reset Scores & Achievements, Reset Options
+Planned:
 
 
 
 
 Pause Menu Stuffs:
-Modchart (On/Off)
-Botplay (On/Off)
-Practice Mode (On/Off)
-Options
-
-
-
-Planned:
-
-Controls:
-RPG Movement
-RPG Sprint
-RPG Inventory (Maybe)
-
-Appearance:
-Language
+Modchart (On/Off), Botplay (On/Off), Practice Mode (On/Off), Options

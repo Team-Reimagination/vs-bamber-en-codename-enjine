@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="optionsBox.png">
+	<!-- Created without animate lol i wrote this-->
+	<SubTexture name="normal-topleft" x="0" y="0" width="32" height="32"/>
+	<SubTexture name="normal-top" x="32" y="0" width="6" height="32"/>
+	<SubTexture name="normal-topright" x="38" y="0" width="32" height="32"/>
+
+	<SubTexture name="normal-middleleft" x="0" y="32" width="32" height="6"/>
+	<SubTexture name="normal-middle" x="32" y="32" width="6" height="6"/>
+	<SubTexture name="normal-middleright" x="38" y="32" width="32" height="6"/>
+
+	<SubTexture name="normal-bottomleft" x="0" y="38" width="32" height="32"/>
+	<SubTexture name="normal-bottom" x="32" y="38" width="6" height="32"/>
+	<SubTexture name="normal-bottomright" x="38" y="38" width="32" height="32"/>
+</TextureAtlas>
