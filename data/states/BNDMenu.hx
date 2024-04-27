@@ -36,11 +36,11 @@ var buttonSubgroup;
 var buttonTextGroup;
 
 var menuOptions = ['Play', 'Gallery', 'Achievements', 'Options', 'Credits'];
-var submenuOptions = ['Story Mode', 'Freeplay'];
+var submenuOptions = [['Story Mode', 'Freeplay'], ['Gallery', 'DLC']];
 
 public static var menuSelection = 0;
 public static var menuSubmenuSelection = 0;
-public static var submenuOpened = false;
+public static var submenuNum = -1; //there are two submenus in vol.3, for play and for extras
 
 //SFX
 var windAmbience, vinylSound;
