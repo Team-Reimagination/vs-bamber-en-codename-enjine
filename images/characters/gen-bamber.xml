@@ -1,79 +1,80 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="gen-bamber.png">
-	<!-- Created with Adobe Animate version 22.0.0.93 -->
-	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="genbamberTalk0000" x="0" y="0" width="859" height="655" frameX="-86" frameY="-90" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0001" x="859" y="0" width="894" height="643" frameX="-79" frameY="-102" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0002" x="1753" y="0" width="841" height="714" frameX="-114" frameY="-31" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0003" x="2594" y="0" width="837" height="712" frameX="-115" frameY="-33" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0004" x="3431" y="0" width="840" height="715" frameX="-107" frameY="-30" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0005" x="4271" y="0" width="883" height="728" frameX="-1" frameY="-17" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0006" x="4271" y="0" width="883" height="728" frameX="-1" frameY="-17" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0007" x="5154" y="0" width="811" height="725" frameX="0" frameY="-20" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0008" x="5154" y="0" width="811" height="725" frameX="0" frameY="-20" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0009" x="5965" y="0" width="809" height="726" frameX="-4" frameY="-19" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0010" x="5965" y="0" width="809" height="726" frameX="-4" frameY="-19" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0011" x="5965" y="0" width="809" height="726" frameX="-4" frameY="-19" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0012" x="6774" y="0" width="826" height="735" frameX="-21" frameY="-10" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0013" x="6774" y="0" width="826" height="735" frameX="-21" frameY="-10" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0014" x="0" y="735" width="795" height="727" frameX="-76" frameY="-18" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0015" x="0" y="735" width="795" height="727" frameX="-76" frameY="-18" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0016" x="795" y="735" width="835" height="732" frameX="-85" frameY="-13" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0017" x="795" y="735" width="835" height="732" frameX="-85" frameY="-13" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0018" x="1630" y="735" width="820" height="736" frameX="-89" frameY="-9" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0019" x="1630" y="735" width="820" height="736" frameX="-89" frameY="-9" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0020" x="2450" y="735" width="820" height="740" frameX="-89" frameY="-5" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0021" x="2450" y="735" width="820" height="740" frameX="-89" frameY="-5" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0022" x="3270" y="735" width="820" height="745" frameX="-89" frameY="0" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0023" x="3270" y="735" width="820" height="745" frameX="-89" frameY="0" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0024" x="4090" y="735" width="820" height="743" frameX="-89" frameY="-2" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0025" x="4090" y="735" width="820" height="743" frameX="-89" frameY="-2" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0026" x="4910" y="735" width="820" height="739" frameX="-89" frameY="-6" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0027" x="4910" y="735" width="820" height="739" frameX="-89" frameY="-6" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0028" x="5730" y="735" width="820" height="734" frameX="-89" frameY="-11" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0029" x="5730" y="735" width="820" height="734" frameX="-89" frameY="-11" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0030" x="6550" y="735" width="820" height="719" frameX="-89" frameY="-26" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0031" x="6550" y="735" width="820" height="719" frameX="-89" frameY="-26" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0032" x="7370" y="735" width="820" height="719" frameX="-89" frameY="-26" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0033" x="7370" y="735" width="820" height="719" frameX="-89" frameY="-26" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0034" x="0" y="1480" width="820" height="669" frameX="-89" frameY="-76" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0035" x="0" y="1480" width="820" height="669" frameX="-89" frameY="-76" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0036" x="820" y="1480" width="820" height="665" frameX="-89" frameY="-80" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0037" x="820" y="1480" width="820" height="665" frameX="-89" frameY="-80" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberTalk0038" x="1640" y="1480" width="820" height="662" frameX="-89" frameY="-83" frameWidth="973" frameHeight="745"/>
-	<SubTexture name="genbamberoneDownSing0000" x="2460" y="1480" width="881" height="592" frameX="-1" frameY="-16" frameWidth="882" frameHeight="608"/>
-	<SubTexture name="genbamberoneDownSing0001" x="2460" y="1480" width="881" height="592" frameX="-1" frameY="-16" frameWidth="882" frameHeight="608"/>
-	<SubTexture name="genbamberoneDownSing0002" x="3341" y="1480" width="879" height="604" frameX="-1" frameY="-4" frameWidth="882" frameHeight="608"/>
-	<SubTexture name="genbamberoneDownSing0003" x="3341" y="1480" width="879" height="604" frameX="-1" frameY="-4" frameWidth="882" frameHeight="608"/>
-	<SubTexture name="genbamberoneDownSing0004" x="3341" y="1480" width="879" height="604" frameX="-1" frameY="-4" frameWidth="882" frameHeight="608"/>
-	<SubTexture name="genbamberoneDownSing0005" x="4220" y="1480" width="882" height="608"/>
-	<SubTexture name="genbamberoneIdleDance0000" x="5102" y="1480" width="839" height="647" frameX="-6" frameY="-37" frameWidth="856" frameHeight="684"/>
-	<SubTexture name="genbamberoneIdleDance0001" x="5102" y="1480" width="839" height="647" frameX="-6" frameY="-37" frameWidth="856" frameHeight="684"/>
-	<SubTexture name="genbamberoneIdleDance0002" x="5941" y="1480" width="838" height="648" frameX="-7" frameY="-36" frameWidth="856" frameHeight="684"/>
-	<SubTexture name="genbamberoneIdleDance0003" x="5941" y="1480" width="838" height="648" frameX="-7" frameY="-36" frameWidth="856" frameHeight="684"/>
-	<SubTexture name="genbamberoneIdleDance0004" x="6779" y="1480" width="849" height="666" frameX="0" frameY="-18" frameWidth="856" frameHeight="684"/>
-	<SubTexture name="genbamberoneIdleDance0005" x="6779" y="1480" width="849" height="666" frameX="0" frameY="-18" frameWidth="856" frameHeight="684"/>
-	<SubTexture name="genbamberoneIdleDance0006" x="0" y="2149" width="838" height="675" frameX="-11" frameY="-9" frameWidth="856" frameHeight="684"/>
-	<SubTexture name="genbamberoneIdleDance0007" x="0" y="2149" width="838" height="675" frameX="-11" frameY="-9" frameWidth="856" frameHeight="684"/>
-	<SubTexture name="genbamberoneIdleDance0008" x="838" y="2149" width="847" height="681" frameX="-6" frameY="-3" frameWidth="856" frameHeight="684"/>
-	<SubTexture name="genbamberoneIdleDance0009" x="838" y="2149" width="847" height="681" frameX="-6" frameY="-3" frameWidth="856" frameHeight="684"/>
-	<SubTexture name="genbamberoneIdleDance0010" x="1685" y="2149" width="851" height="684" frameX="-5" frameY="0" frameWidth="856" frameHeight="684"/>
-	<SubTexture name="genbamberoneLeftSing0000" x="2536" y="2149" width="913" height="700" frameX="0" frameY="0" frameWidth="927" frameHeight="700"/>
-	<SubTexture name="genbamberoneLeftSing0001" x="2536" y="2149" width="913" height="700" frameX="0" frameY="0" frameWidth="927" frameHeight="700"/>
-	<SubTexture name="genbamberoneLeftSing0002" x="3449" y="2149" width="919" height="698" frameX="-6" frameY="-2" frameWidth="927" frameHeight="700"/>
-	<SubTexture name="genbamberoneLeftSing0003" x="3449" y="2149" width="919" height="698" frameX="-6" frameY="-2" frameWidth="927" frameHeight="700"/>
-	<SubTexture name="genbamberoneLeftSing0004" x="3449" y="2149" width="919" height="698" frameX="-6" frameY="-2" frameWidth="927" frameHeight="700"/>
-	<SubTexture name="genbamberoneLeftSing0005" x="4368" y="2149" width="917" height="699" frameX="-10" frameY="-1" frameWidth="927" frameHeight="700"/>
-	<SubTexture name="genbamberoneRightSing0000" x="5285" y="2149" width="933" height="699" frameX="-12" frameY="-4" frameWidth="945" frameHeight="703"/>
-	<SubTexture name="genbamberoneRightSing0001" x="5285" y="2149" width="933" height="699" frameX="-12" frameY="-4" frameWidth="945" frameHeight="703"/>
-	<SubTexture name="genbamberoneRightSing0002" x="6218" y="2149" width="931" height="701" frameX="-3" frameY="-2" frameWidth="945" frameHeight="703"/>
-	<SubTexture name="genbamberoneRightSing0003" x="6218" y="2149" width="931" height="701" frameX="-3" frameY="-2" frameWidth="945" frameHeight="703"/>
-	<SubTexture name="genbamberoneRightSing0004" x="6218" y="2149" width="931" height="701" frameX="-3" frameY="-2" frameWidth="945" frameHeight="703"/>
-	<SubTexture name="genbamberoneRightSing0005" x="7149" y="2149" width="929" height="703" frameX="0" frameY="0" frameWidth="945" frameHeight="703"/>
-	<SubTexture name="genbamberoneUpSing0000" x="0" y="2852" width="807" height="717" frameX="0" frameY="0" frameWidth="810" frameHeight="717"/>
-	<SubTexture name="genbamberoneUpSing0001" x="0" y="2852" width="807" height="717" frameX="0" frameY="0" frameWidth="810" frameHeight="717"/>
-	<SubTexture name="genbamberoneUpSing0002" x="807" y="2852" width="799" height="709" frameX="-4" frameY="-8" frameWidth="810" frameHeight="717"/>
-	<SubTexture name="genbamberoneUpSing0003" x="807" y="2852" width="799" height="709" frameX="-4" frameY="-8" frameWidth="810" frameHeight="717"/>
-	<SubTexture name="genbamberoneUpSing0004" x="807" y="2852" width="799" height="709" frameX="-4" frameY="-8" frameWidth="810" frameHeight="717"/>
-	<SubTexture name="genbamberoneUpSing0005" x="1606" y="2852" width="806" height="705" frameX="-4" frameY="-12" frameWidth="810" frameHeight="717"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="gen-bamber.png" width="5136" height="4938">
+	<SubTexture name="genbamberTalk0000" x="2287" y="917" width="655" height="859" rotated="true" frameX="-86" frameY="-90" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0001" x="1642" y="917" width="643" height="894" rotated="true" frameX="-79" frameY="-102" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0002" x="1736" y="2697" width="841" height="714" frameX="-114" frameY="-31" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0003" x="2" y="3503" width="837" height="712" frameX="-115" frameY="-33" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0004" x="2950" y="2" width="715" height="840" rotated="true" frameX="-107" frameY="-30" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0005" x="2" y="2106" width="883" height="728" frameX="-1" frameY="-17" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0006" x="2" y="2106" width="883" height="728" frameX="-1" frameY="-17" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0007" x="4409" y="2" width="725" height="811" rotated="true" frameX="-0" frameY="-20" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0008" x="4409" y="2" width="725" height="811" rotated="true" frameX="-0" frameY="-20" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0009" x="4340" y="1666" width="726" height="809" rotated="true" frameX="-4" frameY="-19" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0010" x="4340" y="1666" width="726" height="809" rotated="true" frameX="-4" frameY="-19" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0011" x="4340" y="1666" width="726" height="809" rotated="true" frameX="-4" frameY="-19" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0012" x="1736" y="3413" width="826" height="735" frameX="-21" frameY="-10" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0013" x="1736" y="3413" width="826" height="735" frameX="-21" frameY="-10" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0014" x="4345" y="2477" width="727" height="795" rotated="true" frameX="-76" frameY="-18" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0015" x="4345" y="2477" width="727" height="795" rotated="true" frameX="-76" frameY="-18" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0016" x="2579" y="3365" width="732" height="835" rotated="true" frameX="-85" frameY="-13" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0017" x="2579" y="3365" width="732" height="835" rotated="true" frameX="-85" frameY="-13" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0018" x="853" y="3418" width="820" height="736" frameX="-89" frameY="-9" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0019" x="853" y="3418" width="820" height="736" frameX="-89" frameY="-9" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0020" x="3667" y="2" width="740" height="820" rotated="true" frameX="-89" frameY="-5" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0021" x="3667" y="2" width="740" height="820" rotated="true" frameX="-89" frameY="-5" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0022" x="3593" y="1685" width="745" height="820" rotated="true" frameX="-89" frameY="-0" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0023" x="3593" y="1685" width="745" height="820" rotated="true" frameX="-89" frameY="-0" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0024" x="3598" y="844" width="743" height="820" rotated="true" frameX="-89" frameY="-2" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0025" x="3598" y="844" width="743" height="820" rotated="true" frameX="-89" frameY="-2" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0026" x="3313" y="3365" width="739" height="820" rotated="true" frameX="-89" frameY="-6" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0027" x="3313" y="3365" width="739" height="820" rotated="true" frameX="-89" frameY="-6" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0028" x="3609" y="2507" width="734" height="820" rotated="true" frameX="-89" frameY="-11" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0029" x="3609" y="2507" width="734" height="820" rotated="true" frameX="-89" frameY="-11" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0030" x="2" y="4217" width="820" height="719" frameX="-89" frameY="-26" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0031" x="2" y="4217" width="820" height="719" frameX="-89" frameY="-26" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0032" x="824" y="4217" width="820" height="719" frameX="-89" frameY="-26" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0033" x="824" y="4217" width="820" height="719" frameX="-89" frameY="-26" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0034" x="1646" y="4202" width="820" height="669" frameX="-89" frameY="-76" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0035" x="1646" y="4202" width="820" height="669" frameX="-89" frameY="-76" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0036" x="2468" y="4202" width="820" height="665" frameX="-89" frameY="-80" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0037" x="2468" y="4202" width="820" height="665" frameX="-89" frameY="-80" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberTalk0038" x="3290" y="4202" width="820" height="662" frameX="-89" frameY="-83" frameWidth="973" frameHeight="745"/>
+	<SubTexture name="genbamberoneDownSing0000" x="923" y="1852" width="592" height="881" rotated="true" frameX="-1" frameY="-16" frameWidth="882" frameHeight="608"/>
+	<SubTexture name="genbamberoneDownSing0001" x="923" y="1852" width="592" height="881" rotated="true" frameX="-1" frameY="-16" frameWidth="882" frameHeight="608"/>
+	<SubTexture name="genbamberoneDownSing0002" x="2344" y="2" width="604" height="879" rotated="true" frameX="-1" frameY="-4" frameWidth="882" frameHeight="608"/>
+	<SubTexture name="genbamberoneDownSing0003" x="2344" y="2" width="604" height="879" rotated="true" frameX="-1" frameY="-4" frameWidth="882" frameHeight="608"/>
+	<SubTexture name="genbamberoneDownSing0004" x="2344" y="2" width="604" height="879" rotated="true" frameX="-1" frameY="-4" frameWidth="882" frameHeight="608"/>
+	<SubTexture name="genbamberoneDownSing0005" x="1636" y="1813" width="608" height="882" rotated="true" frameX="-0" frameY="-0" frameWidth="882" frameHeight="608"/>
+	<SubTexture name="genbamberoneIdleDance0000" x="2950" y="844" width="646" height="839" rotated="true" frameX="-6" frameY="-37" frameWidth="856" frameHeight="684"/>
+	<SubTexture name="genbamberoneIdleDance0001" x="2950" y="844" width="646" height="839" rotated="true" frameX="-6" frameY="-37" frameWidth="856" frameHeight="684"/>
+	<SubTexture name="genbamberoneIdleDance0002" x="2944" y="1685" width="647" height="838" rotated="true" frameX="-7" frameY="-36" frameWidth="856" frameHeight="684"/>
+	<SubTexture name="genbamberoneIdleDance0003" x="2944" y="1685" width="647" height="838" rotated="true" frameX="-7" frameY="-36" frameWidth="856" frameHeight="684"/>
+	<SubTexture name="genbamberoneIdleDance0004" x="2" y="2836" width="849" height="665" frameX="-0" frameY="-18" frameWidth="856" frameHeight="684"/>
+	<SubTexture name="genbamberoneIdleDance0005" x="2" y="2836" width="849" height="665" frameX="-0" frameY="-18" frameWidth="856" frameHeight="684"/>
+	<SubTexture name="genbamberoneIdleDance0006" x="2932" y="2525" width="675" height="838" rotated="true" frameX="-11" frameY="-9" frameWidth="856" frameHeight="684"/>
+	<SubTexture name="genbamberoneIdleDance0007" x="2932" y="2525" width="675" height="838" rotated="true" frameX="-11" frameY="-9" frameWidth="856" frameHeight="684"/>
+	<SubTexture name="genbamberoneIdleDance0008" x="887" y="2735" width="847" height="681" frameX="-6" frameY="-3" frameWidth="856" frameHeight="684"/>
+	<SubTexture name="genbamberoneIdleDance0009" x="887" y="2735" width="847" height="681" frameX="-6" frameY="-3" frameWidth="856" frameHeight="684"/>
+	<SubTexture name="genbamberoneIdleDance0010" x="2246" y="1813" width="684" height="851" rotated="true" frameX="-5" frameY="-0" frameWidth="856" frameHeight="684"/>
+	<SubTexture name="genbamberoneLeftSing0000" x="1642" y="2" width="700" height="913" rotated="true" frameX="-0" frameY="-0" frameWidth="927" frameHeight="700"/>
+	<SubTexture name="genbamberoneLeftSing0001" x="1642" y="2" width="700" height="913" rotated="true" frameX="-0" frameY="-0" frameWidth="927" frameHeight="700"/>
+	<SubTexture name="genbamberoneLeftSing0002" x="2" y="1406" width="919" height="698" frameX="-6" frameY="-2" frameWidth="927" frameHeight="700"/>
+	<SubTexture name="genbamberoneLeftSing0003" x="2" y="1406" width="919" height="698" frameX="-6" frameY="-2" frameWidth="927" frameHeight="700"/>
+	<SubTexture name="genbamberoneLeftSing0004" x="2" y="1406" width="919" height="698" frameX="-6" frameY="-2" frameWidth="927" frameHeight="700"/>
+	<SubTexture name="genbamberoneLeftSing0005" x="935" y="933" width="699" height="917" rotated="true" frameX="-10" frameY="-1" frameWidth="927" frameHeight="700"/>
+	<SubTexture name="genbamberoneRightSing0000" x="2" y="2" width="933" height="699" frameX="-12" frameY="-4" frameWidth="945" frameHeight="703"/>
+	<SubTexture name="genbamberoneRightSing0001" x="2" y="2" width="933" height="699" frameX="-12" frameY="-4" frameWidth="945" frameHeight="703"/>
+	<SubTexture name="genbamberoneRightSing0002" x="2" y="703" width="931" height="701" frameX="-3" frameY="-2" frameWidth="945" frameHeight="703"/>
+	<SubTexture name="genbamberoneRightSing0003" x="2" y="703" width="931" height="701" frameX="-3" frameY="-2" frameWidth="945" frameHeight="703"/>
+	<SubTexture name="genbamberoneRightSing0004" x="2" y="703" width="931" height="701" frameX="-3" frameY="-2" frameWidth="945" frameHeight="703"/>
+	<SubTexture name="genbamberoneRightSing0005" x="937" y="2" width="703" height="929" rotated="true" frameX="-0" frameY="-0" frameWidth="945" frameHeight="703"/>
+	<SubTexture name="genbamberoneUpSing0000" x="4409" y="815" width="717" height="807" rotated="true" frameX="-0" frameY="-0" frameWidth="810" frameHeight="717"/>
+	<SubTexture name="genbamberoneUpSing0001" x="4409" y="815" width="717" height="807" rotated="true" frameX="-0" frameY="-0" frameWidth="810" frameHeight="717"/>
+	<SubTexture name="genbamberoneUpSing0002" x="4112" y="4137" width="709" height="799" rotated="true" frameX="-4" frameY="-8" frameWidth="810" frameHeight="717"/>
+	<SubTexture name="genbamberoneUpSing0003" x="4112" y="4137" width="709" height="799" rotated="true" frameX="-4" frameY="-8" frameWidth="810" frameHeight="717"/>
+	<SubTexture name="genbamberoneUpSing0004" x="4112" y="4137" width="709" height="799" rotated="true" frameX="-4" frameY="-8" frameWidth="810" frameHeight="717"/>
+	<SubTexture name="genbamberoneUpSing0005" x="4054" y="3329" width="705" height="806" rotated="true" frameX="-4" frameY="-12" frameWidth="810" frameHeight="717"/>
 </TextureAtlas>
