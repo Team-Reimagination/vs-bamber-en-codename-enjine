@@ -1,7 +1,6 @@
 <!DOCTYPE codename-engine-stage>
 <stage zoom="0.6" name="yard" folder="stages/yard/">
-	<sprite name="sky" x="-600" y="-175" sprite="Sky" scroll="0" scale="1.5" />
-	<sprite name="ballon" x="-600" y="-100" sprite="ScrollingBG" scroll="0.2" />
+	<sprite name="sky" x="-300" y="-175" sprite="Sky" scroll="0" scale="1.5" />
 	<sprite name="hill" x="-690" y="350" sprite="Hills" scroll="0.55" />
 	<sprite name="leaves" x="-975" y="-100" sprite="Spruce" scroll="0.91" />
 	<sprite name="grass" x="-1048" y="525" sprite="Grass_WithoutBamber" />
