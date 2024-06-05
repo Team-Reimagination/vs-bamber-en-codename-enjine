@@ -519,6 +519,9 @@ var yLevel = 0;
 var oldYLevel = 0;
 
 function update(elapsed) {
+    if(FlxG.keys.justPressed.J)
+        FlxG.switchState(new ModState("BNDSettings"));
+
     if (FlxG.keys.justPressed.F9) { //DEV, REMOVE ONCE DONE!
         initialized = false;
         FlxG.sound.music.stop();

@@ -1,0 +1,2 @@
+function stepHit(curStep:Int){
+}

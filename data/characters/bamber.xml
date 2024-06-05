@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character icon="Bamber" camx="-40" x="400" y="825" isGF="false" camy="-110" isPlayer="false" gameOverChar="bamber-dead" sprite="bamber" color="#71C419">
+<character x="400" icon="Bamber" camx="-40" y="825" isGF="false" camy="-110" color="#71C419" isPlayer="false" gameOverChar="bamber-dead" sprite="bamber">
 	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Bamber Idle" name="idle"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Bamber Sing Left" name="singLEFT"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Bamber Sing Down" name="singDOWN"/>
@@ -9,5 +9,5 @@
 	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Bamber Miss Down" name="singDOWNmiss"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Bamber Miss Up" name="singUPmiss"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Bamber Miss Right" name="singRIGHTmiss"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Bamber Phone Break" name="ziiuvanPaun?"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Bamber Phone Break" name="break"/>
 </character>

@@ -169,9 +169,8 @@ function update(elapsed) {
             changeSelection(controls.LEFT_P ? -1 : 1);
         }
 
-        if (controls.ACCEPT) {
+        if (controls.ACCEPT)
             processSelection();
-        }
     }
 }
 

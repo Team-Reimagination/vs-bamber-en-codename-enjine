@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-stage>
-<stage zoom="0.2" name="stage" folder="stages/memeing/">
+<stage zoom="0.2" name="stage" folder="stages/memeing/" scorePath="3d/">
    <sprite name="bg" x="-600" y="-200" sprite="Background" scale="4.5" />
    <girlfriend />
    <dad />

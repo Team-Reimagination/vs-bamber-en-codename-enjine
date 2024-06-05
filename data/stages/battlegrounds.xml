@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-stage>
-<stage zoom="0.9" name="stage" folder="stages/deathbattle/">
+<stage zoom="0.9" name="stage" folder="stages/deathbattle/" noteSkin="deathbattle">
 	<sprite name="vsBg" x="-417" y="-556" sprite="vsBg" scale="2.5" />
 	<sprite name="vs" x="204" y="-178" sprite="vs" scale="1.5" />
 	<girlfriend />

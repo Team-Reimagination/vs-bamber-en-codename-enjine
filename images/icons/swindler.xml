@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="swindler.png" width="1122" height="118">
+	<SubTexture name="losing0000" x="761" y="0" width="114" height="111" rotated="true" frameX="-21" frameY="-13" frameWidth="144" frameHeight="155"/>
+	<SubTexture name="losing0001" x="761" y="0" width="114" height="111" rotated="true" frameX="-21" frameY="-13" frameWidth="144" frameHeight="155"/>
+	<SubTexture name="losing0002" x="134" y="0" width="126" height="102" frameX="-17" frameY="-20" frameWidth="144" frameHeight="155"/>
+	<SubTexture name="losing0003" x="134" y="0" width="126" height="102" frameX="-17" frameY="-20" frameWidth="144" frameHeight="155"/>
+	<SubTexture name="losing0004" x="263" y="0" width="108" height="105" rotated="true" frameX="-28" frameY="-25" frameWidth="144" frameHeight="155"/>
+	<SubTexture name="losing0005" x="263" y="0" width="108" height="105" rotated="true" frameX="-28" frameY="-25" frameWidth="144" frameHeight="155"/>
+	<SubTexture name="normal0000" x="878" y="0" width="119" height="115" frameX="-14" frameY="-8" frameWidth="151" frameHeight="157"/>
+	<SubTexture name="normal0001" x="634" y="0" width="124" height="110" frameX="-13" frameY="-18" frameWidth="151" frameHeight="157"/>
+	<SubTexture name="normal0002" x="1000" y="0" width="122" height="118" rotated="true" frameX="-25" frameY="-1" frameWidth="151" frameHeight="157"/>
+	<SubTexture name="normal0003" x="374" y="0" width="133" height="106" frameX="-8" frameY="-11" frameWidth="151" frameHeight="157"/>
+	<SubTexture name="normal0004" x="510" y="0" width="121" height="109" frameX="-11" frameY="-1" frameWidth="151" frameHeight="157"/>
+	<SubTexture name="normal0005" x="0" y="0" width="131" height="92" frameX="-2" frameY="-28" frameWidth="151" frameHeight="157"/>
+</TextureAtlas>

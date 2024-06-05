@@ -1,8 +1,17 @@
 {
-	"displayName": "Astray",
-	"bpm": 160,
-	"icon": "joke_model_obj",
-	"color": "#111811",
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": true,
 	"coopAllowed": true,
-	"opponentModeAllowed": true
+	"stepsPerBeat": 4,
+	"bpm": 160,
+	"difficulties": [
+		"ASTRAY"
+	],
+	"needsVoices": true,
+	"parsedColor": -15656943,
+	"displayName": "Astray",
+	"icon": "joke_model_obj",
+	"name": "Astray",
+	"color": "#111811",
+	"customValues": {}
 }

@@ -1,16 +1,16 @@
 <!DOCTYPE codename-engine-character>
-<character icon="bf" camx="0" x="350" y="825" isGF="false" camy="-110" flipX="true" isPlayer="true" sprite="bf" color="#00CCFF" gameOverChar="bf-dead">
+<character x="350" icon="bf" y="825" isGF="false" camy="-110" color="#00CCFF" flipX="true" isPlayer="true" sprite="bf">
 	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Idle" name="idle"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Beatbox_Down" name="beatboxDOWN"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Beatbox_Up" name="beatboxUP"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Beatbox_Down" name="singDOWN-alt"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Beatbox_Up" name="singUP-alt"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Sing_Down" name="singDOWN"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Miss_Down" name="singDOWNmiss"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Miss_Right" name="singRIGHTmiss"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Miss_Left" name="singLEFTmiss"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Sing_Left" name="singLEFT"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Sing_Up" name="singUP"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Beatbox_Left" name="beatboxLEFT"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Beatbox_Left" name="singLEFT-alt"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Sing_Right" name="singRIGHT"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Miss_Up" name="singUPmiss"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Beatbox_Right" name="beatboxRIGHT"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Beatbox_Right" name="singRIGHT-alt"/>
 </character>

@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-stage>
-<stage zoom="0.4" name="stage" folder="stages/bfdi/">
+<stage zoom="0.4" name="stage" folder="stages/bfdi/" scorePath="beefydie/" noteSkin="bfdi">
    <sprite name="Sky"               x="-600" y="-200"   sprite="Sky"       scroll="0.9" />
    <sprite name="Cloud"       x="-600" y="600"    sprite="Cloud"      scroll="0.9" />
    <sprite name="Yoyle Mountain"       x="-600" y="600"    sprite="Yoyle Mountain"      scroll="0.9" />
@@ -16,6 +16,6 @@
    <sprite name="cast_TVGang"       x="-827" y="56"    sprite="cast_TVGang"      scroll="0.9" />
    <sprite name="cast_Pie"       x="-1055" y="160"    sprite="cast_Pie"      scroll="0.9" />
    <girlfriend />
-   <dad />
-   <boyfriend />
+   <dad y="650"/>
+   <boyfriend y="650"/>
 </stage>

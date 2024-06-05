@@ -13,6 +13,6 @@
 	"stepsPerBeat": 4,
 	"beatsPerMesure": 4,
 	"displayName": "Harvest",
-	"needsVoices": true,
+	"needsVoices": false,
 	"bpm": 230
 }

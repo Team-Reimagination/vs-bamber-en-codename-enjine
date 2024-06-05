@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-stage>
-<stage zoom="0.6" name="stage" folder="stages/farm/">
+<stage zoom="0.6" name="farm" folder="stages/farm/">
 	<sprite name="sky" x="-858" y="-348" sprite="Sky" scroll="0.2" scale="1.6" updateHitbox="true" />
 	<sprite name="wheatfields_back" x="-410" y="600" sprite="Wheat_Fields_Back" scroll="0.75" />
 	<sprite name="wheatfields_front" x="-522" y="290" sprite="Wheat_Fields_Fore" scroll="0.8" />

@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-stage>
-<stage zoom="0.6" name="stage" folder="stages/trade/">
+<stage zoom="0.6" name="stage" folder="stages/trade/" noteSkin="trade" scorePath="exchange town/">
    <sprite name="Sky" x="-652" y="-335" sprite="Sky" scroll="0" scale="3.7" updateHitbox="true"/>
    <sprite name="Clouds" x="-598" y="-318" sprite="Clouds" scroll="0.1" scale="4" updateHitbox="true"/>
    <sprite name="HillUnderCity" x="-1170" y="-576" sprite="HillUnderCity" scroll="0.15" scale="5" updateHitbox="true"/>

@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character x="400" icon="swindled" y="825" isGF="false" camy="-100" isPlayer="false" sprite="swindler" color="#ff0000">
+<character x="400" icon="swindler" y="825" isGF="false" camy="-100" isPlayer="false" sprite="swindler" color="#ff0000">
 	<anim x="0" loop="false" y="0" fps="24" anim="Swindled Bamber/Swindled-Idle" name="idle"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="Swindled Bamber/Swindled-Down-Sing" name="singDOWN"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="Swindled Bamber/Swindled-Right-Sing" name="singRIGHT"/>
