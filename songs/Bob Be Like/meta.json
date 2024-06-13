@@ -1,8 +1,19 @@
 {
-	"displayName": "Bob Be Like",
-	"bpm": 160,
+	"opponentModeAllowed": true,
+	"difficulties": [
+		"EASY",
+		"HARD",
+		"NORMAL",
+		"BOB-BE-LIKE"
+	],
 	"icon": "Boris",
-	"color": "#FFFFFF",
+	"parsedColor": -1,
+	"name": "Bob Be Like",
 	"coopAllowed": true,
-	"opponentModeAllowed": true
+	"color": "#FFFFFF",
+	"stepsPerBeat": 4,
+	"displayName": "Bob Be Like",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 180
 }

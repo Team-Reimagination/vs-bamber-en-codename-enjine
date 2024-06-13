@@ -1,0 +1,4 @@
+<!DOCTYPE codename-engine-dialogue-character>
+<character x="0" y="300">
+	<anim name="normal" anim="Animations/Dialogue/Neutral Loop" fps="24" />
+</character>
