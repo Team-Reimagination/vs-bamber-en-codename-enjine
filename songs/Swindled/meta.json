@@ -1,16 +1,17 @@
 {
 	"opponentModeAllowed": true,
-	"icon": "Swindler",
 	"difficulties": [
 		"ABSOLUTELY FUCKING FUCKED"
 	],
+	"icon": "Swindler",
 	"parsedColor": -7470843,
-	"color": "#8E0105",
-	"name": "Swindled",
 	"coopAllowed": false,
+	"name": "Swindled",
+	"color": "#8E0105",
 	"stepsPerBeat": 4,
-	"displayName": "Swindled",
 	"beatsPerMesure": 4,
+	"displayName": "Swindled",
+	"beatsPerMeasure": 4,
 	"needsVoices": false,
 	"bpm": 220
 }
