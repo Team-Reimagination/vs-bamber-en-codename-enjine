@@ -1,8 +1,8 @@
 <!DOCTYPE codename-engine-character>
-<character x="0" icon="water" camx="320" y="0" isGF="false" camy="170" color="#9AE6EA" isPlayer="false" gameOverChar="water-dead" sprite="water">
-	<anim x="0" loop="false" y="0" fps="24" anim="I" name="idle"/>
-	<anim x="-3" loop="false" y="0" fps="24" anim="D" name="singDOWN"/>
-	<anim x="38" loop="false" y="0" fps="24" anim="L" name="singLEFT"/>
-	<anim x="-3" loop="false" y="42" fps="24" anim="U" name="singUP"/>
-	<anim x="-3" loop="false" y="0" fps="24" anim="R" name="singRIGHT"/>
+<character sprite="water" camx="320" camy="170" icon="water" color="#9AE6EA" gameOverChar="water-dead" isGF="false">
+	<anim name="idle" anim="I" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singDOWN" anim="D" x="-3" y="-2" fps="24" loop="false"/>
+	<anim name="singLEFT" anim="L" x="38" y="0" fps="24" loop="false"/>
+	<anim name="singUP" anim="U" x="-3" y="42" fps="24" loop="false"/>
+	<anim name="singRIGHT" anim="R" x="-3" y="0" fps="24" loop="false"/>
 </character>

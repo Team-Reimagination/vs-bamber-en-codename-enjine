@@ -26,6 +26,9 @@ function new() {
 
     //MOD SPECIFIC OPTIONS, DEFAULT ONES SHOULD BE INCLUDED TOO
     //Video Options
+    if (FlxG.save.data.options.framerate == null) FlxG.save.data.options.framerate = 120; // is 120 a good default idk
+    if (FlxG.save.data.options.antialiasing == null) FlxG.save.data.options.antialiasing = true;
+    if (FlxG.save.data.options.pixelperfect == null) FlxG.save.data.options.pixelperfect = true;
     if (FlxG.save.data.options.resolution == null) FlxG.save.data.options.resolution = [1280, 720];
     if (FlxG.save.data.options.fullscreen == null) FlxG.save.data.options.fullscreen = false; 
     if (FlxG.save.data.options.borderless == null) FlxG.save.data.options.borderless = false;
@@ -34,14 +37,16 @@ function new() {
 
     //Sound options
     //Master Volume - FlxG.volume
-    if (FlxG.save.data.options.musicVolume == null) FlxG.save.data.options.musicVolume = 1; 
-    if (FlxG.save.data.options.sfxVolume == null) FlxG.save.data.options.sfxVolume = 1;
-    if (FlxG.save.data.options.voiceVolume == null) FlxG.save.data.options.voiceVolume = 1;
+    if (FlxG.save.data.options.musicVolume == null) FlxG.save.data.options.musicVolume = 100; 
+    if (FlxG.save.data.options.sfxVolume == null) FlxG.save.data.options.sfxVolume = 100;
+    if (FlxG.save.data.options.voiceVolume == null) FlxG.save.data.options.voiceVolume = 100;
     if (FlxG.save.data.options.missSounds == null) FlxG.save.data.options.missSounds = true;
     if (FlxG.save.data.options.copyrightBypass == null) FlxG.save.data.options.copyrightBypass = false;
     if (FlxG.save.data.options.subtitles == null) FlxG.save.data.options.subtitles = true;
 
     //Appearance Options
+    if (FlxG.save.data.options.lowMemory == null) FlxG.save.data.options.lowMemory = true;
+    if (FlxG.save.data.options.vramSprites == null) FlxG.save.data.options.vramSprites = true;
     if (FlxG.save.data.options.flashingLights == null) FlxG.save.data.options.flashingLights = true;
     if (FlxG.save.data.options.shaders == null) FlxG.save.data.options.shaders = 'all';
     if (FlxG.save.data.options.botplayUI == null) FlxG.save.data.options.botplayUI = true;
@@ -65,6 +70,7 @@ function new() {
     //will have to be reserved elsewhere
 
     //Gameplay Options
+    if (FlxG.save.data.options.coloredBar == null) FlxG.save.data.options.coloredBar = true;
     if (FlxG.save.data.options.modcharts == null) FlxG.save.data.options.modcharts = 'always';
     if (FlxG.save.data.options.dialogue == null) FlxG.save.data.options.dialogue = [true, true, false]; //Story Mode, Playlists, Freeplay
     if (FlxG.save.data.options.scrollSpeed == null) FlxG.save.data.options.scrollSpeed = false;
@@ -72,7 +78,10 @@ function new() {
     if (FlxG.save.data.options.pauseCountdown == null) FlxG.save.data.options.pauseCountdown = true;
     if (FlxG.save.data.options.skipGameOver == null) FlxG.save.data.options.skipGameOver = 'off';
     if (FlxG.save.data.options.skipSongIntro == null) FlxG.save.data.options.skipSongIntro = false;
+    if (FlxG.save.data.options.scrollMode == null) FlxG.save.data.options.scrollMode = false;
     if (FlxG.save.data.options.middlescroll == null) FlxG.save.data.options.middlescroll = false;
+    if (FlxG.save.data.options.storyDialogue == null) FlxG.save.data.options.storyDialogue = false;
+    if (FlxG.save.data.options.freeplayDialogue == null) FlxG.save.data.options.freeplayDialogue = false;
 
     //Game Statistics
     if (FlxG.save.data.gameStats == null) FlxG.save.data.gameStats = {};
