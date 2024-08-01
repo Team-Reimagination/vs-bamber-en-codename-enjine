@@ -1,18 +1,19 @@
 {
 	"opponentModeAllowed": true,
-	"icon": "Bamber",
 	"difficulties": [
 		"EASY",
 		"NORMAL",
 		"HARD"
 	],
+	"icon": "Bamber",
 	"parsedColor": -16724992,
-	"color": "#00CC00",
-	"coopAllowed": true,
 	"name": "Harvest",
+	"coopAllowed": true,
+	"color": "#00CC00",
 	"stepsPerBeat": 4,
-	"beatsPerMesure": 4,
 	"displayName": "Harvest",
+	"beatsPerMesure": 4,
+	"beatsPerMeasure": 4,
 	"needsVoices": false,
 	"bpm": 230
 }
