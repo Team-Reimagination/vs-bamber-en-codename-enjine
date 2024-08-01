@@ -1,9 +1,9 @@
 <!DOCTYPE codename-engine-character>
-<character x="200" icon="theplaceholder" camx="-150" y="-700" isGF="false" camy="80" isPlayer="false" gameOverChar="placeholder_new" sprite="placeholder">
-	<anim x="0" loop="false" y="0" fps="24" anim="Idle" name="idle"/>
-	<anim x="0" loop="true" y="0" fps="24" anim="Loop" name="idleLOOP"/>
-	<anim x="-83" loop="false" y="-28" fps="24" anim="Right" name="singRIGHT"/>
-	<anim x="-14" loop="false" y="20" fps="24" anim="Down" name="singDOWN"/>
-	<anim x="-36" loop="false" y="-2" fps="24" anim="Up" name="singUP"/>
-	<anim x="31" loop="false" y="-25" fps="24" anim="Left" name="singLEFT"/>
+<character sprite="placeholder" icon="theplaceholder" gameOverChar="placeholder_new" isGF="false">
+	<anim name="idle" anim="Idle" x="0" y="0" fps="24" loop="false"/>
+	<anim name="idleLOOP" anim="Loop" x="0" y="0" fps="24" loop="true"/>
+	<anim name="singRIGHT" anim="Right" x="-83" y="-28" fps="24" loop="false"/>
+	<anim name="singDOWN" anim="Down" x="-14" y="20" fps="24" loop="false"/>
+	<anim name="singUP" anim="Up" x="-36" y="-2" fps="24" loop="false"/>
+	<anim name="singLEFT" anim="Left" x="31" y="-25" fps="24" loop="false"/>
 </character>
