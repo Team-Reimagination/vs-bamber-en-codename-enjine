@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="circlefreind.png" width="703" height="2135">
+	<SubTexture name="cfnormalTalk0000" x="2" y="2" width="699" height="711" frameX="-0" frameY="-136" frameWidth="700" frameHeight="847"/>
+	<SubTexture name="cfnormalTalk0001" x="2" y="2" width="699" height="711" frameX="-0" frameY="-136" frameWidth="700" frameHeight="847"/>
+	<SubTexture name="cfnormalTalk0002" x="2" y="1426" width="699" height="707" frameX="-0" frameY="-140" frameWidth="700" frameHeight="847"/>
+	<SubTexture name="cfnormalTalk0003" x="2" y="1426" width="699" height="707" frameX="-0" frameY="-140" frameWidth="700" frameHeight="847"/>
+	<SubTexture name="cfnormalTalk0004" x="2" y="715" width="699" height="709" frameX="-0" frameY="-138" frameWidth="700" frameHeight="847"/>
+	<SubTexture name="cfnormalTalk0005" x="2" y="715" width="699" height="709" frameX="-0" frameY="-138" frameWidth="700" frameHeight="847"/>
+	<SubTexture name="StaticcfnormalTalk0000" x="2" y="715" width="699" height="709" frameX="-0" frameY="-136" frameWidth="700" frameHeight="845"/>
+	<SubTexture name="StaticcfnormalTalk0001" x="2" y="715" width="699" height="709" frameX="-0" frameY="-136" frameWidth="700" frameHeight="845"/>
+</TextureAtlas>

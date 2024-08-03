@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="ronnie.png" width="8332" height="678">
+	<SubTexture name="ronniehorrifiedTalk0000" x="4850" y="2" width="368" height="640" frameX="-7" frameY="-0" frameWidth="375" frameHeight="640"/>
+	<SubTexture name="ronniehorrifiedTalk0001" x="4850" y="2" width="368" height="640" frameX="-7" frameY="-0" frameWidth="375" frameHeight="640"/>
+	<SubTexture name="ronniehorrifiedTalk0002" x="2992" y="2" width="372" height="631" frameX="-0" frameY="-8" frameWidth="375" frameHeight="640"/>
+	<SubTexture name="ronniehorrifiedTalk0003" x="2992" y="2" width="372" height="631" frameX="-0" frameY="-8" frameWidth="375" frameHeight="640"/>
+	<SubTexture name="ronniehorrifiedTalk0004" x="4479" y="2" width="369" height="634" frameX="-1" frameY="-5" frameWidth="375" frameHeight="640"/>
+	<SubTexture name="ronniehorrifiedTalk0005" x="4479" y="2" width="369" height="634" frameX="-1" frameY="-5" frameWidth="375" frameHeight="640"/>
+	<SubTexture name="StaticronniehorrifiedTalk0000" x="3366" y="2" width="369" height="634" frameX="-0" frameY="-0" frameWidth="369" frameHeight="635"/>
+	<SubTexture name="StaticronniehorrifiedTalk0001" x="3366" y="2" width="369" height="634" frameX="-0" frameY="-0" frameWidth="369" frameHeight="635"/>
+	<SubTexture name="StaticronniehorrifiedTalk0002" x="3737" y="2" width="369" height="634" frameX="-0" frameY="-0" frameWidth="369" frameHeight="635"/>
+	<SubTexture name="StaticronniehorrifiedTalk0003" x="3737" y="2" width="369" height="634" frameX="-0" frameY="-0" frameWidth="369" frameHeight="635"/>
+	<SubTexture name="StaticronniehorrifiedTalk0004" x="4108" y="2" width="369" height="634" frameX="-0" frameY="-0" frameWidth="369" frameHeight="635"/>
+	<SubTexture name="StaticronniehorrifiedTalk0005" x="4108" y="2" width="369" height="634" frameX="-0" frameY="-0" frameWidth="369" frameHeight="635"/>
+	<SubTexture name="ronnienormalTalk0000" x="7948" y="2" width="382" height="674" frameX="-5" frameY="-0" frameWidth="393" frameHeight="674"/>
+	<SubTexture name="ronnienormalTalk0001" x="7948" y="2" width="382" height="674" frameX="-5" frameY="-0" frameWidth="393" frameHeight="674"/>
+	<SubTexture name="ronnienormalTalk0002" x="6775" y="2" width="393" height="670" frameX="-0" frameY="-4" frameWidth="393" frameHeight="674"/>
+	<SubTexture name="ronnienormalTalk0003" x="6775" y="2" width="393" height="670" frameX="-0" frameY="-4" frameWidth="393" frameHeight="674"/>
+	<SubTexture name="ronnienormalTalk0004" x="7170" y="2" width="391" height="671" frameX="-1" frameY="-3" frameWidth="393" frameHeight="674"/>
+	<SubTexture name="ronnienormalTalk0005" x="7170" y="2" width="391" height="671" frameX="-1" frameY="-3" frameWidth="393" frameHeight="674"/>
+	<SubTexture name="StaticronnienormalTalk0000" x="5995" y="2" width="392" height="670" frameX="-0" frameY="-0" frameWidth="393" frameHeight="670"/>
+	<SubTexture name="StaticronnienormalTalk0001" x="5995" y="2" width="392" height="670" frameX="-0" frameY="-0" frameWidth="393" frameHeight="670"/>
+	<SubTexture name="StaticronnienormalTalk0002" x="5995" y="2" width="392" height="670" frameX="-0" frameY="-0" frameWidth="393" frameHeight="670"/>
+	<SubTexture name="ronniesmugTalk0000" x="7563" y="2" width="383" height="671" frameX="-2" frameY="-0" frameWidth="387" frameHeight="672"/>
+	<SubTexture name="ronniesmugTalk0001" x="7563" y="2" width="383" height="671" frameX="-2" frameY="-0" frameWidth="387" frameHeight="672"/>
+	<SubTexture name="ronniesmugTalk0002" x="5220" y="2" width="387" height="668" frameX="-0" frameY="-3" frameWidth="387" frameHeight="672"/>
+	<SubTexture name="ronniesmugTalk0003" x="5220" y="2" width="387" height="668" frameX="-0" frameY="-3" frameWidth="387" frameHeight="672"/>
+	<SubTexture name="ronniesmugTalk0004" x="5609" y="2" width="384" height="669" frameX="-1" frameY="-2" frameWidth="387" frameHeight="672"/>
+	<SubTexture name="ronniesmugTalk0005" x="5609" y="2" width="384" height="669" frameX="-1" frameY="-2" frameWidth="387" frameHeight="672"/>
+	<SubTexture name="StaticronniesmugTalk0000" x="6389" y="2" width="384" height="670" frameX="-0" frameY="-0" frameWidth="385" frameHeight="670"/>
+	<SubTexture name="StaticronniesmugTalk0001" x="6389" y="2" width="384" height="670" frameX="-0" frameY="-0" frameWidth="385" frameHeight="670"/>
+	<SubTexture name="ronniesurprisedlTalk0000" x="501" y="2" width="495" height="597" frameX="-0" frameY="-1" frameWidth="498" frameHeight="599"/>
+	<SubTexture name="ronniesurprisedlTalk0001" x="501" y="2" width="495" height="597" frameX="-0" frameY="-1" frameWidth="498" frameHeight="599"/>
+	<SubTexture name="ronniesurprisedlTalk0002" x="1994" y="2" width="497" height="598" frameX="-1" frameY="-0" frameWidth="498" frameHeight="599"/>
+	<SubTexture name="ronniesurprisedlTalk0003" x="1994" y="2" width="497" height="598" frameX="-1" frameY="-0" frameWidth="498" frameHeight="599"/>
+	<SubTexture name="ronniesurprisedlTalk0004" x="2493" y="2" width="497" height="598" frameX="-1" frameY="-0" frameWidth="498" frameHeight="599"/>
+	<SubTexture name="ronniesurprisedlTalk0005" x="2493" y="2" width="497" height="598" frameX="-1" frameY="-0" frameWidth="498" frameHeight="599"/>
+	<SubTexture name="StaticronniesurprisedlTalk0000" x="2" y="2" width="497" height="597" frameX="-0" frameY="-2" frameWidth="497" frameHeight="599"/>
+	<SubTexture name="StaticronniesurprisedlTalk0001" x="2" y="2" width="497" height="597" frameX="-0" frameY="-2" frameWidth="497" frameHeight="599"/>
+	<SubTexture name="StaticronniesurprisedlTalk0002" x="998" y="2" width="496" height="598" frameX="-0" frameY="-1" frameWidth="497" frameHeight="599"/>
+	<SubTexture name="StaticronniesurprisedlTalk0003" x="998" y="2" width="496" height="598" frameX="-0" frameY="-1" frameWidth="497" frameHeight="599"/>
+	<SubTexture name="StaticronniesurprisedlTalk0004" x="1496" y="2" width="496" height="598" frameX="-0" frameY="-1" frameWidth="497" frameHeight="599"/>
+	<SubTexture name="StaticronniesurprisedlTalk0005" x="1496" y="2" width="496" height="598" frameX="-0" frameY="-1" frameWidth="497" frameHeight="599"/>
+</TextureAtlas>
