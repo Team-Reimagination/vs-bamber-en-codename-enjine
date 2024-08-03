@@ -4,6 +4,7 @@ import funkin.backend.scripting.ModState;
 import Type;
 import openfl.display.BitmapData;
 import openfl.utils.Assets;
+import haxe.io.Path;
 
 var stateQuotes:Map<String, String> = [
     "SplashScreen" => "Team Reimagination Splash Screen",
@@ -107,6 +108,14 @@ function postStateSwitch() {
     FlxG.mouse.load(idleCursorGraphic,1,1,1);
 }
 
+function onHealthIconAnimChange(e) {
+    if (e.healthIcon.animation.exists("normal")) {
+        e.cancel();
+        e.healthIcon.animation.play(e.amount == 0 ? "normal" : "losing", true);  
+    }
+    trace("skibidy");
+}
+
 function postUpdate(elapsed) {
     if (FlxG.mouse.visible) {
         isHovering = false;
@@ -149,6 +158,16 @@ function update(elapsed) {
 
     if (FlxG.keys.justPressed.ANY) {FlxG.mouse.visible = false;} //i wish there was a Controls version so that the gamepad is supported
     if (FlxG.mouse.justMoved || FlxG.mouse.justPressed || FlxG.mouse.justPressedMiddle ||FlxG.mouse.justPressedRight) {FlxG.mouse.visible = true;}
+    for (i in FlxG.state.members)
+        if (Std.isOfType(i, HealthIcon))
+            if (Assets.exists(Path.withoutExtension(Paths.image("icons/"+i.curCharacter)) + ".xml") && i.frames.frames[0].name != "losing0000") {
+                i.frames = Paths.getFrames("icons/"+i.curCharacter);
+                i.animation.addByPrefix("losing", "losing", 24, true);
+                i.animation.addByPrefix("normal", "normal", 24, true); 
+                trace("ffUck...");
+                i.animation.play("normal", true);
+                i.curAnimState = -1;
+            }
 }
 
 public static function getVolume(initValue = 1, type = 'sfx') {
