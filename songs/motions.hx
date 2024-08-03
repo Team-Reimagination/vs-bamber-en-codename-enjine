@@ -1,4 +1,4 @@
-var specialCamera:FlxCamera = new FlxCamera();
+var specialCamera:HudCamera = new HudCamera();
 
 var motionBlures:CustomShader = new CustomShader("motions");
 motionBlures.Direction = [0, 1];
@@ -19,6 +19,7 @@ function onNoteCreation(e) {
 function postCreate() {
     FlxG.cameras.add(specialCamera, false);
     FlxG.camera.addShader(motionBlures);
+    specialCamera.downscroll = camHUD.downscroll;
 }
 
 var camDir = FlxPoint.get(0,0);
