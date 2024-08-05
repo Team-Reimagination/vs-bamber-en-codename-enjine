@@ -4,12 +4,16 @@ var oldPosition:FlxPoint = FlxPoint.get();
 var driftAmount:Int = 30;
 var otherCamFollow:FlxObject = new FlxObject();
 var whichStrumline:Int = 0;
+
+public var cameraEasing:FlxEase = FlxEase.quartInOut;
+public var cameraTime:Float = 1;
 function onCameraMove(e) {
     e.cancel();
     if (oldPosition.x != e.position.x || oldPosition.y != e.position.y) {
        FlxTween.cancelTweensOf(camFollow);
-       FlxTween.tween(camFollow, {x: e.position.x, y: e.position.y}, 1, {ease: FlxEase.quartInOut});
+       FlxTween.tween(camFollow, {x: e.position.x, y: e.position.y}, cameraTime, {ease: cameraEasing});
        oldPosition = FlxPoint.get(e.position.x, e.position.y);
+       trace(cameraEasing);
     }
 }
 
@@ -28,5 +32,6 @@ function update(elapsed:Float) {
 }
 
 function onNoteHit(e) {
-    whichStrumline = strumLines.members.indexOf(e.note.strumLine);
+    if (!e.note.isSustainNote)
+        whichStrumline = strumLines.members.indexOf(e.note.strumLine);
 }

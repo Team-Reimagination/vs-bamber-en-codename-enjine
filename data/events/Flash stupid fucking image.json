@@ -1,0 +1,9 @@
+{
+    "params": [
+        {
+            "name": "The Image ('gallery/[THE PATH]')",
+            "type": "String",
+            "defaultValue": "official/Boris Refinements"
+        }
+    ]
+}
