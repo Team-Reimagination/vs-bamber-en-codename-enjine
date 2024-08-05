@@ -7,7 +7,7 @@
 	"difficulties": [
 		"ASTRAY"
 	],
-	"needsVoices": true,
+	"needsVoices": false,
 	"parsedColor": -15656943,
 	"displayName": "Astray",
 	"icon": "joke_model_obj",

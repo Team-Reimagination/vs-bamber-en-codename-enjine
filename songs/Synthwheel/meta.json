@@ -1,8 +1,19 @@
 {
-	"displayName": null,
-	"bpm": 150,
-	"icon": "Davey",
-	"color": "#0066FF",
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": true,
 	"coopAllowed": true,
-	"opponentModeAllowed": true
+	"stepsPerBeat": 4,
+	"bpm": 180,
+	"difficulties": [
+		"EASY",
+		"NORMAL",
+		"HARD"
+	],
+	"needsVoices": false,
+	"parsedColor": -16751361,
+	"displayName": "Synthwheel",
+	"icon": "Davey",
+	"name": "Synthwheel",
+	"color": "#0064FF",
+	"customValues": {}
 }
