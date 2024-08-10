@@ -1,0 +1,13 @@
+<!DOCTYPE codename-engine-character>
+<character y="-40" sprite="freind" scale="4" antialiasing="false" camx="-30" camy="325" icon="freind" color="#FFFF00">
+	<anim name="singDOWN" anim="down" x="0" y="0" fps="12" loop="false"/>
+	<anim name="singLEFT" anim="left" x="0" y="0" fps="12" loop="false"/>
+	<anim name="singUP" anim="up" x="0" y="0" fps="12" loop="false"/>
+	<anim name="singRIGHT" anim="right" x="0" y="0" fps="12" loop="false"/>
+	<anim name="singRIGHT-alt" anim="fart" x="0" y="0" fps="12" loop="false"/>
+	<anim name="idle" anim="inhaling" x="0" y="0" fps="4" loop="false"/>
+	<anim name="singLEFT-alt" anim="fart" x="0" y="0" fps="12" loop="false"/>
+	<anim name="singDOWN-alt" anim="fart" x="0" y="0" fps="12" loop="false"/>
+	<anim name="singUP-alt" anim="fart" x="0" y="0" fps="12" loop="false"/>
+	<anim name="breath" anim="inhaling" x="0" y="0" fps="4" loop="true" indices="3,4,5,6,7,8,9,10,11,11,11,12,13,14,15,16,17,18,19,19,19,20,20,20,21,21,21,22,23"/>
+</character>
