@@ -5,6 +5,7 @@ import Type;
 import openfl.display.BitmapData;
 import openfl.utils.Assets;
 import haxe.io.Path;
+import funkin.backend.utils.DiscordUtil;
 
 var stateQuotes:Map<String, String> = [
     "SplashScreen" => "Team Reimagination Splash Screen",
