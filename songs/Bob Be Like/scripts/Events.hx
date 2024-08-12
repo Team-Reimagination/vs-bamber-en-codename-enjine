@@ -7,6 +7,11 @@ function postCreate() {
     glassthing.screenCenter();
     glassthing.animation.play("idle");
     glassthing.visible = false;
+    var reverseShader = new FunkinShader("#pragma header void main() {
+        gl_FragColor = flixel_texture2D(bitmap, openfl_TextureCoordv);
+        gl_FragColor.a = float(gl_FragColor.rgb) * 10.0;
+    }", null, 120);
+    glassthing.shader = reverseShader;
     insert(0, glassthing);
 }
 
