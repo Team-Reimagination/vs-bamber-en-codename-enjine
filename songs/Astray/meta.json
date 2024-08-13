@@ -5,7 +5,8 @@
 	"stepsPerBeat": 4,
 	"bpm": 160,
 	"difficulties": [
-		"ASTRAY"
+		"ASTRAY",
+		"VIP",
 	],
 	"needsVoices": false,
 	"parsedColor": -15656943,
