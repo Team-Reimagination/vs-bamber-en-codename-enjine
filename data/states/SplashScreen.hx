@@ -11,10 +11,12 @@ function create() {
     Framerate.offset.y = -999; //we do not need to see fps for this state
 
     splashVideo = new FlxVideoSprite();
+    splashVideo.autoVolumeHandle = false;
+    splashVideo.bitmap.onEndReached.add(function() {callBack();});
     splashVideo.load(Assets.getPath(Paths.file('videos/TR_SplashScreen.webm')));
     splashVideo.play();
+    splashVideo.bitmap.volume = getVolume(1, 'music') * FlxG.sound.volume;
     add(splashVideo);
-    splashVideo.bitmap.onEndReached.add(function() {callBack();});
 
     constellation = new FunkinSprite();
     constellation.loadSprite(Paths.image('menus/titleScreen/constellation'));
@@ -49,6 +51,8 @@ function callBack() {
 
 function update(elapsed) {
     FlxG.mouse.visible = false;
+
+    if (splashVideo.bitmap != null) splashVideo.bitmap.volume = getVolume(1, 'music') * FlxG.sound.volume;
 
     if (constellation.isAnimFinished()) callBack();
 
