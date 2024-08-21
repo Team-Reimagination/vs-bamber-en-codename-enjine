@@ -6,7 +6,7 @@ if (PlayState.instance != null) {
         if (lastAnimContext == 'DANCE' && animation.curAnim != null) animation.curAnim.frameRate = ((PlayState.startTimer != null && !PlayState.startTimer.finished) ? PlayState.startTimer.time * 120 * 2 : Conductor.bpm) / 48 * 5;
     }
 
-    function update(elasped) {
+    function update(elapsed) {
         y += Math.sin(Conductor.songPosition/1000) * 3.5;
     }
 }
