@@ -6,7 +6,8 @@
 	"coopAllowed": true,
 	"opponentModeAllowed": true,
 	"difficulties": [
-		"null"
+		"null",
+		"VIP",
 	],
 	"needsVoices": false
 }
