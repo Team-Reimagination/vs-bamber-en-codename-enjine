@@ -12,9 +12,9 @@ var bloom = new CustomShader("bloom");
 
 function create(){
     FlxG.resizeWindow(FlxG.stage.window.height/3*4,FlxG.stage.window.height);
-	FlxG.resizeGame(FlxG.stage.window.height/3*4,FlxG.stage.window.height);
-	FlxG.scaleMode.width = FlxG.camera.width = FlxG.stage.window.height/3*4;
-	FlxG.scaleMode.height = FlxG.camera.height = FlxG.stage.window.height;
+	FlxG.resizeGame(1280,960);
+	FlxG.scaleMode.width = FlxG.camera.width = 1280;
+	FlxG.scaleMode.height = FlxG.camera.height = 960;
 	ShaderResizeFix.doResizeFix = true;
 	ShaderResizeFix.fixSpritesShadersSizes();
     FlxG.stage.window.x += (FlxG.stage.window.width - FlxG.stage.window.height/3*4) / 2;
@@ -30,9 +30,8 @@ function postCreate(){
     window.title = "";
     Framerate.debugMode = camFollowLerp = camZoomingInterval = 0;
 	health = 1.59;
-    window.borderless = true;
     defaultCamZoom = 0.6;
-    strumLines.members[1].characters[0].visible = window.resizable = FlxG.autoPause = healthBar.visible = healthBarBG.visible = false;
+    strumLines.members[1].characters[0].visible = FlxG.autoPause = healthBar.visible = healthBarBG.visible = false;
 }
 
 function destroy() {
@@ -41,7 +40,6 @@ function destroy() {
         FlxG.resizeGame(1280, 720);
 	    FlxG.scaleMode.width = FlxG.camera.width = 1280;
 	    FlxG.scaleMode.height = FlxG.camera.height = 720;
-        window.borderless = false;
         window.opacity = 1;
         FlxG.stage.window.x -= (FlxG.stage.window.height/9*16 - FlxG.stage.window.width) / 2;
     } else {
