@@ -1,0 +1,12 @@
+<!DOCTYPE codename-engine-character>
+<character sprite="invisible" camx="320" camy="170" isPlayer="false" icon="invisible" color="#FF0000" isGF="false">
+	<anim name="idle" anim="idle" x="0" y="0" fps="1" loop="false"/>
+	<anim name="singLEFT" anim="idle" x="0" y="0" fps="1" loop="false"/>
+	<anim name="singDOWN" anim="idle" x="0" y="0" fps="1" loop="false"/>
+	<anim name="singUP" anim="idle" x="0" y="0" fps="1" loop="false"/>
+	<anim name="singRIGHT" anim="idle" x="0" y="0" fps="1" loop="false"/>
+	<anim name="singLEFTmiss" anim="idle" x="0" y="0" fps="1" loop="false"/>
+	<anim name="singDOWNmiss" anim="idle" x="0" y="0" fps="1" loop="false"/>
+	<anim name="singUPmiss" anim="idle" x="0" y="0" fps="1" loop="false"/>
+	<anim name="singRIGHTmiss" anim="idle" x="0" y="0" fps="1" loop="false"/>
+</character>

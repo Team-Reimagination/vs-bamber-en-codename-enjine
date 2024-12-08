@@ -1,5 +1,10 @@
 <!DOCTYPE codename-engine-stage>
-<stage zoom="0.5" name="callstage" folder="stages/memeing/">
-   <dad />
-   <boyfriend />
+<stage zoom="0.6" name="callstage" folder="stages/callbamber/">
+
+<sprite name="Bamber Side" x="-2400" y="0" scale="1.5" sprite="the calling of bamber" scroll="1" />
+<sprite name="Cray Side" x="0" y="0" scale="1.5" sprite="the calling of cray" scroll="1" />
+<sprite name="Barrier" x="-450" y="-100" scale="1.7" sprite="barrier" scroll="1" />
+
+   <dad x="900" y="1100"/>
+   <boyfriend x="-1000" y="1100"/>
 </stage>

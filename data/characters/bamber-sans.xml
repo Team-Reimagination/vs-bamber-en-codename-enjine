@@ -1,9 +1,9 @@
 <!DOCTYPE codename-engine-character>
-<character x="0" icon="bamber-sans" camx="-40" y="0" isGF="false" camy="-110" isPlayer="false" gameOverChar="bamber-sans-dead" sprite="bamber sans" color="#00A1FF">
-	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Idle" name="danceLeft"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Idle Shine" name="danceRight"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Left" name="singLEFT"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Down" name="singDOWN"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Up" name="singUP"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Animations/Right" name="singRIGHT"/>
+<character x="600" y="700" sprite="bamber sans" camx="-40" camy="-110" icon="bamber-sans" gameOverChar="bamber-sans-dead" isGF="false">
+	<anim name="danceLeft" anim="Animations/Idle" x="0" y="0" fps="24" loop="false"/>
+	<anim name="danceRight" anim="Animations/Idle Shine" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singLEFT" anim="Animations/Left" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singDOWN" anim="Animations/Down" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singUP" anim="Animations/Up" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singRIGHT" anim="Animations/Right" x="0" y="0" fps="24" loop="false"/>
 </character>

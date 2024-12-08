@@ -1,15 +1,15 @@
 <!DOCTYPE codename-engine-character>
-<character x="0" icon="bamber-call" camx="-40" y="0" isGF="false" camy="-110" isPlayer="true" gameOverChar="the-calling-of-bamber" sprite="call of bamber" color="#71C419" flipX="true">
-	<anim x="0" loop="false" y="0" fps="24" anim="Bamber/Anims/Idle" name="idle"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Bamber/Anims/Left" name="singLEFT"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Bamber/Anims/Down" name="singDOWN"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Bamber/Anims/Up" name="singUP"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Bamber/Anims/Right" name="singRIGHT"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Bamber/Anims/LMiss" name="singLEFTmiss"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Bamber/Anims/DMiss" name="singDOWNmiss"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Bamber/Anims/UMiss" name="singUPmiss"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Bamber/Anims/RMiss" name="singRIGHTmiss"/>
-    <anim x="0" loop="false" y="0" fps="24" anim="Bamber/Anims/Death_Start" name="firstDeath"/>
-    <anim x="0" loop="false" y="0" fps="24" anim="Bamber/Anims/Death_Continue" name="deathLoop"/>
-    <anim x="0" loop="false" y="0" fps="24" anim="Bamber/Anims/Death_End" name="deathConfirm"/>
+<character sprite="call of bamber" flipX="true" camx="400" camy="-600" isPlayer="true" icon="bamber-call" gameOverChar="the-calling-of-bamber" isGF="false">
+	<anim name="idle" anim="Bamber/Anims/Idle" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singLEFT" anim="Bamber/Anims/Left" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singDOWN" anim="Bamber/Anims/Down" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singUP" anim="Bamber/Anims/Up" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singRIGHT" anim="Bamber/Anims/Right" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singLEFTmiss" anim="Bamber/Anims/LMiss" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singDOWNmiss" anim="Bamber/Anims/DMiss" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singUPmiss" anim="Bamber/Anims/UMiss" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singRIGHTmiss" anim="Bamber/Anims/RMiss" x="0" y="0" fps="24" loop="false"/>
+	<anim name="firstDeath" anim="Bamber/Anims/Death_Start" x="0" y="0" fps="24" loop="false"/>
+	<anim name="deathLoop" anim="Bamber/Anims/Death_Continue" x="0" y="0" fps="24" loop="false"/>
+	<anim name="deathConfirm" anim="Bamber/Anims/Death_End" x="0" y="0" fps="24" loop="false"/>
 </character>

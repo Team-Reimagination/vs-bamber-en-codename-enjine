@@ -1,8 +1,8 @@
 <!DOCTYPE codename-engine-character>
-<character x="0" icon="elisocray" camx="40" y="0" isGF="false" color="#B15640" isPlayer="false" sprite="elisocray" gameOverChar="elisocray" >
-	<anim x="0" loop="false" y="0" fps="24" anim="Elisocray/Anims/idle" name="idle"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Elisocray/Anims/left" name="singLEFT"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Elisocray/Anims/up" name="singUP"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Elisocray/Anims/down" name="singDOWN"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Elisocray/Anims/right" name="singRIGHT"/>
+<character sprite="elisocray" camx="-600" camy="-500" icon="elisocray" gameOverChar="elisocray" isGF="false">
+	<anim name="idle" anim="Elisocray/Anims/idle" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singLEFT" anim="Elisocray/Anims/left" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singUP" anim="Elisocray/Anims/up" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singDOWN" anim="Elisocray/Anims/down" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singRIGHT" anim="Elisocray/Anims/right" x="0" y="0" fps="24" loop="false"/>
 </character>

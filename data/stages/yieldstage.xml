@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-stage>
-<stage zoom="0.9" name="stage" folder="stages/yieldstage/">
+<stage zoom="0.9" name="stage" folder="stages/yieldstage/" noteSkin="awesome">
 	<sprite name="Back" x="-220" y="-127" sprite="Back" scale="0.9" updateHitbox="true" />
 	<sprite name="Trift" x="797" y="453" sprite="TriftBack" scale="1.3" updateHitbox="true" >
 		<anim name="idle" anim="TriftBack" type="beat"/>
@@ -16,4 +16,6 @@
 	<sprite name="Text" x="890" y="-77" sprite="Text" scale="1.3" updateHitbox="true" >
 		<anim name="idle" anim="Text" type="beat"/>
 	</sprite>
+	<dad x="5" y="700"/>
+	<boyfriend x="1000" y="700"/>
 </stage>

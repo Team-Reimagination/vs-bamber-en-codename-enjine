@@ -1,13 +1,13 @@
 <!DOCTYPE codename-engine-character>
-<character x="0" icon="bamber-sovl" camx="-40" y="0" isGF="false" camy="-110" isPlayer="false" gameOverChar="bamber-sovl" sprite="bamber sovl" color="#01E409">
-	<anim x="0" loop="false" y="0" fps="24" anim="Soul Bamber Animations/BamberIdle" name="idle"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Soul Bamber Animations/BamberLeft" name="singLEFT"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Soul Bamber Animations/BamberDown" name="singDOWN"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Soul Bamber Animations/BamberUp" name="singUP"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Soul Bamber Animations/BamberRight" name="singRIGHT"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Soul Bamber Animations/BamFuckLeft" name="singLEFTmiss"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Soul Bamber Animations/BamFuckDown" name="singDOWNmiss"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Soul Bamber Animations/BamFuckUp" name="singUPmiss"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Soul Bamber Animations/BamFuckRight" name="singRIGHTmiss"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Soul Bamber Animations/BamberPhone" name="ziiuvanPaun?"/>
+<character sprite="bamber sovl" antialiasing="false" flipX="true" camx="200" camy="-100" icon="bamber-sovl" gameOverChar="bamber-sovl" isGF="false">
+	<anim name="idle" anim="Soul Bamber Animations/BamberIdle" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singLEFT" anim="Soul Bamber Animations/BamberLeft" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singDOWN" anim="Soul Bamber Animations/BamberDown" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singUP" anim="Soul Bamber Animations/BamberUp" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singRIGHT" anim="Soul Bamber Animations/BamberRight" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singLEFTmiss" anim="Soul Bamber Animations/BamFuckLeft" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singDOWNmiss" anim="Soul Bamber Animations/BamFuckDown" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singUPmiss" anim="Soul Bamber Animations/BamFuckUp" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singRIGHTmiss" anim="Soul Bamber Animations/BamFuckRight" x="0" y="0" fps="24" loop="false"/>
+	<anim name="ziiuvanPaun?" anim="Soul Bamber Animations/BamberPhone" x="0" y="0" fps="24" loop="false"/>
 </character>
