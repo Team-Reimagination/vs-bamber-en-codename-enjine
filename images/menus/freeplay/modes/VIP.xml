@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="VIP.png" width="1150" height="382">
+	<SubTexture name="vip1" x="10" y="10" width="541" height="354" frameX="-104" frameY="-21" frameWidth="800" frameHeight="400"/>
+	<SubTexture name="vip2" x="601" y="10" width="539" height="362" frameX="-109" frameY="-18" frameWidth="800" frameHeight="400"/>
+</TextureAtlas>
