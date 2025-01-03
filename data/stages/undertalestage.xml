@@ -1,6 +1,6 @@
 <!DOCTYPE codename-engine-stage>
 <stage zoom="0.75" name="stage" folder="stages/judgement farm/" noteSkin="undertale">
-	<sprite name="bambersansbg" x="0" y="0" sprite="Battle" scale="2.6" />
+	<sprite name="bambersansbg" x="0" y="0" sprite="Battle" scale="2.6" antialiasing="false" />
 	<girlfriend />
 	<dad x="350"/>
 	<boyfriend x="300" y="500"/>

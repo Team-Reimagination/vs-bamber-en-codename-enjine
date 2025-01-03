@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character sprite="bamber sovl" antialiasing="false" flipX="true" camx="200" camy="-100" icon="bamber-sovl" gameOverChar="bamber-sovl" isGF="false">
+<character sprite="bamber sovl" antialiasing="false" flipX="true" camx="200" camy="-100" icon="bamber-sovl" color="#71C419" gameOverChar="bamber-sovl" isGF="false">
 	<anim name="idle" anim="Soul Bamber Animations/BamberIdle" x="0" y="0" fps="24" loop="false"/>
 	<anim name="singLEFT" anim="Soul Bamber Animations/BamberLeft" x="0" y="0" fps="24" loop="false"/>
 	<anim name="singDOWN" anim="Soul Bamber Animations/BamberDown" x="0" y="0" fps="24" loop="false"/>

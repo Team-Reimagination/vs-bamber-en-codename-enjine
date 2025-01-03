@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character sprite="bamber sans undertale" camx="-100" camy="60" icon="bamber-sans" gameOverChar="bamber-sans-undertale-dead" isGF="false">
+<character sprite="bamber sans undertale" camx="-100" camy="60" icon="bamber-sans" color="#09CFFB" gameOverChar="bamber-sans-undertale-dead" isGF="false">
 	<anim name="danceLeft" anim="Bamber Sans Animations/SansIdle" x="0" y="0" fps="24" loop="false" indices="1..15"/>
 	<anim name="danceRight" anim="Bamber Sans Animations/SansIdle" x="0" y="0" fps="24" loop="false" indices="15..30"/>
 	<anim name="singLEFT" anim="Bamber Sans Animations/SansLeft" x="0" y="0" fps="24" loop="false"/>

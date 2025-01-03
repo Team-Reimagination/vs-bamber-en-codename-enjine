@@ -1,0 +1,17 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "Icon",
+	"difficulties": [
+		"Normal",
+		"VIP"
+	],
+	"parsedColor": -88243,
+	"color": "#FEA74D",
+	"name": "Origins",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Origins",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"bpm": 120
+}
