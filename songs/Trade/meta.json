@@ -1,8 +1,16 @@
 {
-	"displayName": null,
-	"bpm": 150,
+	"opponentModeAllowed": true,
+	"difficulties": [
+		"TRADE"
+	],
 	"icon": "Trade-Davey",
-	"color": "#EFE91F",
+	"parsedColor": -1054433,
+	"name": "Trade",
 	"coopAllowed": true,
-	"opponentModeAllowed": true
+	"color": "#EFE91F",
+	"stepsPerBeat": 4,
+	"displayName": "Trade",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 180
 }
