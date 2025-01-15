@@ -1,8 +1,17 @@
 {
-	"displayName": null,
-	"bpm": 120,
+	"opponentModeAllowed": true,
 	"icon": "Bamber-Sans",
+	"difficulties": [
+		"JUDGEMENT FARM"
+	],
+	"parsedColor": -15666434,
+	"customValues": {},
 	"color": "#10F2FE",
+	"name": "Judgement Farm",
 	"coopAllowed": true,
-	"opponentModeAllowed": true
+	"stepsPerBeat": 4,
+	"displayName": "Judgement Farm",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"bpm": 125
 }
