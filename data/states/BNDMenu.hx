@@ -18,6 +18,7 @@ import flixel.text.FlxText;
 import flixel.text.FlxTextBorderStyle;
 import flixel.addons.display.FlxBackdrop;
 import funkin.menus.ModSwitchMenu;
+import AnimatedFunkinSprite;
 
 public static var initialized = false; //post-intro sequence check
 public static var isInMenu = false; //if the player is on the main menu or the title screen
@@ -392,7 +393,7 @@ function setupMenuStuff() {
     buttonTextGroup = new FlxTypedSpriteGroup(FlxG.width - 20, 620); buttonTextGroup.cameras = [menuCamera]; add(buttonTextGroup);
 
     for (i in 0...menuOptions.length) {
-        var buttonSpr = new FunkinSprite();
+        var buttonSpr = new AnimatedFunkinSprite();
         buttonSpr.loadSprite(Paths.image('menus/mainMenu/buttons'));
 
         buttonSpr.animateAtlas.anim.addBySymbol("Button", "Scenes/MainMenu/Buttons/Button_"+menuOptions[i]+'\\', 24, false); //the \ makes sure it chooses what we want instead of the closest thing it thinks of (i.g. no instead of none)
@@ -715,6 +716,7 @@ function changeSelection(change = 0) {
     menuSelection = FlxMath.wrap(menuSelection+change, 0, menuOptions.length - 1);
 
     for (i in buttonGroup.members) {
+        if (menuSelection == i.ID) i.triggerQuirkyAnimation(0.5);
         i.animateAtlas.anim.play("Button", true, menuSelection == i.ID ? false : true, menuSelection == i.ID ? i.animateAtlas.anim.curFrame - i.animateAtlas.anim.length : i.animateAtlas.anim.curFrame + i.animateAtlas.anim.length );
     }
 
