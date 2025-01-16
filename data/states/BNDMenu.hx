@@ -269,7 +269,7 @@ function setupPreTitleStuff() {
 function setupTitleStuff() {
     //BACKGROUND
     if (!easterEggs[0]) {
-        clouds = new FlxSprite().loadGraphic(Paths.image('menus/TitleScreen/SpinningClouds'));
+        clouds = new FlxSprite().loadGraphic(Paths.image('menus/titleScreen/SpinningClouds'));
         clouds.antialiasing = true;
         clouds.alpha = 0.001; clouds.scale.x = clouds.scale.y = 3*5.6;
         clouds.screenCenter(); add(clouds);
@@ -716,7 +716,7 @@ function changeSelection(change = 0) {
     menuSelection = FlxMath.wrap(menuSelection+change, 0, menuOptions.length - 1);
 
     for (i in buttonGroup.members) {
-        if (menuSelection == i.ID) i.triggerQuirkyAnimation(0.5);
+        if (menuSelection == i.ID) i.triggerQuirkyAnimation(2);
         i.animateAtlas.anim.play("Button", true, menuSelection == i.ID ? false : true, menuSelection == i.ID ? i.animateAtlas.anim.curFrame - i.animateAtlas.anim.length : i.animateAtlas.anim.curFrame + i.animateAtlas.anim.length );
     }
 
