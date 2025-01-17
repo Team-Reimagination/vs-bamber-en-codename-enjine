@@ -402,7 +402,7 @@ function setupMenuStuff() {
 		buttonSpr.ID = i;
         buttonSpr.antialiasing = true;
 
-        buttonSpr.scale.x = buttonSpr.scale.y = (menuSelection == i ? 1 : 0.6); buttonSpr.updateHitbox();
+        buttonSpr.scale.x = buttonSpr.scale.y = (menuSelection == i ? 1 : 0.6); //buttonSpr.updateHitbox();
         buttonGroup.add(buttonSpr);
 
         buttonSpr.width = buttonSpr.height = 161 * buttonSpr.scale.x;
@@ -716,7 +716,7 @@ function changeSelection(change = 0) {
     menuSelection = FlxMath.wrap(menuSelection+change, 0, menuOptions.length - 1);
 
     for (i in buttonGroup.members) {
-        if (menuSelection == i.ID) i.triggerQuirkyAnimation(2);
+        if (menuSelection == i.ID) i.triggerBounceAnimation(0.4);
         i.animateAtlas.anim.play("Button", true, menuSelection == i.ID ? false : true, menuSelection == i.ID ? i.animateAtlas.anim.curFrame - i.animateAtlas.anim.length : i.animateAtlas.anim.curFrame + i.animateAtlas.anim.length );
     }
 
@@ -801,7 +801,7 @@ function postUpdate(elapsed) {
         }
 
         buttonGroup.forEach(function (button) {
-            button.scale.x = button.scale.y = CoolUtil.fpsLerp(button.scale.y, (menuSelection == button.ID ? 1 : 0.6), 0.2); button.animateAtlas.updateHitbox();
+            //button.scale.x = button.scale.y = CoolUtil.fpsLerp(button.scale.y, (menuSelection == button.ID ? 1 : 0.6), 0.2); button.animateAtlas.updateHitbox();
 
             button.width = button.height = 161 * button.scale.x;
 
