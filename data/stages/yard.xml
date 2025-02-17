@@ -9,7 +9,9 @@
 		<anim name="danceLeft" anim="Boppers" indices="0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13"/>
 		<anim name="danceRight" anim="Boppers" indices="14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27"/>
 	</sprite>
-	<girlfriend />
+	<girlfriend x="600" y="550"/>
 	<dad />
 	<boyfriend x="850" y="100"/>
+	<character name="gf-playable" x="1450" y="950"/>
+	<character name="bamber" x="-335" y="145"/>
 </stage>

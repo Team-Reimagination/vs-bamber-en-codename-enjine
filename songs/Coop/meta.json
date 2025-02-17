@@ -1,8 +1,18 @@
 {
-	"displayName": null,
-	"bpm": 180,
+	"opponentModeAllowed": true,
+	"difficulties": [
+		"EASY",
+		"NORMAL",
+		"HARD"
+	],
 	"icon": "Davey-coop",
-	"color": "#0066FF",
+	"parsedColor": -16750849,
+	"name": "Coop",
 	"coopAllowed": true,
-	"opponentModeAllowed": true
+	"color": "#0066FF",
+	"stepsPerBeat": 4,
+	"displayName": "Coop",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 180
 }
