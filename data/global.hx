@@ -114,7 +114,6 @@ function onHealthIconAnimChange(e) {
         e.cancel();
         e.healthIcon.animation.play(e.amount == 0 ? "normal" : "losing", true);  
     }
-    trace("skibidy");
 }
 
 function postUpdate(elapsed) {
