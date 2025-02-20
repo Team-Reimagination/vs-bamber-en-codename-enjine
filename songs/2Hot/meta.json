@@ -1,0 +1,15 @@
+{
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": true,
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"bpm": 182,
+	"difficulties": [
+		"Normal"
+	],
+	"parsedColor": -6266881,
+	"displayName": "2Hot (Bamber Mix)",
+	"icon": "darnell",
+	"name": "2Hot",
+	"color": "#A05FFF"
+}
