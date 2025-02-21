@@ -36,7 +36,7 @@ function update(elapsed:Float) {
     for (i in strumLines.members[whichStrumline].characters) {
         otherCamFollow.x += driftAmount * [0, 1, -1][["singRIGHT", "singLEFT"].indexOf(i=i.getAnimName())+1];
         otherCamFollow.y += driftAmount * [0, 1, -1][["singDOWN", "singUP"].indexOf(i)+1];
-        FlxG.camera.angle = lerp(FlxG.camera.angle, i == "singLEFT" ? 2 : i == "singRIGHT" ? -2 : 0, 0.04);
+        FlxG.camera.angle = lerp(FlxG.camera.angle, i == "singLEFT" ? 1 : i == "singRIGHT" ? -1 : 0, 0.04);
     }
 }
 

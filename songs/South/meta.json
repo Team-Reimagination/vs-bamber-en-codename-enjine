@@ -1,0 +1,15 @@
+{
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": true,
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"bpm": 180,
+	"difficulties": [
+		"Normal"
+	],
+	"parsedColor": -5019839,
+	"displayName": "South (Bamber Mix)",
+	"icon": "spooky",
+	"name": "South",
+	"color": "#B36741"
+}
