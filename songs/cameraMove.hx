@@ -1,6 +1,6 @@
 import flixel.math.FlxPoint;
 import flixel.FlxObject;
-var driftAmount:Int = 30;
+var driftAmount:Int = 10;
 var otherCamFollow:FlxObject = new FlxObject();
 var whichStrumline:Int = 0;
 var oldCamTarget;
@@ -28,7 +28,7 @@ function onCameraMove(e) {
 
 function postCreate() {
     FlxG.camera.follow(otherCamFollow);
-    FlxG.camera.followLerp = 0.1;
+    FlxG.camera.followLerp = 0.2;
 }
 
 function update(elapsed:Float) {
@@ -36,7 +36,7 @@ function update(elapsed:Float) {
     for (i in strumLines.members[whichStrumline].characters) {
         otherCamFollow.x += driftAmount * [0, 1, -1][["singRIGHT", "singLEFT"].indexOf(i=i.getAnimName())+1];
         otherCamFollow.y += driftAmount * [0, 1, -1][["singDOWN", "singUP"].indexOf(i)+1];
-        FlxG.camera.angle = lerp(FlxG.camera.angle, i == "singLEFT" ? 1 : i == "singRIGHT" ? -1 : 0, 0.04);
+        FlxG.camera.angle = lerp(FlxG.camera.angle, i == "singLEFT" ? 1.3 : i == "singRIGHT" ? -1.3 : 0, 0.04);
     }
 }
 
