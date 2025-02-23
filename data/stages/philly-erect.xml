@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-stage>
-<stage zoom="1.1" name="philly-erect" folder="stages/philly/" startCamPosY="510" startCamPosX="950">
+<stage zoom="1.1" noteSkin="funkin" name="philly-erect" folder="stages/philly/" startCamPosY="510" startCamPosX="950">
 	<use-extension folder="data/stages" script="philly" importStageSprites="true"/>
 	<use-extension script="erect-effect"/>
 
