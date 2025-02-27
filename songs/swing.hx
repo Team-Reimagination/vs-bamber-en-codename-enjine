@@ -1,1 +1,0 @@
-function stepHit(curBeat) if (curBeat % 4 == 3 && FlxG.sound.music.time + Conductor.stepCrochet < FlxG.sound.music.length) {FlxG.sound.music.time += Conductor.stepCrochet; resyncVocals();}
