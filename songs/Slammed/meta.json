@@ -1,0 +1,15 @@
+{
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": true,
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"bpm": 200,
+	"difficulties": [
+		"Normal"
+	],
+	"parsedColor": -1900800,
+	"displayName": "Slammed",
+	"icon": "bamber",
+	"name": "Slammed",
+	"color": "#E2FF00"
+}
