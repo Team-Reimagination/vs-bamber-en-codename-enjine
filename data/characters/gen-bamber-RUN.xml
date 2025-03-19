@@ -1,4 +1,0 @@
-<!DOCTYPE codename-engine-character>
-<character x="0" camx="320" y="0" isGF="false" camy="170" color="#000000" isPlayer="false" gameOverChar="gen-bamber-dead" sprite="beverly">
-	<anim x="0" loop="false" y="0" fps="30" anim="Bamber/Phase 2/Anims/This is not right.... This is not right at all..." name="idle"/>
-</character>

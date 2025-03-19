@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="bf-bfdi.png" width="2459" height="89">
+	<SubTexture name="losing0000" x="1501" y="1" width="93" height="87" frameX="-28" frameY="-32" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="losing0001" x="1597" y="1" width="93" height="87" frameX="-28" frameY="-32" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="losing0002" x="1693" y="1" width="93" height="87" frameX="-28" frameY="-32" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="losing0003" x="1789" y="1" width="93" height="87" frameX="-28" frameY="-32" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="losing0004" x="1885" y="1" width="93" height="87" frameX="-28" frameY="-32" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="losing0005" x="1015" y="1" width="93" height="86" frameX="-28" frameY="-32" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="losing0006" x="1111" y="1" width="94" height="86" frameX="-28" frameY="-32" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="losing0007" x="1208" y="1" width="95" height="86" frameX="-27" frameY="-32" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="losing0008" x="719" y="1" width="95" height="85" frameX="-27" frameY="-33" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="losing0009" x="519" y="1" width="97" height="84" frameX="-26" frameY="-33" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="losing0010" x="315" y="1" width="99" height="83" frameX="-25" frameY="-34" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="losing0011" x="107" y="1" width="101" height="82" frameX="-24" frameY="-34" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="losing0012" x="1" y="1" width="103" height="80" frameX="-23" frameY="-35" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="losing0013" x="211" y="1" width="101" height="82" frameX="-24" frameY="-34" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="losing0014" x="417" y="1" width="99" height="83" frameX="-25" frameY="-34" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="losing0015" x="619" y="1" width="97" height="84" frameX="-26" frameY="-33" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="losing0016" x="817" y="1" width="96" height="85" frameX="-27" frameY="-33" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="losing0017" x="1306" y="1" width="95" height="86" frameX="-27" frameY="-32" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="losing0018" x="1404" y="1" width="94" height="86" frameX="-28" frameY="-32" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="losing0019" x="1981" y="1" width="93" height="87" frameX="-28" frameY="-32" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="losing0020" x="2077" y="1" width="93" height="87" frameX="-28" frameY="-32" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="losing0021" x="2173" y="1" width="93" height="87" frameX="-28" frameY="-32" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="losing0022" x="2269" y="1" width="93" height="87" frameX="-28" frameY="-32" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="losing0023" x="2365" y="1" width="93" height="87" frameX="-28" frameY="-32" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="losing0024" x="1501" y="1" width="93" height="87" frameX="-28" frameY="-32" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="normal0000" x="916" y="1" width="96" height="85" frameX="-26" frameY="-34" frameWidth="150" frameHeight="150"/>
+</TextureAtlas>

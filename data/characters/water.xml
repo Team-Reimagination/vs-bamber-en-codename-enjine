@@ -1,8 +1,0 @@
-<!DOCTYPE codename-engine-character>
-<character sprite="water" camx="320" camy="170" icon="water" color="#9AE6EA" gameOverChar="water-dead" isGF="false">
-	<anim name="idle" anim="I" x="0" y="0" fps="24" loop="false"/>
-	<anim name="singDOWN" anim="D" x="-3" y="-2" fps="24" loop="false"/>
-	<anim name="singLEFT" anim="L" x="38" y="0" fps="24" loop="false"/>
-	<anim name="singUP" anim="U" x="-3" y="42" fps="24" loop="false"/>
-	<anim name="singRIGHT" anim="R" x="-3" y="0" fps="24" loop="false"/>
-</character>

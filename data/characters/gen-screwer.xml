@@ -1,8 +1,0 @@
-<!DOCTYPE codename-engine-character>
-<character x="0" icon="gen-screwer" camx="320" y="0" isGF="false" camy="170" color="#0CB500" isPlayer="false" gameOverChar="gen-screwer-dead" sprite="screwer">
-	<anim x="0" loop="false" y="0" fps="30" anim="Screwer/Phase 1/Anims/Idle" name="idle"/>
-	<anim x="0" loop="false" y="0" fps="30" anim="Screwer/Phase 1/Anims/Down" name="singDOWN"/>
-	<anim x="0" loop="false" y="0" fps="30" anim="Screwer/Phase 1/Anims/Left" name="singLEFT"/>
-	<anim x="0" loop="false" y="0" fps="30" anim="Screwer/Phase 1/Anims/Up" name="singUP"/>
-	<anim x="0" loop="false" y="0" fps="30" anim="Screwer/Phase 1/Anims/Right" name="singRIGHT"/>
-</character>

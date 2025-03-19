@@ -1,8 +1,0 @@
-<!DOCTYPE codename-engine-character>
-<character x="0" icon="elisocray" camx="40" y="0" isGF="false" color="#B15640" isPlayer="false" sprite="elisocray" gameOverChar="elisocray" >
-	<anim x="0" loop="false" y="0" fps="24" anim="Elisocray/Anims/idle" name="idle"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Elisocray/Anims/left" name="singLEFT"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Elisocray/Anims/up" name="singUP"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Elisocray/Anims/down" name="singDOWN"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Elisocray/Anims/right" name="singRIGHT"/>
-</character>

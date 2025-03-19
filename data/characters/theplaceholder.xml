@@ -1,9 +1,0 @@
-<!DOCTYPE codename-engine-character>
-<character sprite="placeholder" icon="theplaceholder" gameOverChar="placeholder_new" isGF="false">
-	<anim name="idle" anim="Idle" x="0" y="0" fps="24" loop="false"/>
-	<anim name="idleLOOP" anim="Loop" x="0" y="0" fps="24" loop="true"/>
-	<anim name="singRIGHT" anim="Right" x="-83" y="-28" fps="24" loop="false"/>
-	<anim name="singDOWN" anim="Down" x="-14" y="20" fps="24" loop="false"/>
-	<anim name="singUP" anim="Up" x="-36" y="-2" fps="24" loop="false"/>
-	<anim name="singLEFT" anim="Left" x="31" y="-25" fps="24" loop="false"/>
-</character>

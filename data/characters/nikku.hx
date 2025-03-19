@@ -1,1 +1,0 @@
-if (PlayState.instance != null) { function update(elapsed) y += Math.sin(Conductor.songPosition/1000) * 0.4; }

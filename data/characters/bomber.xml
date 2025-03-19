@@ -1,8 +1,0 @@
-<!DOCTYPE codename-engine-character>
-<character x="0" icon="bomber" camx="320" y="0" isGF="false" camy="170" color="#00FF50" isPlayer="false" gameOverChar="bomber-dead" sprite="bomber">
-	<anim x="0" loop="false" y="0" fps="24" anim="Bomber/Idle" name="idle"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Bomber/Down" name="singDOWN"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Bomber/Left" name="singLEFT"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Bomber/Up" name="singUP"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Bomber/Right" name="singRIGHT"/>
-</character>

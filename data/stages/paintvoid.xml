@@ -1,0 +1,6 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.1" name="paintvoid" folder="stages/">
+	<sprite name="paintvoid" sprite="paintvoid"/>
+	<boyfriend x="462.5" y="300"/>
+	<dad x="275" y="75" camxoffset="-300"/>
+</stage>

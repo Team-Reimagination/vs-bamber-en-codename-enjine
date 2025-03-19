@@ -1,7 +1,0 @@
-<!DOCTYPE codename-engine-stage>
-<stage zoom="0.2" name="cheater" folder="stages/memeing/" scorePath="3d/">
-   <sprite name="bg" x="0" y="400" sprite="Background" scale="5"/>
-   <girlfriend />
-   <boyfriend />
-   <dad />
-</stage>

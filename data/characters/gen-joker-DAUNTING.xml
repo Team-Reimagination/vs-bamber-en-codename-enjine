@@ -1,8 +1,0 @@
-<!DOCTYPE codename-engine-character>
-<character x="0" icon="gen-joker-DAUNTING" camx="320" y="0" isGF="false" camy="170" color="#000000" isPlayer="false" gameOverChar="gen-joker-dead" sprite="daunting">
-	<anim x="0" loop="false" y="0" fps="30" anim="Joker/Phase 2/Anims/Idle" name="idle"/>
-	<anim x="0" loop="false" y="0" fps="30" anim="Joker/Phase 2/Anims/Down" name="singDOWN"/>
-	<anim x="0" loop="false" y="0" fps="30" anim="Joker/Phase 2/Anims/Left" name="singLEFT"/>
-	<anim x="0" loop="false" y="0" fps="30" anim="Joker/Phase 2/Anims/Up" name="singUP"/>
-	<anim x="0" loop="false" y="0" fps="30" anim="Joker/Phase 2/Anims/Right" name="singRIGHT"/>
-</character>

@@ -1,6 +1,0 @@
-<!DOCTYPE codename-engine-character>
-<character icon="gf" camx="0" x="140" y="160" isGF="true" camy="0" isPlayer="false" sprite="gf" color="#9A1652">
-	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Non-Playable/GF Bawl" indices="1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8" name="sad"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Non-Playable/Gf Dancing Beat" indices="0,1,2,3,4,5,6,7,8,9,10,11,12,13" name="danceLeft"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Anims/Non-Playable/Gf Dancing Beat" indices="14,15,16,17,18,19,20,21,22,23,24,25,26,27" name="danceRight"/>
-</character>

@@ -1,8 +1,0 @@
-<!DOCTYPE codename-engine-character>
-<character x="0" icon="boris" camx="-70" y="0" isGF="false" camy="330" isPlayer="false" sprite="boris" color="#4c00aa">
-	<anim x="0" loop="false" y="0" fps="24" anim="boris_idle instance " name="idle"/>
-	<anim x="-122" loop="false" y="-22" fps="24" anim="boris_rright instance " name="singRIGHT"/>
-	<anim x="-24" loop="false" y="-68" fps="24" anim="boris_ddown instance " name="singDOWN"/>
-	<anim x="-7" loop="false" y="-1" fps="24" anim="boris_upper instance " name="singUP"/>
-	<anim x="4" loop="false" y="-24" fps="24" anim="boris_leffty instance " name="singLEFT"/>
-</character>
