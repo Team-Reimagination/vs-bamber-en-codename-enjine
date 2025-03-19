@@ -1,0 +1,12 @@
+<!DOCTYPE codename-engine-character>
+<character x="0" y="100" sprite="bamber-jf-rtx" scale="1" antialiasing="false" flipX="true" camx="-100" camy="200" color="#71C419" icon="bamber-ut" holdTime="6.1" isGF="false">
+	<anim name="idle" anim="0" x="25" y="-130" fps="12" loop="false" indices="0..3"/>
+	<anim name="singRIGHT" anim="0" x="25" y="-130" fps="12" loop="false" indices="4,5"/>
+	<anim name="singDOWN" anim="0" x="25" y="-130" fps="12" loop="false" indices="6,7"/>
+	<anim name="singUP" anim="0" x="25" y="-130" fps="12" loop="false" indices="8,9"/>
+	<anim name="singLEFT" anim="0" x="25" y="-130" fps="12" loop="false" indices="10,11"/>
+	<anim name="singRIGHTmiss" anim="0" x="25" y="-130" fps="12" loop="false" indices="12..14"/>
+	<anim name="singDOWNmiss" anim="0" x="25" y="-130" fps="12" loop="false" indices="15..17"/>
+	<anim name="singUPmiss" anim="0" x="25" y="-130" fps="12" loop="false" indices="18..20"/>
+	<anim name="singLEFTmiss" anim="0" x="25" y="-130" fps="12" loop="false" indices="21..23"/>
+</character>
