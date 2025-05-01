@@ -4,5 +4,6 @@
 	"icon": "Davey",
 	"color": "#0066FF",
 	"coopAllowed": true,
-	"opponentModeAllowed": true
+	"opponentModeAllowed": true,
+	"album": 2.5
 }

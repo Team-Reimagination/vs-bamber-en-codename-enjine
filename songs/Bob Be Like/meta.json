@@ -15,5 +15,6 @@
 	"icon": "Boris",
 	"name": "Bob Be Like",
 	"color": "#FFFFFF",
-	"customValues": {}
+	"customValues": {},
+	"album": 2.5
 }

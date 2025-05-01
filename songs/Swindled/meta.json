@@ -13,5 +13,6 @@
 	"displayName": "Swindled",
 	"beatsPerMeasure": 4,
 	"needsVoices": false,
-	"bpm": 220
+	"bpm": 220,
+	"album": 2.5
 }

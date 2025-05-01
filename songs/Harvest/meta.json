@@ -15,5 +15,6 @@
 	"beatsPerMesure": 4,
 	"beatsPerMeasure": 4,
 	"needsVoices": false,
-	"bpm": 115
+	"bpm": 115,
+	"album": 2.5
 }

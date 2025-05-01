@@ -11,5 +11,7 @@
 	"displayName": "Spookeez (Bamber Mix)",
 	"icon": "spooky",
 	"name": "Spookeez",
-	"color": "#FF9424"
+	"color": "#FF9424",
+	"new": true,
+	"album": 2.5
 }

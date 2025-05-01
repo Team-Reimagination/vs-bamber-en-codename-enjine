@@ -11,5 +11,7 @@
 	"displayName": "2Hot (Bamber Mix)",
 	"icon": "darnell",
 	"name": "2Hot",
-	"color": "#A05FFF"
+	"color": "#A05FFF",
+	"new": true,
+	"album": 2.5
 }

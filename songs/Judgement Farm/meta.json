@@ -13,5 +13,6 @@
 	"displayName": "Judgement Farm",
 	"beatsPerMeasure": 4,
 	"needsVoices": false,
-	"bpm": 125
+	"bpm": 125,
+	"album": 2.5
 }

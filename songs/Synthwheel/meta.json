@@ -15,5 +15,6 @@
 	"icon": "Davey",
 	"name": "Synthwheel",
 	"color": "#0064FF",
-	"customValues": {}
+	"customValues": {},
+	"album": 2.5
 }

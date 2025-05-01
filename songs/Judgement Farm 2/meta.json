@@ -4,5 +4,6 @@
 	"icon": "Bamber-Sans",
 	"color": "#59DEF7",
 	"coopAllowed": true,
-	"opponentModeAllowed": true
+	"opponentModeAllowed": true,
+	"album": 2.5
 }

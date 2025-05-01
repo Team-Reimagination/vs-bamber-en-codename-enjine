@@ -11,5 +11,7 @@
 	"displayName": "Slammed",
 	"icon": "bamber",
 	"name": "Slammed",
-	"color": "#E2FF00"
+	"color": "#E2FF00",
+	"album": 2.5,
+	"new": true
 }

@@ -35,6 +35,8 @@ var topBar, bottomBar;
 var buttonGroup;
 var buttonSubgroup;
 var buttonTextGroup;
+var goigne = false;
+var hoveringOverButton = false;
 
 var menuOptions = ['Play', 'Gallery', 'Achievements', 'Options', 'Credits'];
 var submenuOptions = [['Story Mode', 'Freeplay'], ['Gallery', 'DLC']];
@@ -187,7 +189,7 @@ function create() {
 
     beatHit(0);
 
-    if (initialized) skipIntro();
+    if ((initialized) || (hasseen)) skipIntro();
 }
 
 function setupPreTitleStuff() {
@@ -402,7 +404,7 @@ function setupMenuStuff() {
 		buttonSpr.ID = i;
         buttonSpr.antialiasing = true;
 
-        buttonSpr.scale.x = buttonSpr.scale.y = (menuSelection == i ? 1 : 0.6); //buttonSpr.updateHitbox();
+        buttonSpr.scale.x = buttonSpr.scale.y = (i == 0 ? 1 : 0.6); 
         buttonGroup.add(buttonSpr);
 
         buttonSpr.width = buttonSpr.height = 161 * buttonSpr.scale.x;
@@ -547,7 +549,7 @@ function update(elapsed) {
         */
         //for characters, and the logo, hitboxes were fucked up so I had to spoof them with FlxObjects. Too much work to readjust.
         //Activates whether the mouse is pressed or if there's an occupied object that has been clicked already. Occupied objects will make sure it still does stuff even when mouse is not hovering over it, as long as the mosue is pressec
-        if (FlxG.mouse.justPressed || occupiedObject != null) {
+        if ((FlxG.mouse.justPressed || occupiedObject != null) && (!hoveringOverButton)) {
             var selectedObject = occupiedObject;
 
             if (selectedObject == null) {
@@ -714,9 +716,17 @@ function update(elapsed) {
 function changeSelection(change = 0) {
     var oldMenuSelection = menuSelection;
     menuSelection = FlxMath.wrap(menuSelection+change, 0, menuOptions.length - 1);
-
+	trace("selecting");
     for (i in buttonGroup.members) {
-        if (menuSelection == i.ID) i.triggerBounceAnimation(0.4);
+		
+		
+        if (menuSelection == i.ID) 
+		{
+			//i.triggerBounceAnimation(0.4);
+			i.offset.y = 0;
+			FlxTween.globalManager.completeTweensOf(i);
+			FlxTween.tween(i, {"offset.y": 20}, 0.2, {ease: FlxEase.quadOut, onComplete: function() {FlxTween.tween(i, {"offset.y": 0}, 0.2, {ease: FlxEase.quadIn});}});
+		}
         i.animateAtlas.anim.play("Button", true, menuSelection == i.ID ? false : true, menuSelection == i.ID ? i.animateAtlas.anim.curFrame - i.animateAtlas.anim.length : i.animateAtlas.anim.curFrame + i.animateAtlas.anim.length );
     }
 
@@ -728,18 +738,14 @@ function processClickables() {
     clearClickables();
     occupiedObject = null;
 
-    if (!isInMenu) {
-        pushToClickables(teamText); pushToClickables(startText); pushToClickables(startBar); pushToClickables(logo); 
-    } else {
-        buttonGroup.forEach(function (button) {
-            pushToClickables(button);
-        });
+	if (!isInMenu) {
+		pushToClickables(teamText); pushToClickables(startText); pushToClickables(startBar); pushToClickables(logo); 
+	} else {
+		pushToClickables(logo); pushToClickables(buttonTextGroup); pushToClickables(topBar); pushToClickables(bottomBar);
+	}
 
-        pushToClickables(logo); pushToClickables(buttonTextGroup); pushToClickables(topBar); pushToClickables(bottomBar);
-    }
-
-    if (!easterEggs[0]) { pushToClickables(characterGroup); pushToClickables(foreground); pushToClickables(clouds); }
-    else pushToClickables(background);
+	if (!easterEggs[0]) { pushToClickables(characterGroup); pushToClickables(foreground); pushToClickables(clouds); }
+	else pushToClickables(background);
 }
 
 function progressForwards() {
@@ -755,7 +761,39 @@ function progressForwards() {
         menuGroupDrags = [0, 0];
         logoLerping = [870, null, 0.6];
     } else {
-        FlxG.switchState(new MainMenuState());
+		if (goigne) return;
+		CoolUtil.playMenuSFX(1);
+		goigne = true;
+        FlxTween.tween(characterGroup, {alpha: -1, y: FlxG.height + 1000}, 1, {ease: FlxEase.quartIn});
+        FlxTween.tween(characterGroup.scale, {x: 1.3, y: 1.3}, 1, {ease: FlxEase.quartIn});
+
+        FlxTween.tween(foreground.scale, {x: 2, y: 2}, 1, {ease: FlxEase.quartIn});
+        FlxTween.tween(foreground, {y: foreground.y + 610}, 1, {ease: FlxEase.quartIn});
+		
+        FlxTween.tween(background.scale, {x: 2, y: 2}, 1, {ease: FlxEase.quartIn});
+        FlxTween.tween(background, {y: background.y + 1000}, 1, {ease: FlxEase.quartIn});
+		
+        FlxTween.tween(clouds.scale, {x: clouds.scale.x*2, y: clouds.scale.y*2}, 1, {ease: FlxEase.quartIn, onComplete: function(tween) {
+            clouds.updateHitbox();
+            clouds.screenCenter(); clouds.y = clouds.y + 210;
+        }});
+		
+		new FlxTimer().start(0.5, ()->{menuCamera.fade(0xFF000000, 0.5, false);});
+
+		new FlxTimer().start(1, ()->{
+			switch (menuSelection)
+			{
+				case 0: FlxG.switchState(new ModState("BNDFreeplayCategories"));
+				case 1: FlxG.switchState(new ModState("GalleryState"));
+				case 2: FlxG.switchState(new ModState("AchievementsState"));
+				case 3: 
+					import funkin.options.OptionsMenu;
+					FlxG.switchState(new OptionsMenu());
+				case 4:
+					import funkin.menus.credits.CreditsMain;
+					FlxG.switchState(new CreditsMain());
+			}
+		});
     }
 }
 
@@ -801,21 +839,25 @@ function postUpdate(elapsed) {
         }
 
         buttonGroup.forEach(function (button) {
-            //button.scale.x = button.scale.y = CoolUtil.fpsLerp(button.scale.y, (menuSelection == button.ID ? 1 : 0.6), 0.2); button.animateAtlas.updateHitbox();
+			//button.scale.x = button.scale.y = CoolUtil.fpsLerp(button.scale.y, (menuSelection == button.ID ? 1 : 0.6), 0.33); button.animateAtlas.updateHitbox();
 
             button.width = button.height = 161 * button.scale.x;
 
-            button.x = CoolUtil.fpsLerp(button.x, (button.ID == 0 ? 20 : (buttonGroup.members[button.ID - 1].x + buttonGroup.members[button.ID - 1].width) + 10), 0.2);
+            button.x = CoolUtil.fpsLerp(button.x, (button.ID == 0 ? 20 : (buttonGroup.members[button.ID - 1].x + buttonGroup.members[button.ID - 1].width) + 10), 0.33);
             button.y = bottomBar.y + 20 - button.height;
 
             if (isInMenu && FlxG.mouse.visible && FlxG.mouse.overlaps(button) && occupiedObject == null) {
+				hoveringOverButton = true;
+				trace("hovering");
                 if (menuSelection != button.ID) {
                     FlxG.sound.play(Paths.sound('firstTime/firstButtonScroll'), getVolume(0.8, 'sfx'));
                     changeSelection(button.ID - menuSelection);
                 }
     
-                if (FlxG.mouse.justPressed && menuSelection == button.ID) progressForwards();
+                if (FlxG.mouse.justPressed) progressForwards();
             }
+			else
+				hoveringOverButton = false;
         });
     }
 }
@@ -924,6 +966,7 @@ function charDance() {
 }
 
 function skipIntro() {
+	hasseen = true;
     if (!initialized) {
         if (FlxG.sound.music.time <= 12700) FlxG.sound.music.time = 12800; //this check is so that no stuttering happens
         Conductor.__updateSongPos(FlxG.elapsed);

@@ -11,5 +11,7 @@
 	"displayName": "Pico (Bamber Mix)",
 	"icon": "pico",
 	"name": "Pico",
-	"color": "#B5FF74"
+	"color": "#B5FF74",
+	"new": true,
+	"album": 2.5
 }

@@ -14,5 +14,6 @@
 	"displayName": "Coop",
 	"needsVoices": true,
 	"beatsPerMeasure": 4,
-	"bpm": 180
+	"bpm": 180,
+	"album": 2.5
 }

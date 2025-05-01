@@ -11,5 +11,7 @@
 	"displayName": "South (Bamber Mix)",
 	"icon": "spooky",
 	"name": "South",
-	"color": "#B36741"
+	"color": "#B36741",
+	"new": true,
+	"album": 2.5
 }

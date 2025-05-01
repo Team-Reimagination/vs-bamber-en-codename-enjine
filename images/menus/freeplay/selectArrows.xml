@@ -3,8 +3,10 @@
 Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
 -->
 <TextureAtlas imagePath="selectArrows.png" width="510" height="897">
-	<SubTexture name="hitLeft" x="10" y="10" width="242" height="406" frameX="-78" frameY="-47" frameWidth="500" frameHeight="500"/>
-	<SubTexture name="hitRight" x="258" y="481" width="242" height="406" frameX="-180" frameY="-47" frameWidth="500" frameHeight="500"/>
+	<SubTexture name="hitLeft0000" x="10" y="10" width="242" height="406" frameX="-78" frameY="-47" frameWidth="500" frameHeight="500"/>
+	<SubTexture name="hitRight0000" x="258" y="481" width="242" height="406" frameX="-180" frameY="-47" frameWidth="500" frameHeight="500"/>
+	<SubTexture name="hitLeft0001" x="302" y="10" width="198" height="421" frameX="-123" frameY="-39" frameWidth="500" frameHeight="500"/>
+	<SubTexture name="hitRight0001" x="10" y="466" width="198" height="421" frameX="-179" frameY="-39" frameWidth="500" frameHeight="500"/>
 	<SubTexture name="idleLeft" x="302" y="10" width="198" height="421" frameX="-123" frameY="-39" frameWidth="500" frameHeight="500"/>
 	<SubTexture name="idleRight" x="10" y="466" width="198" height="421" frameX="-179" frameY="-39" frameWidth="500" frameHeight="500"/>
 </TextureAtlas>

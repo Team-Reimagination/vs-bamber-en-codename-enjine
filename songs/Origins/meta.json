@@ -13,5 +13,7 @@
 	"displayName": "Origins",
 	"beatsPerMeasure": 4,
 	"needsVoices": false,
-	"bpm": 140
+	"bpm": 140,
+	"album": 2.5,
+	"new": true
 }
