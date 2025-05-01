@@ -44,11 +44,14 @@ var songLBgs:FlxTypedGroup = new FlxTypedGroup();
 var album;
 var timer = 0;
 var playall;
+var scorText = new FlxText(24, 0);
 
 subCurSelected = 0;
 subCurSelectedLimit = songser.length - 1;
 
 function create() {
+	for (i in Paths.getFolderContent(Paths.image("menus/freeplay/albums/"))) Paths.image("menus/freeplay/albums/" + i);
+	for (i in Paths.getFolderContent(Paths.image("menus/freeplay/silhouettes/"))) Paths.image("menus/freeplay/silhouettes/" + i);
 	add(new FunkinSprite().loadGraphic(Paths.image("menus/menuBG"))).screenCenter();
 	album = new FlxSprite().loadGraphic(Paths.image("menus/freeplay/albums/vol2.5"));
 	add(album);
@@ -108,7 +111,6 @@ function create() {
 	change(0);
 	add(songLBgs);
 	
-	scorText = new FlxText(24, 0);
 	scorText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, "right", FlxTextBorderStyle.SHADOW, 0xFF000000);
 	scorText.text = "score: 2763";
 	scorText.shadowOffset.set(2, 2);
@@ -181,19 +183,14 @@ function change(a) {
 	}
 
 	songser = [];
-	for (i in 0...songL.length)
-		songL[i].destroy();
-	
-	songL = [];
+	for(s in songst[curSelected])
+		songser.push(Chart.loadChartMeta(s, "normal", true));
+
+	while(songL.length > songst[curSelected].length) remove(songL.pop());
+	songLBgs.maxSize = songst[curSelected].length;
 
 	for(s in songst[curSelected])
 		songser.push(Chart.loadChartMeta(s, "normal", true));
-	
-	for (i in songLBgs.members) 
-	{
-		i.kill();
-		i.destroy();
-	}
 	
 	for (i in vinylGroup.members) {
 		var relSel = Math.abs(curSelected - i.ID);
@@ -232,45 +229,48 @@ function change(a) {
 	}
 	
 	var offset = 128;
-	for (i in 0...songser.length)
+	for (i in 0...songst[curSelected].length)
 	{
+		trace(songLBgs.members);
 		var kys = data[curSelected][0];
 		if (!Assets.exists(Paths.image("menus/freeplay/silhouettes/"+kys)))
 			kys = "placeholder";
-		
-		var bg = new FlxSprite().loadGraphic(Paths.image("menus/freeplay/silhouettes/"+kys));			
-		songLBgs.add(bg);
-		
-		var text = new Alphabet(0, 0, 0, true);
-		//text.setFormat(Paths.font("vcr.ttf"), 60, FlxColor.WHITE, "center", FlxTextBorderStyle.SHADOW, 0xFF000000);
-		text.text = songser[i].displayName;
-		text.color = FlxColor.WHITE;
-		text.screenCenter();
-		songL.push(text);
-		add(text);
-		text.screenCenter(0x01);
-		text.y = offset + 30;
-		text.cameras = [textCam];
-		
-		//trace("menus/freeplay/silhouettes/"+songser[i].displayName.toLowerCase());
-		if (Assets.exists(Paths.image("menus/freeplay/silhouettes/"+songser[i].displayName.toLowerCase())))
-		{
-			//trace("help me");
-			bg.loadGraphic(Paths.image("menus/freeplay/silhouettes/"+songser[i].displayName.toLowerCase()));
+		//if (Assets.exists(Paths.image("menus/freeplay/silhouettes/"+songser[i].displayName.toLowerCase())))
+		//	kys = songser[i].displayName.toLowerCase();
+
+		if (songL[i] != null) {
+			songL[i].text = songser[i].displayName;
+			songLBgs.members[i].loadGraphic(Paths.image("menus/freeplay/silhouettes/"+kys));
+			songLBgs.members[i].updateHitbox();
+			songLBgs.members[i].origin.set(songLBgs.members[i].width/2, songLBgs.members[i].height);	
+			songLBgs.members[i].scrollFactor.set(0, 1);
+		} else {
+			var bg = new FlxSprite().loadGraphic(Paths.image("menus/freeplay/silhouettes/"+kys));			
+			songLBgs.add(bg);
+
+			var text = new Alphabet(0, 0, 0, true);
+			text.text = songser[i].displayName;
+			text.color = FlxColor.WHITE;
+			songL.push(text);
+			add(text);
+			text.screenCenter(0x01);
+			text.y = offset + 30;
+			text.cameras = [textCam];
+
+			bg.scale.set(0.33, 0.33);
+			bg.updateHitbox();
+			bg.origin.set(bg.width/2, bg.height);
+			bg.x = FlxG.width - 48;
+			bg.y = 70 + offset;		
+			bg.scrollFactor.set(0, 1);
+			bg.cameras = [textCam];
 		}
-		
-		bg.scale.set(0.33, 0.33);
-		bg.updateHitbox();
-		bg.origin.set(bg.width/2, bg.height);
-		bg.x = FlxG.width - 48;
-		bg.y = 70 + offset;		
-		bg.scrollFactor.set(0, 1);
-		bg.cameras = [textCam];
-		offset += text.height;
+
+		offset += songL[i].height;
 	}
 	
 	subCurSelected = 0;
-	subCurSelectedLimit = songser.length - 1;
+	subCurSelectedLimit = songst[curSelected].length - 1;
 	play.text = data[curSelected][1];
 	changements(0);
 }
