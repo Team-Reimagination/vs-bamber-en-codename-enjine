@@ -231,7 +231,6 @@ function change(a) {
 	var offset = 128;
 	for (i in 0...songst[curSelected].length)
 	{
-		trace(songLBgs.members);
 		var kys = data[curSelected][0];
 		if (!Assets.exists(Paths.image("menus/freeplay/silhouettes/"+kys)))
 			kys = "placeholder";
