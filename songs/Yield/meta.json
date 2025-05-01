@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 {
 	"displayName": null,
 	"bpm": 180,
@@ -6,4 +7,23 @@
 	"coopAllowed": true,
 	"opponentModeAllowed": true,
 	"album": 2.5
+=======
+{
+	"opponentModeAllowed": true,
+	"icon": "Bamber",
+	"difficulties": [
+		"EASY",
+		"HARD",
+		"NORMAL",
+		"VIP"
+	],
+	"color": "#00CC00",
+	"coopAllowed": true,
+	"name": "Yield",
+	"stepsPerBeat": 4,
+	"displayName": "Yield",
+	"beatsPerMeasure": 4,
+	"needsVoices": true,
+	"bpm": 180
+>>>>>>> Stashed changes
 }
