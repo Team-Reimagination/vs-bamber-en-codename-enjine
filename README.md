@@ -18,3 +18,6 @@ Probably so long as we're alive.
 
 ### How will the updates be measured?
 After 2.5, we will be ditching versions entirely and rely on the github for everything. This might come with a lot of pulling from the repository, so prepare yourselves.
+
+### Will there be a TODO?
+Yes, there will be. Especially since we might not work on the mod super often after the repository becomes public.
