@@ -21,3 +21,4 @@ After 2.5, we will be ditching versions entirely and rely on the github for ever
 
 ### Will there be a TODO?
 Yes, there will be. Especially since we might not work on the mod super often after the repository becomes public.
+Check [TODO.md](https://github.com/Team-Reimagination/vs-bamber-en-codename-enjine/blob/main/TODO.md) for that.
