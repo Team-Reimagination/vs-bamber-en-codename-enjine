@@ -5,7 +5,7 @@
 If you wanna port, fix, or add something, you can do so through a pull request, and we'll check if it's up to standard.
 
 ### What about us?
-We'll still work on it but we will work on it at any time, even if it might be months after a commit. And you guys get to see changes in the real time, either by following the repository or through [our Discord server](https://www.discord.com/CqXK5gtW4m). You opt in to this yourself.
+We'll still work on it but we will work on it at any time, even if it might be months after a commit. And you guys get to see changes in the real time, either by following the repository or through the [Team Reimagination Discord server](https://www.discord.com/CqXK5gtW4m). Most things will happen over there, like polls and stuff. You opt in to this yourself.
 
 ### What can we make pull requests for?
 - Porting of features from Bamber & Davey Vol.2
