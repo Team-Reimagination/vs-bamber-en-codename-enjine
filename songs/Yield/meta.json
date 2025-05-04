@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 {
 	"displayName": null,
 	"bpm": 180,
@@ -8,6 +9,8 @@
 	"opponentModeAllowed": true,
 	"album": 2.5
 =======
+=======
+>>>>>>> Stashed changes
 {
 	"opponentModeAllowed": true,
 	"icon": "Bamber",
@@ -25,5 +28,8 @@
 	"beatsPerMeasure": 4,
 	"needsVoices": true,
 	"bpm": 180
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
