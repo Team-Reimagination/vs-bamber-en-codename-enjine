@@ -1,0 +1,19 @@
+<!DOCTYPE codename-engine-dialogue-character>
+<character x="180" scale="0.9" y="55">
+	<anim name="eyeroll" anim="Dialogue Anims/Loop_Eyeroll" fps="24" />
+	<anim name="eyeroll-static" anim="Dialogue Anims/Static_Eyeroll" fps="24" />
+	<anim name="surprised" anim="Dialogue Anims/Loop_Surprise" fps="24" />
+	<anim name="surprised-static" anim="Dialogue Anims/Static_Surprise" fps="24" />
+	<anim name="normal" anim="Dialogue Anims/Loop_Neutral" fps="24" />
+	<anim name="normal-static" anim="Dialogue Anims/Static_Neutral" fps="24" />
+	<anim name="slouching" anim="Dialogue Anims/Loop_Slouching" fps="24" />
+	<anim name="slouching-static" anim="Dialogue Anims/Static_Slouching" fps="24" />
+	<anim name="questioning" anim="Dialogue Anims/Loop_Questioning" fps="24" />
+	<anim name="questioning-static" anim="Dialogue Anims/Static_Questioning" fps="24" />
+	<anim name="confused" anim="Dialogue Anims/Loop_Confused" fps="24" />
+	<anim name="confused-static" anim="Dialogue Anims/Static_Confused" fps="24" />
+	<anim name="smug" anim="Dialogue Anims/Loop_Smug" fps="24" />
+	<anim name="smug-static" anim="Dialogue Anims/Static_Smug" fps="24" />
+	<anim name="shrug" anim="Dialogue Anims/Loop_Shrugging" fps="24" />
+	<anim name="shrug-static" anim="Dialogue Anims/Static_Shrugging" fps="24" />
+</character>

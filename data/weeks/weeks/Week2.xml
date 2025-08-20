@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-week>
-<week name="Davey's Yard" chars="davey,isaac,gwen" sprite="weekd">
+<week name="Davey's Yard" bgColor="0xFF5173F9" chars="davey,isaac,gwen" sprite="weekd">
     <song>Synthwheel</song>
     <song>Yard</song>
     <song>Coop</song>

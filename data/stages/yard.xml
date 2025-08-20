@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-stage>
-<stage zoom="0.6" name="yard" folder="stages/yard/">
+<stage zoom="0.6" name="yard" folder="stages/yard/" startCamPosY="600" startCamPosX="850">
 	<sprite name="sky" x="-300" y="-175" sprite="Sky" scroll="0" scale="1.5" />
 	<sprite name="hill" x="-690" y="350" sprite="Hills" scroll="0.55" />
 	<sprite name="leaves" x="-975" y="-100" sprite="Spruce" scroll="0.91" />

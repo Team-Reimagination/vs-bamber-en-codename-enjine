@@ -1,0 +1,26 @@
+<!DOCTYPE codename-engine-dialogue>
+<dialogue box="default">
+	<!-- All characters -->
+	<char name="davey" char="davey" position="left"/>
+	<char name="isaac" char="isaac" position="right"/>
+
+	<!-- Lines -->
+	<line char="davey" speed="0.05" changeDefAnim="neutral" changeMusic="davey-die-a-log">
+		That was a very solid start!
+	</line>
+	<line char="isaac" speed="0.05" changeDefAnim="normal">
+		Yeah but I still managed to beat you!
+	</line>
+	<line char="davey" speed="0.05" changeDefAnim="confused">
+		Ah! So it's like that. I see...
+	</line>
+	<line char="davey" speed="0.05" changeDefAnim="teasing">
+		Well... I did say \"musical\" skills, not just singing skills...
+	</line>
+	<line char="isaac" speed="0.05" changeDefAnim="smug">
+		I'm down to anything you bring out to the battle!
+	</line>
+	<line char="davey" speed="0.05" changeDefAnim="teasing">
+		Alright then! Cue the next track!
+	</line>
+</dialogue>

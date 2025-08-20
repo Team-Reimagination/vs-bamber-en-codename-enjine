@@ -1,0 +1,17 @@
+{
+	"params": [
+		{
+			"name": "value1",
+			"type": "String",
+			"defaultValue": 10
+		},{
+			"name": "value2",
+			"type": "String",
+			"defaultValue": 10
+		}, {
+			"name": "value3",
+			"type": "String",
+			"defaultValue": null
+		}
+	]
+}

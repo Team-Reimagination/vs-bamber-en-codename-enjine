@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character x="0" icon="bambi" camx="-70" y="0" isGF="false" camy="40" isPlayer="false" sprite="Bambi" color="#25bf37" gameOverChar="bambi-dead">
+<character x="0" icon="bambi" camx="41" y="0" isGF="false" camy="-145" isPlayer="false" sprite="Bambi" color="#25bf37" gameOverChar="bambi-dead">
 	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi idle" name="idle"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi up" name="singUP"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi left" name="singLEFT"/>
@@ -8,11 +8,11 @@
 	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi phone" name="ziiuvanPaun?"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi right" name="singRIGHT"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/miss dow" name="singDOWNmiss"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi alt left" name="singLEFT-ALT"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi alt left" name="singLEFT-alt"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/miss left" name="singLEFTmiss"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi alt right" name="singRIGHT-ALT"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi alt up" name="singUP-ALT"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi alt down" name="singDOWN-ALT"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi alt right" name="singRIGHT-alt"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi alt up" name="singUP-alt"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi alt down" name="singDOWN-alt"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/bambi down" name="singDOWN"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="(EVDIAL) REGULAR BAMBI/Anims/miss right" name="singRIGHTmiss"/>
 </character>

@@ -1,0 +1,6 @@
+<!DOCTYPE codename-engine-dialogue-character>
+<character x="400" y="30" scale="0.9">
+	<anim name="talk" anim="bfnormalTalk" fps="24"/>
+	<anim name="talk-static" anim="StaticbfnormalTalk" fps="24"/>
+	<anim name="peak" anim="bfPeak" fps="24" y="-50"/>
+</character>

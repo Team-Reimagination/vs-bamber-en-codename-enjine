@@ -1,0 +1,5 @@
+<!DOCTYPE codename-engine-dialogue-character>
+<character x="350" y="60" scale="0.7">
+	<anim name="talk" anim="cfnormalTalk" fps="24"/>
+	<anim name="talk-static" anim="StaticcfnormalTalk" fps="24"/>
+</character>

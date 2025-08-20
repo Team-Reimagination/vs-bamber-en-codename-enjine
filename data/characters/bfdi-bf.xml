@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character x="0" icon="cnr-bf" camx="40" y="0" isGF="false" color="#C60015" isPlayer="true" sprite="bfdi bf" gameOverChar="bfdi-bf" flipX="true">
+<character x="0" icon="bfdi-bf" camy="-217" camx="-150" y="0" isGF="false" color="#C60015" isPlayer="true" sprite="bfdi bf" gameOverChar="bfdi-bf" flipX="true">
 	<anim x="0" loop="false" y="0" fps="24" anim="Characters/BF/BF-Idle" name="idle"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="Characters/BF/BF-Left" name="singLEFT" indices="0,1,2"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="Characters/BF/BF-Up" name="singUP" indices="0,1,2"/>
@@ -13,7 +13,7 @@
 	<anim x="0" loop="false" y="0" fps="24" anim="Characters/BF/BF-Transform" name="deathLoop"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="Characters/BF/BF-Recover" name="deathConfirm"/>
 	<anim x="0" loop="false" y="0" fps="24" anim="Characters/BF/BF-Left-miss" name="singLEFTmiss"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Characters/BF/BF-Up-miss" name="singUPmiss"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Characters/BF/BF-Down-miss" name="singDOWNmiss"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Characters/BF/BF-Right-miss" name="singRIGHTmiss"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Characters/BF/BF-Miss-Up" name="singUPmiss"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Characters/BF/BF-Miss-Down" name="singDOWNmiss"/>
+	<anim x="0" loop="false" y="0" fps="24" anim="Characters/BF/BF-Miss-Right" name="singRIGHTmiss"/>
 </character>

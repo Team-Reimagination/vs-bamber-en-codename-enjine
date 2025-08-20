@@ -1,0 +1,51 @@
+<!DOCTYPE codename-engine-alphabet-font>
+<alphabetFont fps="24" >
+	<spritesheet>menus/alphabet-bold</spritesheet>
+
+	<defaultAnim casing="upper">UPPERLETTER Capital</defaultAnim>
+	<defaultAnim casing="lower">UPPERLETTER lowercase</defaultAnim>
+	<defaultAnim>LETTER</defaultAnim>
+	<anim char="&amp;">Ampersand</anim>
+	<anim char="&lt;">Opening Arrow Bracket</anim>
+	<anim char="&gt;">Closing Arrow Bracket</anim>
+	<anim char="*">Asterisk</anim>
+	<anim char="@">@</anim>
+	<anim char="\">Backward Slash</anim>
+	<anim char="`">`</anim>
+	<anim char="^">^</anim>
+	<anim char=":">Colon</anim>
+	<anim char=",">,</anim>
+	<anim char="{">{</anim>
+	<anim char="}">}</anim>
+	<anim char="$">$</anim>
+	<anim char='"'>Quote</anim>
+	<anim char="=">=</anim>
+	<anim char="!">Exclamation Mark</anim>
+	<anim char="-">-</anim>
+	<anim char="%">%</anim>
+	<anim char=".">Period</anim>
+	<anim char="+">+</anim>
+	<anim char="#">#</anim>
+	<anim char="?">Question Mark</anim>
+	<anim char="(">(</anim>
+	<anim char=")">)</anim>
+	<anim char=";">;</anim>
+	<anim char="'">'</anim>
+	<anim char="/">Forward Slash</anim>
+	<anim char="[">[</anim>
+	<anim char="]">]</anim>
+	<anim char="~">~</anim>
+	<anim char="_">_</anim>
+	<anim char="|">Vertical Line</anim>
+
+	<anim char="0">0</anim>
+	<anim char="1">1</anim>
+	<anim char="2">2</anim>
+	<anim char="3">3</anim>
+	<anim char="4">4</anim>
+	<anim char="5">5</anim>
+	<anim char="6">6</anim>
+	<anim char="7">7</anim>
+	<anim char="8">8</anim>
+	<anim char="9">9</anim>
+</alphabetFont>

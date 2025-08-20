@@ -3,21 +3,23 @@
 Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
 -->
 <TextureAtlas imagePath="boris.png" width="1338" height="1311">
-	<SubTexture name="madLoop0005" x="2" y="574" width="559" height="323" rotated="true" frameX="-0" frameY="-11" frameWidth="333" frameHeight="570"/>
-	<SubTexture name="madStatic" x="607" y="2" width="323" height="559" frameX="-0" frameY="-0" frameWidth="323" frameHeight="559"/>
-	<SubTexture name="madLoop0001" x="290" y="2" width="315" height="569" frameX="-12" frameY="-1" frameWidth="333" frameHeight="570"/>
-	<SubTexture name="borisbruh0000" x="2" y="899" width="431" height="410" frameX="-44" frameY="-12" frameWidth="496" frameHeight="422"/>
-	<SubTexture name="borisnormalTalk0000" x="932" y="2" width="404" height="413" frameX="-0" frameY="-2" frameWidth="404" frameHeight="415"/>
-	<SubTexture name="borisnormalTalk0002" x="435" y="899" width="415" height="399" rotated="true" frameX="-3" frameY="-0" frameWidth="404" frameHeight="415"/>
-	<SubTexture name="StaticborisnormalTalk0000" x="932" y="417" width="401" height="410" frameX="-0" frameY="-0" frameWidth="401" frameHeight="410"/>
-	<SubTexture name="borisnormalTalk0004" x="852" y="829" width="401" height="410" frameX="-1" frameY="-5" frameWidth="404" frameHeight="415"/>
-	<SubTexture name="madLoop0003" x="2" y="2" width="286" height="570" frameX="-47" frameY="-0" frameWidth="333" frameHeight="570"/>
-	<SubTexture name="StaticborisnormalTalk0001" x="932" y="417" width="401" height="410" frameX="-0" frameY="-0" frameWidth="401" frameHeight="410"/>
-	<SubTexture name="borisbruh0001" x="2" y="899" width="431" height="410" frameX="-44" frameY="-12" frameWidth="496" frameHeight="422"/>
-	<SubTexture name="borisnormalTalk0001" x="932" y="2" width="404" height="413" frameX="-0" frameY="-2" frameWidth="404" frameHeight="415"/>
-	<SubTexture name="borisnormalTalk0003" x="435" y="899" width="415" height="399" rotated="true" frameX="-3" frameY="-0" frameWidth="404" frameHeight="415"/>
-	<SubTexture name="borisnormalTalk0005" x="852" y="829" width="401" height="410" frameX="-1" frameY="-5" frameWidth="404" frameHeight="415"/>
+    <SubTexture name="madLoop0001" x="290" y="2" width="315" height="569" frameX="-12" frameY="-1" frameWidth="333" frameHeight="570"/>
 	<SubTexture name="madLoop0002" x="290" y="2" width="315" height="569" frameX="-12" frameY="-1" frameWidth="333" frameHeight="570"/>
+	<SubTexture name="madLoop0003" x="2" y="2" width="286" height="570" frameX="-47" frameY="-0" frameWidth="333" frameHeight="570"/>
 	<SubTexture name="madLoop0004" x="2" y="2" width="286" height="570" frameX="-47" frameY="-0" frameWidth="333" frameHeight="570"/>
+	<SubTexture name="madLoop0005" x="2" y="574" width="559" height="323" rotated="true" frameX="-0" frameY="-11" frameWidth="333" frameHeight="570"/>
 	<SubTexture name="madLoop0006" x="2" y="574" width="559" height="323" rotated="true" frameX="-0" frameY="-11" frameWidth="333" frameHeight="570"/>
+	<SubTexture name="madStatic" x="607" y="2" width="323" height="559" frameX="-0" frameY="-0" frameWidth="323" frameHeight="559"/>
+
+	<SubTexture name="borisbruh0000" x="2" y="899" width="431" height="410" frameX="-44" frameY="-12" frameWidth="496" frameHeight="422"/>
+	<SubTexture name="borisbruh0001" x="2" y="899" width="431" height="410" frameX="-44" frameY="-12" frameWidth="496" frameHeight="422"/>
+
+	<SubTexture name="borisnormalTalk0000" x="932" y="2" width="404" height="413" frameX="-0" frameY="-2" frameWidth="404" frameHeight="415"/>
+	<SubTexture name="borisnormalTalk0001" x="932" y="2" width="404" height="413" frameX="-0" frameY="-2" frameWidth="404" frameHeight="415"/>
+	<SubTexture name="borisnormalTalk0002" x="435" y="899" width="415" height="399" rotated="true" frameX="-3" frameY="-0" frameWidth="404" frameHeight="415"/>
+	<SubTexture name="borisnormalTalk0003" x="435" y="899" width="415" height="399" rotated="true" frameX="-3" frameY="-0" frameWidth="404" frameHeight="415"/>
+	<SubTexture name="borisnormalTalk0004" x="852" y="829" width="401" height="410" frameX="-1" frameY="-5" frameWidth="404" frameHeight="415"/>
+	<SubTexture name="borisnormalTalk0005" x="852" y="829" width="401" height="410" frameX="-1" frameY="-5" frameWidth="404" frameHeight="415"/>
+	<SubTexture name="StaticborisnormalTalk0000" x="932" y="417" width="401" height="410" frameX="-0" frameY="-0" frameWidth="401" frameHeight="410"/>
+	<SubTexture name="StaticborisnormalTalk0001" x="932" y="417" width="401" height="410" frameX="-0" frameY="-0" frameWidth="401" frameHeight="410"/>
 </TextureAtlas>

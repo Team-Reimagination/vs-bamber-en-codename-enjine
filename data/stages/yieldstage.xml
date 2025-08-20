@@ -1,21 +1,17 @@
 <!DOCTYPE codename-engine-stage>
-<stage zoom="0.9" name="stage" folder="stages/yieldstage/" noteSkin="awesome">
-	<sprite name="Back" x="-220" y="-127" sprite="Back" scale="0.9" updateHitbox="true" />
-	<sprite name="Trift" x="797" y="453" sprite="TriftBack" scale="1.3" updateHitbox="true" >
-		<anim name="idle" anim="TriftBack" type="beat"/>
-	</sprite>
-	<sprite name="DaveyBack" x="1213" y="77" sprite="DaveyBack" scale="1.3" updateHitbox="true" >
-		<anim name="idle" anim="DaveyBack" type="beat"/>
-	</sprite>
-	<sprite name="BamberBack" x="890" y="-77" sprite="BamberBack" scale="1.3" updateHitbox="true" >
-		<anim name="idle" anim="BamberBack" type="beat"/>
-	</sprite>
-	<girlfriend />
-	<dad />
-	<boyfriend />
-	<sprite name="Text" x="890" y="-77" sprite="Text" scale="1.3" updateHitbox="true" >
-		<anim name="idle" anim="Text" type="beat"/>
-	</sprite>
+<stage folder="stages/yieldstage/" noteSkin="awesome" name="stage" zoom="0.75">
+	<sprite x="-290" updateHitbox="true" sprite="Back" y="-90" scale="0.9" name="Back"/>
+	<sprite x="797" updateHitbox="true" sprite="TriftBack" y="453" scale="1.3" name="Trift"/>
+	<anim type="beat" anim="TriftBack" name="idle"/>
+	<sprite x="1213" updateHitbox="true" sprite="DaveyBack" y="77" scale="1.3" name="DaveyBack"/>
+	<anim type="beat" anim="DaveyBack" name="idle"/>
+	<sprite x="890" updateHitbox="true" sprite="BamberBack" y="-77" scale="1.3" name="BamberBack"/>
+	<anim type="beat" anim="BamberBack" name="idle"/>
+	<girlfriend/>
+	<dad/>
+	<boyfriend/>
+	<sprite x="-108" updateHitbox="true" sprite="Text" y="-130.740113764791" scale="6.5" name="Text"/>
+	<anim type="beat" anim="Text" name="idle"/>
 	<dad x="5" y="700"/>
-	<boyfriend x="1000" y="700"/>
+	<boyfriend x="1000" y="700" scale="0.8"/>
 </stage>

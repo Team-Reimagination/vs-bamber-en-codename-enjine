@@ -2,7 +2,8 @@
 	"3D Model": ["Glitch.Smh"],
 	"Music": ["Glitch.Smh"],
 	"Chart": {
-		"Normal": ["Glitch.smh"]
+		"normal": ["Glitch.smh"],
+		"vip": ["???"]
 	},
 	"Code": ["Glitch.smh", "Frakits", "Verwex"]
 }

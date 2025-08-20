@@ -1,0 +1,80 @@
+<!DOCTYPE codename-engine-dialogue>
+<dialogue box="default">
+	<!-- All characters -->
+	<char name="boris" char="boris" position="left"/>
+	<char name="cubefreind" char="cubefreind" position="right"/>
+
+	<!-- Lines -->
+	<line char="boris" speed="0.05" changeDefAnim="talk" changeMusic="memeshed">
+		who are you
+	</line>
+	<line char="cubefreind" changeDefAnim="talk" speed="0.05">
+		a very freindly fellow
+	</line>
+	<line char="boris" speed="0.05">
+		and why do you look like geometry dash
+	</line>
+	<line char="cubefreind" speed="0.05" changeDefAnim="peak">
+		ayo nah
+	</line>
+	<line char="boris" speed="0.05" changeDefAnim="bruh">
+		what
+	</line>
+	<line char="cubefreind" speed="0.05" changeDefAnim="peak">
+		nah
+	</line>
+	<line char="cubefreind" speed="0.05" changeDefAnim="peak">
+		nah
+	</line>
+	<line char="cubefreind" speed="0.05" changeDefAnim="talk">
+		nuh uh d-side dream
+	</line>
+	<line char="boris" speed="0.05" changeDefAnim="mad" bubble="angry">
+		WHAT THE FUCK!?
+	</line>
+	<line char="cubefreind" speed="0.05">
+		i am sexy as shit, do not ever talk to my ass ever again like that
+	</line>
+	<line char="boris" speed="0.05" changeDefAnim="talk">
+		yeah whatever
+	</line>
+	<line char="cubefreind" speed="0.05">
+		pasty ass white boy
+	</line>
+	<line char="boris" speed="0.05" changeDefAnim="mad" bubble="angry">
+		HEY!!
+	</line>
+	<line char="cubefreind" speed="0.05">
+		bro literally got pajamas on better sleep soon and be read a bedtime story and a little goodnight kiss for sweet dreams of sunshine and rainbows
+	</line>
+	<line char="boris" speed="0.05" changeDefAnim="mad" bubble="angry">
+		IT'S LITERALLY THE MIDDLE OF THE DAY-
+	</line>
+	<line char="boris" speed="0.05" changeDefAnim="talk">
+		
+	</line>
+	<line char="boris" speed="0.05" changeDefAnim="talk">
+		so this is who people like
+	</line>
+	<line char="boris" speed="0.05" changeDefAnim="talk">
+		this is who they want to associate with
+	</line>
+	<line char="boris" speed="0.05" changeDefAnim="bruh">
+		despicable
+	</line>
+	<line char="boris" speed="0.05" changeDefAnim="talk" bubble="think">
+		how did he find out tho
+	</line>
+	<line char="cubefreind" speed="0.05" changeDefAnim="talk">
+		you thought that out loud
+	</line>
+	<line char="boris" speed="0.05" changeDefAnim="bruh">
+		can you like,,,, shur up, gnnnnnn,, , ,,, ,,, ,  ,  ,  ,,,
+	</line>
+	<line char="cubefreind" speed="0.05" changeDefAnim="talk">
+		sing battle :3
+	</line>
+	<line char="boris" speed="0.05" changeDefAnim="talk">
+		okei :33
+	</line>
+</dialogue>

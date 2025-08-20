@@ -1,7 +1,7 @@
 <!DOCTYPE codename-engine-stage>
 <stage zoom="0.2" name="cheater" folder="stages/memeing/" noteSkin="3dcheater" scorePath="3d/">
-   <sprite name="bg" x="0" y="400" sprite="Background" scale="5"/>
+   <sprite name="bg" x="-2000" y="200" sprite="Background" scale="5"/>
    <girlfriend />
    <boyfriend />
-   <dad />
+   <dad x="-1" />
 </stage>

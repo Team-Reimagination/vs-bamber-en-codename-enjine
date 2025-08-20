@@ -10,7 +10,8 @@ function postCreate() {
         for (j in i.notes) j.shader = colorShader;
     }
 }
-
+/*
 function onSplashShown(e) {
     e.value1.shader = e.value2.shader;
 }
+*/

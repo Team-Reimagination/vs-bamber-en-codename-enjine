@@ -2,7 +2,7 @@
 	"opponentModeAllowed": true,
 	"icon": "Bamber-Sans",
 	"difficulties": [
-		"JUDGEMENT FARM"
+		"NORMAL"
 	],
 	"parsedColor": -15666434,
 	"customValues": {},
@@ -14,5 +14,7 @@
 	"beatsPerMeasure": 4,
 	"needsVoices": false,
 	"bpm": 125,
-	"album": 2.5
+	"album": 2.5,
+	"custom_credits":true,
+	"countdownsound": "undertale"
 }

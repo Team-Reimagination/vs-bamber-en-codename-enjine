@@ -1,9 +1,23 @@
 {
-	"displayName": null,
-	"bpm": 180,
-	"icon": "Bamber",
-	"color": "#00CC00",
-	"coopAllowed": true,
 	"opponentModeAllowed": true,
-	"album": 2.5
+	"icon": "Bamber",
+	"difficulties": [
+		"EASY",
+		"NORMAL",
+		"HARD",
+		"VIP"
+	],
+	"color": -16724992,
+	"coopAllowed": true,
+	"name": "Cornaholic",
+	"stepsPerBeat": 4,
+	"displayName": "Cornaholic",
+	"countdownsound": "bamber",
+	"beatsPerMeasure": 4,
+	"needsVoices": true,
+	"metas": {},
+	"album": 2.5,
+	"bpm": 130,
+	"instSuffix": "",
+	"vocalsSuffix": ""
 }

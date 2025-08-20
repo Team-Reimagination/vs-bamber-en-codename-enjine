@@ -1,8 +1,10 @@
 {
 	"displayName": "Corn N' Roll",
 	"bpm": 160,
-	"icon": "BFDI-Bamber",
+	"icon": "bfdi-bnd",
 	"color": "#2FFE80",
 	"coopAllowed": true,
-	"opponentModeAllowed": true
+	"opponentModeAllowed": true,
+	"custom_credits": true,
+	"countdownsound": "four"
 }

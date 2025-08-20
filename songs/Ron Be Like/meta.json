@@ -4,5 +4,6 @@
 	"icon": "Ronnie",
 	"color": "#FED73E",
 	"coopAllowed": true,
-	"opponentModeAllowed": true
+	"opponentModeAllowed": true,
+	"countdownsound": "amung"
 }

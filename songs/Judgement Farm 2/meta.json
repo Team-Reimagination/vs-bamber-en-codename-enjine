@@ -5,5 +5,7 @@
 	"color": "#59DEF7",
 	"coopAllowed": true,
 	"opponentModeAllowed": true,
-	"album": 2.5
+	"album": 2.5,
+	"custom_credits":true,
+	"countdownsound": "undertale"
 }

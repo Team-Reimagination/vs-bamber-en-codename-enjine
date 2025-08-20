@@ -1,0 +1,17 @@
+<!DOCTYPE codename-engine-dialogue-character>
+<character x="-140" y="2" scale="0.8">
+	<anim name="normal" anim="Davey/Dialogue Sprites/Normal Loop" fps="24" />
+	<anim name="normal-static" anim="Davey/Dialogue Sprites/Normal Static" fps="24" />
+	<anim name="confused" anim="Davey/Dialogue Sprites/Confused Loop" fps="24" />
+	<anim name="confused-static" anim="Davey/Dialogue Sprites/Confused Static" fps="24" />
+	<anim name="exclaim" anim="Davey/Dialogue Sprites/Exclaim Loop" fps="24" />
+	<anim name="exclaim-static" anim="Davey/Dialogue Sprites/Exclaim Static" fps="24" />
+	<anim name="frown" anim="Davey/Dialogue Sprites/Frown Loop" fps="24" />
+	<anim name="frown-static" anim="Davey/Dialogue Sprites/Frown Static" fps="24" />
+	<anim name="teasing" anim="Davey/Dialogue Sprites/Teasing Loop" fps="24" />
+	<anim name="teasing-static" anim="Davey/Dialogue Sprites/Teasing Static" fps="24" />
+	<anim name="wave" anim="Davey/Dialogue Sprites/Wave Loop" fps="24" />
+	<anim name="wave-static" anim="Davey/Dialogue Sprites/Wave Static" fps="24" />
+	<anim name="worried" anim="Davey/Dialogue Sprites/Worried Loop" fps="24" />
+	<anim name="worried-static" anim="Davey/Dialogue Sprites/Worried Static" fps="24" />
+</character>

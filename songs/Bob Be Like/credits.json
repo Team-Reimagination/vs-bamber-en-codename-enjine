@@ -2,9 +2,9 @@
 	"Art": ["Seezee"],
 	"Music": ["Kasu"],
 	"Chart": {
-		"Easy": ["Luminous"],
-		"Normal": ["Glitch.smh"],
-		"Hard": ["Luminous"]
+		"easy": ["Luminous"],
+		"normal": ["Glitch.smh"],
+		"hard": ["Luminous"]
 	},
 	"Code": ["Frakits", "Verwex", "Glitch.smh"]
 }

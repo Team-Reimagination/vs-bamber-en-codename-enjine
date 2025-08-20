@@ -2,12 +2,68 @@
 <dialogue box="default">
 	<!-- All characters -->
 	<char name="bamber" char="bamber" position="left"/>
+	<char name="isaac" char="isaac" position="right"/>
 
 	<!-- Lines -->
-	<line char="bamber" speed="0.08">
+	<line char="bamber" speed="0.08" changeMusic="bamber-die-a-log">
 		Who are you and what are you two doing in my farm?
 	</line>
-	<line char="isaac">
+	<line char="isaac" changeDefAnim="surprised">
 		holy bingle is that bambi from dave and bambi
+	</line>
+	<line char="bamber" speed="0.08">
+		...name's bamber
+	</line>
+	<line char="isaac" changeDefAnim="confused">
+		...the sign says "BAMBIs farm" though...
+	</line>
+	<line char="bamber" speed="0.08" changeDefAnim="confused">
+		as odd as it seems, i misspelled my own name, coincidentally to the name you talk of...
+	</line>
+	<line char="isaac" speed="0.08" changeDefAnim="questioning">
+		hold your horses, do you maybe, just maybe have a friend who's a disabled school teacher on a wheelchair?
+	</line>
+	<line char="bamber" speed="0.08" changeDefAnim="laughing">
+		I think you're speaking of Davey! My best friend! He's not particularly disabled, but he sure is a lazy piece of crap!
+	</line>
+	<line char="isaac" speed="0.08" changeDefAnim="normal">
+		so what you're saying is that I won't find anyone named Dave and Bambi?
+	</line>
+	<!--this_ones_speep_is_07_in_v2-->
+	<line char="bamber" speed="0.08" changeDefAnim="normal">
+		uhhh no not really
+	</line>
+	<line char="isaac" speed="0.08" changeDefAnim="slouching">
+		well crap. I guess Double D sent us elsewhere 
+	</line>
+	<line char="bamber" speed="0.08" changeDefAnim="confused">
+		wait, are you saying there are other alternative versions of me and Davey?
+	</line>
+	<line char="isaac" speed="0.08" changeDefAnim="normal">
+		Uhh yeah basically
+	</line>
+	<line char="bamber" speed="0.08" bubble="weak">
+		...that scares me.
+	</line>
+	<line char="isaac" speed="0.08">
+		don't worry you're one of the few who can actually sing properly
+	</line>
+	<line char="bamber" speed="0.08" changeDefAnim="normal">
+		I assume that's a good thing?
+	</line>
+	<line char="isaac" speed="0.08" changeDefAnim="shrug">
+		well at least you're not making microwave noises which is definitely a step in the right direction
+	</line>
+	<line char="bamber" speed="0.08">
+		so what are you planning to do now?
+	</line>
+	<line char="isaac" speed="0.08" changeDefAnim="smug">
+		We should definitely sing.
+	</line>
+	<line char="bamber" speed="0.08" changeDefAnim="laughing">
+		Hah! I have the perfect track to start us off with!
+	</line>
+	<line char="isaac" speed="0.08" changeDefAnim="smug">
+		Bring it on.
 	</line>
 </dialogue>

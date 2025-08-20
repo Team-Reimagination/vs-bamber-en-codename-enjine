@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-stage>
-<stage zoom="0.75" name="stage" folder="stages/judgement farm/" noteSkin="undertale">
+<stage zoom="0.75" name="stage" folder="stages/judgement farm/" noteSkin="undertale" scorePath="/undertale/" countdown="undertale">
 	<sprite name="bambersansbg" x="0" y="0" sprite="Battle" scale="2.6" antialiasing="false" />
 	<girlfriend />
 	<dad x="350"/>

@@ -1,16 +1,10 @@
 <!DOCTYPE codename-engine-dialogue-box>
-<dialoguebox y="75" scalex="1.25">
-	<!--
-		Node containing all text settings
-	-->
-	<text font="vcr.ttf" x="210" y="190" width="850" color="#000000" size="40"/>
+<dialoguebox y="40" scale="0">
+	<text font="vcr.ttf" x="210" y="220" width="680" color="0xFF000000" size="29"/>
 
-	<!--
-		All positions for characters
-	-->
-	<charpos name="left" x="-500" y="184" flipBubble="true" />
-	<charpos name="middle" x="0" y="184" />
-	<charpos name="right" x="500" y="184" />
+	<charpos name="left" x="-500" y="184"/>
+	<charpos name="middle" x="0" y="184"/>
+	<charpos name="right" x="500" y="184"/>
 
 	<!--
 		All animations for the dialogue box

@@ -1,8 +1,18 @@
 {
-	"displayName": "Call Bamber",
-	"bpm": 150,
-	"icon": "elisocray",
-	"color": "#996633",
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": true,
 	"coopAllowed": true,
-	"opponentModeAllowed": true
+	"stepsPerBeat": 4,
+	"bpm": 150,
+	"difficulties": [
+		"NORMAL"
+	],
+	"needsVoices": false,
+	"parsedColor": -6724045,
+	"displayName": "Call Bamber",
+	"icon": "elisocray",
+	"name": "Call Bamber",
+	"color": "#996633",
+	"customValues": {},
+	"countdownsound": "elisocray"
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character sprite="gen bf" scale="0.8" flipX="true" camx="-300" camy="-200" isPlayer="true" icon="gen-bf" gameOverChar="gen-bf-dead" isGF="false">
+<character sprite="gen bf" scale="0.8" color="#00CCFF" flipX="true" camx="-300" camy="-200" isPlayer="true" icon="gen-bf" gameOverChar="gen-bf-dead" isGF="false">
 	<anim name="idle" anim="Anims/Phase 1/Idle" x="0" y="0" fps="30" loop="false"/>
 	<anim name="singDOWN" anim="Anims/Phase 1/Down" x="0" y="0" fps="30" loop="false"/>
 	<anim name="singDOWNmiss" anim="Anims/Phase 1/Miss Down" x="0" y="0" fps="30" loop="false"/>

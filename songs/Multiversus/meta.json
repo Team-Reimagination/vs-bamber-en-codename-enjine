@@ -4,5 +4,6 @@
 	"icon": "Bambi",
 	"color": "#16AD01",
 	"coopAllowed": true,
-	"opponentModeAllowed": true
+	"opponentModeAllowed": true,
+	"custom_credits":true
 }

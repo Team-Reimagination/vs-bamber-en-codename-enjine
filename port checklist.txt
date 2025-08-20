@@ -1,6 +1,5 @@
 MENUS:
 
-
 SONGS:
 
 WEEK B
@@ -13,7 +12,8 @@ WEEK D
 - Coop multiplayer chart
 
 WEEK R&B
-- Ron Be Like Old sprite section
+- Dialogue
+- Ron Be Like Old sprite section DONE.
 - Bob Be Like;
     - Easy chart
     - Hard chart
@@ -22,14 +22,14 @@ WEEK R&B
 
 EXTRAS
 - Blusterous Day;
-    - Events 
+    - Events DONE.
 - Swindled;
     - Modchart
-    - Animated icon(?)
+    - Animated icon(?) DONE.
 - Trade;
     - idk like everything
 - Multiversus;
-    - Stage
+    - Stage DONE.
 
 JOKE
 - Generations;
@@ -40,17 +40,19 @@ JOKE
     - buerns
     - bruh
     - New song(??)
-    - Stage shader
+    - Stage shader DONE.
 - Judgement Farm 1 & 2;
     - Stages
     - Events
+    - Hud
 - Yield - OST;
     - idk like everything
 
 COLLABS/CROSSOVERS
 - Call Bamber;
     - idk I started shiz
-    - Stage
+    - Stage DONE.
+    - Events
 - Deathbattle;
     - Rechart song placing down strikes and shields
     - Stage
@@ -60,9 +62,9 @@ COLLABS/CROSSOVERS
 - H2O;
     - Stage
 - Corn N Roll
-    - Fix everything
+    - Fix everything DONE i think.
 - Screencast;
-    -
+    - Stage waveforms.
     
 
 DAVEY'S NIGHTMARE;
@@ -74,3 +76,13 @@ MISC SCRIPTS
 - Finish countdowns
 - Medals?
 - RPC script because the YCE one is SHIT
+
+GAMEOVERS
+ - Default DONE.
+ - Memeing DONE.
+ - Cubefreind done??FFefewfdvv?///er??ef/eggegshjyjyury
+ - Deathbattle
+ - Generations
+ - Undertale
+ - exchangetown
+ - Callstage

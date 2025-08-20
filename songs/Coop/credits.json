@@ -2,9 +2,9 @@
 	"Art": ["Verwex"],
 	"Music": ["Glitch.smh"],
 	"Chart": {
-		"Easy": ["Glitch.smh"],
-		"Normal": ["Glitch.smh"],
-		"Hard": ["Glitch.smh"]
+		"easy": ["Glitch.smh"],
+		"normal": ["Glitch.smh"],
+		"hard": ["Glitch.smh"]
 	},
 	"Code": ["Frakits", "Verwex"]
 }

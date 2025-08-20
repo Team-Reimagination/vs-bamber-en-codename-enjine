@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character sprite="call of bamber" flipX="true" camx="400" camy="-600" isPlayer="true" icon="bamber-call" gameOverChar="the-calling-of-bamber" isGF="false">
+<character sprite="call of bamber" flipX="true" camx="400" camy="-600" isPlayer="true" icon="bamber-call" gameOverChar="the-calling-of-bamber" isGF="false" color="#71C419">
 	<anim name="idle" anim="Bamber/Anims/Idle" x="0" y="0" fps="24" loop="false"/>
 	<anim name="singLEFT" anim="Bamber/Anims/Left" x="0" y="0" fps="24" loop="false"/>
 	<anim name="singDOWN" anim="Bamber/Anims/Down" x="0" y="0" fps="24" loop="false"/>
@@ -11,5 +11,7 @@
 	<anim name="singRIGHTmiss" anim="Bamber/Anims/RMiss" x="0" y="0" fps="24" loop="false"/>
 	<anim name="firstDeath" anim="Bamber/Anims/Death_Start" x="0" y="0" fps="24" loop="false"/>
 	<anim name="deathLoop" anim="Bamber/Anims/Death_Continue" x="0" y="0" fps="24" loop="false"/>
+	<!--Killing_myself_HOLY_SHIT.-->
+	<anim name="idledeathLoop" anim="Bamber/Anims/Death_Continue" x="0" y="0" fps="24" loop="false"/>
 	<anim name="deathConfirm" anim="Bamber/Anims/Death_End" x="0" y="0" fps="24" loop="false"/>
 </character>

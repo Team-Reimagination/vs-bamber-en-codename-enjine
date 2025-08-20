@@ -1,7 +1,7 @@
 import flixel.addons.display.FlxBackdrop;
 
 function create(){
-	if (curSong == "coop")
+	if (curSong == "Coop")
 		grass.loadGraphic(Paths.image("stages/yard/Grass_WithBamber"));
 	insert(members.indexOf(hill), balloons = new FlxBackdrop(Paths.image("stages/yard/scrollingBG"), FlxAxes.X));
 	balloons.setPosition(-600, -100);

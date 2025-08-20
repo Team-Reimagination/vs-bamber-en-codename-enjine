@@ -5,6 +5,6 @@
 	<sprite name="ronnerNightTrees" x="-1050" y="-360" sprite="ronnerNightTrees" scroll="0.9" scale="2"/>
 	<sprite name="ronnerNightGround" x="-585" y="-655" sprite="ronnerNightGround" scale="1.8"/>
 	<girlfriend x="0" y="-300" camxoffset="-125" camyoffset="100"/>
-	<dad x="100" y="300" camyoffset="-250" camxoffset="200"/>
-	<boyfriend x="1200" y="250" camxoffset="-200"/>
+	<dad x="250" y="200" camyoffset="-250" camxoffset="200"/>
+	<boyfriend x="1200" y="200" camxoffset="-200"/>
 </stage>

@@ -1,0 +1,18 @@
+{
+	"opponentModeAllowed": false,
+	"icon": "bamber-old",
+	"difficulties": [
+		"normal"
+	],
+	"color": -15291135,
+	"name": "Harvest Chill Remix",
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"displayName": "Harvest Chill Remix V1",
+	"beatsPerMeasure": 4,
+	"needsVoices": true,
+	"metas": {},
+	"bpm": 150,
+	"instSuffix": "",
+	"vocalsSuffix": ""
+}

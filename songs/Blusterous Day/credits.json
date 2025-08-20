@@ -2,7 +2,7 @@
 	"Art": ["Seezee"],
 	"Music": ["Seezee"],
 	"Chart": {
-		"Normal": ["Glitch.smh", "Seezee"]
+		"normal": ["Glitch.smh", "Seezee"]
 	},
 	"Code": ["Frakits", "Verwex", "Seezee"]
 }

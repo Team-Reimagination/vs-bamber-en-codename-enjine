@@ -1,0 +1,11 @@
+<!DOCTYPE codename-engine-dialogue-character>
+<character x="70" y="-20" scale="0.8">
+	<anim name="talk" anim="ronnienormalTalk" fps="24"/>
+	<anim name="normal-static" anim="StaticronnienormalTalk" fps="24"/>
+	<anim name="joever" anim="ronniehorrifiedTalk" fps="24"/>
+	<anim name="joever-static" anim="StaticronniehorrifiedTalk" fps="24" loop="true"/>
+	<anim name="smug" anim="ronniesmugTalk" fps="24"/>
+	<anim name="smug-static" anim="StaticronniesmugTalk" fps="24"/>
+	<anim name="surprised" anim="ronniesurprisedlTalk" fps="24" y="-60"/>
+	<anim name="surprised-static" anim="StaticronniesurprisedlTalk" fps="24" y="-40"/>
+</character>

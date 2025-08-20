@@ -18,6 +18,7 @@ import flixel.text.FlxText;
 import flixel.text.FlxTextBorderStyle;
 import flixel.addons.display.FlxBackdrop;
 import funkin.menus.ModSwitchMenu;
+import funkin.menus.ui.ClassicAlphabet;
 import AnimatedFunkinSprite;
 
 public static var initialized = false; //post-intro sequence check
@@ -335,7 +336,7 @@ function setupTitleStuff() {
     startBar = new FlxBackdrop(Paths.image('menus/titleScreen/StartBar'), FlxAxes.X); startBar.velocity.x = -40; startBar.y = 620; startBar.antialiasing = true; add(startBar); startBar.alpha = 0.6; startBar.scale.y = barLerping;
     startBar.width = Math.pow(2,24); //it's rather extreme but I had to manipulate the hitbox since it doesn't repeat for every tile in FlxBackdrop.
 
-    startText = new Alphabet(0, 0, "PRESS "+CoolUtil.keyToString(Reflect.field(Options, 'P1_ACCEPT')[0])+" OR CLICK HERE", true, false); startText.antialiasing = true; add(startText); startText.scale.x = startText.scale.y = 0.7;
+    startText = new ClassicAlphabet(0, 0, "PRESS "+CoolUtil.keyToString(Reflect.field(Options, 'P1_ACCEPT')[0])+" OR CLICK HERE", true, false); startText.antialiasing = true; add(startText); startText.scale.x = startText.scale.y = 0.7;
 
     for (i in 0...startText.members.length) {
         startText.members[i].updateHitbox();
@@ -412,7 +413,7 @@ function setupMenuStuff() {
         buttonSpr.y = bottomBar.y + 20 - buttonSpr.height;
 
         //TITLE TEXT
-        var coolText:Alphabet = new Alphabet(0, 0, menuOptions[i].toUpperCase(), true, false);
+        var coolText:ClassicAlphabet = new ClassicAlphabet(0, 0, menuOptions[i].toUpperCase(), true, false);
         coolText.scale.set(0.65, 0.65);
 
         for (t in 0...coolText.members.length) {
@@ -445,7 +446,7 @@ function getIntroTextShit() {
 var allTexts = getIntroTextShit();
 
 function addText(text:String, ?offset = 0, ?offLoad = 0){
-	var coolText:Alphabet = new Alphabet(0, ((titleTextGroup.length - offLoad) * 60), text, true, false);
+	var coolText:ClassicAlphabet = new ClassicAlphabet(0, ((titleTextGroup.length - offLoad) * 60), text, true, false);
 
     coolText.scale.set(0.65, 0.65); //so this adjusts the scale of every object inside but doesn't adjust their positions nor hitbox (when i updateHitbox()), so I have to do it manually for every group member
     coolText.targetY = 0;
@@ -522,6 +523,12 @@ var yLevel = 0;
 var oldYLevel = 0;
 
 function update(elapsed) {
+    if (FlxG.keys.justPressed.SEVEN) {
+		persistentUpdate = false;
+		persistentDraw = true;
+		import funkin.editors.EditorPicker;
+		openSubState(new EditorPicker());
+	}
     if(FlxG.keys.justPressed.J)
         FlxG.switchState(new ModState("BNDSettings"));
 
@@ -701,7 +708,7 @@ function update(elapsed) {
 		if (controls.SWITCHMOD) { //OUT OF NECESSITY, WILL REFURBISH LATER
 			openSubState(new ModSwitchMenu());
 			persistentUpdate = false;
-			persistentDraw = true;
+			persistentDraw = false;
 		}
 	#end
 

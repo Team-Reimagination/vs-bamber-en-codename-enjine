@@ -2,7 +2,7 @@
 	"Art": ["Verwex"],
 	"Music": ["Glitch.smh", "Walto"],
 	"Chart": {
-		"BFDI": ["Glitch.smh"]
+		"bfdi": ["Glitch.smh"]
 	},
 	"Code": ["Frakits", "Verwex"]
 }

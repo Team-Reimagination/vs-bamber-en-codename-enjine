@@ -2,7 +2,7 @@
 	"Art": ["Verwex", "Glitch.smh"],
 	"Music": ["Glitch.smh"],
 	"Chart": {
-		"Normal": ["Glitch.smh"]
+		"normal": ["Glitch.smh"]
 	},
 	"Code": ["Frakits", "Verwex"]
 }

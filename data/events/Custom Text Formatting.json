@@ -1,0 +1,33 @@
+{
+	"params": [
+		{
+			"name": "text",
+			"type": "String",
+			"defaultValue": "clear"
+		},{
+			"name": "value2",
+			"type": "String",
+			"defaultValue": "0"
+		},{
+			"name": "value3",
+			"type": "String",
+			"defaultValue": "4"
+		},{
+			"name": "font",
+			"type": "String",
+			"defaultValue": "0xFFFFD800"
+		},{
+			"name": "value5",
+			"type": "String",
+			"defaultValue": 30
+		},{
+			"name": "value6",
+			"type": "String",
+			"defaultValue": 99999
+		},{
+			"name": "value7",
+			"type": "String",
+			"defaultValue": 1
+		}
+	]
+}

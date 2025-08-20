@@ -4,5 +4,7 @@
 	"icon": "Joke_Davey_OBJ",
 	"color": "#0F161F",
 	"coopAllowed": true,
-	"opponentModeAllowed": true
+	"opponentModeAllowed": true,
+	"countdownsound": "joke_model_obj",
+	"custom_credits": true
 }

@@ -13,5 +13,9 @@ function postCreate(){
             b.cameras = [newCam];
 }
 
-function onChangeSelection()
+function onChangeSelection(){
+    //Still_don't_know_why_i_have_to_add_this_junk_to_just_have_it_do_this_ON_change_select.
+    FlxTween.tween(scoreText,{y: 0},0.00000000000000001,{onComplete:function(twn:FlxTween){
     WindowUtils.set_winTitle("Freeplay Menu | Currently Selecting: " + songs[curSelected].name);
+    }});
+}

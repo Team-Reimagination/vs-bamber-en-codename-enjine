@@ -1,12 +1,12 @@
 <!DOCTYPE codename-engine-stage>
-<stage zoom="0.6" name="stage" folder="stages/trade/" noteSkin="trade" scorePath="exchange town/">
+<stage zoom="0.6" name="stage" folder="stages/trade/" noteSkin="trade" scorePath="exchange town/" startCamPosY="500" startCamPosX="800">
    <sprite name="Sky" x="-652" y="-335" sprite="Sky" scroll="0" scale="3.7" updateHitbox="true"/>
    <sprite name="Clouds" x="-598" y="-318" sprite="Clouds" scroll="0.1" scale="4" updateHitbox="true"/>
    <sprite name="HillUnderCity" x="-1170" y="-576" sprite="HillUnderCity" scroll="0.15" scale="5" updateHitbox="true"/>
    <sprite name="City" x="-850" y="-303" sprite="City" scroll="0.2" scale="4" updateHitbox="true"/>
    <sprite name="HillOverCity" x="-1321" y="-629" sprite="HillOverCity" scroll="0.5" scale="5" updateHitbox="true"/>
    <sprite name="Foreground" x="-596" y="-357" sprite="Foreground" scale="4.5" updateHitbox="true"/>
-   <girlfriend />
-   <dad />
-   <boyfriend />
+   <girlfriend alpha="0"/>
+   <dad x="0" y="420"/>
+   <boyfriend x="1120" y="120"/>
 </stage>

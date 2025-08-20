@@ -1,4 +1,4 @@
 <!DOCTYPE codename-engine-character>
 <character x="0" icon="gf" camx="0" y="0" isGF="true" camy="0" isPlayer="false" sprite="bfdi gf" color="#9A1652">
-	<anim x="0" loop="true" y="0" fps="24" anim="Characters/GF/Curvy Speaker Box" name="idle"/>
+	<anim x="0" loop="true" y="0" fps="24" anim="Curvy Speaker Box" name="idle"/>
 </character>

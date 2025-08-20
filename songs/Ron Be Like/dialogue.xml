@@ -1,0 +1,38 @@
+<!DOCTYPE codename-engine-dialogue>
+<dialogue box="default">
+	<!-- All characters -->
+	<char name="ronnie" char="ronnie" position="left"/>
+	<char name="cubefreind" char="cubefreind" position="right"/>
+
+	<!-- Lines -->
+	<line char="ronnie" speed="0.05" changeDefAnim="smug" changeMusic="memeshed">
+		heheheheheh i knew you'd do the funny
+	</line>
+	<line char="cubefreind" changeDefAnim="talk" speed="0.05">
+		how are you here i literally rapped with you
+	</line>
+	<line char="ronnie" speed="0.05" changeDefAnim="talk">
+		yea but im ronnie not ron from that mod called Vs Ron 3.0 that you should play
+	</line>
+	<line char="ronnie" speed="0.05" changeDefAnim="talk">
+		some of the people who worked on this mod worked for Vs Ron 3.0 as well!
+	</line>
+	<line char="ronnie" speed="0.05" changeDefAnim="smug">
+		the mod is really high quality and both The Bamber Team and the Vs Ron team support one another!
+	</line>
+	<line char="cubefreind" speed="0.05" changeDefAnim="talk">
+		what the fuck are you on about
+	</line>
+	<line char="cubefreind" speed="0.05" changeDefAnim="talk">
+		fuck you mean "the bamber team" did that green little shit make a cult or something
+	</line>
+	<line char="ronnie" speed="0.05" changeDefAnim="surprised">
+		uhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+	</line>
+	<line char="ronnie" speed="0.05" changeDefAnim="smug">
+		vowel yelling battle :3
+	</line>
+	<line char="cubefreind" speed="0.05" changeDefAnim="talk">
+		okie :33
+	</line>
+</dialogue>

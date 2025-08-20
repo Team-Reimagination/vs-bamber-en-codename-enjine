@@ -16,5 +16,6 @@
 	"name": "Synthwheel",
 	"color": "#0064FF",
 	"customValues": {},
-	"album": 2.5
+	"album": 2.5,
+	"countdownsound": "davey"
 }

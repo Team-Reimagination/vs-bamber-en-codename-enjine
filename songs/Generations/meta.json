@@ -1,8 +1,19 @@
 {
-	"displayName": null,
-	"bpm": 140,
+	"opponentModeAllowed": true,
 	"icon": "Gen-Bamber",
-	"color": "#FCFCFC",
+	"difficulties": [
+		"normal"
+	],
+	"color": -197380,
 	"coopAllowed": true,
-	"opponentModeAllowed": true
+	"name": "Generations",
+	"stepsPerBeat": 4,
+	"custom_credits": "true",
+	"displayName": "Generations",
+	"beatsPerMeasure": 4,
+	"needsVoices": true,
+	"metas": {},
+	"bpm": 140,
+	"instSuffix": "",
+	"vocalsSuffix": ""
 }

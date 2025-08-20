@@ -1,6 +1,6 @@
 {
 	"beatsPerMeasure": 4,
-	"opponentModeAllowed": false,
+	"opponentModeAllowed": true,
 	"coopAllowed": false,
 	"stepsPerBeat": 4,
 	"bpm": 170,
@@ -9,12 +9,13 @@
 		"NORMAL",
 		"HARD"
 	],
-	"needsVoices": true,
+	"needsVoices": false,
 	"parsedColor": -72596,
 	"displayName": "Fortnite Duos",
 	"icon": "ronnieandboris",
 	"name": "Fortnite Duos",
 	"color": "#FEE46C",
 	"customValues": {},
-	"album": 2.5
+	"album": 2.5,
+	"countdownsound": "amung"
 }

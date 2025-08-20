@@ -2,7 +2,7 @@
 	"Art": ["Glitch.smh", "Verwex", "Toby Fox"],
 	"Music": ["Glitch.smh"],
 	"Chart": {
-		"Normal": ["Glitch.smh"]
+		"normal": ["Glitch.smh"]
 	},
 	"Code": ["Glitch.smh"]
 }

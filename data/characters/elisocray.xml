@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character sprite="elisocray" camx="-600" camy="-500" icon="elisocray" gameOverChar="elisocray" isGF="false">
+<character sprite="elisocray" camx="-600" camy="-500" icon="elisocray" gameOverChar="elisocray" isGF="false" color="#B15640">
 	<anim name="idle" anim="Elisocray/Anims/idle" x="0" y="0" fps="24" loop="false"/>
 	<anim name="singLEFT" anim="Elisocray/Anims/left" x="0" y="0" fps="24" loop="false"/>
 	<anim name="singUP" anim="Elisocray/Anims/up" x="0" y="0" fps="24" loop="false"/>

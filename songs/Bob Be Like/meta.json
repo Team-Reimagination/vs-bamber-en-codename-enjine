@@ -9,12 +9,13 @@
 		"NORMAL",
 		"HARD"
 	],
-	"needsVoices": true,
+	"needsVoices": false,
 	"parsedColor": -1,
 	"displayName": "Bob Be Like",
 	"icon": "Boris",
 	"name": "Bob Be Like",
 	"color": "#FFFFFF",
 	"customValues": {},
-	"album": 2.5
+	"album": 2.5,
+	"countdownsound": "amung"
 }

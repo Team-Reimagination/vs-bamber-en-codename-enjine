@@ -12,10 +12,12 @@ specialCamera.addShader(motionBluresHUD);
 //specialCamera.addShader(new CustomShader("bloom"));
 specialCamera.bgColor = 0;
 
+//Fyi this is the thing that is fucking up the notes and offsetting them.
+/*
 function onNoteCreation(e) {
     e.note.camera = specialCamera;
 }
-
+*/
 function postCreate() {
     FlxG.cameras.add(specialCamera, false);
     FlxG.camera.addShader(motionBlures);

@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character x="0" icon="grug" camx="320" y="0" isGF="false" camy="170" color="#D38B4D" isPlayer="false" gameOverChar="grug" sprite="grug">
+<character x="0" icon="grug" camx="320" y="-140" isGF="false" camy="170" color="#D38B4D" isPlayer="false" gameOverChar="grug" sprite="grug">
 	<anim x="0" loop="false" y="0" fps="24" anim="idle" name="idle"/>
 	<anim x="-141" loop="false" y="-310" fps="24" anim="down" name="singDOWN"/>
 	<anim x="-44" loop="false" y="-226" fps="24" anim="left" name="singLEFT"/>

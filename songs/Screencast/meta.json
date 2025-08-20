@@ -1,8 +1,20 @@
 {
-	"displayName": null,
-	"bpm": 128,
+	"opponentModeAllowed": true,
 	"icon": "Nikku",
-	"color": "#FE3455",
+	"difficulties": [
+		"normal"
+	],
+	"color": -117675,
 	"coopAllowed": true,
-	"opponentModeAllowed": true
+	"name": "Screencast",
+	"stepsPerBeat": 4,
+	"custom_credits": true,
+	"displayName": "Screencast",
+	"countdownsound": "hotline",
+	"beatsPerMeasure": 4,
+	"needsVoices": true,
+	"metas": {},
+	"bpm": 128,
+	"instSuffix": "",
+	"vocalsSuffix": ""
 }

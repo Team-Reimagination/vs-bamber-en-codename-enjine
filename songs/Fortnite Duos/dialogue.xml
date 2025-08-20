@@ -1,0 +1,52 @@
+<!DOCTYPE codename-engine-dialogue>
+<dialogue box="default">
+	<!-- All characters -->
+	<char name="ronnie" char="ronnie" position="left"/>
+	<char name="boris" char="boris" position="left"/>
+	<char name="cubefreind" char="cubefreind" position="right"/>
+	<char name="circlefreind" char="circlefreind" position="middle"/>
+
+	<!-- Lines -->
+	<line char="ronnie" speed="0.05" changeDefAnim="joever" changeMusic="memeshed">
+		OH MY GOD I'M ALIVE AGAIN
+	</line>
+	<line char="ronnie" speed="0.05" changeDefAnim="joever">
+		I'VE JUST BEEN BROUGHT BACK
+	</line>
+	<line char="ronnie" changeDefAnim="joever" speed="0.05">
+		WHY DID I SUDDENLY DISAPPEAR IN THE SECOND SONG
+	</line>
+	<line char="boris" speed="0.05" changeDefAnim="talk">
+		hi ronnie
+	</line>
+	<line char="ronnie" speed="0.05" changeDefAnim="talk">
+		hello boris
+	</line>
+	<line char="cubefreind" speed="0.05" changeDefAnim="talk">
+		what is even going on anymore
+	</line>
+	<line char="circlefreind" speed="0.05" changeDefAnim="talk">
+		have you ever questioned the fact that. Oh wait i cant make that joke anymore
+	</line>
+	<line char="cubefreind" speed="0.05" changeDefAnim="talk">
+		what r u even talking about
+	</line>
+	<line char="ronnie" speed="0.05" changeDefAnim="joever">
+		i have witnessed things beyond mortal comprehension.
+	</line>
+	<line char="ronnie" speed="0.05" changeDefAnim="surprised">
+		i will never be the same again.
+	</line>
+	<line char="boris" speed="0.05" changeDefAnim="talk">
+		ok can we play fortnite 
+	</line>
+	<line char="cubefreind" speed="0.05" changeDefAnim="peak">
+		I FUCKING LOVE FORTNITE
+	</line>
+	<line char="ronnie" speed="0.05" changeDefAnim="smug">
+		ya fortnite is cool
+	</line>
+	<line char="circlefreind" speed="0.05" changeDefAnim="talk">
+		ok let me join too i have the\\nrenegade raider skin
+	</line>
+</dialogue>

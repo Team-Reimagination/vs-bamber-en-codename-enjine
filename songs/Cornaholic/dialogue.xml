@@ -1,0 +1,32 @@
+<!DOCTYPE codename-engine-dialogue>
+<dialogue box="default">
+	<!-- All characters -->
+	<char name="bamber" char="bamber" position="left"/>
+	<char name="isaac" char="isaac" position="right"/>
+
+	<!-- Lines -->
+	<line char="isaac" speed="0.05">
+		That was pretty tight!
+	</line>
+	<line char="bamber" changeDefAnim="happy" speed="0.05">
+		I agree! It was quite entertaining!
+	</line>
+	<line char="isaac" speed="0.05" changeDefAnim="smug">
+		Aye, come on! Let's do one more!
+	</line>
+	<line char="bamber" speed="0.05" changeDefAnim="normal">
+		Hmm. Alright. We can sing again I suppose.
+	</line>
+	<line char="isaac" speed="0.05" changeDefAnim="surprised">
+		Awesome!
+	</line>
+	<line char="isaac" speed="0.05" changeDefAnim="shrug">
+		Make sure to bring a challenge to the table!
+	</line>
+	<line char="bamber" speed="0.05" changeDefAnim="mad" bubble="angry">
+		OH YOU WANT A CHALLENGE?! I'LL GIVE YA A CHALLENGE!
+	</line>
+	<line char="isaac" speed="0.05" changeDefAnim="normal">
+		That's the spirit!
+	</line>
+</dialogue>

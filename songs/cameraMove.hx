@@ -1,7 +1,7 @@
 import flixel.math.FlxPoint;
 import flixel.FlxObject;
 var driftAmount:Int = 10;
-var otherCamFollow:FlxObject = new FlxObject();
+public var otherCamFollow:FlxObject = new FlxObject();
 var whichStrumline:Int = 0;
 var oldCamTarget;
 
@@ -43,4 +43,8 @@ function update(elapsed:Float) {
 function onNoteHit(e) {
     if (!e.note.isSustainNote)
         whichStrumline = strumLines.members.indexOf(e.note.strumLine);
+}
+function onGameOver(e) {
+    //Half assed fix i did to stop it from crashing.--ear
+    disableScript();
 }

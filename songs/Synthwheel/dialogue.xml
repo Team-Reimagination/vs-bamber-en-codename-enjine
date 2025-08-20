@@ -1,0 +1,75 @@
+<!DOCTYPE codename-engine-dialogue>
+<dialogue box="default">
+	<!-- All characters -->
+	<char name="davey" char="davey" position="left"/>
+	<char name="isaac" char="isaac" position="right"/>
+	<char name="gwen" char="gwen" position="right"/>
+
+	<!-- Lines -->
+	<line char="davey" speed="0.05" changeDefAnim="wave">
+		Oh, New Visitors, I see!
+	</line>
+	<line char="davey" speed="0.05" changeDefAnim="normal">
+		You seem to be new faces, eh?
+	</line>
+	<line char="isaac" speed="0.05">
+		Nah we jus' appeared like a week ago lol
+	</line>
+	<line char="isaac" speed="0.025" changeDefAnim="confused">
+		You must beeeeeeeeeeeeeeeeeeeeeeeeeeeee
+	</line>
+	<line char="davey" speed="0.05" changeDefAnim="normal">
+		Davey! Davey Synthwheel! Pleased to meet you, my friend!
+	</line>
+	<line char="davey" speed="0.05" changeDefAnim="normal">
+		And who might you be?
+	</line>
+	<line char="isaac" speed="0.05" changeDefAnim="smug">
+		Boyfriend
+	</line>
+	<line char="davey" speed="0.05" changeDefAnim="confused">
+		Oh.. Interesting name!
+	</line>
+	<line char="isaac" speed="0.05" changeDefAnim="normal">
+		Nah I'm just playin' wit'chu, name's Isaac lmao
+	</line>
+	<line char="davey" speed="0.05" changeDefAnim="normal">
+		And who's the girl you brought with yourself?
+	</line>
+	<line char="gwen" speed="0.05" changeDefAnim="normal">
+		Name's Gwen! Nice to meet you as well, Davey!
+	</line>
+	<line char="isaac" speed="0.05">
+		Anyways, your green farmer friend told us about you
+	</line>
+	<line char="davey" speed="0.05" changeDefAnim="normal">
+		Ah! You must've met my long time best friend, Bamber!
+	</line>
+	<line char="davey" speed="0.05" changeDefAnim="frown">
+		He usually isn't too fond of people...
+	</line>
+	<line char="davey" speed="0.05" changeDefAnim="worried" bubble="weak">
+		Especially after the events of November 2005...
+	</line>
+	<line char="isaac" speed="0.05" changeDefAnim="confused" bubble="weak">
+		...I should probably not ask.
+	</line>
+	<line char="gwen" speed="0.05" changeDefAnim="normal">
+		Anyways! Moving On!
+	</line>
+	<line char="isaac" speed="0.05" changeDefAnim="smug">
+		Oh yea, you should sing with me
+	</line>
+	<line char="davey" speed="0.05" changeDefAnim="frown">
+		I don't know, I'm afraid I can't d-
+	</line>
+	<line char="isaac" speed="0.05" changeDefAnim="normal">
+		That wasn't a question. We will sing. Now.
+	</line>
+	<line char="davey" speed="0.05" changeDefAnim="exclaim">
+		Alright, but beware! For my musical skills are as good as my grades back in High School!
+	</line>
+	<line char="isaac" speed="0.05" changeDefAnim="normal">
+		ok lol
+	</line>
+</dialogue>

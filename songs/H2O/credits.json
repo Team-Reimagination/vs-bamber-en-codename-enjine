@@ -3,7 +3,8 @@
 	"Remix": ["Glitch.smh"],
 	"OG Music": ["River09"],
 	"Chart": {
-		"Normal": ["Glitch.smh"]
+		"normal": ["Glitch.smh"],
+		"vip": ["???"]
 	},
 	"Code": ["Frakits", "Verwex"]
 }

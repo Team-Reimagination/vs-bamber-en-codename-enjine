@@ -4,5 +4,8 @@
 	"icon": "grug",
 	"color": "#DF1207",
 	"coopAllowed": true,
-	"opponentModeAllowed": true
+	"opponentModeAllowed": true,
+	"custom_credits": true,
+	"credits_update": true,
+	"countdownsound": "manny"
 }

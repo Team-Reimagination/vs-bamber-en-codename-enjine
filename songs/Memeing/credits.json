@@ -2,7 +2,8 @@
 	"My (Art)": ["Vs Dave and Bambi Team", "Verwex"],
 	"Asshole (Music)": ["Itchgø"],
 	"Burns (Chart)": {
-		"Normal": ["Stormy"]
+		"normal": ["Stormy"],
+		"vip": ["???"]
 	},
 	"Bruh (Code)": ["Frakits", "Verwex"]
 }

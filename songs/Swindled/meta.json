@@ -14,5 +14,6 @@
 	"beatsPerMeasure": 4,
 	"needsVoices": false,
 	"bpm": 220,
-	"album": 2.5
+	"album": 2.5,
+	"countdownsound": "swindler"
 }

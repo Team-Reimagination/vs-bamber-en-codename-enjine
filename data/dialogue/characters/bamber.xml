@@ -1,4 +1,19 @@
 <!DOCTYPE codename-engine-dialogue-character>
-<character x="0" y="300">
+<character x="-140" y="40">
 	<anim name="normal" anim="Animations/Dialogue/Neutral Loop" fps="24" />
+	<anim name="normal-static" anim="Animations/Dialogue/Neutral Static" fps="24" />
+	<anim name="poker" anim="Animations/Dialogue/Poker Loop" fps="24" />
+	<anim name="poker-static" anim="Animations/Dialogue/Poker Static" fps="24" />
+	<anim name="annoyed" anim="Animations/Dialogue/Annoyed Loop" fps="24" />
+	<anim name="annoyed-static" anim="Animations/Dialogue/Annoyed Static" fps="24" />
+	<anim name="mad" anim="Animations/Dialogue/Mad Loop" fps="24" />
+	<anim name="mad-static" anim="Animations/Dialogue/Mad Static" fps="24" />
+	<anim name="laughing" anim="Animations/Dialogue/Laughing Loop" fps="24" />
+	<anim name="laughing-static" anim="Animations/Dialogue/Laughing Static" fps="24" />
+	<anim name="confused" anim="Animations/Dialogue/Confused Loop" fps="24" />
+	<anim name="confused-static" anim="Animations/Dialogue/Confused Static" fps="24" />
+	<anim name="flabbergasted" anim="Animations/Dialogue/Flabbergasted Loop" fps="24" />
+	<anim name="flabbergasted-static" anim="Animations/Dialogue/Flabbergasted Static" fps="24" />
+	<anim name="happy" anim="Animations/Dialogue/Happy Loop" fps="24" />
+	<anim name="happy-static" anim="Animations/Dialogue/Happy Static" fps="24" />
 </character>

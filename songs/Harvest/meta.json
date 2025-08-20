@@ -16,5 +16,6 @@
 	"beatsPerMeasure": 4,
 	"needsVoices": false,
 	"bpm": 115,
-	"album": 2.5
+	"album": 2.5,
+	"countdownsound": "bamber"
 }

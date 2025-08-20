@@ -1,8 +1,8 @@
 <!DOCTYPE codename-engine-stage>
-<stage zoom="0.9" name="stage" folder="stages/deathbattle/" noteSkin="deathbattle">
-	<sprite name="vsBg" x="-417" y="-556" sprite="vsBg" scale="2.5" />
+<stage zoom="0.9" name="stage" folder="stages/deathbattle/" noteSkin="deathbattle" scorePath="battlegrounds/" countdown="battlegrounds">
+	<sprite name="vsBg" x="150" y="-556" sprite="vsBg" scale="2.5" />
 	<sprite name="vs" x="204" y="-178" sprite="vs" scale="1.5" />
 	<girlfriend />
-	<dad />
-	<boyfriend />
+	<dad x="-30" y="10" />
+	<boyfriend x="1100"/>
 </stage>

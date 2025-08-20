@@ -1,0 +1,16 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.85" name="corn-maze" folder="stages/farm bambi/" noteSkin="funkin" startCamPosY="300" startCamPosX="700">
+
+<sprite name="sky" x="-600" y="-700" scale="0.7" sprite="sky" scroll="0" />
+<sprite name="gm_flatgrass" x="80" y="-160" scale="0.6" sprite="gm_flatgrass" scroll="0.6" />
+<sprite name="hills" x="-7" y="-37" scale="1" sprite="orangey hills" scroll="0.7" />
+<sprite name="barn" x="57" y="-53" scale="1" sprite="funfarmhouse" scroll="0.8" />
+<sprite name="grasslands" x="-667" y="295" scale="1" sprite="grass lands" scroll="1" />
+<sprite name="cornfence1" x="-444" y="-53" scale="1" sprite="cornFence" scroll="1" />
+<sprite name="cornfence2" x="1083.67" y="-60.33" scale="1" sprite="cornFence2" scroll="1" />
+<sprite name="cornbag" x="1170" y="307" scale="1" sprite="cornbag" scroll="1" />
+<sprite name="sign" x="60" y="83" scale="1" sprite="sign" scroll="1" />
+
+   <dad x="425" y="624"/>
+   <boyfriend x="872" y="-90"/>
+</stage>
