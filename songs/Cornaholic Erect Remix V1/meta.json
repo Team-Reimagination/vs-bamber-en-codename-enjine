@@ -1,0 +1,18 @@
+{
+	"opponentModeAllowed": false,
+	"icon": "bamber-old",
+	"difficulties": [
+		"erect"
+	],
+	"color": -15291135,
+	"name": "Cornaholic Erect Remix V1",
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"displayName": "Cornaholic Erect Remix V1",
+	"beatsPerMeasure": 4,
+	"needsVoices": true,
+	"metas": {},
+	"bpm": 150,
+	"instSuffix": "",
+	"vocalsSuffix": ""
+}

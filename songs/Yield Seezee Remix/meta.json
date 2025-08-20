@@ -1,0 +1,18 @@
+{
+	"opponentModeAllowed": false,
+	"icon": "bamber-old",
+	"difficulties": [
+		"normal"
+	],
+	"color": -15291135,
+	"name": "Yield Seezee Remix",
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"displayName": "Yield Seezee Remix V1",
+	"beatsPerMeasure": 4,
+	"needsVoices": true,
+	"metas": {},
+	"bpm": 180,
+	"instSuffix": "",
+	"vocalsSuffix": ""
+}
